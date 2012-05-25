@@ -466,6 +466,7 @@
 				E1F7B6C9156EDC7D0092367F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1F7B6CA156EDC7D0092367F /* Build configuration list for PBXNativeTarget "CernVM Co-PilotTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +475,7 @@
 				E1F7B6CC156EDC7D0092367F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
