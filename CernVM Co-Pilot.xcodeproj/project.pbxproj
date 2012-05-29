@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E182E1FB15740766000E4197 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E182E1FA15740766000E4197 /* RSSFeed.m */; };
+		E1830BC015743E36003F16E2 /* RSSArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BBF15743E36003F16E2 /* RSSArticle.m */; };
+		E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1830BC915744B9F003F16E2 /* libxml2.dylib */; };
+		E1830BCF15745FE4003F16E2 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E1830BD015745FE4003F16E2 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */; };
 		E1F7B68B156EDC7C0092367F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68A156EDC7C0092367F /* UIKit.framework */; };
 		E1F7B68D156EDC7C0092367F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68C156EDC7C0092367F /* Foundation.framework */; };
 		E1F7B68F156EDC7C0092367F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68E156EDC7C0092367F /* CoreGraphics.framework */; };
@@ -37,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
+		E182E1FA15740766000E4197 /* RSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSFeed.m; path = "CernVM Co-Pilot/RSSFeed.m"; sourceTree = "<group>"; };
+		E1830BBE15743E36003F16E2 /* RSSArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSArticle.h; path = "CernVM Co-Pilot/RSSArticle.h"; sourceTree = "<group>"; };
+		E1830BBF15743E36003F16E2 /* RSSArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSArticle.m; path = "CernVM Co-Pilot/RSSArticle.m"; sourceTree = "<group>"; };
+		E1830BC915744B9F003F16E2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		E1830BCD15745FE4003F16E2 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		E1F7B686156EDC7C0092367F /* CernVM Co-Pilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CernVM Co-Pilot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F7B68A156EDC7C0092367F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1F7B68C156EDC7C0092367F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */,
 				E1F7B68B156EDC7C0092367F /* UIKit.framework in Frameworks */,
 				E1F7B68D156EDC7C0092367F /* Foundation.framework in Frameworks */,
 				E1F7B68F156EDC7C0092367F /* CoreGraphics.framework in Frameworks */,
@@ -85,9 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1830BD115746204003F16E2 /* RSS */ = {
+			isa = PBXGroup;
+			children = (
+				E182E1F915740766000E4197 /* RSSFeed.h */,
+				E182E1FA15740766000E4197 /* RSSFeed.m */,
+				E1830BBE15743E36003F16E2 /* RSSArticle.h */,
+				E1830BBF15743E36003F16E2 /* RSSArticle.m */,
+				E1830BCD15745FE4003F16E2 /* GDataXMLNode.h */,
+				E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */,
+			);
+			name = RSS;
+			sourceTree = "<group>";
+		};
 		E1F7B67B156EDC7C0092367F = {
 			isa = PBXGroup;
 			children = (
+				E1830BD115746204003F16E2 /* RSS */,
 				E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */,
 				E1F7B6BC156EDC7D0092367F /* CernVM Co-PilotTests */,
 				E1F7B689156EDC7C0092367F /* Frameworks */,
@@ -107,6 +134,7 @@
 		E1F7B689156EDC7C0092367F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1830BC915744B9F003F16E2 /* libxml2.dylib */,
 				E1F7B68A156EDC7C0092367F /* UIKit.framework */,
 				E1F7B68C156EDC7C0092367F /* Foundation.framework */,
 				E1F7B68E156EDC7C0092367F /* CoreGraphics.framework */,
@@ -275,6 +303,9 @@
 			files = (
 				E1F7B697156EDC7C0092367F /* main.m in Sources */,
 				E1F7B69B156EDC7C0092367F /* AppDelegate.m in Sources */,
+				E182E1FB15740766000E4197 /* RSSFeed.m in Sources */,
+				E1830BC015743E36003F16E2 /* RSSArticle.m in Sources */,
+				E1830BCF15745FE4003F16E2 /* GDataXMLNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F7B6C4156EDC7D0092367F /* CernVM_Co_PilotTests.m in Sources */,
+				E1830BD015745FE4003F16E2 /* GDataXMLNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +384,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -371,8 +405,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -384,7 +420,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CernVM Co-Pilot/CernVM Co-Pilot-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "CernVM Co-Pilot/CernVM Co-Pilot-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -395,7 +433,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CernVM Co-Pilot/CernVM Co-Pilot-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "CernVM Co-Pilot/CernVM Co-Pilot-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

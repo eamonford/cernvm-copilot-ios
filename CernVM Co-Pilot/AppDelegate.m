@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RSSFeed.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    RSSFeed *feed = [[RSSFeed alloc] init];
+    feed.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"];
+    [feed refresh];
+    
     return YES;
 }
 							
