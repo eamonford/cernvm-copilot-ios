@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSSFeed.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RSSFeedDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
