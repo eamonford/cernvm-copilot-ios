@@ -12,7 +12,7 @@
 
 @protocol RSSFeedDelegate <NSObject>
 
-- (void)rssDataDidLoad:(RSSFeed *)feed;
+- (void)rssFeedDidLoad:(RSSFeed *)feed;
 
 @end
 

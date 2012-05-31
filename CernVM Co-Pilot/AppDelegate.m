@@ -7,29 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "RSSFeed.h"
-#import "RSSArticle.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 
-- (void)rssDataDidLoad:(RSSFeed *)feed
-{
-    NSLog(@"Loaded articles:\n");
-    for (RSSArticle *article in feed.articles) {
-        NSLog(@"%@", article.title);
-    }
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    RSSFeed *feed = [[RSSFeed alloc] init];
-    feed.delegate = self;
-    feed.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"];
-    [feed refresh];
-    
+    // Override point for customization after application launch.    
     return YES;
 }
 							

@@ -30,7 +30,7 @@
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                if ([self setTitleAndArticlesFromRSSData:data]) {
                                    if (self.delegate) {
-                                       [self.delegate rssDataDidLoad:self];
+                                       [self.delegate rssFeedDidLoad:self];
                                    }
                                }
                            }];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */; };
+		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
 		E182E1FB15740766000E4197 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E182E1FA15740766000E4197 /* RSSFeed.m */; };
 		E1830BC015743E36003F16E2 /* RSSArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BBF15743E36003F16E2 /* RSSArticle.m */; };
 		E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1830BC915744B9F003F16E2 /* libxml2.dylib */; };
@@ -42,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E120849A15773D3500A81B87 /* GeneralNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralNewsTableViewController.h; path = "CernVM Co-Pilot/GeneralNewsTableViewController.h"; sourceTree = "<group>"; };
+		E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralNewsTableViewController.m; path = "CernVM Co-Pilot/GeneralNewsTableViewController.m"; sourceTree = "<group>"; };
+		E120849F1577588100A81B87 /* RSSAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAggregator.h; sourceTree = "<group>"; };
+		E12084A01577588100A81B87 /* RSSAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAggregator.m; sourceTree = "<group>"; };
 		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
 		E182E1FA15740766000E4197 /* RSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSFeed.m; path = "CernVM Co-Pilot/RSSFeed.m"; sourceTree = "<group>"; };
 		E1830BBE15743E36003F16E2 /* RSSArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSArticle.h; path = "CernVM Co-Pilot/RSSArticle.h"; sourceTree = "<group>"; };
@@ -98,9 +104,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E120849E15773D5100A81B87 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E120849A15773D3500A81B87 /* GeneralNewsTableViewController.h */,
+				E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		E1830BD115746204003F16E2 /* RSS */ = {
 			isa = PBXGroup;
 			children = (
+				E120849F1577588100A81B87 /* RSSAggregator.h */,
+				E12084A01577588100A81B87 /* RSSAggregator.m */,
 				E182E1F915740766000E4197 /* RSSFeed.h */,
 				E182E1FA15740766000E4197 /* RSSFeed.m */,
 				E1830BBE15743E36003F16E2 /* RSSArticle.h */,
@@ -114,6 +131,7 @@
 		E1F7B67B156EDC7C0092367F = {
 			isa = PBXGroup;
 			children = (
+				E120849E15773D5100A81B87 /* View Controllers */,
 				E1830BD115746204003F16E2 /* RSS */,
 				E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */,
 				E1F7B6BC156EDC7D0092367F /* CernVM Co-PilotTests */,
@@ -306,6 +324,8 @@
 				E182E1FB15740766000E4197 /* RSSFeed.m in Sources */,
 				E1830BC015743E36003F16E2 /* RSSArticle.m in Sources */,
 				E1830BCF15745FE4003F16E2 /* GDataXMLNode.m in Sources */,
+				E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */,
+				E12084A11577588200A81B87 /* RSSAggregator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

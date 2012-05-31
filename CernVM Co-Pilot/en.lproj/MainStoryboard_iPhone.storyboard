@@ -133,11 +133,11 @@
             </objects>
             <point key="canvasLocation" x="54" y="202"/>
         </scene>
-        <!--Table View Controller-->
+        <!--General News Table View Controller-->
         <scene sceneID="BbJ-1A-3wA">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2l-Uu-35U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="0mM-vX-M7Z" sceneMemberID="viewController">
+                <tableViewController id="0mM-vX-M7Z" customClass="GeneralNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WJb-PW-6EU">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,6 +166,11 @@
     <resources>
         <image name="backgroundImage" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="GeneralNewsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GeneralNewsTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
