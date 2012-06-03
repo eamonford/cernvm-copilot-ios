@@ -9,11 +9,20 @@
 /* Begin PBXBuildFile section */
 		E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */; };
 		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
+		E13101B9157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E13101BA157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; };
+		E13101BB157B5CF800429634 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B6157B5CF800429634 /* MWFeedInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E13101BC157B5CF800429634 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B6157B5CF800429634 /* MWFeedInfo.m */; };
+		E13101BD157B5CF800429634 /* MWFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B8157B5CF800429634 /* MWFeedItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E13101BE157B5CF800429634 /* MWFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B8157B5CF800429634 /* MWFeedItem.m */; };
+		E13101C3157B5D0600429634 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C0157B5D0600429634 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E13101C4157B5D0600429634 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C0157B5D0600429634 /* NSString+HTML.m */; };
+		E13101C5157B5D0600429634 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E13101C6157B5D0600429634 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */; };
+		E13101C9157B5D0E00429634 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E13101CA157B5D0E00429634 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */; };
 		E182E1FB15740766000E4197 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E182E1FA15740766000E4197 /* RSSFeed.m */; };
-		E1830BC015743E36003F16E2 /* RSSArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BBF15743E36003F16E2 /* RSSArticle.m */; };
 		E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1830BC915744B9F003F16E2 /* libxml2.dylib */; };
-		E1830BCF15745FE4003F16E2 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E1830BD015745FE4003F16E2 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */; };
 		E1F7B68B156EDC7C0092367F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68A156EDC7C0092367F /* UIKit.framework */; };
 		E1F7B68D156EDC7C0092367F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68C156EDC7C0092367F /* Foundation.framework */; };
 		E1F7B68F156EDC7C0092367F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68E156EDC7C0092367F /* CoreGraphics.framework */; };
@@ -48,13 +57,22 @@
 		E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralNewsTableViewController.m; path = "CernVM Co-Pilot/GeneralNewsTableViewController.m"; sourceTree = "<group>"; };
 		E120849F1577588100A81B87 /* RSSAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAggregator.h; sourceTree = "<group>"; };
 		E12084A01577588100A81B87 /* RSSAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAggregator.m; sourceTree = "<group>"; };
+		E13101B2157B5CF800429634 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser_Private.h; sourceTree = "<group>"; };
+		E13101B3157B5CF800429634 /* MWFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser.h; sourceTree = "<group>"; };
+		E13101B4157B5CF800429634 /* MWFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedParser.m; sourceTree = "<group>"; };
+		E13101B5157B5CF800429634 /* MWFeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedInfo.h; sourceTree = "<group>"; };
+		E13101B6157B5CF800429634 /* MWFeedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedInfo.m; sourceTree = "<group>"; };
+		E13101B7157B5CF800429634 /* MWFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedItem.h; sourceTree = "<group>"; };
+		E13101B8157B5CF800429634 /* MWFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedItem.m; sourceTree = "<group>"; };
+		E13101BF157B5D0600429634 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		E13101C0157B5D0600429634 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		E13101C1157B5D0600429634 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDateTime.h"; sourceTree = "<group>"; };
+		E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
+		E13101C7157B5D0E00429634 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
 		E182E1FA15740766000E4197 /* RSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSFeed.m; path = "CernVM Co-Pilot/RSSFeed.m"; sourceTree = "<group>"; };
-		E1830BBE15743E36003F16E2 /* RSSArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSArticle.h; path = "CernVM Co-Pilot/RSSArticle.h"; sourceTree = "<group>"; };
-		E1830BBF15743E36003F16E2 /* RSSArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSArticle.m; path = "CernVM Co-Pilot/RSSArticle.m"; sourceTree = "<group>"; };
 		E1830BC915744B9F003F16E2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		E1830BCD15745FE4003F16E2 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
-		E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		E1F7B686156EDC7C0092367F /* CernVM Co-Pilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CernVM Co-Pilot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F7B68A156EDC7C0092367F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1F7B68C156EDC7C0092367F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -120,19 +138,52 @@
 				E12084A01577588100A81B87 /* RSSAggregator.m */,
 				E182E1F915740766000E4197 /* RSSFeed.h */,
 				E182E1FA15740766000E4197 /* RSSFeed.m */,
-				E1830BBE15743E36003F16E2 /* RSSArticle.h */,
-				E1830BBF15743E36003F16E2 /* RSSArticle.m */,
-				E1830BCD15745FE4003F16E2 /* GDataXMLNode.h */,
-				E1830BCE15745FE4003F16E2 /* GDataXMLNode.m */,
 			);
 			name = RSS;
+			sourceTree = "<group>";
+		};
+		E1A2F57C157A03C30010D672 /* MWFeedParser */ = {
+			isa = PBXGroup;
+			children = (
+				E13101B2157B5CF800429634 /* MWFeedParser_Private.h */,
+				E13101B3157B5CF800429634 /* MWFeedParser.h */,
+				E13101B4157B5CF800429634 /* MWFeedParser.m */,
+				E13101B5157B5CF800429634 /* MWFeedInfo.h */,
+				E13101B6157B5CF800429634 /* MWFeedInfo.m */,
+				E13101B7157B5CF800429634 /* MWFeedItem.h */,
+				E13101B8157B5CF800429634 /* MWFeedItem.m */,
+			);
+			name = MWFeedParser;
+			sourceTree = "<group>";
+		};
+		E1A2F588157A03DF0010D672 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E13101BF157B5D0600429634 /* NSString+HTML.h */,
+				E13101C0157B5D0600429634 /* NSString+HTML.m */,
+				E13101C1157B5D0600429634 /* NSDate+InternetDateTime.h */,
+				E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */,
+				E1A2F58F157A04300010D672 /* Google Toolbox for Mac */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		E1A2F58F157A04300010D672 /* Google Toolbox for Mac */ = {
+			isa = PBXGroup;
+			children = (
+				E13101C7157B5D0E00429634 /* GTMNSString+HTML.h */,
+				E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */,
+			);
+			name = "Google Toolbox for Mac";
 			sourceTree = "<group>";
 		};
 		E1F7B67B156EDC7C0092367F = {
 			isa = PBXGroup;
 			children = (
-				E120849E15773D5100A81B87 /* View Controllers */,
 				E1830BD115746204003F16E2 /* RSS */,
+				E1A2F57C157A03C30010D672 /* MWFeedParser */,
+				E1A2F588157A03DF0010D672 /* Categories */,
+				E120849E15773D5100A81B87 /* View Controllers */,
 				E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */,
 				E1F7B6BC156EDC7D0092367F /* CernVM Co-PilotTests */,
 				E1F7B689156EDC7C0092367F /* Frameworks */,
@@ -322,10 +373,14 @@
 				E1F7B697156EDC7C0092367F /* main.m in Sources */,
 				E1F7B69B156EDC7C0092367F /* AppDelegate.m in Sources */,
 				E182E1FB15740766000E4197 /* RSSFeed.m in Sources */,
-				E1830BC015743E36003F16E2 /* RSSArticle.m in Sources */,
-				E1830BCF15745FE4003F16E2 /* GDataXMLNode.m in Sources */,
 				E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */,
 				E12084A11577588200A81B87 /* RSSAggregator.m in Sources */,
+				E13101B9157B5CF800429634 /* MWFeedParser.m in Sources */,
+				E13101BB157B5CF800429634 /* MWFeedInfo.m in Sources */,
+				E13101BD157B5CF800429634 /* MWFeedItem.m in Sources */,
+				E13101C3157B5D0600429634 /* NSString+HTML.m in Sources */,
+				E13101C5157B5D0600429634 /* NSDate+InternetDateTime.m in Sources */,
+				E13101C9157B5D0E00429634 /* GTMNSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +389,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F7B6C4156EDC7D0092367F /* CernVM_Co_PilotTests.m in Sources */,
-				E1830BD015745FE4003F16E2 /* GDataXMLNode.m in Sources */,
+				E13101BA157B5CF800429634 /* MWFeedParser.m in Sources */,
+				E13101BC157B5CF800429634 /* MWFeedInfo.m in Sources */,
+				E13101BE157B5CF800429634 /* MWFeedItem.m in Sources */,
+				E13101C4157B5D0600429634 /* NSString+HTML.m in Sources */,
+				E13101C6157B5D0600429634 /* NSDate+InternetDateTime.m in Sources */,
+				E13101CA157B5D0E00429634 /* GTMNSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

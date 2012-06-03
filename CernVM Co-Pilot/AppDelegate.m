@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "RSSAggregator.h"
 @implementation AppDelegate
 
 @synthesize window = _window;

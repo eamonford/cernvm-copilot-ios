@@ -9,16 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "RSSFeed.h"
 
-@interface RSSAggregator : NSObject
+@class RSSAggregator;
+@protocol RSSAggregatorDelegate <NSObject>
+
+- (void)allFeedsDidLoadForAggregator:(RSSAggregator *)aggregator;
+
+@end
+
+@interface RSSAggregator : NSObject<RSSFeedDelegate>
 {
     NSMutableArray *feeds;
-    id<RSSFeedDelegate> delegate;
+    id<RSSAggregatorDelegate> delegate;
 
 }
-@property (nonatomic, retain) NSMutableArray *feeds;
-@property (nonatomic, strong) id<RSSFeedDelegate> delegate;
+@property (atomic) NSMutableArray *feeds;
+@property (nonatomic, strong) id<RSSAggregatorDelegate> delegate;
 
+- (void)addFeed:(RSSFeed *)feed;
 - (void)addFeedForURL:(NSURL *)url;
 - (void)refreshAllFeeds;
+- (NSArray *)aggregate;
+- (RSSFeed *)feedForArticle:(MWFeedItem *)article;
 
 @end

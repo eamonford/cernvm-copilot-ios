@@ -33,12 +33,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.aggregator = [[RSSAggregator alloc] init];
     self.aggregator.delegate = self;
-    
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
+    [self.aggregator refreshAllFeeds];
 }
 
 - (void)viewDidUnload
@@ -131,11 +130,13 @@
      */
 }
 
-// RSSFeedDelegate
-
-- (void)rssFeedDidLoad:(RSSFeed *)feed
+- (void)allFeedsDidLoadForAggregator:(RSSAggregator *)sender
 {
-    NSLog(@"Loaded feed: %@\n", feed.title);
- }
+    NSArray *articles = [sender aggregate];
+    for (MWFeedItem *article in articles) {
+        NSLog(@"Title: %@\tFeed: %@\t Date: %@", article.title, [sender feedForArticle:article].info.title, article.date);
+    }
+}
+
 
 @end

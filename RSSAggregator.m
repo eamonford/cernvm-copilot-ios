@@ -11,6 +11,8 @@
 @implementation RSSAggregator
 @synthesize feeds, delegate;
 
+int feedLoadCount = 0;
+
 - (id)init
 {
     self = [super init];
@@ -20,30 +22,58 @@
     return self;
 }
 
-- (void)addFeedForURL:(NSURL *)url
+- (void)addFeed:(RSSFeed *)feed
 {
-    RSSFeed *feed = [[RSSFeed alloc] init];
-    feed.url = url;
-    feed.delegate = self;
-    [feed refresh];
-    
+    feed.aggregator = self;
     [self.feeds addObject:feed];
 }
 
-
-- (void)rssFeedDidLoad:(RSSFeed *)feed
+- (void)addFeedForURL:(NSURL *)url
 {
-    if (self.delegate) {
-        [self.delegate rssFeedDidLoad:feed];
+    RSSFeed *feed = [[RSSFeed alloc] initWithFeedURL:url];
+    [self addFeed:feed];
+}
+
+- (NSArray *)aggregate
+{
+    NSMutableArray *aggregation = [NSMutableArray array];
+    for (RSSFeed *feed in self.feeds) {
+        [aggregation addObjectsFromArray:feed.articles];
     }
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSArray *sortedAggregation = [aggregation sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    return sortedAggregation;
 }
 
 - (void)refreshAllFeeds
 {
-    for (RSSFeed *feed in self.feeds) {
-        [feed refresh];
+    // Only refresh all feeds if we are not already in the middle of a refresh
+    if (feedLoadCount == 0) {
+        feedLoadCount = self.feeds.count;
+        for (RSSFeed *feed in self.feeds) {
+            [feed refresh];
+        }
     }
 }
 
+- (RSSFeed *)feedForArticle:(MWFeedItem *)article
+{
+    for (RSSFeed *feed in self.feeds) {
+        if ([feed.articles containsObject:article]) {
+            return feed;
+        }
+    }
+    return nil;
+}
+
+- (void)rssFeedDidLoad:(RSSFeed *)feed
+{
+    // Keep track of how many feeds have loaded after refreshAllFeeds was called, and after all feeds have loaded, inform the delegate.
+    if (--feedLoadCount == 0) {
+        if (self.delegate) {
+            [delegate allFeedsDidLoadForAggregator:self];
+        }
+    }
+}
 
 @end

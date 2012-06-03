@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RSSAggregator.h"
 
-@interface GeneralNewsTableViewController : UITableViewController <RSSFeedDelegate>
+@interface GeneralNewsTableViewController : UITableViewController <RSSAggregatorDelegate>
 {
     RSSAggregator *aggregator;
 }
-@property (nonatomic, retain) RSSAggregator *aggregator;
+@property (nonatomic, strong) RSSAggregator *aggregator;
 
 @end
