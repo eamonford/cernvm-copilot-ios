@@ -134,6 +134,7 @@
 		E1830BD115746204003F16E2 /* RSS */ = {
 			isa = PBXGroup;
 			children = (
+				E1A2F57C157A03C30010D672 /* MWFeedParser */,
 				E120849F1577588100A81B87 /* RSSAggregator.h */,
 				E12084A01577588100A81B87 /* RSSAggregator.m */,
 				E182E1F915740766000E4197 /* RSSFeed.h */,
@@ -181,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				E1830BD115746204003F16E2 /* RSS */,
-				E1A2F57C157A03C30010D672 /* MWFeedParser */,
 				E1A2F588157A03DF0010D672 /* Categories */,
 				E120849E15773D5100A81B87 /* View Controllers */,
 				E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */,

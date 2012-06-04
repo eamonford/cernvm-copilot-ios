@@ -12,7 +12,9 @@
 @interface GeneralNewsTableViewController : UITableViewController <RSSAggregatorDelegate>
 {
     RSSAggregator *aggregator;
+    NSArray *feedArticles;
 }
 @property (nonatomic, strong) RSSAggregator *aggregator;
+@property (atomic) NSArray *feedArticles;
 
 @end
