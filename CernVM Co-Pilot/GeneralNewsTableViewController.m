@@ -8,6 +8,7 @@
 
 #import "GeneralNewsTableViewController.h"
 #import "NSString+HTML.h"
+#import "ArticleDetailViewController.h"
 
 @interface GeneralNewsTableViewController ()
 
@@ -35,6 +36,8 @@
     self.aggregator.delegate = self;
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
+    //[self.aggregator addFeedForURL:[NSURL URLWithString:@"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=25/xml"]];
+ 
     [self.aggregator refreshAllFeeds];
 }
 
@@ -48,6 +51,19 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+// Pass article data into the article detail view
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ShowArticleDetails"])
+    {
+        ArticleDetailViewController *detailViewController = [segue destinationViewController];
+        
+        NSIndexPath *articleIndexPath = [self.tableView indexPathForSelectedRow];
+        MWFeedItem *article = [self.feedArticles objectAtIndex:[articleIndexPath row]];
+        detailViewController.article = article;
+    }
 }
 
 #pragma mark - Table view data source

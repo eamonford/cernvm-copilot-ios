@@ -27,7 +27,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0mM-vX-M7Z" kind="modal" id="kH7-M3-EWv"/>
+                                    <segue destination="Pxs-nN-ASO" kind="modal" id="kH7-M3-EWv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gnU-BC-jR8">
@@ -139,18 +139,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2l-Uu-35U" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="0mM-vX-M7Z" customClass="GeneralNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WJb-PW-6EU">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6k1-qF-ee9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="6k1-qF-ee9">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="dTx-aX-mIA" kind="push" identifier="ShowArticleDetails" id="bA0-dW-Jzd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -158,7 +161,51 @@
                             <outlet property="delegate" destination="0mM-vX-M7Z" id="8Zs-wm-Sw4"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Xe7-ih-ZF9"/>
                 </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="995" y="-283"/>
+        </scene>
+        <!--Article Detail View Controller-->
+        <scene sceneID="TRr-91-3uH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUb-vH-z25" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="dTx-aX-mIA" customClass="ArticleDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dZj-h7-iUf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="XB5-C5-qlr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ldE-yv-h69"/>
+                    <connections>
+                        <outlet property="contentWebView" destination="XB5-C5-qlr" id="L5a-mb-k3K"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1481" y="-288"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="moj-Jw-cFu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gmb-5v-pV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="Pxs-nN-ASO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Fjz-KO-Zmk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0mM-vX-M7Z" kind="relationship" relationship="rootViewController" id="5VM-cU-CpK"/>
+                    </connections>
+                </navigationController>
             </objects>
             <point key="canvasLocation" x="469" y="-283"/>
         </scene>
@@ -167,6 +214,12 @@
         <image name="backgroundImage" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="ArticleDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
         <class className="GeneralNewsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GeneralNewsTableViewController.h"/>
         </class>
