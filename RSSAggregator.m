@@ -40,7 +40,7 @@ int feedLoadCount = 0;
     for (RSSFeed *feed in self.feeds) {
         [aggregation addObjectsFromArray:feed.articles];
     }
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
     NSArray *sortedAggregation = [aggregation sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     return sortedAggregation;
 }
