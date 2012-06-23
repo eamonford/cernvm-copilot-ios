@@ -21,6 +21,12 @@
 		E13101C6157B5D0600429634 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */; };
 		E13101C9157B5D0E00429634 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E13101CA157B5D0E00429634 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */; };
+		E15CC7A9159266550016CC95 /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7A7159266550016CC95 /* lhcMap@2x.png */; };
+		E15CC7AA159266550016CC95 /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */; };
+		E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */; };
+		E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */; };
+		E15CC7B71593881A0016CC95 /* TwitterFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B61593881A0016CC95 /* TwitterFeed.m */; };
+		E15CC7B91593E9E40016CC95 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15CC7B81593E9E40016CC95 /* Twitter.framework */; };
 		E171638515911B0100AB43F4 /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E171638415911B0100AB43F4 /* ArticleTableViewCell.m */; };
 		E182E1FB15740766000E4197 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E182E1FA15740766000E4197 /* RSSFeed.m */; };
 		E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1830BC915744B9F003F16E2 /* libxml2.dylib */; };
@@ -72,6 +78,16 @@
 		E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
 		E13101C7157B5D0E00429634 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		E15CC7A7159266550016CC95 /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
+		E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
+		E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentsViewController.h; sourceTree = "<group>"; };
+		E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimentsViewController.m; sourceTree = "<group>"; };
+		E15CC7B1159279C30016CC95 /* ExperimentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentTableViewController.h; sourceTree = "<group>"; };
+		E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimentTableViewController.m; sourceTree = "<group>"; };
+		E15CC7B51593881A0016CC95 /* TwitterFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterFeed.h; sourceTree = "<group>"; };
+		E15CC7B61593881A0016CC95 /* TwitterFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterFeed.m; sourceTree = "<group>"; };
+		E15CC7B81593E9E40016CC95 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		E15CC7BA1593FC220016CC95 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
 		E171638315911B0100AB43F4 /* ArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewCell.h; sourceTree = "<group>"; };
 		E171638415911B0100AB43F4 /* ArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCell.m; sourceTree = "<group>"; };
 		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
@@ -112,6 +128,7 @@
 				E1F7B68B156EDC7C0092367F /* UIKit.framework in Frameworks */,
 				E1F7B68D156EDC7C0092367F /* Foundation.framework in Frameworks */,
 				E1F7B68F156EDC7C0092367F /* CoreGraphics.framework in Frameworks */,
+				E15CC7B91593E9E40016CC95 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +152,21 @@
 				E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */,
 				E1975A4A158F99D800CEE5A2 /* ArticleDetailViewController.h */,
 				E1975A4B158F99D800CEE5A2 /* ArticleDetailViewController.m */,
+				E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */,
+				E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */,
+				E15CC7B1159279C30016CC95 /* ExperimentTableViewController.h */,
+				E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E15CC7B4159387ED0016CC95 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				E15CC7B51593881A0016CC95 /* TwitterFeed.h */,
+				E15CC7B61593881A0016CC95 /* TwitterFeed.m */,
+			);
+			name = Twitter;
 			sourceTree = "<group>";
 		};
 		E1830BD115746204003F16E2 /* RSS */ = {
@@ -147,6 +177,7 @@
 				E12084A01577588100A81B87 /* RSSAggregator.m */,
 				E182E1F915740766000E4197 /* RSSFeed.h */,
 				E182E1FA15740766000E4197 /* RSSFeed.m */,
+				E15CC7BA1593FC220016CC95 /* FeedDelegate.h */,
 			);
 			name = RSS;
 			sourceTree = "<group>";
@@ -189,6 +220,8 @@
 		E1F7B67B156EDC7C0092367F = {
 			isa = PBXGroup;
 			children = (
+				E15CC7B81593E9E40016CC95 /* Twitter.framework */,
+				E15CC7B4159387ED0016CC95 /* Twitter */,
 				E1830BD115746204003F16E2 /* RSS */,
 				E1A2F588157A03DF0010D672 /* Categories */,
 				E120849E15773D5100A81B87 /* View Controllers */,
@@ -223,6 +256,8 @@
 		E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */ = {
 			isa = PBXGroup;
 			children = (
+				E15CC7A7159266550016CC95 /* lhcMap@2x.png */,
+				E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */,
 				E1F7B699156EDC7C0092367F /* AppDelegate.h */,
 				E1F7B69A156EDC7C0092367F /* AppDelegate.m */,
 				E1F7B69C156EDC7C0092367F /* MainStoryboard_iPhone.storyboard */,
@@ -346,6 +381,8 @@
 				E1F7B6A8156EDC7D0092367F /* first@2x.png in Resources */,
 				E1F7B6AD156EDC7D0092367F /* second.png in Resources */,
 				E1F7B6AF156EDC7D0092367F /* second@2x.png in Resources */,
+				E15CC7A9159266550016CC95 /* lhcMap@2x.png in Resources */,
+				E15CC7AA159266550016CC95 /* lhcMapShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +430,9 @@
 				E13101C9157B5D0E00429634 /* GTMNSString+HTML.m in Sources */,
 				E1975A4C158F99D800CEE5A2 /* ArticleDetailViewController.m in Sources */,
 				E171638515911B0100AB43F4 /* ArticleTableViewCell.m in Sources */,
+				E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */,
+				E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */,
+				E15CC7B71593881A0016CC95 /* TwitterFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +502,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eamon Ford (MQF78B4MMS)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -479,6 +519,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lxml2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E98F29B-6D28-4E73-ADF1-C134334F77E9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

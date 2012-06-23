@@ -66,7 +66,7 @@ int feedLoadCount = 0;
     return nil;
 }
 
-- (void)rssFeedDidLoad:(RSSFeed *)feed
+- (void)feedDidLoad:(id)feed
 {
     // Keep track of how many feeds have loaded after refreshAllFeeds was called, and after all feeds have loaded, inform the delegate.
     if (--feedLoadCount == 0) {

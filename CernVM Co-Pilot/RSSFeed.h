@@ -8,21 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "MWFeedParser.h"
+#import "FeedDelegate.h"
 
 @class RSSFeed;
-@protocol RSSFeedDelegate <NSObject>
-
-- (void)rssFeedDidLoad:(RSSFeed *)feed;
-
-@end
 
 @interface RSSFeed : NSObject <NSURLConnectionDelegate, MWFeedParserDelegate>
 {    
     MWFeedParser *parser;
     MWFeedInfo *info;
     NSMutableArray *articles;
-    id<RSSFeedDelegate> aggregator;
-    id<RSSFeedDelegate> delegate;
+    id<FeedDelegate> aggregator;
+    id<FeedDelegate> delegate;
 }
 @property (nonatomic, strong) MWFeedParser *parser;
 @property (nonatomic) MWFeedInfo *info;

@@ -14,7 +14,7 @@
     RSSAggregator *aggregator;
     NSArray *feedArticles;
 }
-@property (nonatomic, strong) RSSAggregator *aggregator;
+@property (nonatomic, retain) RSSAggregator *aggregator;
 @property (atomic) NSArray *feedArticles;
 
 @end

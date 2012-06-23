@@ -22,6 +22,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
+
     }
     return self;
 }
@@ -29,17 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.feedArticles = [NSArray array];
     self.aggregator = [[RSSAggregator alloc] init];
     self.aggregator.delegate = self;
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
-    //[self.aggregator addFeedForURL:[NSURL URLWithString:@"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=25/xml"]];
- 
+    
     [self.aggregator refreshAllFeeds];
+    
+
 }
 
 - (void)viewDidUnload

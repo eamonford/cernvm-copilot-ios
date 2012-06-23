@@ -86,9 +86,9 @@
 - (void)feedParserDidFinish:(MWFeedParser *)parser
 {
     if (aggregator)
-        [aggregator rssFeedDidLoad:self];
+        [aggregator feedDidLoad:self];
     if (delegate)
-        [delegate rssFeedDidLoad:self];
+        [delegate feedDidLoad:self];
 }
 
 @end

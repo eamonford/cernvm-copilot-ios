@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RSSFeed.h"
+#import "FeedDelegate.h"
 
 @class RSSAggregator;
 @protocol RSSAggregatorDelegate <NSObject>
@@ -16,11 +17,10 @@
 
 @end
 
-@interface RSSAggregator : NSObject<RSSFeedDelegate>
+@interface RSSAggregator : NSObject<FeedDelegate>
 {
     NSMutableArray *feeds;
     id<RSSAggregatorDelegate> delegate;
-
 }
 @property (atomic) NSMutableArray *feeds;
 @property (nonatomic, strong) id<RSSAggregatorDelegate> delegate;
