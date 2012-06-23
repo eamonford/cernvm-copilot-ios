@@ -62,7 +62,7 @@
         
         NSIndexPath *articleIndexPath = [self.tableView indexPathForSelectedRow];
         MWFeedItem *article = [self.feedArticles objectAtIndex:[articleIndexPath row]];
-        detailViewController.article = article;
+        [detailViewController setContentForArticle:article];
     }
 }
 

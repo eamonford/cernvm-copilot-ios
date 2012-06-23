@@ -11,10 +11,15 @@
 
 @interface ArticleDetailViewController : UIViewController
 {
-    MWFeedItem *article;   
     IBOutlet UIWebView *contentWebView;
+    
+    @private
+    NSString *contentString;
 }
-@property (nonatomic, retain) MWFeedItem *article;
 @property (nonatomic, retain) UIWebView *contentWebView;
+@property (nonatomic, retain) NSString *contentString;
+
+- (void)setContentForArticle:(MWFeedItem *)article;
+- (void)setContentForTweet:(NSDictionary *)tweet;
 
 @end

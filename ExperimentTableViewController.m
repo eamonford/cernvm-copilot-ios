@@ -9,8 +9,9 @@
 #import "ExperimentTableViewController.h"
 #import "TwitterFeed.h"
 #import "ArticleTableViewCell.h"
+#import "ArticleDetailViewController.h"
 #import "NSDate+InternetDateTime.h"
-
+#import "NSString+HTML.h"
 @interface ExperimentTableViewController ()
 
 @end
@@ -47,6 +48,17 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+// Pass article data into the article detail view
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ShowTweetDetails"])
+    {        
+        NSDictionary *tweet = [self.feed.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        ArticleDetailViewController *detailViewController = [segue destinationViewController];
+        [detailViewController setContentForTweet:tweet];
+    }
 }
 
 #pragma mark - Table view data source
@@ -154,11 +166,22 @@
      */
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 150.0;
+    } else {
+        NSString *text = [[self.feed.posts objectAtIndex:indexPath.row] objectForKey:@"text"];
+        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
+        
+        return size.height+50.0;
+    }
+}
+
 - (void)feedDidLoad:(id)sender
 {
     if ([sender class] == [TwitterFeed class]) {
         self.feed = sender;
-        NSLog(@"Loaded %d tweets", self.feed.posts.count);
         [self.tableView reloadData];
     }
 }

@@ -21,12 +21,16 @@
 		E13101C6157B5D0600429634 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */; };
 		E13101C9157B5D0E00429634 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E13101CA157B5D0E00429634 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */; };
+		E1436F9A1595B61F004CDFCA /* aliceLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436F991595B61F004CDFCA /* aliceLogo@2x.png */; };
+		E1436F9F159654AA004CDFCA /* atlasLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436F9E159654AA004CDFCA /* atlasLogo@2x.png */; };
+		E1436FA1159658F6004CDFCA /* lhcbLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */; };
 		E15CC7A9159266550016CC95 /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7A7159266550016CC95 /* lhcMap@2x.png */; };
 		E15CC7AA159266550016CC95 /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */; };
 		E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */; };
 		E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */; };
 		E15CC7B71593881A0016CC95 /* TwitterFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B61593881A0016CC95 /* TwitterFeed.m */; };
 		E15CC7B91593E9E40016CC95 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15CC7B81593E9E40016CC95 /* Twitter.framework */; };
+		E15CC7BF15959F440016CC95 /* cmsLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7BE15959F440016CC95 /* cmsLogo@2x.png */; };
 		E171638515911B0100AB43F4 /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E171638415911B0100AB43F4 /* ArticleTableViewCell.m */; };
 		E182E1FB15740766000E4197 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E182E1FA15740766000E4197 /* RSSFeed.m */; };
 		E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1830BC915744B9F003F16E2 /* libxml2.dylib */; };
@@ -78,6 +82,9 @@
 		E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
 		E13101C7157B5D0E00429634 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		E13101C8157B5D0E00429634 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		E1436F991595B61F004CDFCA /* aliceLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aliceLogo@2x.png"; sourceTree = "<group>"; };
+		E1436F9E159654AA004CDFCA /* atlasLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "atlasLogo@2x.png"; sourceTree = "<group>"; };
+		E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcbLogo@2x.png"; sourceTree = "<group>"; };
 		E15CC7A7159266550016CC95 /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
 		E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
 		E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentsViewController.h; sourceTree = "<group>"; };
@@ -88,6 +95,7 @@
 		E15CC7B61593881A0016CC95 /* TwitterFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterFeed.m; sourceTree = "<group>"; };
 		E15CC7B81593E9E40016CC95 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		E15CC7BA1593FC220016CC95 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
+		E15CC7BE15959F440016CC95 /* cmsLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmsLogo@2x.png"; sourceTree = "<group>"; };
 		E171638315911B0100AB43F4 /* ArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewCell.h; sourceTree = "<group>"; };
 		E171638415911B0100AB43F4 /* ArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCell.m; sourceTree = "<group>"; };
 		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
@@ -256,6 +264,10 @@
 		E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */ = {
 			isa = PBXGroup;
 			children = (
+				E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */,
+				E1436F9E159654AA004CDFCA /* atlasLogo@2x.png */,
+				E1436F991595B61F004CDFCA /* aliceLogo@2x.png */,
+				E15CC7BE15959F440016CC95 /* cmsLogo@2x.png */,
 				E15CC7A7159266550016CC95 /* lhcMap@2x.png */,
 				E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */,
 				E1F7B699156EDC7C0092367F /* AppDelegate.h */,
@@ -383,6 +395,10 @@
 				E1F7B6AF156EDC7D0092367F /* second@2x.png in Resources */,
 				E15CC7A9159266550016CC95 /* lhcMap@2x.png in Resources */,
 				E15CC7AA159266550016CC95 /* lhcMapShadow@2x.png in Resources */,
+				E15CC7BF15959F440016CC95 /* cmsLogo@2x.png in Resources */,
+				E1436F9A1595B61F004CDFCA /* aliceLogo@2x.png in Resources */,
+				E1436F9F159654AA004CDFCA /* atlasLogo@2x.png in Resources */,
+				E1436FA1159658F6004CDFCA /* lhcbLogo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

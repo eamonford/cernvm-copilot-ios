@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FeedDelegate.h"
 #import "TwitterFeed.h"
+#import "ArticleTableViewCell.h"
+
 @interface ExperimentTableViewController : UITableViewController<FeedDelegate>
 {
-    TwitterFeed *feed;
+
+    TwitterFeed *feed;    
 }
 @property (nonatomic, retain) TwitterFeed *feed;
 

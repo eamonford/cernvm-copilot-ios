@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xMK-fh-AbG">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -226,7 +225,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1214" y="859"/>
+            <point key="canvasLocation" x="1686" y="1315"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="Cmx-1O-f2A">
@@ -238,29 +237,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="100" id="oVP-Eb-MxI">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="150" id="oVP-Eb-MxI">
+                                <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ALICE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pz3-CE-5Wc">
-                                            <rect key="frame" x="139" y="39" width="50" height="21"/>
+                                            <rect key="frame" x="128" y="20" width="50" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="aliceLogo@2x.png" id="43W-Im-kBp">
+                                            <rect key="frame" x="20" y="25" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QXX-dY-JLq">
+                                            <rect key="frame" x="128" y="41" width="152" height="84"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <string key="text">ALICE is a large and complex detector composed of 18 sub-detectors to track and identify the tens of thousands of particles pro- duced in each heavy-ion collision.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="jyW-zu-giS" kind="push" id="hX1-YZ-y6n"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="4fh-ar-rt0" customClass="ArticleTableViewCell">
-                                <rect key="frame" x="0.0" y="122" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="4fh-ar-rt0" customClass="ArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="172" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="CT8-wG-nCa">
@@ -280,7 +294,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="sWw-S1-gnK">
                                             <rect key="frame" x="20" y="45" width="260" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -291,6 +305,7 @@
                                     <outlet property="dateLabel" destination="Xo2-Vv-ugz" id="wpj-wh-n2v"/>
                                     <outlet property="feedLabel" destination="CT8-wG-nCa" id="I2s-h1-HG5"/>
                                     <outlet property="titleLabel" destination="sWw-S1-gnK" id="GA6-bN-Rkl"/>
+                                    <segue destination="k0L-46-BH1" kind="push" identifier="ShowTweetDetails" id="GtG-bQ-0Ha"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -305,7 +320,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1945" y="1423"/>
+            <point key="canvasLocation" x="2210" y="1980"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="7GG-26-gwl">
@@ -317,29 +332,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="100" id="j78-Ex-6xt">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="150" id="j78-Ex-6xt">
+                                <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4js-GN-OdW">
-                                            <rect key="frame" x="139" y="50" width="42" height="21"/>
+                                            <rect key="frame" x="127" y="20" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="cmsLogo@2x.png" id="Yr5-jo-nsX">
+                                            <rect key="frame" x="20" y="25" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="k7O-8T-TMX">
+                                            <rect key="frame" x="127" y="42" width="153" height="83"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <string key="text">The Compact Muon Solenoid experiment is one of two large general-purpose particle physics detectors built on the proton-proton Large Hadron Collider.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="Qo9-uJ-z8t" kind="push" id="jMa-la-tZI"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="jw7-2t-d8W" customClass="ArticleTableViewCell">
-                                <rect key="frame" x="0.0" y="122" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="jw7-2t-d8W" customClass="ArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="172" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="sjd-R4-8wB">
@@ -358,8 +388,8 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="rfd-Xm-fUr">
                                             <rect key="frame" x="20" y="45" width="260" height="54"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -370,6 +400,7 @@
                                     <outlet property="dateLabel" destination="p7f-k1-LQi" id="Zeg-d9-SD1"/>
                                     <outlet property="feedLabel" destination="sjd-R4-8wB" id="m22-pF-RRP"/>
                                     <outlet property="titleLabel" destination="rfd-Xm-fUr" id="0E8-OQ-arF"/>
+                                    <segue destination="k0L-46-BH1" kind="push" identifier="ShowTweetDetails" id="2Gi-T5-LwH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -385,7 +416,47 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2011" y="351"/>
+            <point key="canvasLocation" x="2473" y="193"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9C3-q4-idG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TbY-XK-a20" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Qo9-uJ-z8t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iwv-ts-AOs">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="loW-tU-5P6"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3022" y="-9"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vOP-s6-9p8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xqi-BG-K32" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="jyW-zu-giS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UD5-k8-sdO">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8n7-xQ-O9L">
+                                <rect key="frame" x="59" y="103" width="203" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">ALICE is the acronym for A Large Ion Collider Experiment, one of the largest experiments in the world devoted to research in the physics of matter at an infinitely small scale. Hosted at CERN, the European Laboratory for Nuclear Research, this project involves an international collaboration of more than 1000 physicists, engineers and technicians, including around 200 graduate students, from 105 physics institutes in 30 countries across the world.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9mP-Lj-GTE"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2757" y="2183"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="Rg2-pw-YJs">
@@ -397,29 +468,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="100" id="MJi-Yr-cQp">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="150" id="MJi-Yr-cQp">
+                                <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="LHC B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sod-Ts-fi6">
-                                            <rect key="frame" x="139" y="39" width="51" height="21"/>
+                                            <rect key="frame" x="128" y="25" width="51" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="lhcbLogo@2x.png" id="VGe-yC-ML1">
+                                            <rect key="frame" x="20" y="25" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Ul8-yK-oEQ">
+                                            <rect key="frame" x="128" y="42" width="153" height="83"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <string key="text">The aim of the LHCb experiment is to record the decay of particles containing b and anti-b quarks, collectively known as ‘B mesons’.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="N9h-RB-D21" kind="push" id="hYH-t1-lDm"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="dAJ-1I-tn7" customClass="ArticleTableViewCell">
-                                <rect key="frame" x="0.0" y="122" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="dAJ-1I-tn7" customClass="ArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="172" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="7hU-83-Nmv">
@@ -430,7 +516,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="4FH-6F-d8y">
-                                            <rect key="frame" x="20" y="19" width="260" height="21"/>
+                                            <rect key="frame" x="20" y="20" width="260" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -438,8 +524,8 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="u0Y-10-Gmh">
                                             <rect key="frame" x="20" y="45" width="260" height="54"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -450,6 +536,7 @@
                                     <outlet property="dateLabel" destination="4FH-6F-d8y" id="1d1-AO-E9p"/>
                                     <outlet property="feedLabel" destination="7hU-83-Nmv" id="267-Xb-G1y"/>
                                     <outlet property="titleLabel" destination="u0Y-10-Gmh" id="JRm-pm-2jG"/>
+                                    <segue destination="k0L-46-BH1" kind="push" identifier="ShowTweetDetails" id="Lpu-rl-sua"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -464,7 +551,22 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2463" y="1329"/>
+            <point key="canvasLocation" x="3176" y="1810"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EDj-6c-2YO">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HVC-DX-11B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="N9h-RB-D21" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cxL-mp-QDR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sUX-B1-dVK"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3867" y="1933"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="rSA-FF-sk6">
@@ -476,29 +578,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="100" id="ZJK-SR-rRk">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="150" id="ZJK-SR-rRk">
+                                <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ATLAS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="BPz-gD-33u">
-                                            <rect key="frame" x="139" y="39" width="54" height="21"/>
+                                            <rect key="frame" x="128" y="20" width="54" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="atlasLogo@2x.png" id="fuP-Jh-VBX">
+                                            <rect key="frame" x="20" y="25" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="otA-SG-IJz">
+                                            <rect key="frame" x="128" y="38" width="153" height="87"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <string key="text">ATLAS is a particle physics experiment at the LHC. The ATLAS detector is searching for new discoveries in the head-on collisions of protons of extraordinarily high energy.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="uuY-oL-TWE" kind="push" id="AJ2-oc-HGB"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="ifw-bT-voG" customClass="ArticleTableViewCell">
-                                <rect key="frame" x="0.0" y="122" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="ifw-bT-voG" customClass="ArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="172" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="nHg-S7-s2N">
@@ -517,8 +634,8 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="zRI-UK-nor">
                                             <rect key="frame" x="20" y="45" width="260" height="54"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -529,6 +646,7 @@
                                     <outlet property="dateLabel" destination="ERV-uP-DgQ" id="KgL-hG-DgC"/>
                                     <outlet property="feedLabel" destination="nHg-S7-s2N" id="Llt-Mh-BaF"/>
                                     <outlet property="titleLabel" destination="zRI-UK-nor" id="T6s-ae-5st"/>
+                                    <segue destination="k0L-46-BH1" kind="push" identifier="ShowTweetDetails" id="3LL-Bj-6Dn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -543,7 +661,47 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2403" y="762"/>
+            <point key="canvasLocation" x="2641" y="972"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BZu-n3-gXn">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Lu-Vf-uQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="uuY-oL-TWE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eZu-Ll-oFX">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nvP-9L-8ZM"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3152" y="779"/>
+        </scene>
+        <!--Article Detail View Controller-->
+        <scene sceneID="iRZ-zi-RK5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sO8-US-gKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="k0L-46-BH1" customClass="ArticleDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pCc-UZ-H2I">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="SHf-nd-TaG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fBC-8C-c02"/>
+                    <connections>
+                        <outlet property="contentWebView" destination="SHf-nd-TaG" id="WUI-xy-lgF"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="4137" y="751"/>
         </scene>
         <!--General News Table View Controller-->
         <scene sceneID="BbJ-1A-3wA">
@@ -627,7 +785,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1481" y="-288"/>
+            <point key="canvasLocation" x="1423" y="-316"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="moj-Jw-cFu">
@@ -667,9 +825,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="aliceLogo@2x.png" width="200" height="200"/>
+        <image name="atlasLogo@2x.png" width="200" height="200"/>
         <image name="backgroundImage" width="16" height="16"/>
+        <image name="cmsLogo@2x.png" width="201" height="200"/>
         <image name="lhcMap@2x.png" width="960" height="640"/>
         <image name="lhcMapShadow@2x.png" width="960" height="640"/>
+        <image name="lhcbLogo@2x.png" width="200" height="140"/>
     </resources>
     <classes>
         <class className="ArticleDetailViewController" superclassName="UIViewController">
@@ -704,4 +866,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lpu-rl-sua"/>
+    </inferredMetricsTieBreakers>
 </document>

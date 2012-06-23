@@ -16,7 +16,7 @@
     id<FeedDelegate> delegate;
 }
 @property (nonatomic, retain) NSString *screenName;
-@property (nonatomic, retain) NSArray *posts;
+@property (atomic, retain) NSArray *posts;
 @property (nonatomic, strong) id<FeedDelegate> delegate;
 
 - (id)initWithScreenName:(NSString *)screenName;

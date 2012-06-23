@@ -14,7 +14,7 @@
 @end
 
 @implementation ArticleDetailViewController
-@synthesize article, contentWebView;
+@synthesize contentWebView, contentString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,19 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSMutableString *body = [NSMutableString stringWithFormat:@"<h1>%@</h1>", self.article.title];
-    if (self.article.content) {
-        NSLog(@"Using content");
-        [body appendString:self.article.content];
-    } else {
-        NSLog(@"Using summary");
-        [body appendString:self.article.summary];
-    }
-    
-    [self.contentWebView loadHTMLString:body baseURL:nil];
-    NSLog(@"%@", body);
-
+    if (self.contentString)
+        [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
 }
 
 - (void)viewDidUnload
@@ -52,6 +41,24 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)setContentForArticle:(MWFeedItem *)article
+{
+    NSMutableString *body = [NSMutableString stringWithFormat:@"<h1>%@</h1>", article.title];
+    if (article.content) {
+        [body appendString:article.content];
+    } else {
+        [body appendString:article.summary];
+    }
+    self.contentString = body;
+    [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
+}
+
+- (void)setContentForTweet:(NSDictionary *)tweet
+{
+    self.contentString = [[tweet objectForKey:@"text"] stringByLinkifyingURLs];
+    [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
 }
 
 @end
