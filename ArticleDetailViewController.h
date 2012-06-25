@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MWFeedItem.h"
 
-@interface ArticleDetailViewController : UIViewController
+@interface ArticleDetailViewController : UIViewController <UIWebViewDelegate>
 {
     IBOutlet UIWebView *contentWebView;
     
