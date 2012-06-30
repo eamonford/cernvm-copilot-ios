@@ -47,6 +47,7 @@
         return ( nil );
     self.contentView.clipsToBounds = YES;
     _imageView = [[UIImageView alloc] initWithFrame: CGRectZero];
+    _downloadedThumbnailCache = [NSMutableDictionary dictionary];
     [self.contentView addSubview: _imageView];
     
     return ( self );
@@ -97,9 +98,17 @@
 
 - (void)setImageFromURL:(NSURL *)url
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    _asyncThumbnailData = [[NSMutableData alloc] init];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    UIImage *cachedImage = [_downloadedThumbnailCache objectForKey:url];
+    if (cachedImage) {
+        self.image = cachedImage;
+        NSLog(@"Using cache");
+    } else {
+        NSLog(@"Downloading image");
+        _thumbnailURL = url;
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        _asyncThumbnailData = [[NSMutableData alloc] init];
+        [NSURLConnection connectionWithRequest:request delegate:self];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -108,7 +117,9 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    self.image = [UIImage imageWithData:_asyncThumbnailData];
+    UIImage *thumbnail = [UIImage imageWithData:_asyncThumbnailData];
+    [_downloadedThumbnailCache setObject:thumbnail forKey:_thumbnailURL];
+    self.image = thumbnail;
 }
 
 @end

@@ -15,7 +15,7 @@
 @end
 
 @implementation PhotosViewController
-@synthesize photoURLs;
+@synthesize photoURLs, fullSizePhotos;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -100,27 +100,43 @@
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString *CellIdentifier = @"photoCell";
-    PhotoGridViewCell *cell = (PhotoGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0) reuseIdentifier:CellIdentifier];
-        //id thumbnail = [thumbnails objectAtIndex:index];
-        // thumbnail with be NSData if it has not finished downloading, or a UIImage if it has finished donwloading
-        //if ([thumbnail class] == [UIImage class]) {
-        //    cell.image = thumbnail;
-        [cell setImageFromURL:[[self.photoURLs objectAtIndex:index] objectForKey:@"jpgIcon"]];
-    }
+    //PhotoGridViewCell *cell = (PhotoGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //if (cell == nil) {
+        PhotoGridViewCell * cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0) reuseIdentifier:CellIdentifier];
+    //}
+    [cell setImageFromURL:[[self.photoURLs objectAtIndex:index] objectForKey:@"jpgIcon"]];
     return cell;
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    NSLog(@"you touched thumbnail %d", index);
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = YES;
+    [browser setInitialPageIndex:index];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:browser];
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:navigationController animated:YES];
 }
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
     return CGSizeMake(50.0, 50.0);
 
+}
+
+#pragma mark MWPhotoBrowserDelegate methods
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return self.photoURLs.count;
+}
+
+- (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < self.photoURLs.count) {
+        NSURL *url = [[self.photoURLs objectAtIndex:index] objectForKey:@"jpgA5"];
+        return [MWPhoto photoWithURL:url];
+    }
+    
+    return nil;
 }
 
 @end

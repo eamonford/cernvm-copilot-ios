@@ -10,8 +10,9 @@
 #import "AQGridView.h"
 #import "AQGridViewCell.h"
 #import "CernMediaMARCParser.h"
+#import "MWPhotoBrowser.h"
 
-@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate/*, NSURLConnectionDelegate*/>
+@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate, MWPhotoBrowserDelegate/*, NSURLConnectionDelegate*/>
 {
     NSMutableArray *photoURLs;
     
@@ -21,5 +22,6 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *photoURLs;
+@property (nonatomic, retain) NSMutableArray *fullSizePhotos;
 
 @end
