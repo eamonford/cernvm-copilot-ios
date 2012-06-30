@@ -13,7 +13,6 @@
 
 @interface ExperimentTableViewController : UITableViewController<FeedDelegate>
 {
-
     TwitterFeed *feed;    
 }
 @property (nonatomic, retain) TwitterFeed *feed;

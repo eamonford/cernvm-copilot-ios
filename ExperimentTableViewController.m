@@ -77,9 +77,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"loading table view data");
-    
+{    
     UITableViewCell *cell;
     if (indexPath.section == 0) {
         static NSString *CellIdentifier = @"experimentInfoCell";
