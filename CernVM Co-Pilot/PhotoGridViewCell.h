@@ -39,9 +39,13 @@
 #import <Foundation/Foundation.h>
 #import "AQGridViewCell.h"
 
-@interface PhotoGridViewCell : AQGridViewCell
+@interface PhotoGridViewCell : AQGridViewCell <NSURLConnectionDelegate>
 {
-    UIImageView * _imageView;
+    UIImageView *_imageView;
+    NSMutableData *_asyncThumbnailData;
 }
-@property (nonatomic, retain) UIImage * image;
+@property (nonatomic, retain) UIImage *image;
+
+- (void)setImageFromURL:(NSURL *)url;
+
 @end

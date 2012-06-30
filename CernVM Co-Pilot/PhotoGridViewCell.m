@@ -95,4 +95,20 @@
     _imageView.frame = frame;
 }
 
+- (void)setImageFromURL:(NSURL *)url
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    _asyncThumbnailData = [[NSMutableData alloc] init];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [_asyncThumbnailData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    self.image = [UIImage imageWithData:_asyncThumbnailData];
+}
+
 @end
