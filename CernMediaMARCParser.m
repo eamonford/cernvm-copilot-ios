@@ -9,7 +9,7 @@
 #import "CernMediaMARCParser.h"
 
 @implementation CernMediaMARCParser
-@synthesize url, resourceTypes, delegate;
+@synthesize url, resourceTypes, delegate, isFinishedParsing;
 
 - (id)init {
     if (self = [super init]) {
@@ -23,6 +23,7 @@
 
 - (void)parse
 {    
+    self.isFinishedParsing = NO;
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -135,6 +136,9 @@
                 currentMediaItem.largeURL) {*/
                 // Media item is complete. Add it to the array, and reset currentMediaItem.
                 [mediaItems addObject:currentMediaItem];
+                if ([delegate respondsToSelector:@selector(parser:didParseMediaItem:)]) {
+                    [delegate parser:self didParseMediaItem:currentMediaItem];
+                }
                 currentMediaItem = nil;
             }
         }
@@ -143,8 +147,9 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
+    self.isFinishedParsing = YES;
     if (delegate)
-        [delegate parser:self didParseMediaItems:mediaItems];
+        [delegate parserDidFinish:self];
 }
 
 @end

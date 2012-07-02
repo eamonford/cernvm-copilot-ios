@@ -23,7 +23,11 @@ typedef  enum SubfieldCodeEnum {
 
 @protocol CernMediaMarcParserDelegate <NSObject>
 
+@optional
+
 - (void)parser:(CernMediaMARCParser *)parser didParseMediaItems:(NSArray *)mediaItems;
+- (void)parser:(CernMediaMARCParser *)parser didParseMediaItem:(NSDictionary *)mediaItem;
+- (void)parserDidFinish:(CernMediaMARCParser *)parser;
 
 @end
 
@@ -32,6 +36,7 @@ typedef  enum SubfieldCodeEnum {
     NSURL *url;
     NSArray *resourceTypes;
     id<CernMediaMarcParserDelegate> delegate;
+    BOOL isFinishedParsing;
     
     @private
     
@@ -50,7 +55,7 @@ typedef  enum SubfieldCodeEnum {
 @property (nonatomic, retain) NSURL *url;
 @property (nonatomic, retain) NSArray *resourceTypes;
 @property (nonatomic, strong) id<CernMediaMarcParserDelegate> delegate;
-
+@property BOOL isFinishedParsing;
 - (void)parse;
 
 @end

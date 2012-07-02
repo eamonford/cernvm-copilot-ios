@@ -12,16 +12,16 @@
 #import "CernMediaMARCParser.h"
 #import "MWPhotoBrowser.h"
 
-@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate, MWPhotoBrowserDelegate/*, NSURLConnectionDelegate*/>
+@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate, MWPhotoBrowserDelegate, NSURLConnectionDelegate>
 {
     NSMutableArray *photoURLs;
-    
-   /* @private
-    NSMutableArray *thumbnailConnctions;
-    NSMutableArray *thumbnails;*/
-}
 
-@property (nonatomic, retain) NSMutableArray *photoURLs;
-@property (nonatomic, retain) NSMutableArray *fullSizePhotos;
+    NSMutableDictionary *thumbnailImages;
+    NSOperationQueue *queue;
+    
+    //NSMutableArray *thumbnailDownloadConnections;
+    //NSMutableArray *thumbnailData;
+}
+@property (atomic, retain) NSMutableArray *photoURLs;
 
 @end

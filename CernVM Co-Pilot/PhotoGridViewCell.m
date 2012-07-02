@@ -39,6 +39,7 @@
 #import "PhotoGridViewCell.h"
 
 @implementation PhotoGridViewCell
+@synthesize index;
 
 - (id) initWithFrame: (CGRect) frame reuseIdentifier: (NSString *) aReuseIdentifier
 {
@@ -101,9 +102,9 @@
     UIImage *cachedImage = [_downloadedThumbnailCache objectForKey:url];
     if (cachedImage) {
         self.image = cachedImage;
-        NSLog(@"Using cache");
+        //NSLog(@"Using cache");
     } else {
-        NSLog(@"Downloading image");
+        //NSLog(@"Downloading image");
         _thumbnailURL = url;
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         _asyncThumbnailData = [[NSMutableData alloc] init];
@@ -118,7 +119,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     UIImage *thumbnail = [UIImage imageWithData:_asyncThumbnailData];
-    [_downloadedThumbnailCache setObject:thumbnail forKey:_thumbnailURL];
+    //[_downloadedThumbnailCache setObject:thumbnail forKey:_thumbnailURL];
     self.image = thumbnail;
 }
 
