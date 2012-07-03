@@ -10,11 +10,13 @@
 #import "RSSAggregator.h"
 @implementation AppDelegate
 
-@synthesize window = _window;
+@synthesize photoURLs, photoThumbnails, videoURLs, videoThumbnails, window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.    
+    self.photoURLs = [NSMutableArray array];
+    self.photoThumbnails = [NSMutableDictionary dictionary];
+    
     return YES;
 }
 							

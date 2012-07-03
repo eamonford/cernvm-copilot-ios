@@ -14,14 +14,13 @@
 
 @interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate, MWPhotoBrowserDelegate, NSURLConnectionDelegate>
 {
-    NSMutableArray *photoURLs;
-
-    NSMutableDictionary *thumbnailImages;
     NSOperationQueue *queue;
     
     //NSMutableArray *thumbnailDownloadConnections;
     //NSMutableArray *thumbnailData;
 }
-@property (atomic, retain) NSMutableArray *photoURLs;
+//@property (atomic, retain) NSMutableArray *photoURLs;
+
+- (IBAction)close:(id)sender;
 
 @end

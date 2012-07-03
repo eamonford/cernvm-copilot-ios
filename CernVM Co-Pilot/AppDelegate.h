@@ -10,6 +10,17 @@
 #import "RSSFeed.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    NSMutableArray *photoURLs;
+    NSMutableDictionary *photoThumbnails;
+    
+    NSMutableArray *videoURLs;
+    NSMutableDictionary *videoThumbnails;
+}
+@property (nonatomic, retain) NSMutableArray *photoURLs;
+@property (nonatomic, retain) NSMutableDictionary *photoThumbnails;
+@property (nonatomic, retain) NSMutableArray *videoURLs;
+@property (nonatomic, retain) NSMutableDictionary *videoThumbnails;
 
 @property (strong, nonatomic) UIWindow *window;
 

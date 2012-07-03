@@ -17,4 +17,6 @@
 @property (nonatomic, retain) RSSAggregator *aggregator;
 @property (atomic) NSArray *feedArticles;
 
+- (IBAction)close:(id)sender;
+
 @end

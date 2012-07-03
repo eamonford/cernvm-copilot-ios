@@ -66,6 +66,11 @@
     }
 }
 
+- (IBAction)close:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -9,24 +9,20 @@
 #import "PhotosViewController.h"
 #import "CernMediaMARCParser.h"
 #import "PhotoGridViewCell.h"
-
+#import "AppDelegate.h"
 @interface PhotosViewController ()
 
 @end
 
 @implementation PhotosViewController
-@synthesize photoURLs;
-
-BOOL isLoadingXML = YES;
-BOOL done = NO;
+//@synthesize photoURLs;
+AppDelegate *appDelegate;
+BOOL displaySpinner = YES;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        self.photoURLs = [NSMutableArray array];
-        //thumbnailDownloadConnections = [NSMutableArray array];
-        //thumbnailData = [NSMutableArray array];
-        thumbnailImages = [NSMutableDictionary dictionary];
+        appDelegate = [UIApplication sharedApplication].delegate;
         queue = [[NSOperationQueue alloc] init];
     }
     return self;
@@ -37,14 +33,30 @@ BOOL done = NO;
     [super viewDidLoad];
     
     self.gridView.backgroundColor = [UIColor whiteColor];
-    self.gridView.separatorStyle = AQGridViewCellSeparatorStyleNone;
     
     CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
     marcParser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
     marcParser.resourceTypes = [NSArray arrayWithObjects:@"jpgA4", @"jpgA5", @"jpgIcon", nil];
     marcParser.delegate = self;
     
-    [marcParser parse];
+    if (appDelegate.photoURLs.count == 0) {
+        [self configureGridForSpinner:YES];
+        [marcParser parse];
+    } else {
+        [self configureGridForSpinner:NO];
+    }
+}
+
+- (void)configureGridForSpinner:(BOOL)spinner
+{
+    displaySpinner = spinner;
+    if (spinner) {
+        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleNone;
+        self.gridView.resizesCellWidthToFit = NO;
+    } else {
+        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
+        self.gridView.resizesCellWidthToFit = YES;
+    }
 }
 
 - (void)viewDidUnload
@@ -57,22 +69,24 @@ BOOL done = NO;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)close:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark CernMediaMARCParserDelegate methods
 
 - (void)parser:(CernMediaMARCParser *)parser didParseMediaItem:(NSDictionary *)mediaItem
 {
-    if (isLoadingXML) {
-        isLoadingXML = NO;
-        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
-        self.gridView.resizesCellWidthToFit = YES;
-    }
-    [self.photoURLs addObject:mediaItem];
-    int index = self.photoURLs.count-1;
+    [self configureGridForSpinner:NO];
+    
+    [appDelegate.photoURLs addObject:mediaItem];
+    int index = appDelegate.photoURLs.count-1;
     NSURLRequest *request = [NSURLRequest requestWithURL:[mediaItem objectForKey:@"jpgIcon"]];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error) {
          UIImage *thumbnailImage = [UIImage imageWithData:data];
-         [thumbnailImages setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
+         [appDelegate.photoThumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
 
          if (parser.isFinishedParsing)
              [self performSelectorOnMainThread:@selector(reloadCellAtIndex:) 
@@ -83,6 +97,7 @@ BOOL done = NO;
 
 - (void)reloadCellAtIndex:(NSNumber *)index
 {
+    //NSLog(@"reloading cell");
     [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:[index intValue]] withAnimation:AQGridViewItemAnimationTop];
 }
 
@@ -116,14 +131,17 @@ BOOL done = NO;
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
 {
-    if (isLoadingXML)
+    if (displaySpinner) {
+        NSLog(@"display spinner");
         return 1;
-    else
-        return self.photoURLs.count;
+    } else {
+        NSLog(@"don't display spinner");
+        return appDelegate.photoURLs.count;
+    }
 }
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
-    if (isLoadingXML) {
+    if (displaySpinner) {
         static NSString *loadingCellIdentifier = @"loadingCell";
         AQGridViewCell *cell = [self.gridView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
         if (cell == nil) {
@@ -142,7 +160,7 @@ BOOL done = NO;
             cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0) reuseIdentifier:photoCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
-        cell.image = [thumbnailImages objectForKey:[NSNumber numberWithInt:index]];
+        cell.image = [appDelegate.photoThumbnails objectForKey:[NSNumber numberWithInt:index]];
 
         return cell;
     }
@@ -163,7 +181,7 @@ BOOL done = NO;
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    if (isLoadingXML)
+    if (displaySpinner)
         return;
     
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
@@ -176,7 +194,7 @@ BOOL done = NO;
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    if (isLoadingXML) {
+    if (displaySpinner) {
         return [UIScreen mainScreen].bounds.size;
     } else {
         return CGSizeMake(50.0, 50.0);
@@ -186,12 +204,12 @@ BOOL done = NO;
 #pragma mark MWPhotoBrowserDelegate methods
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    return self.photoURLs.count;
+    return appDelegate.photoURLs.count;
 }
 
 - (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < self.photoURLs.count) {
-        NSURL *url = [[self.photoURLs objectAtIndex:index] objectForKey:@"jpgA5"];
+    if (index < appDelegate.photoURLs.count) {
+        NSURL *url = [[appDelegate.photoURLs objectAtIndex:index] objectForKey:@"jpgA5"];
         return [MWPhoto photoWithURL:url];
     }
     

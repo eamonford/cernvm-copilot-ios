@@ -14,4 +14,6 @@
 }
 @property (nonatomic, retain) UIImageView *shadowImageView;
 
+- (IBAction)close:(id)sender;
+
 @end

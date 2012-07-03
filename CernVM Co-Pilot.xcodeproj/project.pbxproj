@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */; };
 		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
+		E12E489615A36723001ADC77 /* VideosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489515A36723001ADC77 /* VideosTableViewController.m */; };
 		E13101B9157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E13101BA157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; };
 		E13101BB157B5CF800429634 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B6157B5CF800429634 /* MWFeedInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -136,6 +137,8 @@
 		E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralNewsTableViewController.m; path = "CernVM Co-Pilot/GeneralNewsTableViewController.m"; sourceTree = "<group>"; };
 		E120849F1577588100A81B87 /* RSSAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAggregator.h; sourceTree = "<group>"; };
 		E12084A01577588100A81B87 /* RSSAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAggregator.m; sourceTree = "<group>"; };
+		E12E489415A36723001ADC77 /* VideosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosTableViewController.h; sourceTree = "<group>"; };
+		E12E489515A36723001ADC77 /* VideosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosTableViewController.m; sourceTree = "<group>"; };
 		E13101B2157B5CF800429634 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser_Private.h; sourceTree = "<group>"; };
 		E13101B3157B5CF800429634 /* MWFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser.h; sourceTree = "<group>"; };
 		E13101B4157B5CF800429634 /* MWFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedParser.m; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */,
 				E1AB91FE159BE12C006FBB40 /* PhotosViewController.h */,
 				E1AB91FF159BE12C006FBB40 /* PhotosViewController.m */,
+				E12E489415A36723001ADC77 /* VideosTableViewController.h */,
+				E12E489515A36723001ADC77 /* VideosTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -773,6 +778,7 @@
 				E1D87E7C159EE6720051104C /* SDWebImagePrefetcher.m in Sources */,
 				E1D87E7E159EE6720051104C /* UIButton+WebCache.m in Sources */,
 				E1D87E80159EE6720051104C /* UIImageView+WebCache.m in Sources */,
+				E12E489615A36723001ADC77 /* VideosTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

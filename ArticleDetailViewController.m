@@ -46,9 +46,10 @@
 - (void)setContentForArticle:(MWFeedItem *)article
 {
     NSMutableString *body = [NSMutableString stringWithFormat:@"<h1>%@</h1>", article.title];
+    // Give "content" a higher priority, but otherwise use "summary"
     if (article.content) {
         [body appendString:article.content];
-    } else {
+    } else if (article.summary) {
         [body appendString:article.summary];
     }
     self.contentString = body;
