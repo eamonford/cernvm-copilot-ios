@@ -32,12 +32,24 @@ AppDelegate *appDelegate;
 {
     [super viewDidLoad];
 
+    // Setup loading view
+    loadingView = [[UIView alloc] init];
+    loadingView.frame = self.tableView.bounds;    
+    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    CGRect frame = loadingView.frame;
+    ac.center = CGPointMake(frame.size.width/2, frame.size.height/2);
+    [loadingView addSubview:ac];
+    [ac startAnimating];
+    
+    loadingView.backgroundColor = [UIColor whiteColor];
     CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
     marcParser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Video+Selection&p=internalnote%3A%22ATLAS%22&f=&action_search=Search&c=Press+Office+Video+Selection&c=&sf=year&so=d&rm=&rg=100&sc=0&of=xm"];
     marcParser.resourceTypes = [NSArray arrayWithObjects:@"mp40600", @"jpgthumbnail", nil];
     marcParser.delegate = self;
     
+
     if (appDelegate.videoMetadata.count == 0) {
+        [self.tableView addSubview:loadingView];
         [marcParser parse];
     }
 }
@@ -60,10 +72,24 @@ AppDelegate *appDelegate;
     
 }
 
+- (void)showSpinnerView
+{
+    loadingView.hidden = NO;
+}
+
+- (void)hideSpinnerView
+{
+    loadingView.hidden = YES;
+}
+
 #pragma mark - CernMediaMARCParserDeleate methods
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
+    NSLog(@"about to hide loading view");
+    if (loadingView == nil) 
+        NSLog(@"nil loading view!");
+    [loadingView removeFromSuperview];
     [self.tableView reloadData];
 }
 

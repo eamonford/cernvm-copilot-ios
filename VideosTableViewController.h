@@ -12,6 +12,7 @@
 {
     CernMediaMARCParser *parser;
     NSOperationQueue *queue;
+    UIView *loadingView;
 }
 
 - (IBAction)close:(id)sender;

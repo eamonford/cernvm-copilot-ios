@@ -83,8 +83,6 @@ BOOL displaySpinner = YES;
 
 - (void)reloadCellAtIndex:(NSNumber *)index
 {
-    //NSLog(@"there are %d photos cached", appDelegate.photoDownloader.thumbnails.count);
-    NSLog(@"reloading cell %d", index.intValue);
     [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:[index intValue]] withAnimation:AQGridViewItemAnimationTop];
 }
 
