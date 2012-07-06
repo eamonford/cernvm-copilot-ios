@@ -86,18 +86,18 @@ AppDelegate *appDelegate;
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
-    NSLog(@"about to hide loading view");
-    if (loadingView == nil) 
-        NSLog(@"nil loading view!");
     [loadingView removeFromSuperview];
     [self.tableView reloadData];
 }
 
 - (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record
 {
-    // Copy over just the title and the first url of each resource type
+    // Copy over just the title, the date, and the first url of each resource type
     NSMutableDictionary *video = [NSMutableDictionary dictionary];
     [video setObject:[record objectForKey:@"title"] forKey:@"title"];
+    NSDate *date = [record objectForKey:@"date"];
+    if (date)
+        [video setObject:date forKey:@"date"];
 
     NSDictionary *resources = [record objectForKey:@"resources"];
     NSArray *resourceTypes = [resources allKeys];
@@ -160,15 +160,16 @@ AppDelegate *appDelegate;
         cell = [[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     NSDictionary *video = [appDelegate.videoMetadata objectAtIndex:indexPath.row];
-    // Set the video title label
+    // Set the title label
     cell.titleLabel.text = [video objectForKey:@"title"];
-        
-    /*// Create the article date label
+    
+    // Set the date label
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    NSString *articleDate = [dateFormatter stringFromDate:feedItem.date];
-    cell.dateLabel.text = articleDate;
-    */
+    NSString *dateString = [dateFormatter stringFromDate:[video objectForKey:@"date"]];
+    cell.dateLabel.text = dateString;
+
+    // Set the thumbnail
     cell.thumbnailImageView.image = [appDelegate.videoThumbnails objectForKey:[NSNumber numberWithInt:indexPath.row]];
     
     return cell;

@@ -7,6 +7,7 @@
 //
 
 #import "CernMediaMARCParser.h"
+#import "NSDateFormatter+DateFromStringOfUnknownFormat.h"
 
 @implementation CernMediaMARCParser
 @synthesize url, resourceTypes, delegate, isFinishedParsing;
@@ -56,7 +57,6 @@
         [currentRecord setObject:[NSMutableDictionary dictionary] forKey:@"resources"];
     } else if ([elementName isEqualToString:@"datafield"]) {
         currentDatafieldTag = [attributeDict objectForKey:@"tag"];
-        // Within each datafield, there is the possibility of extracting a media item url
         foundX = NO;
         foundU = NO;
         foundSubfield = NO;
@@ -75,6 +75,10 @@
             }
         } else if ([currentDatafieldTag isEqualToString:@"245"]) {
             if ([currentSubfieldCode isEqualToString:@"a"]) {
+                foundSubfield = YES;
+            }
+        } else if ([currentDatafieldTag isEqualToString:@"269"]) {
+            if ([currentSubfieldCode isEqualToString:@"c"]) {
                 foundSubfield = YES;
             }
         }
@@ -110,6 +114,13 @@
                 foundU = YES;
             } else if ([currentSubfieldCode isEqualToString:@"a"]) {
                 [currentRecord setObject:string forKey:@"title"];
+            } else if ([currentSubfieldCode isEqualToString:@"c"]) {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                NSDate * date = [formatter dateFromStringOfUnknownFormat:string];
+                if (date)
+                    [currentRecord setObject:date forKey:@"date"];
+               // else 
+               //     [currentRecord setObject:string forKey:@"date"];
             }
         }
     }
