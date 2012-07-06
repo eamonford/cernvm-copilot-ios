@@ -23,7 +23,8 @@ BOOL displaySpinner = YES;
 {
     if (self = [super initWithCoder:aDecoder]) {
         appDelegate = [UIApplication sharedApplication].delegate;
-        queue = [[NSOperationQueue alloc] init];
+        appDelegate.photoDownloader.delegate = self;
+        //queue = [[NSOperationQueue alloc] init];
     }
     return self;
 }
@@ -34,14 +35,17 @@ BOOL displaySpinner = YES;
     
     self.gridView.backgroundColor = [UIColor whiteColor];
     
-    CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
+    /*CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
     marcParser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
-    marcParser.resourceTypes = [NSArray arrayWithObjects:@"jpgA4", @"jpgA5", @"jpgIcon", nil];
+    marcParser.resourceTypes = [NSArray arrayWithObjects:@"jpgA5", @"jpgIcon", nil];
     marcParser.delegate = self;
-    
-    if (appDelegate.photoURLs.count == 0) {
+    */
+    if (appDelegate.photoDownloader.urls.count == 0) {
         [self configureGridForSpinner:YES];
-        [marcParser parse];
+        //[marcParser parse];
+        appDelegate.photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
+        [appDelegate.photoDownloader parse];
+        
     } else {
         [self configureGridForSpinner:NO];
     }
@@ -69,14 +73,38 @@ BOOL displaySpinner = YES;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Interface methods
+
 - (IBAction)close:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+    
 }
 
+- (void)reloadCellAtIndex:(NSNumber *)index
+{
+    //NSLog(@"there are %d photos cached", appDelegate.photoDownloader.thumbnails.count);
+    NSLog(@"reloading cell %d", index.intValue);
+    [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:[index intValue]] withAnimation:AQGridViewItemAnimationTop];
+}
+
+#pragma mark - PhotoDownloaderDelegate methods
+
+- (void)photoDownloaderDidFinish:(PhotoDownloader *)photoDownloader
+{
+    [self configureGridForSpinner:NO];
+    [self.gridView reloadData];
+}
+
+- (void)photoDownloader:(PhotoDownloader *)photoDownloader didDownloadThumbnailForIndex:(int)index
+{
+    [self performSelectorOnMainThread:@selector(reloadCellAtIndex:) withObject:[NSNumber numberWithInt:index] waitUntilDone:NO];
+}
+
+/*
 #pragma mark CernMediaMARCParserDelegate methods
 
-- (void)parser:(CernMediaMARCParser *)parser didParseMediaItem:(NSDictionary *)mediaItem
+- (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)mediaItem
 {
     [self configureGridForSpinner:NO];
     
@@ -95,48 +123,22 @@ BOOL displaySpinner = YES;
      }];
 }
 
-- (void)reloadCellAtIndex:(NSNumber *)index
-{
-    //NSLog(@"reloading cell");
-    [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:[index intValue]] withAnimation:AQGridViewItemAnimationTop];
-}
+
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
     [self.gridView reloadData];
 }
-/*
-#pragma mark NSURLConnectionDelegate methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    int thumbnailIndex = [thumbnailDownloadConnections indexOfObject:connection];
-    if (thumbnailIndex != NSNotFound) {
-        [[thumbnailData objectAtIndex:thumbnailIndex] appendData:data];
-    }
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    int thumbnailIndex = [thumbnailDownloadConnections indexOfObject:connection];
-    if (thumbnailIndex != NSNotFound) {
-        UIImage *thumbnailImage = [UIImage imageWithData:[thumbnailData objectAtIndex:thumbnailIndex]];
-        [thumbnailImages setObject:thumbnailImage forKey:[NSNumber numberWithInt:thumbnailIndex]];
-        
-        [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:thumbnailIndex] withAnimation:AQGridViewItemAnimationTop];
-    }
-}
-
 */
-#pragma mark AQGridView methods
+
+#pragma mark - AQGridView methods
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
 {
     if (displaySpinner) {
-        NSLog(@"display spinner");
         return 1;
     } else {
-        NSLog(@"don't display spinner");
-        return appDelegate.photoURLs.count;
+        return appDelegate.photoDownloader.urls.count;
     }
 }
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
@@ -160,7 +162,7 @@ BOOL displaySpinner = YES;
             cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0) reuseIdentifier:photoCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
-        cell.image = [appDelegate.photoThumbnails objectForKey:[NSNumber numberWithInt:index]];
+        cell.image = [appDelegate.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
 
         return cell;
     }
@@ -201,15 +203,15 @@ BOOL displaySpinner = YES;
     }
 }
 
-#pragma mark MWPhotoBrowserDelegate methods
+#pragma mark - MWPhotoBrowserDelegate methods
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    return appDelegate.photoURLs.count;
+    return appDelegate.photoDownloader.urls.count;
 }
 
 - (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < appDelegate.photoURLs.count) {
-        NSURL *url = [[appDelegate.photoURLs objectAtIndex:index] objectForKey:@"jpgA5"];
+    if (index < appDelegate.photoDownloader.urls.count) {
+        NSURL *url = [[appDelegate.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
         return [MWPhoto photoWithURL:url];
     }
     

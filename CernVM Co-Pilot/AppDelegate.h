@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "RSSFeed.h"
+#import "PhotoDownloader.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    NSMutableArray *photoURLs;
-    NSMutableDictionary *photoThumbnails;
-    
-    NSMutableArray *videoURLs;
+    PhotoDownloader *photoDownloader;
+    NSMutableArray *videoMetadata;
     NSMutableDictionary *videoThumbnails;
 }
-@property (nonatomic, retain) NSMutableArray *photoURLs;
-@property (nonatomic, retain) NSMutableDictionary *photoThumbnails;
-@property (nonatomic, retain) NSMutableArray *videoURLs;
+
+@property (nonatomic, retain) PhotoDownloader *photoDownloader;
+
+@property (nonatomic, retain) NSMutableArray *videoMetadata;
 @property (nonatomic, retain) NSMutableDictionary *videoThumbnails;
 
 @property (strong, nonatomic) UIWindow *window;

@@ -11,10 +11,11 @@
 #import "AQGridViewCell.h"
 #import "CernMediaMARCParser.h"
 #import "MWPhotoBrowser.h"
+#import "PhotoDownloader.h"
 
-@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate, MWPhotoBrowserDelegate, NSURLConnectionDelegate>
+@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, MWPhotoBrowserDelegate, PhotoDownloaderDelegate>
 {
-    NSOperationQueue *queue;
+   // NSOperationQueue *queue;
     
     //NSMutableArray *thumbnailDownloadConnections;
     //NSMutableArray *thumbnailData;

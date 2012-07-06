@@ -1,15 +1,15 @@
 //
-//  ArticleTableViewCell.m
+//  VideoTableViewCell.m
 //  CernVM Co-Pilot
 //
-//  Created by Eamon Ford on 6/19/12.
+//  Created by Eamon Ford on 7/5/12.
 //  Copyright (c) 2012 The Byte Factory. All rights reserved.
 //
 
-#import "ArticleTableViewCell.h"
+#import "VideoTableViewCell.h"
 
-@implementation ArticleTableViewCell
-@synthesize titleLabel, feedLabel, dateLabel;
+@implementation VideoTableViewCell
+@synthesize titleLabel, dateLabel, thumbnailImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

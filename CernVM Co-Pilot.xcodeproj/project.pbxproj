@@ -10,6 +10,7 @@
 		E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */; };
 		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
 		E12E489615A36723001ADC77 /* VideosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489515A36723001ADC77 /* VideosTableViewController.m */; };
+		E12E489915A51AAE001ADC77 /* PhotoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489815A51AAD001ADC77 /* PhotoDownloader.m */; };
 		E13101B9157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E13101BA157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; };
 		E13101BB157B5CF800429634 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B6157B5CF800429634 /* MWFeedInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -120,6 +121,8 @@
 		E1F7B6B9156EDC7D0092367F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68C156EDC7C0092367F /* Foundation.framework */; };
 		E1F7B6C1156EDC7D0092367F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1F7B6BF156EDC7D0092367F /* InfoPlist.strings */; };
 		E1F7B6C4156EDC7D0092367F /* CernVM_Co_PilotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F7B6C3156EDC7D0092367F /* CernVM_Co_PilotTests.m */; };
+		E1FFFC2815A642310093462B /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FFFC2715A642310093462B /* VideoTableViewCell.m */; };
+		E1FFFC2B15A651B40093462B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FFFC2A15A651B40093462B /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +142,8 @@
 		E12084A01577588100A81B87 /* RSSAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAggregator.m; sourceTree = "<group>"; };
 		E12E489415A36723001ADC77 /* VideosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosTableViewController.h; sourceTree = "<group>"; };
 		E12E489515A36723001ADC77 /* VideosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosTableViewController.m; sourceTree = "<group>"; };
+		E12E489715A51AAD001ADC77 /* PhotoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDownloader.h; sourceTree = "<group>"; };
+		E12E489815A51AAD001ADC77 /* PhotoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDownloader.m; sourceTree = "<group>"; };
 		E13101B2157B5CF800429634 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser_Private.h; sourceTree = "<group>"; };
 		E13101B3157B5CF800429634 /* MWFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser.h; sourceTree = "<group>"; };
 		E13101B4157B5CF800429634 /* MWFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedParser.m; sourceTree = "<group>"; };
@@ -267,6 +272,9 @@
 		E1F7B6C0156EDC7D0092367F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1F7B6C2156EDC7D0092367F /* CernVM_Co_PilotTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CernVM_Co_PilotTests.h; sourceTree = "<group>"; };
 		E1F7B6C3156EDC7D0092367F /* CernVM_Co_PilotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CernVM_Co_PilotTests.m; sourceTree = "<group>"; };
+		E1FFFC2615A642310093462B /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
+		E1FFFC2715A642310093462B /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
+		E1FFFC2A15A651B40093462B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1FFFC2B15A651B40093462B /* MediaPlayer.framework in Frameworks */,
 				E1D87E8B159EEC920051104C /* MessageUI.framework in Frameworks */,
 				E1D87E89159EEC880051104C /* ImageIO.framework in Frameworks */,
 				E1AB920D159BE44B006FBB40 /* QuartzCore.framework in Frameworks */,
@@ -508,6 +517,8 @@
 				E171638415911B0100AB43F4 /* ArticleTableViewCell.m */,
 				E1D87E12159E925B0051104C /* PhotoGridViewCell.h */,
 				E1D87E13159E925B0051104C /* PhotoGridViewCell.m */,
+				E1FFFC2615A642310093462B /* VideoTableViewCell.h */,
+				E1FFFC2715A642310093462B /* VideoTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -517,6 +528,8 @@
 			children = (
 				E1D9609615991335006150D1 /* CernMediaMARCParser.h */,
 				E1D9609715991335006150D1 /* CernMediaMARCParser.m */,
+				E12E489715A51AAD001ADC77 /* PhotoDownloader.h */,
+				E12E489815A51AAD001ADC77 /* PhotoDownloader.m */,
 			);
 			name = "XML MARC Parser";
 			sourceTree = "<group>";
@@ -551,6 +564,7 @@
 		E1F7B689156EDC7C0092367F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1FFFC2A15A651B40093462B /* MediaPlayer.framework */,
 				E1D87E8A159EEC920051104C /* MessageUI.framework */,
 				E1D87E88159EEC880051104C /* ImageIO.framework */,
 				E1AB920C159BE44B006FBB40 /* QuartzCore.framework */,
@@ -779,6 +793,8 @@
 				E1D87E7E159EE6720051104C /* UIButton+WebCache.m in Sources */,
 				E1D87E80159EE6720051104C /* UIImageView+WebCache.m in Sources */,
 				E12E489615A36723001ADC77 /* VideosTableViewController.m in Sources */,
+				E12E489915A51AAE001ADC77 /* PhotoDownloader.m in Sources */,
+				E1FFFC2815A642310093462B /* VideoTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

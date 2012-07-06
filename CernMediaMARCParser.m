@@ -15,7 +15,7 @@
     if (self = [super init]) {
         asyncData = [[NSMutableData alloc] init];
         self.url = [[NSURL alloc] init];
-        self.resourceTypes = [NSArray array];
+        self.resourceTypes = [NSMutableArray array];
     }
     return self;
 }
@@ -41,18 +41,21 @@
     [xmlParser parse];
 }
 
-#pragma mark NSXMLParserDelegate methods 
+#pragma mark NSXMLParserDelegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser
 {
     asyncData = [[NSMutableData alloc] init];
     currentUValue = [NSMutableString string];
-    mediaItems = [NSMutableArray array];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
-    if ([elementName isEqualToString:@"datafield"]) {
+    if ([elementName isEqualToString:@"record"]) {
+        currentRecord = [NSMutableDictionary dictionary];
+        [currentRecord setObject:[NSMutableDictionary dictionary] forKey:@"resources"];
+    } else if ([elementName isEqualToString:@"datafield"]) {
+        currentDatafieldTag = [attributeDict objectForKey:@"tag"];
         // Within each datafield, there is the possibility of extracting a media item url
         foundX = NO;
         foundU = NO;
@@ -60,48 +63,54 @@
         currentResourceType = @"";
         
     } else if ([elementName isEqualToString:@"subfield"]) {
-        NSString *subfieldCode = [attributeDict objectForKey:@"code"];
-        if ([subfieldCode isEqualToString:@"x"]) {
-            foundSubfield = YES;
-            currentSubfieldCode = SUBFIELD_CODE_X;
-        } else if ([subfieldCode isEqualToString:@"u"]) {
-            [currentUValue setString:@""];
-            foundSubfield = YES;
-            currentSubfieldCode = SUBFIELD_CODE_U;
+        currentSubfieldCode = [attributeDict objectForKey:@"code"];
+        if ([currentDatafieldTag isEqualToString:@"856"]) {
+            if ([currentSubfieldCode isEqualToString:@"x"]) {
+                foundSubfield = YES;
+                //currentSubfieldCode = SUBFIELD_CODE_X;
+            } else if ([currentSubfieldCode isEqualToString:@"u"]) {
+                [currentUValue setString:@""];
+                foundSubfield = YES;
+                //currentSubfieldCode = SUBFIELD_CODE_U;
+            }
+        } else if ([currentDatafieldTag isEqualToString:@"245"]) {
+            if ([currentSubfieldCode isEqualToString:@"a"]) {
+                foundSubfield = YES;
+            }
         }
     }
 }
 
+// If we've found a resource type descriptor or a URL, we will have to hold it temporarily until
+// we have exited the datafield, before we can assign it to the current record. If we've found
+// the title however, we can assign it to the record immediately.
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    if (foundSubfield == YES) {
-        if (currentSubfieldCode == SUBFIELD_CODE_X) {
-            // if the subfield has code="x", it will contain a resource type descriptor
-            int numResourceTypes = self.resourceTypes.count;
-            for (int i=0; i<numResourceTypes; i++) {
-                if ([string isEqualToString:[self.resourceTypes objectAtIndex:i]]) {
+    NSString *stringWithoutWhitespace = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (![stringWithoutWhitespace isEqualToString:@""]) {
+        if (foundSubfield == YES) {
+            if ([currentSubfieldCode isEqualToString:@"x"]) {
+                // if the subfield has code="x", it will contain a resource type descriptor
+                int numResourceTypes = self.resourceTypes.count;
+                if (numResourceTypes) {
+                    for (int i=0; i<numResourceTypes; i++) {
+                        if ([string isEqualToString:[self.resourceTypes objectAtIndex:i]]) {
+                            currentResourceType = string;
+                            foundX = YES;
+                            break;
+                        }
+                    }
+                } else {
                     currentResourceType = string;
                     foundX = YES;
-                    break;
                 }
+            } else if ([currentSubfieldCode isEqualToString:@"u"]) {
+                // if the subfield has code="u", it will contain a url to the resource
+                [currentUValue appendString:string];
+                foundU = YES;
+            } else if ([currentSubfieldCode isEqualToString:@"a"]) {
+                [currentRecord setObject:string forKey:@"title"];
             }
-          /*  if ([string isEqualToString:@"jpgA4"]) {
-                // found a large image url
-                currentImageSize = IMAGE_SIZE_LARGE;
-                foundX = YES;
-            } else if ([string isEqualToString:@"jpgA5"]) {
-                // found a medium image url
-                currentImageSize = IMAGE_SIZE_MEDIUM;
-                foundX = YES;
-            } else if ([string isEqualToString:@"jpgIcon"]) {
-                // found an icon url
-                currentImageSize = IMAGE_SIZE_ICON;
-                foundX = YES;
-            }*/
-        } else if (currentSubfieldCode == SUBFIELD_CODE_U) {
-            // if the subfield has code="u", it will contain a url to the resource
-            [currentUValue appendString:string];
-            foundU = YES;
         }
     }
 }
@@ -110,45 +119,34 @@
 {
     if ([elementName isEqualToString:@"datafield"]) {
         if (foundX && foundU) {
-            if (!currentMediaItem) {
+            /*if (!currentMediaItem) {
                 currentMediaItem = [NSMutableDictionary dictionary];
-            }
-            NSURL *resourceURL = [NSURL URLWithString:[currentUValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-                            
-            [currentMediaItem setObject:resourceURL forKey:currentResourceType];
-            /*switch (currentImageSize) {
-                case IMAGE_SIZE_ICON:
-                    currentMediaItem.iconURL = imageURL;
-                    break;
-                case IMAGE_SIZE_MEDIUM:
-                    currentMediaItem.mediumURL = imageURL;
-                    break;
-                case IMAGE_SIZE_LARGE:
-                    currentMediaItem.largeURL = imageURL;
-                    break;
-                default:
-                    break;
             }*/
+            // if there isn't already an array of URLs for the current x value in the current record, create one
+            NSMutableDictionary *resources = [currentRecord objectForKey:@"resources"];
+            if (![resources objectForKey:currentResourceType]) {
+                [resources setObject:[NSMutableArray array] forKey:currentResourceType];
+            }
             
-            if ([currentMediaItem allKeys].count == self.resourceTypes.count) {
-            /*if (currentMediaItem.iconURL && 
-                currentMediaItem.mediumURL && 
-                currentMediaItem.largeURL) {*/
-                // Media item is complete. Add it to the array, and reset currentMediaItem.
-                [mediaItems addObject:currentMediaItem];
-                if ([delegate respondsToSelector:@selector(parser:didParseMediaItem:)]) {
-                    [delegate parser:self didParseMediaItem:currentMediaItem];
-                }
-                currentMediaItem = nil;
+            NSURL *resourceURL = [NSURL URLWithString:[currentUValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+            NSMutableArray *urls = [resources objectForKey:currentResourceType];
+            // add the url we found into the appropriate url array
+            [urls addObject:resourceURL];
+        }
+    } else if ([elementName isEqualToString:@"record"]) {
+        if (((NSMutableDictionary *)[currentRecord objectForKey:@"resources"]).count) {
+            if (delegate && [delegate respondsToSelector:@selector(parser:didParseRecord:)]) {
+                [delegate parser:self didParseRecord:currentRecord];
             }
         }
+        currentRecord = nil;
     }
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
     self.isFinishedParsing = YES;
-    if (delegate)
+    if (delegate && [delegate respondsToSelector:@selector(parserDidFinish:)])
         [delegate parserDidFinish:self];
 }
 

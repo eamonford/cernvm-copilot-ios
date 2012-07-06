@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum ImageSizeEnum {
-    IMAGE_SIZE_ICON,
-    IMAGE_SIZE_MEDIUM,
-    IMAGE_SIZE_LARGE
-} ImageSize;
-
 typedef  enum SubfieldCodeEnum {
     SUBFIELD_CODE_X,
     SUBFIELD_CODE_U
@@ -25,8 +19,7 @@ typedef  enum SubfieldCodeEnum {
 
 @optional
 
-- (void)parser:(CernMediaMARCParser *)parser didParseMediaItems:(NSArray *)mediaItems;
-- (void)parser:(CernMediaMARCParser *)parser didParseMediaItem:(NSDictionary *)mediaItem;
+- (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record;
 - (void)parserDidFinish:(CernMediaMARCParser *)parser;
 
 @end
@@ -34,19 +27,19 @@ typedef  enum SubfieldCodeEnum {
 @interface CernMediaMARCParser : NSObject<NSURLConnectionDelegate, NSXMLParserDelegate>
 {
     NSURL *url;
-    NSArray *resourceTypes;
+    NSMutableArray *resourceTypes;
     id<CernMediaMarcParserDelegate> delegate;
     BOOL isFinishedParsing;
     
     @private
     
-    NSMutableArray *mediaItems;
     NSMutableData *asyncData;
     NSString *currentResourceType;
     NSMutableDictionary *currentMediaItem;
+    NSMutableDictionary *currentRecord;
     NSMutableString *currentUValue;
-    SubfieldCode currentSubfieldCode;
-    ImageSize currentImageSize;
+    NSString *currentDatafieldTag;
+    NSString *currentSubfieldCode;
     BOOL foundSubfield;
     BOOL foundX;
     BOOL foundU;

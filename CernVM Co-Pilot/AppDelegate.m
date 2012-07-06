@@ -10,13 +10,14 @@
 #import "RSSAggregator.h"
 @implementation AppDelegate
 
-@synthesize photoURLs, photoThumbnails, videoURLs, videoThumbnails, window = _window;
+@synthesize photoDownloader, videoMetadata, videoThumbnails, window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.photoURLs = [NSMutableArray array];
-    self.photoThumbnails = [NSMutableDictionary dictionary];
-    
+    self.photoDownloader = [[PhotoDownloader alloc] init];
+    self.videoMetadata = [NSMutableArray array];
+    self.videoThumbnails = [NSMutableDictionary dictionary];
+
     return YES;
 }
 							

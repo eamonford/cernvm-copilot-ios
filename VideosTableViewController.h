@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CernMediaMARCParser.h"
+@interface VideosTableViewController : UITableViewController<CernMediaMarcParserDelegate>
+{
+    CernMediaMARCParser *parser;
+    NSOperationQueue *queue;
+}
 
-@interface VideosTableViewController : UITableViewController
+- (IBAction)close:(id)sender;
 
 @end
