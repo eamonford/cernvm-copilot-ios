@@ -13,10 +13,13 @@
 {
     RSSAggregator *aggregator;
     NSArray *feedArticles;
+    UIView *loadingView;
 }
 @property (nonatomic, retain) RSSAggregator *aggregator;
 @property (atomic) NSArray *feedArticles;
 
 - (IBAction)close:(id)sender;
+- (void)showLoadingView;
+- (void)hideLoadingView;
 
 @end

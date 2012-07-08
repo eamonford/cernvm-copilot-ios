@@ -24,7 +24,6 @@ BOOL displaySpinner = YES;
     if (self = [super initWithCoder:aDecoder]) {
         appDelegate = [UIApplication sharedApplication].delegate;
         appDelegate.photoDownloader.delegate = self;
-        //queue = [[NSOperationQueue alloc] init];
     }
     return self;
 }
@@ -35,14 +34,9 @@ BOOL displaySpinner = YES;
     
     self.gridView.backgroundColor = [UIColor whiteColor];
     
-    /*CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
-    marcParser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
-    marcParser.resourceTypes = [NSArray arrayWithObjects:@"jpgA5", @"jpgIcon", nil];
-    marcParser.delegate = self;
-    */
     if (appDelegate.photoDownloader.urls.count == 0) {
         [self configureGridForSpinner:YES];
-        //[marcParser parse];
+
         appDelegate.photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
         [appDelegate.photoDownloader parse];
         
@@ -99,36 +93,6 @@ BOOL displaySpinner = YES;
     [self performSelectorOnMainThread:@selector(reloadCellAtIndex:) withObject:[NSNumber numberWithInt:index] waitUntilDone:NO];
 }
 
-/*
-#pragma mark CernMediaMARCParserDelegate methods
-
-- (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)mediaItem
-{
-    [self configureGridForSpinner:NO];
-    
-    [appDelegate.photoURLs addObject:mediaItem];
-    int index = appDelegate.photoURLs.count-1;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[mediaItem objectForKey:@"jpgIcon"]];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:
-     ^(NSURLResponse *response, NSData *data, NSError *error) {
-         UIImage *thumbnailImage = [UIImage imageWithData:data];
-         [appDelegate.photoThumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
-
-         if (parser.isFinishedParsing)
-             [self performSelectorOnMainThread:@selector(reloadCellAtIndex:) 
-                                    withObject:[NSNumber numberWithInt:index] waitUntilDone:NO];
-
-     }];
-}
-
-
-
-- (void)parserDidFinish:(CernMediaMARCParser *)parser
-{
-    [self.gridView reloadData];
-}
-*/
-
 #pragma mark - AQGridView methods
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
@@ -165,19 +129,6 @@ BOOL displaySpinner = YES;
         return cell;
     }
 }
-
-/*- (UIImage *)thumbnailForCellAtIndex:(int)index
-{
-    if (index < thumbnailImages.count) {
-       // return [thumbnailImages objectAtIndex:index];
-    } else {
-        NSLog(@"loading thumb");
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[self.photoURLs objectAtIndex:index] objectForKey:@"jpgIcon"]];
-        [thumbnailData addObject:[[NSMutableData alloc] init]];
-        [thumbnailDownloadConnections addObject:[NSURLConnection connectionWithRequest:request delegate:self]];
-        return nil;
-    }
-}*/
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {

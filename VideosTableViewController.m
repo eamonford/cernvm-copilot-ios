@@ -31,17 +31,7 @@ AppDelegate *appDelegate;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Setup loading view
-    loadingView = [[UIView alloc] init];
-    loadingView.frame = self.tableView.bounds;    
-    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    CGRect frame = loadingView.frame;
-    ac.center = CGPointMake(frame.size.width/2, frame.size.height/2);
-    [loadingView addSubview:ac];
-    [ac startAnimating];
     
-    loadingView.backgroundColor = [UIColor whiteColor];
     CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
     marcParser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Video+Selection&p=internalnote%3A%22ATLAS%22&f=&action_search=Search&c=Press+Office+Video+Selection&c=&sf=year&so=d&rm=&rg=100&sc=0&of=xm"];
     marcParser.resourceTypes = [NSArray arrayWithObjects:@"mp40600", @"jpgthumbnail", nil];
@@ -49,7 +39,7 @@ AppDelegate *appDelegate;
     
 
     if (appDelegate.videoMetadata.count == 0) {
-        [self.tableView addSubview:loadingView];
+        [self showLoadingView];
         [marcParser parse];
     }
 }
@@ -66,27 +56,38 @@ AppDelegate *appDelegate;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - UI methods
+
 - (IBAction)close:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
-    
 }
 
-- (void)showSpinnerView
+- (void)showLoadingView
 {
-    loadingView.hidden = NO;
+    if (!loadingView) {
+        loadingView = [[UIView alloc] init];
+        loadingView.frame = self.tableView.bounds;    
+        UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        CGRect frame = loadingView.frame;
+        ac.center = CGPointMake(frame.size.width/2, frame.size.height/2);
+        [loadingView addSubview:ac];
+        [ac startAnimating];
+        loadingView.backgroundColor = [UIColor whiteColor];
+    }
+    [self.tableView addSubview:loadingView];
 }
 
-- (void)hideSpinnerView
-{
-    loadingView.hidden = YES;
+- (void)hideLoadingView
+{    
+    [loadingView removeFromSuperview];
 }
 
 #pragma mark - CernMediaMARCParserDeleate methods
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
-    [loadingView removeFromSuperview];
+    [self hideLoadingView];
     [self.tableView reloadData];
 }
 

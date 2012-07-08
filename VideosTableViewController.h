@@ -16,5 +16,7 @@
 }
 
 - (IBAction)close:(id)sender;
+- (void)showLoadingView;
+- (void)hideLoadingView;
 
 @end

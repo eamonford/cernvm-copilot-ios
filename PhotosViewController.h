@@ -15,12 +15,8 @@
 
 @interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, MWPhotoBrowserDelegate, PhotoDownloaderDelegate>
 {
-   // NSOperationQueue *queue;
-    
-    //NSMutableArray *thumbnailDownloadConnections;
-    //NSMutableArray *thumbnailData;
+    UIView *loadingView;
 }
-//@property (atomic, retain) NSMutableArray *photoURLs;
 
 - (IBAction)close:(id)sender;
 

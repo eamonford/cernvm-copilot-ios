@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self showLoadingView];
+    
     self.feedArticles = [NSArray array];
     self.aggregator = [[RSSAggregator alloc] init];
     self.aggregator.delegate = self;
@@ -37,8 +39,6 @@
     [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
     
     [self.aggregator refreshAllFeeds];
-    
-
 }
 
 - (void)viewDidUnload
@@ -66,9 +66,38 @@
     }
 }
 
+- (void)allFeedsDidLoadForAggregator:(RSSAggregator *)sender
+{
+    self.feedArticles = [sender aggregate];
+    [self.tableView reloadData];
+    [self hideLoadingView];
+}
+
+#pragma mark - UI methods
+
 - (IBAction)close:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)showLoadingView
+{
+    if (!loadingView) {
+        loadingView = [[UIView alloc] init];
+        loadingView.frame = self.tableView.bounds;    
+        UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        CGRect frame = loadingView.frame;
+        ac.center = CGPointMake(frame.size.width/2, frame.size.height/2);
+        [loadingView addSubview:ac];
+        [ac startAnimating];
+        loadingView.backgroundColor = [UIColor whiteColor];
+    }
+    [self.tableView addSubview:loadingView];
+}
+
+- (void)hideLoadingView
+{    
+    [loadingView removeFromSuperview];
 }
 
 #pragma mark - Table view data source
@@ -126,12 +155,5 @@
 {
     return 100.0;
 }
-
-- (void)allFeedsDidLoadForAggregator:(RSSAggregator *)sender
-{
-    self.feedArticles = [sender aggregate];
-    [self.tableView reloadData];
-}
-
 
 @end
