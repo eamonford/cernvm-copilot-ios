@@ -170,7 +170,7 @@
         return 150.0;
     } else {
         NSString *text = [[self.feed.posts objectAtIndex:indexPath.row] objectForKey:@"text"];
-        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
+        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
         
         return size.height+50.0;
     }

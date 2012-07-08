@@ -153,7 +153,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.0;
+    MWFeedItem *feedItem = [self.feedArticles objectAtIndex:[indexPath row]];
+    NSString *text = feedItem.title;
+    CGSize size = [text sizeWithFont:[UIFont boldSystemFontOfSize:16.0] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
+    
+    return size.height+45.0;    
 }
+
+
 
 @end
