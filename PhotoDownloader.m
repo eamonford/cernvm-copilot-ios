@@ -86,7 +86,13 @@
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     //NSLog(@"downloaded thumbnail %d", index);
     UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];
-    [self.thumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
+    if (thumbnailImage) {
+        [self.thumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
+    } else {
+        NSLog(@"Error downloading thumbnail #%d, will try again.", index);
+        [self downloadThumbnailForIndex:[NSNumber numberWithInt:index]];
+    }
+    
      if (delegate && [delegate respondsToSelector:@selector(photoDownloader:didDownloadThumbnailForIndex:)]) {
          [delegate photoDownloader:self didDownloadThumbnailForIndex:index];
      }
