@@ -16,7 +16,7 @@ typedef enum  {
 } ShadowedCellPosition;
 
 @interface ShadowedCellBackgroundView : UIView {
-    UIColor *borderColor;
+    //UIColor *borderColor;
     UIColor *separatorColor;
     UIColor *fillColor;
     UIColor *shadowColor;
@@ -26,7 +26,7 @@ typedef enum  {
     CGFloat cornerRadius;
 }
 
-@property(nonatomic, retain) UIColor *borderColor, *separatorColor, *fillColor, *shadowColor;
+@property(nonatomic, retain) UIColor /**borderColor,*/ *separatorColor, *fillColor, *shadowColor;
 @property ShadowedCellPosition position;
 @property CGFloat shadowSize, cornerRadius;
 

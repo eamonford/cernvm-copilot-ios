@@ -90,13 +90,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    UITableViewCell *cell;
+    ShadowedCell *cell;
     if (indexPath.section == 0) {
         static NSString *CellIdentifier = @"experimentInfoCell";
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[ShadowedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
+        cell.position = ShadowedCellPositionSingle;
     } else {
         static NSString *CellIdentifier = @"experimentNewsCell";
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -112,13 +113,7 @@
             ((ArticleTableViewCell *)cell).position = ShadowedCellPositionBottom;
         else
             ((ArticleTableViewCell *)cell).position = ShadowedCellPositionMiddle;
-        
-        ((ArticleTableViewCell *)cell).cornerRadius = 5.0;
-        ((ArticleTableViewCell *)cell).shadowSize = 4.0;
-        ((ArticleTableViewCell *)cell).borderColor = [UIColor whiteColor];
-        ((ArticleTableViewCell *)cell).fillColor = [UIColor whiteColor];
-        ((ArticleTableViewCell *)cell).shadowColor = [UIColor darkGrayColor];
-        
+                
         MWFeedItem *article = [self.feedArticles objectAtIndex:indexPath.row];
         ((ArticleTableViewCell *)cell).titleLabel.text = article.title;
         NSString *feedName = [self.aggregator feedForArticle:article].info.title;
@@ -133,6 +128,12 @@
 
    }
         
+    cell.cornerRadius = 5.0;
+    cell.shadowSize = 2.0;
+    //cell.borderColor = [UIColor greenColor];
+    cell.fillColor = [UIColor whiteColor];
+    cell.shadowColor = [UIColor darkGrayColor];
+
     return cell;
 }
 

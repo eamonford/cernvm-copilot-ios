@@ -15,7 +15,7 @@
     ShadowedCellBackgroundView *shadowedBackgroundView;
 }
 
-@property(nonatomic, retain) UIColor *borderColor, *separatorColor, *fillColor, *shadowColor;
+@property(nonatomic, retain) UIColor /**borderColor, */*separatorColor, *fillColor, *shadowColor;
 @property CGFloat shadowSize;
 @property CGFloat cornerRadius;
 @property ShadowedCellPosition position;

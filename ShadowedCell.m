@@ -9,7 +9,6 @@
 #import "ShadowedCell.h"
 
 @implementation ShadowedCell
-//@synthesize borderColor, fillColor, shadowColor, separatorColor, position, shadowSize, cornerRadius;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -42,7 +41,7 @@
  }
 
 #pragma mark - Properties
-
+/*
 - (UIColor *)borderColor
 {
     return shadowedBackgroundView.borderColor;
@@ -53,7 +52,7 @@
     shadowedBackgroundView.borderColor = borderColor;
     [shadowedBackgroundView setNeedsDisplay];
 }
-
+*/
 - (UIColor *)separatorColor
 {
     return shadowedBackgroundView.separatorColor;
