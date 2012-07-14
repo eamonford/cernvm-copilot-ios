@@ -7,6 +7,7 @@
 //
 
 #import "ArticleTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ArticleTableViewCell
 @synthesize titleLabel, feedLabel, dateLabel;

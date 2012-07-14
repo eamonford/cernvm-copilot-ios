@@ -30,6 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grayTexture.png"]];
+    self.tableView.backgroundView = backgroundView;
+    
     [self showLoadingView];
     
     self.feedArticles = [NSArray array];
@@ -157,7 +162,7 @@
     NSString *text = feedItem.title;
     CGSize size = [text sizeWithFont:[UIFont boldSystemFontOfSize:16.0] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
     
-    return size.height+45.0;    
+    return size.height+55.0;    
 }
 
 

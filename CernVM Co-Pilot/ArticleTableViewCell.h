@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShadowedCell.h"
 
-@interface ArticleTableViewCell : UITableViewCell
+@interface ArticleTableViewCell : ShadowedCell
 {
     IBOutlet UILabel *feedLabel;
     IBOutlet UILabel *dateLabel;

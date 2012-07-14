@@ -10,11 +10,16 @@
 #import "FeedDelegate.h"
 #import "TwitterFeed.h"
 #import "ArticleTableViewCell.h"
+#import "RSSAggregator.h"
 
-@interface ExperimentTableViewController : UITableViewController<FeedDelegate>
+@interface ExperimentTableViewController : UITableViewController<FeedDelegate, RSSAggregatorDelegate>
 {
-    TwitterFeed *feed;    
+    TwitterFeed *feed;
+    RSSAggregator *aggregator;
+    NSArray *feedArticles;
 }
 @property (nonatomic, retain) TwitterFeed *feed;
+@property (nonatomic, retain) RSSAggregator *aggregator;
+@property (nonatomic, retain) NSArray *feedArticles;
 
 @end

@@ -17,7 +17,7 @@
 @end
 
 @implementation ExperimentTableViewController
-@synthesize feed;
+@synthesize feed, aggregator, feedArticles;
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -25,6 +25,8 @@
     if (self) {
         self.feed = [[TwitterFeed alloc] init];
         self.feed.delegate = self;
+        self.aggregator = [[RSSAggregator alloc] init];
+        self.aggregator.delegate = self;
     }
     return self;
 }
@@ -36,8 +38,17 @@
     [UIViewController attemptRotationToDeviceOrientation];
     
     [self.feed refresh];
+    [self.aggregator refreshAllFeeds];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grayTexture.png"]];
+    self.tableView.backgroundView = backgroundView;
+    self.tableView.separatorColor = [UIColor lightGrayColor];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -55,9 +66,10 @@
 {
     if ([[segue identifier] isEqualToString:@"ShowTweetDetails"])
     {        
-        NSDictionary *tweet = [self.feed.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+//        NSDictionary *tweet = [self.feed.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         ArticleDetailViewController *detailViewController = [segue destinationViewController];
-        [detailViewController setContentForTweet:tweet];
+        MWFeedItem *article = [self.feedArticles objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        [detailViewController setContentForArticle:article];
     }
 }
 
@@ -73,7 +85,7 @@
     if (section == 0)
         return 1;
     else
-        return self.feed.posts.count;
+        return self.feedArticles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,67 +101,40 @@
         static NSString *CellIdentifier = @"experimentNewsCell";
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[ArticleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
- 
-            
+            cell = [[ArticleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];            
         }
-        NSDictionary *post = [self.feed.posts objectAtIndex:indexPath.row];
         
-        ((ArticleTableViewCell *)cell).titleLabel.text = [post objectForKey:@"text"];
-        ((ArticleTableViewCell *)cell).feedLabel.text = [NSString stringWithFormat:@"@%@", self.feed.screenName];
+        if (self.feedArticles.count == 1)
+            ((ArticleTableViewCell *)cell).position = ShadowedCellPositionSingle;                
+        else if (indexPath.row == 0)
+            ((ArticleTableViewCell *)cell).position = ShadowedCellPositionTop;
+        else if (indexPath.row == self.feedArticles.count-1)
+            ((ArticleTableViewCell *)cell).position = ShadowedCellPositionBottom;
+        else
+            ((ArticleTableViewCell *)cell).position = ShadowedCellPositionMiddle;
         
+        ((ArticleTableViewCell *)cell).cornerRadius = 5.0;
+        ((ArticleTableViewCell *)cell).shadowSize = 4.0;
+        ((ArticleTableViewCell *)cell).borderColor = [UIColor whiteColor];
+        ((ArticleTableViewCell *)cell).fillColor = [UIColor whiteColor];
+        ((ArticleTableViewCell *)cell).shadowColor = [UIColor darkGrayColor];
+        
+        MWFeedItem *article = [self.feedArticles objectAtIndex:indexPath.row];
+        ((ArticleTableViewCell *)cell).titleLabel.text = article.title;
+        NSString *feedName = [self.aggregator feedForArticle:article].info.title;
+        ((ArticleTableViewCell *)cell).feedLabel.text = feedName;
+
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"EEE MMM d HH:mm:ss ZZZ yyyy";
-        NSDate *date = [dateFormatter dateFromString:[post objectForKey:@"created_at"]];
+        NSDate *date = article.date;
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         NSString *dateString = [dateFormatter stringFromDate:date];
         ((ArticleTableViewCell *)cell).dateLabel.text = dateString;
 
    }
-    
-    // Configure the cell...
-    
+        
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -172,8 +157,50 @@
         NSString *text = [[self.feed.posts objectAtIndex:indexPath.row] objectForKey:@"text"];
         CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
         
-        return size.height+50.0;
+        return size.height+60.0;
     }
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+        view.backgroundColor = [UIColor clearColor];
+        view.opaque = NO;
+        CGRect labelFrame = CGRectMake(20.0, 0.0, [UIScreen mainScreen].bounds.size.width-20.0, [self tableView:self.tableView heightForHeaderInSection:section]);
+        UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
+        label.opaque = NO;
+        label.backgroundColor = [UIColor clearColor];
+        label.text = [self tableView:self.tableView titleForHeaderInSection:section];
+        
+        label.textColor = [UIColor darkGrayColor];
+        label.font = [UIFont boldSystemFontOfSize:13.0];
+        label.shadowColor = [UIColor whiteColor];
+        label.shadowOffset = CGSizeMake(0.0, 1.0);
+        [view addSubview:label];
+        
+        return view;
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 50.0;
+    } else {
+        return 0.0;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return @"Twitter Feed";
+    }
+    return nil;
 }
 
 - (void)feedDidLoad:(id)sender
@@ -182,6 +209,12 @@
         self.feed = sender;
         [self.tableView reloadData];
     }
+}
+
+- (void)allFeedsDidLoadForAggregator:(RSSAggregator *)sender
+{
+    self.feedArticles = [sender aggregate];
+    [self.tableView reloadData];
 }
 
 @end

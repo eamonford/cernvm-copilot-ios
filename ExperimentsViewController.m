@@ -55,15 +55,19 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    ExperimentTableViewController *experimentInfoViewController = [segue destinationViewController];
+    ExperimentTableViewController *viewController = [segue destinationViewController];
     if ([[segue identifier] isEqualToString:@"ShowCMSInfo"]) {
-        experimentInfoViewController.feed.screenName = @"CMSexperiment";
+        viewController.feed.screenName = @"CMSexperiment";
+        [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
     } else if ([[segue identifier] isEqualToString:@"ShowATLASInfo"]) {
-        experimentInfoViewController.feed.screenName = @"ATLASexperiment";
+        viewController.feed.screenName = @"ATLASexperiment";
+        [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://pdg2.lbl.gov/atlasblog/?feed=rss2"]];
     } else if ([[segue identifier] isEqualToString:@"ShowLHCBInfo"]) {
-        experimentInfoViewController.feed.screenName = @"LHCbexperiment";
+        viewController.feed.screenName = @"LHCbexperiment";
+        [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://twitter.com/statuses/user_timeline/92522167.rss"]];
     } else if ([[segue identifier] isEqualToString:@"ShowALICEInfo"]) {
-        experimentInfoViewController.feed.screenName = @"ALICEexperiment";
+        [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
+        viewController.feed.screenName = @"ALICEexperiment";
     } 
 
 }
