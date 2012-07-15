@@ -84,7 +84,6 @@
     NSDictionary *photo = [self.urls objectAtIndex:index];
     NSURLRequest *request = [NSURLRequest requestWithURL:[photo objectForKey:@"jpgIcon"]];
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //NSLog(@"downloaded thumbnail %d", index);
     UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];
     if (thumbnailImage) {
         [self.thumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];

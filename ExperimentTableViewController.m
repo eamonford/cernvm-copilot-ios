@@ -125,7 +125,6 @@
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         NSString *dateString = [dateFormatter stringFromDate:date];
         ((ArticleTableViewCell *)cell).dateLabel.text = dateString;
-
    }
         
     cell.cornerRadius = 5.0;
