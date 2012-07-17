@@ -12,6 +12,8 @@
 {
     IBOutlet UIImageView *imageView;
     IBOutlet UISegmentedControl *segmentedControl;
+    IBOutlet UIBarButtonItem *barButtonItem;
+    
     UIView *loadingView;
     NSMutableData *asyncData;
     
@@ -21,6 +23,7 @@
 }
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) UIBarButtonItem *barButtonItem;
 @property (nonatomic, retain) UIImage *frontImage;
 @property (nonatomic, retain) UIImage *sideImage;
 @property (nonatomic, retain) UIImage *infoImage;
@@ -29,6 +32,6 @@
 - (IBAction)segmentedControlTapped:(id)sender;
 - (void)showLoadingView;
 - (void)hideLoadingView;
-- (void)refresh;
+- (IBAction)refresh:(id)sender;
 
 @end

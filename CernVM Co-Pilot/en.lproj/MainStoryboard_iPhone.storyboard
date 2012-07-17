@@ -954,9 +954,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="XIL-EK-Y9a">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="rff-YI-248">
+                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem width="300" style="plain" id="Mmc-Jd-XpW"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -979,8 +986,14 @@
                                 <action selector="segmentedControlTapped:" destination="k1L-i1-Wfq" eventType="valueChanged" id="SzB-iJ-DXp"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="oe7-PW-cpU">
+                            <connections>
+                                <action selector="refresh:" destination="k1L-i1-Wfq" id="vog-tw-WZ1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barButtonItem" destination="Mmc-Jd-XpW" id="XNy-dP-3Zh"/>
                         <outlet property="imageView" destination="XIL-EK-Y9a" id="Oq3-Jv-qwP"/>
                         <outlet property="segmentedControl" destination="ZEP-L3-3bR" id="OQW-BA-SXq"/>
                     </connections>
@@ -1056,7 +1069,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDisplayViewController.h"/>
             <relationships>
                 <relationship kind="action" name="close:"/>
+                <relationship kind="action" name="refresh:"/>
                 <relationship kind="action" name="segmentedControlTapped:"/>
+                <relationship kind="outlet" name="barButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
             </relationships>

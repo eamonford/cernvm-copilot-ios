@@ -13,7 +13,7 @@
 @end
 
 @implementation EventDisplayViewController
-@synthesize imageView, segmentedControl, frontImage, sideImage, infoImage;
+@synthesize imageView, segmentedControl, barButtonItem, frontImage, sideImage, infoImage;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -29,9 +29,8 @@
     [super viewDidLoad];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView.backgroundColor = [UIColor blackColor];
-    [self showLoadingView];
     asyncData = [[NSMutableData alloc] init];
-    [self refresh];
+    [self refresh:self];
 }
 
 - (void)viewDidUnload
@@ -45,8 +44,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)refresh
+- (IBAction)refresh:(id)sender
 {
+    [self showLoadingView];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://atlas-live.cern.ch/live.png"]];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -83,6 +83,19 @@
     
     [self segmentedControlTapped:self.segmentedControl];
     [self hideLoadingView];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSDictionary *allHeaderFields = ((NSHTTPURLResponse *)response).allHeaderFields;
+    NSString *lastModifiedString = [allHeaderFields objectForKey:@"Last-Modified"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
+    NSDate *date = [dateFormatter dateFromString:lastModifiedString];
+    
+    int secondsSinceUpdated = abs([date timeIntervalSinceNow]);
+    float hoursSinceUpdated = (float)secondsSinceUpdated/(60*60);
+    self.barButtonItem.title = [NSString stringWithFormat:@"Last updated %.1f hours ago", hoursSinceUpdated];
 }
 
 #pragma mark - UI methods
