@@ -111,6 +111,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="jJk-tO-I9q" kind="modal" id="Nxd-lh-o66"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="o81-ac-PVk">
                                 <rect key="frame" x="107" y="306" width="107" height="154"/>
@@ -234,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82E-Gz-kXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3790" y="1315"/>
+            <point key="canvasLocation" x="2870" y="-87"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="Cmx-1O-f2A">
@@ -275,7 +278,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="jyW-zu-giS" kind="push" id="hX1-YZ-y6n"/>
+                                    <segue destination="pXf-KM-tA0" kind="push" id="SGB-5C-PIn"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="4fh-ar-rt0" customClass="ArticleTableViewCell">
@@ -329,7 +332,45 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLJ-7v-DYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2210" y="1980"/>
+            <point key="canvasLocation" x="3224" y="765"/>
+        </scene>
+        <!--Static Info View Controller-->
+        <scene sceneID="JYa-BW-sCQ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kcE-Kt-BoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="pXf-KM-tA0" customClass="StaticInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mX0-1k-5SD">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5jv-RU-nZE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="swt-91-L5H">
+                                        <rect key="frame" x="20" y="195" width="280" height="413"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <mutableString key="text">The ALICE Collaboration has built a dedicated heavy-ion detector to exploit the unique physics potential of nucleus-nucleus interactions at LHC energies. Our aim is to study the physics of strongly interacting matter at extreme energy densities, where the formation of a new phase of matter, the quark-gluon plasma, is expected. The existence of such a phase and its properties are key issues in QCD for the understanding of confinement and of chiral-symmetry restoration. For this purpose, we are carrying out a comprehensive study of the hadrons, electrons, muons and photons produced in the collision of heavy nuclei. Alice is also studying proton-proton collisions both as a comparison with lead-lead collisions and in physics areas where Alice is competitive with other LHC experiments. </mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="alice.png" id="00i-qM-h4Y">
+                                        <rect key="frame" x="7" y="0.0" width="306" height="187"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cC2-ei-gyj"/>
+                    <connections>
+                        <outlet property="scrollView" destination="5jv-RU-nZE" id="1o9-a7-raz"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3623" y="765"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="7GG-26-gwl">
@@ -340,11 +381,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="150" id="j78-Ex-6xt" customClass="ShadowedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentInfoCell" rowHeight="150" id="j78-Ex-6xt" customClass="ShadowedCell">
                                 <rect key="frame" x="0.0" y="46" width="320" height="151"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="149"/>
+                                    <rect key="frame" x="10" y="1" width="280" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4js-GN-OdW">
@@ -370,7 +411,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Qo9-uJ-z8t" kind="push" id="jMa-la-tZI"/>
+                                    <segue destination="Bbw-XP-tug" kind="push" id="akK-nN-ZR4"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="jw7-2t-d8W" customClass="ArticleTableViewCell">
@@ -425,47 +466,47 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWu-D1-kix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2473" y="193"/>
+            <point key="canvasLocation" x="3574" y="-1034"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="9C3-q4-idG">
+        <!--Static Info View Controller-->
+        <scene sceneID="Iiv-qW-9WS">
             <objects>
-                <viewController id="Qo9-uJ-z8t" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Iwv-ts-AOs">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="loW-tU-5P6"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TbY-XK-a20" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3022" y="-9"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="vOP-s6-9p8">
-            <objects>
-                <viewController id="jyW-zu-giS" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UD5-k8-sdO">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xBB-F7-4Rv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Bbw-XP-tug" customClass="StaticInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JUT-oO-rPx">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8n7-xQ-O9L">
-                                <rect key="frame" x="59" y="103" width="203" height="210"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2rA-Gz-nbT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">ALICE is the acronym for A Large Ion Collider Experiment, one of the largest experiments in the world devoted to research in the physics of matter at an infinitely small scale. Hosted at CERN, the European Laboratory for Nuclear Research, this project involves an international collaboration of more than 1000 physicists, engineers and technicians, including around 200 graduate students, from 105 physics institutes in 30 countries across the world.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fr7-sY-OII">
+                                        <rect key="frame" x="20" y="221" width="280" height="369"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <mutableString key="text">CMS is a particle detector that is designed to see a wide range of particles and phenomena produced in high-energy collisions in the LHC. Like a cylindrical onion, different layers of detectors measure the different particles, and use this key data to build up a picture of events at the heart of the collision.
+
+Scientists then use this data to search for new phenomena that will help to answer questions such as: What is the Universe really made of and what forces act within it? And what gives everything substance? CMS will also measure the properties of previously discovered particles with unprecedented precision, and be on the lookout for completely new, unpredicted phenomena.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="cms.png" id="hLC-Os-NEP">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9mP-Lj-GTE"/>
+                    <navigationItem key="navigationItem" id="auj-8e-4Y0"/>
+                    <connections>
+                        <outlet property="scrollView" destination="2rA-Gz-nbT" id="npM-5Z-eAw"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xqi-BG-K32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2757" y="2183"/>
+            <point key="canvasLocation" x="4095" y="-1034"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="Rg2-pw-YJs">
@@ -506,7 +547,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="N9h-RB-D21" kind="push" id="hYH-t1-lDm"/>
+                                    <segue destination="T9n-xj-Zzh" kind="push" id="4FS-gO-i6l"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="dAJ-1I-tn7" customClass="ArticleTableViewCell">
@@ -560,22 +601,49 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEx-Ix-JWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3176" y="1810"/>
+            <point key="canvasLocation" x="3775" y="348"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="EDj-6c-2YO">
+        <!--Static Info View Controller-->
+        <scene sceneID="KNS-eP-LYp">
             <objects>
-                <viewController id="N9h-RB-D21" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cxL-mp-QDR">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kGK-sg-fDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="T9n-xj-Zzh" customClass="StaticInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0wx-bV-fXa">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="USI-bx-mPN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HgY-MO-OiE">
+                                        <rect key="frame" x="20" y="258" width="280" height="604"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <mutableString key="text">The aim of the LHCb experiment is to record the decay of particles containing b and anti-b quarks, collectively known as ‘B mesons’. The experiment’s 4,500 tonne detector is specifically designed to filter out these particles and the products of their decay.
+
+Rather than flying out in all directions, B mesons formed by the colliding proton beams (and the particles they decay into) stay close to the line of the beam pipe, and this is reflected in the design of the detector. Other LHC experiments surround the entire collision point with layers of sub-detectors, like an onion, but the LHCb detector stretches for 20 metres along the beam pipe, with its sub-detectors stacked behind each other like books on a shelf.
+
+Each one of LHCb’s sub-detectors specializes in measuring a different characteristic of the particles produced by colliding protons. Collectively, the detector’s components gather information about the identity, trajectory, momentum and energy of each particle generated, and can single out individual particles from the billions that spray out from the collision point.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="lhcb.png" id="Sie-Fh-SyX">
+                                        <rect key="frame" x="1" y="0.0" width="319" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sUX-B1-dVK"/>
+                    <navigationItem key="navigationItem" id="2Z2-ap-qqe"/>
+                    <connections>
+                        <outlet property="scrollView" destination="USI-bx-mPN" id="GLn-vX-7hj"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HVC-DX-11B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3867" y="1933"/>
+            <point key="canvasLocation" x="4178" y="348"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="rSA-FF-sk6">
@@ -616,7 +684,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="uuY-oL-TWE" kind="push" id="AJ2-oc-HGB"/>
+                                    <segue destination="uuY-oL-TWE" kind="push" id="drG-ht-aZG"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="ifw-bT-voG" customClass="ArticleTableViewCell">
@@ -670,22 +738,46 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6dy-6k-vFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4745" y="972"/>
+            <point key="canvasLocation" x="3721" y="-406"/>
         </scene>
-        <!--View Controller-->
+        <!--Static Info View Controller-->
         <scene sceneID="BZu-n3-gXn">
             <objects>
-                <viewController id="uuY-oL-TWE" sceneMemberID="viewController">
+                <viewController id="uuY-oL-TWE" customClass="StaticInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eZu-Ll-oFX">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="tgv-Je-cAh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Oc6-Y5-BFQ">
+                                        <rect key="frame" x="20" y="214" width="280" height="253"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">ATLAS is a particle physics experiment at the Large Hadron Collider at CERN. The ATLAS detector is searching for new discoveries in the head-on collisions of protons of extraordinarily high energy. ATLAS will learn about the basic forces that have shaped our Universe since the beginning of time and that will determine its fate. Among the possible unknowns are the origin of mass, extra dimensions of space, unification of fundamental forces, and evidence for dark matter candidates in the Universe.
+</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="atlas@2x.png" id="cqW-hI-RtL">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="nvP-9L-8ZM"/>
+                    <connections>
+                        <outlet property="scrollView" destination="tgv-Je-cAh" id="0cb-af-jMb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Lu-Vf-uQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5256" y="779"/>
+            <point key="canvasLocation" x="4202" y="-406"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="iRZ-zi-RK5">
@@ -713,7 +805,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sO8-US-gKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6241" y="751"/>
+            <point key="canvasLocation" x="5269" y="169"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uGL-jp-e4g">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lKV-xR-f9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Dh4-GK-ffg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UdX-Yw-Jdy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dJT-41-uaq"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="601" y="-933"/>
         </scene>
         <!--General News Table View Controller-->
         <scene sceneID="BbJ-1A-3wA">
@@ -842,7 +949,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imn-Mz-75s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="311"/>
+            <point key="canvasLocation" x="2392" y="-177"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="LL5-BF-Xnc">
@@ -1037,14 +1144,36 @@
             </objects>
             <point key="canvasLocation" x="231" y="1421"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NgR-po-tiB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiq-OK-ORd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="jJk-tO-I9q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="vYB-Ot-0GG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dh4-GK-ffg" kind="relationship" relationship="rootViewController" id="Glq-tL-K37"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="75" y="-933"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="alice.png" width="510" height="311"/>
         <image name="aliceLogo@2x.png" width="200" height="200"/>
+        <image name="atlas@2x.png" width="640" height="411"/>
         <image name="atlasLogo@2x.png" width="200" height="200"/>
         <image name="backgroundImage" width="16" height="16"/>
+        <image name="cms.png" width="500" height="333"/>
         <image name="cmsLogo@2x.png" width="201" height="200"/>
         <image name="lhcMap@2x.png" width="960" height="640"/>
         <image name="lhcMapShadow@2x.png" width="960" height="640"/>
+        <image name="lhcb.png" width="407" height="320"/>
         <image name="lhcbLogo@2x.png" width="200" height="140"/>
     </resources>
     <classes>
@@ -1101,6 +1230,12 @@
         <class className="ShadowedCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedCell.h"/>
         </class>
+        <class className="StaticInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StaticInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
         <class className="VideoTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VideoTableViewCell.h"/>
             <relationships>
@@ -1122,6 +1257,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3LL-Bj-6Dn"/>
+        <segue reference="GtG-bQ-0Ha"/>
     </inferredMetricsTieBreakers>
 </document>

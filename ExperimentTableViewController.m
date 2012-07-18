@@ -10,6 +10,7 @@
 #import "TwitterFeed.h"
 #import "ArticleTableViewCell.h"
 #import "ArticleDetailViewController.h"
+#import "StaticInfoViewController.h"
 #import "NSDate+InternetDateTime.h"
 #import "NSString+HTML.h"
 @interface ExperimentTableViewController ()
@@ -64,12 +65,21 @@
 // Pass article data into the article detail view
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"ShowTweetDetails"])
-    {        
-//        NSDictionary *tweet = [self.feed.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        ArticleDetailViewController *detailViewController = [segue destinationViewController];
+    if ([[segue identifier] isEqualToString:@"ShowATLASInfo"]) {
+
+    } else if ([[segue identifier] isEqualToString:@"ShowCMSInfo"]) {
+        StaticInfoViewController *viewController = [segue destinationViewController];
+   
+    } else if ([[segue identifier] isEqualToString:@"ShowALICEInfo"]) {
+        StaticInfoViewController *viewController = [segue destinationViewController];
+
+    } else if ([[segue identifier] isEqualToString:@"ShowLHCbInfo"]) {
+        StaticInfoViewController *viewController = [segue destinationViewController];
+
+    } else if ([[segue identifier] isEqualToString:@"ShowTweetDetails"]) {        
+        ArticleDetailViewController *viewController = [segue destinationViewController];
         MWFeedItem *article = [self.feedArticles objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-        [detailViewController setContentForArticle:article];
+        [viewController setContentForArticle:article];
     }
 }
 

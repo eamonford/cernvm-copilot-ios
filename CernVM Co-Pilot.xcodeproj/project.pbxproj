@@ -69,6 +69,11 @@
 		E1AB920A159BE388006FBB40 /* NSIndexSet+AQIsSetContiguous.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91E7159BE07D006FBB40 /* NSIndexSet+AQIsSetContiguous.m */; };
 		E1AB920B159BE388006FBB40 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91E9159BE07D006FBB40 /* NSIndexSet+AQIndexesOutsideSet.m */; };
 		E1AB920D159BE44B006FBB40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AB920C159BE44B006FBB40 /* QuartzCore.framework */; };
+		E1B0415715B6449F00C8EA40 /* StaticInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */; };
+		E1B0415A15B65A3D00C8EA40 /* atlas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415915B65A3D00C8EA40 /* atlas@2x.png */; };
+		E1B0415C15B68AFF00C8EA40 /* cms.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415B15B68AFF00C8EA40 /* cms.png */; };
+		E1B0415E15B69B0900C8EA40 /* lhcb.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415D15B69B0900C8EA40 /* lhcb.png */; };
+		E1B0416015B6A01B00C8EA40 /* alice.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415F15B6A01B00C8EA40 /* alice.png */; };
 		E1D87E14159E925B0051104C /* PhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E13159E925B0051104C /* PhotoGridViewCell.m */; };
 		E1D87E15159E925B0051104C /* PhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E13159E925B0051104C /* PhotoGridViewCell.m */; };
 		E1D87E46159EE6680051104C /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E3A159EE6680051104C /* MWCaptionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -222,6 +227,12 @@
 		E1AB91FE159BE12C006FBB40 /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
 		E1AB91FF159BE12C006FBB40 /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		E1AB920C159BE44B006FBB40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E1B0415515B6449F00C8EA40 /* StaticInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoViewController.h; sourceTree = "<group>"; };
+		E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoViewController.m; sourceTree = "<group>"; };
+		E1B0415915B65A3D00C8EA40 /* atlas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "atlas@2x.png"; sourceTree = "<group>"; };
+		E1B0415B15B68AFF00C8EA40 /* cms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cms.png; sourceTree = "<group>"; };
+		E1B0415D15B69B0900C8EA40 /* lhcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lhcb.png; sourceTree = "<group>"; };
+		E1B0415F15B6A01B00C8EA40 /* alice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alice.png; sourceTree = "<group>"; };
 		E1D87E12159E925B0051104C /* PhotoGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoGridViewCell.h; path = "CernVM Co-Pilot/PhotoGridViewCell.h"; sourceTree = "<group>"; };
 		E1D87E13159E925B0051104C /* PhotoGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoGridViewCell.m; path = "CernVM Co-Pilot/PhotoGridViewCell.m"; sourceTree = "<group>"; };
 		E1D87E39159EE6680051104C /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
@@ -338,6 +349,8 @@
 				E12E489515A36723001ADC77 /* VideosTableViewController.m */,
 				E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */,
 				E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */,
+				E1B0415515B6449F00C8EA40 /* StaticInfoViewController.h */,
+				E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -514,6 +527,10 @@
 		E1D87E86159EE6CB0051104C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E1B0415F15B6A01B00C8EA40 /* alice.png */,
+				E1B0415D15B69B0900C8EA40 /* lhcb.png */,
+				E1B0415B15B68AFF00C8EA40 /* cms.png */,
+				E1B0415915B65A3D00C8EA40 /* atlas@2x.png */,
 				E1DD4C1A15AA4C37003556BC /* grayTexture.png */,
 				E1F7B6A7156EDC7D0092367F /* first@2x.png */,
 				E1F7B6AE156EDC7D0092367F /* second@2x.png */,
@@ -730,6 +747,10 @@
 				E1D87E72159EE6720051104C /* README.md in Resources */,
 				E1D87E83159EE6770051104C /* MWPhotoBrowser.bundle in Resources */,
 				E1DD4C1B15AA4C37003556BC /* grayTexture.png in Resources */,
+				E1B0415A15B65A3D00C8EA40 /* atlas@2x.png in Resources */,
+				E1B0415C15B68AFF00C8EA40 /* cms.png in Resources */,
+				E1B0415E15B69B0900C8EA40 /* lhcb.png in Resources */,
+				E1B0416015B6A01B00C8EA40 /* alice.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +844,7 @@
 				E103FBD715AC1A8E00274739 /* ShadowedCellBackgroundView.m in Sources */,
 				E1648F3F15AF789000EE44DA /* ShadowedCell.m in Sources */,
 				E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */,
+				E1B0415715B6449F00C8EA40 /* StaticInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
