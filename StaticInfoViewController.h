@@ -11,7 +11,14 @@
 @interface StaticInfoViewController : UIViewController
 {
     IBOutlet UIScrollView *scrollView;
+    IBOutlet UIImageView *imageView;
+    IBOutlet UILabel *descriptionLabel;
+    IBOutlet UILabel *titleLabel;
+    NSDictionary *staticInfo;
 }
-@property(nonatomic, retain) UIScrollView *scrollView;
-
+@property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) UILabel *descriptionLabel;
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) NSDictionary *staticInfo;
 @end

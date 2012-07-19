@@ -50,7 +50,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

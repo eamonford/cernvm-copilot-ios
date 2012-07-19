@@ -1,170 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xMK-fh-AbG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FgC-jI-7LZ">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="0ej-7E-Swm">
+        <!--Tab Bar Controller-->
+        <scene sceneID="SH4-JK-sTM">
             <objects>
-                <viewController id="xMK-fh-AbG" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H9x-KT-6iL">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BFg-5A-brR">
-                                <rect key="frame" x="0.0" y="0.0" width="107" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="General" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Pxs-nN-ASO" kind="modal" id="kH7-M3-EWv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gnU-BC-jR8">
-                                <rect key="frame" x="107" y="0.0" width="107" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Experiments" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="G70-oY-H4x" kind="modal" id="z3b-rO-8q7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nzg-oQ-XqI">
-                                <rect key="frame" x="213" y="0.0" width="107" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Photos" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vMk-FF-F38" kind="modal" id="bIL-Iy-s66"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xvm-Bl-jem">
-                                <rect key="frame" x="0.0" y="153" width="107" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Videos" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="EYR-yL-Vhn" kind="modal" id="UgP-dw-vqn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gwp-Zy-X4t">
-                                <rect key="frame" x="107" y="153" width="107" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Visualizers" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ea8-W3-jKK" kind="modal" id="C2I-a4-qxe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KrV-ys-9u0">
-                                <rect key="frame" x="213" y="153" width="107" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Backgrounders" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="21o-FB-BrP">
-                                <rect key="frame" x="0.0" y="306" width="107" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="Cern Playing Cards" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="jJk-tO-I9q" kind="modal" id="Nxd-lh-o66"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="o81-ac-PVk">
-                                <rect key="frame" x="107" y="306" width="107" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Jobs" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hZU-IC-TG8">
-                                <rect key="frame" x="213" y="306" width="107" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Settings" backgroundImage="backgroundImage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9gg-oa-Wjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPs-UX-EtY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController definesPresentationContext="YES" id="FgC-jI-7LZ" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="RyA-O2-PHP">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Pxs-nN-ASO" kind="relationship" relationship="viewControllers" id="ald-LS-Tkf"/>
+                        <segue destination="WJd-4Y-Tfr" kind="relationship" relationship="viewControllers" id="xtJ-IM-zNm"/>
+                        <segue destination="G70-oY-H4x" kind="relationship" relationship="viewControllers" id="3no-Q8-ULD"/>
+                        <segue destination="gy0-Xx-oeB" kind="relationship" relationship="viewControllers" id="Zqe-So-1n5"/>
+                    </connections>
+                </tabBarController>
             </objects>
-            <point key="canvasLocation" x="54" y="202"/>
+            <point key="canvasLocation" x="-274" y="765"/>
+        </scene>
+        <!--About Table View Controller-->
+        <scene sceneID="Wjx-Z9-Quf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F3D-YG-yZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="AboutTableViewController" id="j0g-2c-SzN" customClass="AboutTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ncj-5f-aTJ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="XEp-Lb-dNQ" style="IBUITableViewCellStyleDefault" id="KHO-b4-MqJ">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XEp-Lb-dNQ">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j0g-2c-SzN" id="ZdD-eI-SQu"/>
+                            <outlet property="delegate" destination="j0g-2c-SzN" id="6YK-Gj-Kbx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="WgP-zI-tGl"/>
+                    <connections>
+                        <segue destination="yVF-bC-RRs" kind="push" identifier="ShowStaticInfo" id="WHY-uF-MbP"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="684" y="1190"/>
         </scene>
         <!--Experiments View Controller-->
         <scene sceneID="ey8-dY-Mak">
             <objects>
                 <viewController id="0Dj-u6-SNd" customClass="ExperimentsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b0U-E9-pkb">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="lhcMap@2x.png" id="9nR-Aq-AXU">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" image="lhcMapShadow@2x.png" id="R2J-HH-BfH">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.89999999999999991" contentMode="scaleToFill" image="lhcMapShadow@2x.png" id="R2J-HH-BfH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UwW-CG-4Ep">
-                                <rect key="frame" x="127" y="268" width="61" height="48"/>
+                                <rect key="frame" x="225" y="149" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -175,11 +96,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kI0-bR-z7M" kind="push" identifier="ShowCMSInfo" id="gt1-Q2-mGf"/>
+                                    <segue destination="5sC-Cr-BcE" kind="push" identifier="ShowALICEInfo" id="qti-Vc-Bmh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNH-K6-Enb">
-                                <rect key="frame" x="177" y="197" width="42" height="42"/>
+                                <rect key="frame" x="120" y="132" width="31" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -190,11 +111,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xh0-5x-cxZ" kind="push" identifier="ShowLHCBInfo" id="zK9-eQ-XDU"/>
+                                    <segue destination="xh0-5x-cxZ" kind="push" identifier="ShowLHCbInfo" id="d69-QT-w0m"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HSr-yW-KFC">
-                                <rect key="frame" x="270" y="202" width="45" height="45"/>
+                                <rect key="frame" x="177" y="135" width="31" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -205,11 +126,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1Qf-bW-XsG" kind="push" identifier="ShowATLASInfo" id="4fZ-0I-BIG"/>
+                                    <segue destination="1Qf-bW-XsG" kind="push" identifier="ShowATLASInfo" id="UhQ-wP-J4P"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="te5-G2-fja">
-                                <rect key="frame" x="342" y="219" width="48" height="48"/>
+                                <rect key="frame" x="84" y="177" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -220,31 +141,30 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5sC-Cr-BcE" kind="push" identifier="ShowALICEInfo" id="e6h-Kf-oSx"/>
+                                    <segue destination="kI0-bR-z7M" kind="push" identifier="ShowCMSInfo" id="ejh-4s-iFF"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="qTM-RN-dpx"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="shadowImageView" destination="R2J-HH-BfH" id="9rA-az-AV5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82E-Gz-kXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2870" y="-87"/>
+            <point key="canvasLocation" x="2142" y="240"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="Cmx-1O-f2A">
             <objects>
                 <tableViewController storyboardIdentifier="ALICEInfo" id="5sC-Cr-BcE" customClass="ExperimentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="gmk-ud-Nhw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -277,9 +197,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="pXf-KM-tA0" kind="push" id="SGB-5C-PIn"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="4fh-ar-rt0" customClass="ArticleTableViewCell">
                                 <rect key="frame" x="0.0" y="197" width="320" height="101"/>
@@ -332,52 +249,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLJ-7v-DYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3224" y="765"/>
-        </scene>
-        <!--Static Info View Controller-->
-        <scene sceneID="JYa-BW-sCQ">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kcE-Kt-BoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="pXf-KM-tA0" customClass="StaticInfoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mX0-1k-5SD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5jv-RU-nZE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="swt-91-L5H">
-                                        <rect key="frame" x="20" y="195" width="280" height="413"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">The ALICE Collaboration has built a dedicated heavy-ion detector to exploit the unique physics potential of nucleus-nucleus interactions at LHC energies. Our aim is to study the physics of strongly interacting matter at extreme energy densities, where the formation of a new phase of matter, the quark-gluon plasma, is expected. The existence of such a phase and its properties are key issues in QCD for the understanding of confinement and of chiral-symmetry restoration. For this purpose, we are carrying out a comprehensive study of the hadrons, electrons, muons and photons produced in the collision of heavy nuclei. Alice is also studying proton-proton collisions both as a comparison with lead-lead collisions and in physics areas where Alice is competitive with other LHC experiments. </mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="alice.png" id="00i-qM-h4Y">
-                                        <rect key="frame" x="7" y="0.0" width="306" height="187"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="cC2-ei-gyj"/>
-                    <connections>
-                        <outlet property="scrollView" destination="5jv-RU-nZE" id="1o9-a7-raz"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3623" y="765"/>
+            <point key="canvasLocation" x="2892" y="1124"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="7GG-26-gwl">
             <objects>
                 <tableViewController storyboardIdentifier="CMSInfo" id="kI0-bR-z7M" customClass="ExperimentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0Jg-Kw-ce2">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -410,9 +289,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="Bbw-XP-tug" kind="push" id="akK-nN-ZR4"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="jw7-2t-d8W" customClass="ArticleTableViewCell">
                                 <rect key="frame" x="0.0" y="197" width="320" height="101"/>
@@ -466,54 +342,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWu-D1-kix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3574" y="-1034"/>
-        </scene>
-        <!--Static Info View Controller-->
-        <scene sceneID="Iiv-qW-9WS">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xBB-F7-4Rv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Bbw-XP-tug" customClass="StaticInfoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JUT-oO-rPx">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2rA-Gz-nbT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fr7-sY-OII">
-                                        <rect key="frame" x="20" y="221" width="280" height="369"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">CMS is a particle detector that is designed to see a wide range of particles and phenomena produced in high-energy collisions in the LHC. Like a cylindrical onion, different layers of detectors measure the different particles, and use this key data to build up a picture of events at the heart of the collision.
-
-Scientists then use this data to search for new phenomena that will help to answer questions such as: What is the Universe really made of and what forces act within it? And what gives everything substance? CMS will also measure the properties of previously discovered particles with unprecedented precision, and be on the lookout for completely new, unpredicted phenomena.</mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="cms.png" id="hLC-Os-NEP">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="auj-8e-4Y0"/>
-                    <connections>
-                        <outlet property="scrollView" destination="2rA-Gz-nbT" id="npM-5Z-eAw"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="4095" y="-1034"/>
+            <point key="canvasLocation" x="2892" y="-641"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="Rg2-pw-YJs">
             <objects>
                 <tableViewController storyboardIdentifier="LHCBInfo" id="xh0-5x-cxZ" customClass="ExperimentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="g29-cw-uka">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -546,9 +382,6 @@ Scientists then use this data to search for new phenomena that will help to answ
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="T9n-xj-Zzh" kind="push" id="4FS-gO-i6l"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="dAJ-1I-tn7" customClass="ArticleTableViewCell">
                                 <rect key="frame" x="0.0" y="197" width="320" height="101"/>
@@ -601,56 +434,14 @@ Scientists then use this data to search for new phenomena that will help to answ
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEx-Ix-JWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3775" y="348"/>
-        </scene>
-        <!--Static Info View Controller-->
-        <scene sceneID="KNS-eP-LYp">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kGK-sg-fDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="T9n-xj-Zzh" customClass="StaticInfoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0wx-bV-fXa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="USI-bx-mPN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HgY-MO-OiE">
-                                        <rect key="frame" x="20" y="258" width="280" height="604"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">The aim of the LHCb experiment is to record the decay of particles containing b and anti-b quarks, collectively known as ‘B mesons’. The experiment’s 4,500 tonne detector is specifically designed to filter out these particles and the products of their decay.
-
-Rather than flying out in all directions, B mesons formed by the colliding proton beams (and the particles they decay into) stay close to the line of the beam pipe, and this is reflected in the design of the detector. Other LHC experiments surround the entire collision point with layers of sub-detectors, like an onion, but the LHCb detector stretches for 20 metres along the beam pipe, with its sub-detectors stacked behind each other like books on a shelf.
-
-Each one of LHCb’s sub-detectors specializes in measuring a different characteristic of the particles produced by colliding protons. Collectively, the detector’s components gather information about the identity, trajectory, momentum and energy of each particle generated, and can single out individual particles from the billions that spray out from the collision point.</mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="lhcb.png" id="Sie-Fh-SyX">
-                                        <rect key="frame" x="1" y="0.0" width="319" height="250"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="2Z2-ap-qqe"/>
-                    <connections>
-                        <outlet property="scrollView" destination="USI-bx-mPN" id="GLn-vX-7hj"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="4178" y="348"/>
+            <point key="canvasLocation" x="2892" y="515"/>
         </scene>
         <!--Experiment Table View Controller-->
         <scene sceneID="rSA-FF-sk6">
             <objects>
                 <tableViewController storyboardIdentifier="ATLASInfo" id="1Qf-bW-XsG" customClass="ExperimentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="oYj-kb-Bot">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -683,9 +474,6 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="uuY-oL-TWE" kind="push" id="drG-ht-aZG"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="experimentNewsCell" rowHeight="100" id="ifw-bT-voG" customClass="ArticleTableViewCell">
                                 <rect key="frame" x="0.0" y="197" width="320" height="101"/>
@@ -738,57 +526,18 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6dy-6k-vFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3721" y="-406"/>
-        </scene>
-        <!--Static Info View Controller-->
-        <scene sceneID="BZu-n3-gXn">
-            <objects>
-                <viewController id="uuY-oL-TWE" customClass="StaticInfoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eZu-Ll-oFX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="tgv-Je-cAh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Oc6-Y5-BFQ">
-                                        <rect key="frame" x="20" y="214" width="280" height="253"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">ATLAS is a particle physics experiment at the Large Hadron Collider at CERN. The ATLAS detector is searching for new discoveries in the head-on collisions of protons of extraordinarily high energy. ATLAS will learn about the basic forces that have shaped our Universe since the beginning of time and that will determine its fate. Among the possible unknowns are the origin of mass, extra dimensions of space, unification of fundamental forces, and evidence for dark matter candidates in the Universe.
-</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="atlas@2x.png" id="cqW-hI-RtL">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="nvP-9L-8ZM"/>
-                    <connections>
-                        <outlet property="scrollView" destination="tgv-Je-cAh" id="0cb-af-jMb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Lu-Vf-uQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4202" y="-406"/>
+            <point key="canvasLocation" x="2892" y="-65"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="iRZ-zi-RK5">
             <objects>
                 <viewController id="k0L-46-BH1" customClass="ArticleDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCc-UZ-H2I">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="SHf-nd-TaG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -805,29 +554,14 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sO8-US-gKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5269" y="169"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="uGL-jp-e4g">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lKV-xR-f9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Dh4-GK-ffg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UdX-Yw-Jdy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dJT-41-uaq"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="601" y="-933"/>
+            <point key="canvasLocation" x="3943" y="194"/>
         </scene>
         <!--General News Table View Controller-->
         <scene sceneID="BbJ-1A-3wA">
             <objects>
                 <tableViewController id="0mM-vX-M7Z" customClass="GeneralNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="WJb-PW-6EU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -875,24 +609,18 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                             <outlet property="delegate" destination="0mM-vX-M7Z" id="8Zs-wm-Sw4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Xe7-ih-ZF9">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="0Ah-Yw-O05">
-                            <connections>
-                                <action selector="close:" destination="0mM-vX-M7Z" id="y9S-Xo-Zhu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Xe7-ih-ZF9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2l-Uu-35U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1018" y="-283"/>
+            <point key="canvasLocation" x="543" y="-95"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="TRr-91-3uH">
             <objects>
                 <viewController id="dTx-aX-mIA" customClass="ArticleDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZj-h7-iUf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="XB5-C5-qlr">
@@ -913,12 +641,13 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUb-vH-z25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="-283"/>
+            <point key="canvasLocation" x="979" y="-95"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - News-->
         <scene sceneID="moj-Jw-cFu">
             <objects>
                 <navigationController id="Pxs-nN-ASO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" id="VZv-lP-aMi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Fjz-KO-Zmk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -931,12 +660,13 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmb-5v-pV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="-283"/>
+            <point key="canvasLocation" x="93" y="-87"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - CERN Live-->
         <scene sceneID="F5G-ZX-P0f">
             <objects>
                 <navigationController id="G70-oY-H4x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CERN Live" id="xBI-S9-pt2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ecx-Hg-nMi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -949,35 +679,76 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imn-Mz-75s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2392" y="-177"/>
+            <point key="canvasLocation" x="1651" y="240"/>
+        </scene>
+        <!--Static Info View Controller-->
+        <scene sceneID="9UN-6t-Tx9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYi-ty-f9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="yVF-bC-RRs" customClass="StaticInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="luG-hG-jTM">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="R6m-aB-SaJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="sN2-8g-OVr">
+                                        <rect key="frame" x="0.0" y="53" width="320" height="220"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KmI-Q3-fdM">
+                                        <rect key="frame" x="20" y="281" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="saL-Zw-0zN">
+                                        <rect key="frame" x="20" y="20" width="280" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rn4-iO-dph"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="KmI-Q3-fdM" id="t4n-YO-0lX"/>
+                        <outlet property="imageView" destination="sN2-8g-OVr" id="dDH-ek-VtH"/>
+                        <outlet property="scrollView" destination="R6m-aB-SaJ" id="9UO-sy-SLg"/>
+                        <outlet property="titleLabel" destination="saL-Zw-0zN" id="O0L-xj-0HV"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1123" y="1190"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="LL5-BF-Xnc">
             <objects>
                 <viewController id="Lqr-va-V5G" customClass="PhotosViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RcB-cE-Ca6">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="reW-WO-iYI">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="HVG-0a-XBR">
-                            <connections>
-                                <action selector="close:" destination="Lqr-va-V5G" id="Ka4-WX-pLm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="reW-WO-iYI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n24-qN-MC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2860" y="1302"/>
+            <point key="canvasLocation" x="1183" y="2044"/>
         </scene>
         <!--Videos Table View Controller-->
         <scene sceneID="4WW-Re-liQ">
             <objects>
                 <tableViewController id="7Ae-jm-o9d" customClass="VideosTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mKH-Hl-uo0">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1021,35 +792,11 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                             <outlet property="delegate" destination="7Ae-jm-o9d" id="lDG-O4-stL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Bmr-KQ-QAL">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="Efs-4Z-6pt">
-                            <connections>
-                                <action selector="close:" destination="7Ae-jm-o9d" id="DvB-TW-oSd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Bmr-KQ-QAL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwl-oy-spC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="1307"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RCn-2f-r56">
-            <objects>
-                <navigationController storyboardIdentifier="Photos" id="vMk-FF-F38" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Hf8-3c-Bth">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Lqr-va-V5G" kind="relationship" relationship="rootViewController" id="k8N-sV-k79"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KuJ-ci-sVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2367" y="1043"/>
+            <point key="canvasLocation" x="1197" y="2632"/>
         </scene>
         <!--Event Display View Controller-->
         <scene sceneID="chm-0u-VjS">
@@ -1057,15 +804,15 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCi-PM-TCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="k1L-i1-Wfq" customClass="EventDisplayViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m0h-pc-jgK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="XIL-EK-Y9a">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="rff-YI-248">
-                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem width="300" style="plain" id="Mmc-Jd-XpW"/>
@@ -1106,157 +853,146 @@ Each one of LHCb’s sub-detectors specializes in measuring a different characte
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="757" y="1421"/>
+            <point key="canvasLocation" x="1905" y="1338"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="XgB-we-0yg">
+        <!--Table View Controller-->
+        <scene sceneID="jKl-s5-un8">
             <objects>
-                <navigationController id="EYR-yL-Vhn" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YNg-qa-fpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="hsn-pl-jMq" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="P8N-hs-9f5">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="ZDP-Oq-sik">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="P67-bz-iMc" style="IBUITableViewCellStyleDefault" id="eS9-6y-aj8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Latest Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P67-bz-iMc">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="Lqr-va-V5G" kind="push" id="p7b-lu-JkU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="6jS-76-Xpu" style="IBUITableViewCellStyleDefault" id="or7-XZ-f41">
+                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Latest Videos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6jS-76-Xpu">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="7Ae-jm-o9d" kind="push" id="Ed8-jo-Pqz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="C5g-Xg-YUB" style="IBUITableViewCellStyleDefault" id="FOl-xH-l7J">
+                                        <rect key="frame" x="0.0" y="88" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Jobs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C5g-Xg-YUB">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="hsn-pl-jMq" id="apg-m3-dr6"/>
+                            <outlet property="delegate" destination="hsn-pl-jMq" id="Ped-BC-EsX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nzW-yk-QpI"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="569" y="2334"/>
+        </scene>
+        <!--Navigation Controller - More-->
+        <scene sceneID="kZ9-ui-8xd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LCK-Ic-JNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="gy0-Xx-oeB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="More" id="9wE-G9-qPK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="IIV-rX-Zsd">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="EyA-eR-gpk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="7Ae-jm-o9d" kind="relationship" relationship="rootViewController" id="3li-SO-qNO"/>
+                        <segue destination="hsn-pl-jMq" kind="relationship" relationship="rootViewController" id="7cY-QR-jrI"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eLK-L8-9Iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="1307"/>
+            <point key="canvasLocation" x="104" y="2334"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mxp-kS-N5e">
+        <!--Navigation Controller - About CERN-->
+        <scene sceneID="Ivw-Ub-ZWF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bbj-fj-i1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="ea8-W3-jKK" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdM-6P-yzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="WJd-4Y-Tfr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="About CERN" id="bzj-3X-8XJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OGZ-Hr-bSN">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="AQF-Qy-M5g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="k1L-i1-Wfq" kind="relationship" relationship="rootViewController" id="XJp-Yi-hHW"/>
+                        <segue destination="j0g-2c-SzN" kind="relationship" relationship="rootViewController" id="tvH-fV-aka"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="231" y="1421"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="NgR-po-tiB">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eiq-OK-ORd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="jJk-tO-I9q" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="vYB-Ot-0GG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Dh4-GK-ffg" kind="relationship" relationship="rootViewController" id="Glq-tL-K37"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="75" y="-933"/>
+            <point key="canvasLocation" x="158" y="1190"/>
         </scene>
     </scenes>
     <resources>
-        <image name="alice.png" width="510" height="311"/>
         <image name="aliceLogo@2x.png" width="200" height="200"/>
-        <image name="atlas@2x.png" width="640" height="411"/>
         <image name="atlasLogo@2x.png" width="200" height="200"/>
-        <image name="backgroundImage" width="16" height="16"/>
-        <image name="cms.png" width="500" height="333"/>
         <image name="cmsLogo@2x.png" width="201" height="200"/>
         <image name="lhcMap@2x.png" width="960" height="640"/>
         <image name="lhcMapShadow@2x.png" width="960" height="640"/>
-        <image name="lhcb.png" width="407" height="320"/>
         <image name="lhcbLogo@2x.png" width="200" height="140"/>
     </resources>
-    <classes>
-        <class className="AQGridViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AQGridViewController.h"/>
-        </class>
-        <class className="ArticleDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="ArticleTableViewCell" superclassName="ShadowedCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="feedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="EventDisplayViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDisplayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-                <relationship kind="action" name="refresh:"/>
-                <relationship kind="action" name="segmentedControlTapped:"/>
-                <relationship kind="outlet" name="barButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ExperimentTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentTableViewController.h"/>
-        </class>
-        <class className="ExperimentsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-                <relationship kind="outlet" name="shadowImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="GeneralNewsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GeneralNewsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-            </relationships>
-        </class>
-        <class className="PhotosViewController" superclassName="AQGridViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-            </relationships>
-        </class>
-        <class className="ShadowedCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedCell.h"/>
-        </class>
-        <class className="StaticInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StaticInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="VideoTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideoTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnailImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="VideosTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideosTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GtG-bQ-0Ha"/>
+        <segue reference="Lpu-rl-sua"/>
     </inferredMetricsTieBreakers>
 </document>
