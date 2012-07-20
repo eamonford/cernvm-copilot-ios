@@ -39,7 +39,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = YES;
-    [UIApplication sharedApplication].statusBarHidden = YES;
 }
 
 - (void)viewDidUnload

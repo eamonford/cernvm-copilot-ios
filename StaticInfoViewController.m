@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Set the title label and resize it accordingly
     NSString *title = [self.staticInfo objectForKey:@"Title"];
+    self.navigationItem.title = title;
+    
     self.titleLabel.text = title;
     CGSize titleSize = [title sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(self.titleLabel.frame.size.width, CGFLOAT_MAX)];
     titleLabel.frame = CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y, titleLabel.frame.size.width, titleSize.height);

@@ -10,8 +10,12 @@
 
 @interface AboutTableViewController : UITableViewController
 {
-    NSObject *currentElement;
+    NSArray *tableDataSource;
+    NSString *currentTitle;
+    NSInteger currentLevel;
 }
-@property(nonatomic, retain) NSObject *currentElement;
+@property (nonatomic, retain) NSArray *tableDataSource;
+@property (nonatomic, retain) NSString *currentTitle;
+@property (nonatomic, readwrite) NSInteger currentLevel;
 
 @end

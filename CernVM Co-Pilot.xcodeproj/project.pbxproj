@@ -41,6 +41,9 @@
 		E182E1FB15740766000E4197 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E182E1FA15740766000E4197 /* RSSFeed.m */; };
 		E1830BCA15744B9F003F16E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1830BC915744B9F003F16E2 /* libxml2.dylib */; };
 		E1975A4C158F99D800CEE5A2 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1975A4B158F99D800CEE5A2 /* ArticleDetailViewController.m */; };
+		E1A98BE315BA182300ACB293 /* CJ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE215BA182300ACB293 /* CJ.png */; };
+		E1A98BE515BA1A7700ACB293 /* CQ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE415BA1A7700ACB293 /* CQ.png */; };
+		E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE615BA1B2F00ACB293 /* C10.png */; };
 		E1AB91EA159BE07D006FBB40 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D6159BE07D006FBB40 /* AQGridView.m */; };
 		E1AB91EB159BE07D006FBB40 /* AQGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D9159BE07D006FBB40 /* AQGridViewCell.m */; };
 		E1AB91EC159BE07D006FBB40 /* AQGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91DB159BE07D006FBB40 /* AQGridViewController.m */; };
@@ -85,7 +88,6 @@
 		E1C2CE8015B8AAD100EC9B24 /* C8.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5015B8AAD100EC9B24 /* C8.png */; };
 		E1C2CE8115B8AAD100EC9B24 /* C9.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5115B8AAD100EC9B24 /* C9.png */; };
 		E1C2CE8215B8AAD100EC9B24 /* CK.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5215B8AAD100EC9B24 /* CK.png */; };
-		E1C2CE8315B8AAD100EC9B24 /* CQ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5315B8AAD100EC9B24 /* CQ.png */; };
 		E1C2CE8415B8AAD100EC9B24 /* D2.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5415B8AAD100EC9B24 /* D2.png */; };
 		E1C2CE8515B8AAD100EC9B24 /* D5.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5515B8AAD100EC9B24 /* D5.png */; };
 		E1C2CE8615B8AAD100EC9B24 /* D6.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE5615B8AAD100EC9B24 /* D6.png */; };
@@ -246,6 +248,9 @@
 		E1830BC915744B9F003F16E2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		E1975A4A158F99D800CEE5A2 /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
 		E1975A4B158F99D800CEE5A2 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
+		E1A98BE215BA182300ACB293 /* CJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CJ.png; sourceTree = "<group>"; };
+		E1A98BE415BA1A7700ACB293 /* CQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CQ.png; sourceTree = "<group>"; };
+		E1A98BE615BA1B2F00ACB293 /* C10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C10.png; sourceTree = "<group>"; };
 		E1AB91D3159BE07D006FBB40 /* AQGridView+CellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLayout.h"; sourceTree = "<group>"; };
 		E1AB91D4159BE07D006FBB40 /* AQGridView+CellLocationDelegation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLocationDelegation.h"; sourceTree = "<group>"; };
 		E1AB91D5159BE07D006FBB40 /* AQGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQGridView.h; sourceTree = "<group>"; };
@@ -295,7 +300,6 @@
 		E1C2CE5015B8AAD100EC9B24 /* C8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C8.png; sourceTree = "<group>"; };
 		E1C2CE5115B8AAD100EC9B24 /* C9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C9.png; sourceTree = "<group>"; };
 		E1C2CE5215B8AAD100EC9B24 /* CK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CK.png; sourceTree = "<group>"; };
-		E1C2CE5315B8AAD100EC9B24 /* CQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CQ.png; sourceTree = "<group>"; };
 		E1C2CE5415B8AAD100EC9B24 /* D2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = D2.png; sourceTree = "<group>"; };
 		E1C2CE5515B8AAD100EC9B24 /* D5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = D5.png; sourceTree = "<group>"; };
 		E1C2CE5615B8AAD100EC9B24 /* D6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = D6.png; sourceTree = "<group>"; };
@@ -554,6 +558,7 @@
 		E1CF4A3715B8A52100ED2E1C /* Static Info Photos */ = {
 			isa = PBXGroup;
 			children = (
+				E1A98BE215BA182300ACB293 /* CJ.png */,
 				E1C2CE4A15B8AAD100EC9B24 /* C2.png */,
 				E1C2CE4B15B8AAD100EC9B24 /* C3.png */,
 				E1C2CE4C15B8AAD100EC9B24 /* C4.png */,
@@ -562,8 +567,9 @@
 				E1C2CE4F15B8AAD100EC9B24 /* C7.png */,
 				E1C2CE5015B8AAD100EC9B24 /* C8.png */,
 				E1C2CE5115B8AAD100EC9B24 /* C9.png */,
+				E1A98BE615BA1B2F00ACB293 /* C10.png */,
 				E1C2CE5215B8AAD100EC9B24 /* CK.png */,
-				E1C2CE5315B8AAD100EC9B24 /* CQ.png */,
+				E1A98BE415BA1A7700ACB293 /* CQ.png */,
 				E1C2CE5415B8AAD100EC9B24 /* D2.png */,
 				E1C2CE5515B8AAD100EC9B24 /* D5.png */,
 				E1C2CE5615B8AAD100EC9B24 /* D6.png */,
@@ -780,12 +786,12 @@
 		E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */ = {
 			isa = PBXGroup;
 			children = (
+				E1B0416415B7E85400C8EA40 /* StaticInformation.plist */,
 				E1F7B699156EDC7C0092367F /* AppDelegate.h */,
 				E1F7B69A156EDC7C0092367F /* AppDelegate.m */,
 				E1F7B69C156EDC7C0092367F /* MainStoryboard_iPhone.storyboard */,
 				E1F7B69F156EDC7C0092367F /* MainStoryboard_iPad.storyboard */,
 				E1F7B691156EDC7C0092367F /* Supporting Files */,
-				E1B0416415B7E85400C8EA40 /* StaticInformation.plist */,
 			);
 			path = "CernVM Co-Pilot";
 			sourceTree = "<group>";
@@ -921,7 +927,6 @@
 				E1C2CE8015B8AAD100EC9B24 /* C8.png in Resources */,
 				E1C2CE8115B8AAD100EC9B24 /* C9.png in Resources */,
 				E1C2CE8215B8AAD100EC9B24 /* CK.png in Resources */,
-				E1C2CE8315B8AAD100EC9B24 /* CQ.png in Resources */,
 				E1C2CE8415B8AAD100EC9B24 /* D2.png in Resources */,
 				E1C2CE8515B8AAD100EC9B24 /* D5.png in Resources */,
 				E1C2CE8615B8AAD100EC9B24 /* D6.png in Resources */,
@@ -960,6 +965,9 @@
 				E1C2CEA715B8AAD100EC9B24 /* SJ.png in Resources */,
 				E1C2CEA815B8AAD100EC9B24 /* SK.png in Resources */,
 				E1C2CEA915B8AAD100EC9B24 /* SQ.png in Resources */,
+				E1A98BE315BA182300ACB293 /* CJ.png in Resources */,
+				E1A98BE515BA1A7700ACB293 /* CQ.png in Resources */,
+				E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

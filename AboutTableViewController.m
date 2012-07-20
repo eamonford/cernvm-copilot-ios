@@ -14,7 +14,7 @@
 @end
 
 @implementation AboutTableViewController
-@synthesize currentElement;
+@synthesize tableDataSource, currentTitle, currentLevel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,10 +28,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (!self.currentElement) {
-        // We need to load the static information plist file.
+    if (self.currentLevel == 0) {
+        // We need to load the static information from the plist file.
+        
         NSString *path = [[NSBundle mainBundle] pathForResource:@"StaticInformation" ofType:@"plist"];
-        self.currentElement = [NSDictionary dictionaryWithContentsOfFile:path];
+        NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:path];
+        self.tableDataSource = [plistDict objectForKey:@"Root"];
+        self.navigationItem.title = @"About CERN";
+    } else {
+        self.navigationItem.title = self.currentTitle;
     }
 }
 
@@ -56,12 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([self.currentElement isKindOfClass:[NSDictionary class]])
-        return ((NSDictionary *)self.currentElement).allKeys.count;
-    else if ([self.currentElement isKindOfClass:[NSArray class]])
-        return ((NSArray *)self.currentElement).count;
-    
-    return 0;
+    return self.tableDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,65 +71,22 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSString *title;
-    if ([self.currentElement isKindOfClass:[NSDictionary class]]) {
-        title = [((NSDictionary *)self.currentElement).allKeys objectAtIndex:indexPath.row];
-    } else if ([self.currentElement isKindOfClass:[NSArray class]]) {
-        NSDictionary *staticInfo = [((NSArray *)self.currentElement) objectAtIndex:indexPath.row];
-        title = [staticInfo objectForKey:@"Title"];
-    }
     
-    cell.textLabel.text = title;
+    NSDictionary *item = [self.tableDataSource objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item objectForKey:@"Title"];
+    
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowStaticInfo"]) {
         // We need to initialize the detail view controller with the proper static information.
         int selectedRow = [self.tableView indexPathForSelectedRow].row;
-        NSDictionary *staticInformation = [(NSArray *)self.currentElement objectAtIndex:selectedRow];
+        NSDictionary *staticInfo = [self.tableDataSource objectAtIndex:selectedRow];
+        
         StaticInfoViewController *detailViewController = segue.destinationViewController;
-        detailViewController.staticInfo = staticInformation;
+        detailViewController.staticInfo = staticInfo;
     }
 }
 
@@ -137,15 +94,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.currentElement isKindOfClass:[NSDictionary class]]) {
-        // If the current element is a dictionary, there is still another level in the hierarchy before we get to the static info. So we will push another copy of the same view controller to show the next level in the hierarchy.
-        NSObject *nextLevel = [((NSDictionary *)self.currentElement).allValues objectAtIndex:indexPath.row];
+    NSDictionary *item = [self.tableDataSource objectAtIndex:indexPath.row];
+    NSArray *children = [item objectForKey:@"Items"];
+    if (children) {
         AboutTableViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"AboutTableViewController"];
-        viewController.currentElement = nextLevel;
+        viewController.tableDataSource = children;
+        viewController.currentTitle = [item objectForKey:@"Title"];
+        viewController.currentLevel = self.currentLevel+1;
+        
         [self.navigationController pushViewController:viewController animated:YES];
-
-    } else if ([self.currentElement isKindOfClass:[NSArray class]]) {
-        // If the current element is an array, then we have reached the end of the hierarchy. We will thus push a detail view controller.
+    } else {
+        // Push the detail view
         [self performSegueWithIdentifier:@"ShowStaticInfo" sender:self];
     }
 }
