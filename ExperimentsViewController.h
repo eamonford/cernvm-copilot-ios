@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    ATLAS,
+    CMS,
+    ALICE,
+    LHCb
+} ExperimentType;
+
 @interface ExperimentsViewController : UIViewController
 {
     IBOutlet UIImageView *shadowImageView;

@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "RSSAggregator.h"
+#import "NewsTableViewController.h"
+
 @implementation AppDelegate
 
 @synthesize photoDownloader, videoMetadata, videoThumbnails, window = _window;
@@ -17,6 +19,12 @@
     self.photoDownloader = [[PhotoDownloader alloc] init];
     self.videoMetadata = [NSMutableArray array];
     self.videoThumbnails = [NSMutableDictionary dictionary];
+
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *newsNavigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
+    NewsTableViewController *newsViewController = (NewsTableViewController *)newsNavigationController.topViewController;
+    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
+    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
 
     return YES;
 }

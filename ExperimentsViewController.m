@@ -8,6 +8,7 @@
 
 #import "ExperimentsViewController.h"
 #import "ExperimentTableViewController.h"
+#import "ExperimentDetailTableViewController.h"
 
 #define CMS_BUTTON 0
 #define LHCB_BUTTON 1
@@ -54,8 +55,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    ExperimentTableViewController *viewController = [segue destinationViewController];
-    if ([[segue identifier] isEqualToString:@"ShowCMSInfo"]) {
+    ExperimentDetailTableViewController *viewController = [segue destinationViewController];
+
+    // Since viewController.experiment is an ExperimentType enum, it will be an integer between 0 and 3. So the button tags in the storyboard are just set to match the enum types.
+    viewController.experiment = ((UIButton *)sender).tag;
+    
+    /*if ([[segue identifier] isEqualToString:@"ShowCMSInfo"]) {
         viewController.feed.screenName = @"CMSexperiment";
         [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
     } else if ([[segue identifier] isEqualToString:@"ShowATLASInfo"]) {
@@ -67,7 +72,7 @@
     } else if ([[segue identifier] isEqualToString:@"ShowALICEInfo"]) {
         [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
         viewController.feed.screenName = @"ALICEexperiment";
-    } 
+    }*/
 
 }
 

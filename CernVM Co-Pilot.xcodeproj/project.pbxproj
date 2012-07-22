@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E103FBD715AC1A8E00274739 /* ShadowedCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = E103FBD615AC1A8E00274739 /* ShadowedCellBackgroundView.m */; };
-		E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */; };
+		E120849C15773D3500A81B87 /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* NewsTableViewController.m */; };
 		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
 		E12E489615A36723001ADC77 /* VideosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489515A36723001ADC77 /* VideosTableViewController.m */; };
 		E12E489915A51AAE001ADC77 /* PhotoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489815A51AAD001ADC77 /* PhotoDownloader.m */; };
@@ -44,6 +44,7 @@
 		E1A98BE315BA182300ACB293 /* CJ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE215BA182300ACB293 /* CJ.png */; };
 		E1A98BE515BA1A7700ACB293 /* CQ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE415BA1A7700ACB293 /* CQ.png */; };
 		E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE615BA1B2F00ACB293 /* C10.png */; };
+		E1A98BEE15BA28C000ACB293 /* ExperimentDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */; };
 		E1AB91EA159BE07D006FBB40 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D6159BE07D006FBB40 /* AQGridView.m */; };
 		E1AB91EB159BE07D006FBB40 /* AQGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D9159BE07D006FBB40 /* AQGridViewCell.m */; };
 		E1AB91EC159BE07D006FBB40 /* AQGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91DB159BE07D006FBB40 /* AQGridViewController.m */; };
@@ -200,8 +201,8 @@
 /* Begin PBXFileReference section */
 		E103FBD515AC1A8E00274739 /* ShadowedCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedCellBackgroundView.h; sourceTree = "<group>"; };
 		E103FBD615AC1A8E00274739 /* ShadowedCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedCellBackgroundView.m; sourceTree = "<group>"; };
-		E120849A15773D3500A81B87 /* GeneralNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralNewsTableViewController.h; path = "CernVM Co-Pilot/GeneralNewsTableViewController.h"; sourceTree = "<group>"; };
-		E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralNewsTableViewController.m; path = "CernVM Co-Pilot/GeneralNewsTableViewController.m"; sourceTree = "<group>"; };
+		E120849A15773D3500A81B87 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = NewsTableViewController.h; path = "CernVM Co-Pilot/NewsTableViewController.h"; sourceTree = "<group>"; };
+		E120849B15773D3500A81B87 /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsTableViewController.m; path = "CernVM Co-Pilot/NewsTableViewController.m"; sourceTree = "<group>"; };
 		E120849F1577588100A81B87 /* RSSAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAggregator.h; sourceTree = "<group>"; };
 		E12084A01577588100A81B87 /* RSSAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAggregator.m; sourceTree = "<group>"; };
 		E12E489415A36723001ADC77 /* VideosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosTableViewController.h; sourceTree = "<group>"; };
@@ -251,6 +252,8 @@
 		E1A98BE215BA182300ACB293 /* CJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CJ.png; sourceTree = "<group>"; };
 		E1A98BE415BA1A7700ACB293 /* CQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CQ.png; sourceTree = "<group>"; };
 		E1A98BE615BA1B2F00ACB293 /* C10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C10.png; sourceTree = "<group>"; };
+		E1A98BEC15BA28C000ACB293 /* ExperimentDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExperimentDetailTableViewController.h; path = "CernVM Co-Pilot/ExperimentDetailTableViewController.h"; sourceTree = "<group>"; };
+		E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperimentDetailTableViewController.m; path = "CernVM Co-Pilot/ExperimentDetailTableViewController.m"; sourceTree = "<group>"; };
 		E1AB91D3159BE07D006FBB40 /* AQGridView+CellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLayout.h"; sourceTree = "<group>"; };
 		E1AB91D4159BE07D006FBB40 /* AQGridView+CellLocationDelegation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLocationDelegation.h"; sourceTree = "<group>"; };
 		E1AB91D5159BE07D006FBB40 /* AQGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQGridView.h; sourceTree = "<group>"; };
@@ -440,8 +443,10 @@
 		E120849E15773D5100A81B87 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E120849A15773D3500A81B87 /* GeneralNewsTableViewController.h */,
-				E120849B15773D3500A81B87 /* GeneralNewsTableViewController.m */,
+				E1A98BEC15BA28C000ACB293 /* ExperimentDetailTableViewController.h */,
+				E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */,
+				E120849A15773D3500A81B87 /* NewsTableViewController.h */,
+				E120849B15773D3500A81B87 /* NewsTableViewController.m */,
 				E1975A4A158F99D800CEE5A2 /* ArticleDetailViewController.h */,
 				E1975A4B158F99D800CEE5A2 /* ArticleDetailViewController.m */,
 				E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */,
@@ -1014,7 +1019,7 @@
 				E1F7B697156EDC7C0092367F /* main.m in Sources */,
 				E1F7B69B156EDC7C0092367F /* AppDelegate.m in Sources */,
 				E182E1FB15740766000E4197 /* RSSFeed.m in Sources */,
-				E120849C15773D3500A81B87 /* GeneralNewsTableViewController.m in Sources */,
+				E120849C15773D3500A81B87 /* NewsTableViewController.m in Sources */,
 				E12084A11577588200A81B87 /* RSSAggregator.m in Sources */,
 				E13101B9157B5CF800429634 /* MWFeedParser.m in Sources */,
 				E13101BB157B5CF800429634 /* MWFeedInfo.m in Sources */,
@@ -1063,6 +1068,7 @@
 				E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */,
 				E1B0415715B6449F00C8EA40 /* StaticInfoViewController.m in Sources */,
 				E1B0416315B7E68000C8EA40 /* AboutTableViewController.m in Sources */,
+				E1A98BEE15BA28C000ACB293 /* ExperimentDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
