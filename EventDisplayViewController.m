@@ -8,18 +8,24 @@
 
 #import "EventDisplayViewController.h"
 
+#define SOURCE_DESCRIPTION @"Description"
+#define SOURCE_URL @"URL"
+#define SOURCE_BOUNDARY_RECTS @"Boundaries"
+#define RESULT_IMAGE @"Image"
+#define RESULT_LAST_UPDATED @"Last Updated"
+
 @interface EventDisplayViewController ()
 
 @end
 
 @implementation EventDisplayViewController
-@synthesize imageView, segmentedControl, barButtonItem, frontImage, sideImage, infoImage;
+@synthesize segmentedControl, barButtonItem, sources, results, scrollView, pageControl;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        
-
+        self.sources = [NSMutableArray array];
+        numPages = 0;
     }
     return self;
 }
@@ -27,8 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.imageView.backgroundColor = [UIColor blackColor];
+    self.pageControl.numberOfPages = numPages;
+    
+    self.scrollView.backgroundColor = [UIColor blackColor];
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*numPages, 1.0);
     asyncData = [[NSMutableData alloc] init];
     [self refresh:self];
 }
@@ -46,11 +54,91 @@
 
 - (IBAction)refresh:(id)sender
 {
-    [self showLoadingView];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://atlas-live.cern.ch/live.png"]];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+   // [self showLoadingView];
+    self.results = [NSMutableArray array];
+
+    for (NSDictionary *source in self.sources) {
+        // ASYNCHRONOUSLY download the image for each source of the event display.
+        [self performSelectorInBackground:@selector(synchronouslyDownloadImageForSource:) withObject:source];
+    }
 }
 
+- (void)synchronouslyDownloadImageForSource:(NSDictionary *)source
+{
+    NSURL *url = [source objectForKey:SOURCE_URL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] init];
+    NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+    // Get the date the image was uploaded
+    NSDictionary *allHeaderFields = response.allHeaderFields;
+    NSString *lastModifiedString = [allHeaderFields objectForKey:@"Last-Modified"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
+    NSDate *lastUpdated = [dateFormatter dateFromString:lastModifiedString];
+    
+    
+    NSArray *boundaryRects = [source objectForKey:SOURCE_BOUNDARY_RECTS];
+    if (boundaryRects) {
+        for (NSDictionary *boundaryInfo in boundaryRects) {
+            NSValue *rectValue = [boundaryInfo objectForKey:@"Rect"];
+            CGRect boundaryRect = [rectValue CGRectValue];
+            CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, boundaryRect);
+            UIImage *partialImage = [UIImage imageWithCGImage:imageRef];
+
+            NSDictionary *imageInfo = [NSMutableDictionary dictionary];
+            [imageInfo setValue:partialImage forKey:RESULT_IMAGE];
+            [imageInfo setValue:[boundaryInfo objectForKey:SOURCE_DESCRIPTION] forKey:SOURCE_DESCRIPTION];
+            [imageInfo setValue:lastUpdated forKey:RESULT_LAST_UPDATED];
+            [self.results addObject:imageInfo];
+            [self addDisplay:imageInfo toPage:self.results.count];
+        }
+    } else {
+        NSDictionary *imageInfo = [NSMutableDictionary dictionary];
+        [imageInfo setValue:image forKey:RESULT_IMAGE];
+        [imageInfo setValue:[source objectForKey:SOURCE_DESCRIPTION] forKey:SOURCE_DESCRIPTION];
+        [imageInfo setValue:lastUpdated forKey:RESULT_LAST_UPDATED];
+        [self.results addObject:imageInfo];
+        [self addDisplay:imageInfo toPage:self.results.count];
+    }
+}
+
+- (void)addDisplay:(NSDictionary *)eventDisplayInfo toPage:(int)page
+{
+    UIImage *image = [eventDisplayInfo objectForKey:RESULT_IMAGE];
+    CGRect imageViewFrame = CGRectMake(self.scrollView.frame.size.width*(page-1), 0.0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = image;
+    [self.scrollView addSubview:imageView];
+}
+
+- (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects
+{
+    NSMutableDictionary *source = [NSMutableDictionary dictionary];
+    [source setValue:description forKey:SOURCE_DESCRIPTION];
+    [source setValue:url forKey:SOURCE_URL];
+    if (boundaryRects) {
+        [source setValue:boundaryRects forKey:SOURCE_BOUNDARY_RECTS];
+        // If the image downloaded from this source is going to be divided into multiple images, we will want a separate page for each of these.
+        numPages += boundaryRects.count;
+    } else {
+        numPages += 1;
+    }
+    [self.sources addObject:source];
+}
+
+#pragma mark - Page control
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;
+}
+
+/*
 #pragma mark NSURLConnectionDelegate methods
 
 
@@ -96,7 +184,7 @@
     int secondsSinceUpdated = abs([date timeIntervalSinceNow]);
     float hoursSinceUpdated = (float)secondsSinceUpdated/(60*60);
     self.barButtonItem.title = [NSString stringWithFormat:@"Last updated %.1f hours ago", hoursSinceUpdated];
-}
+}*/
 
 #pragma mark - UI methods
 
@@ -125,7 +213,7 @@
     [loadingView removeFromSuperview];
 }
 
-- (IBAction)segmentedControlTapped:(UISegmentedControl *)sender
+/*- (IBAction)segmentedControlTapped:(UISegmentedControl *)sender
 {
     switch (sender.selectedSegmentIndex) {
         case 0:
@@ -140,6 +228,6 @@
         default:
             break;
     }
-}
+}*/
 
 @end

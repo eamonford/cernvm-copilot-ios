@@ -8,6 +8,7 @@
 
 #import "ExperimentDetailTableViewController.h"
 #import "NewsTableViewController.h"
+#import "EventDisplayViewController.h"
 
 @interface ExperimentDetailTableViewController ()
 
@@ -82,6 +83,48 @@
             default:
                 break;
         }    
+    } else if ([segue.identifier isEqualToString:@"ShowEventDisplay"]) {
+        EventDisplayViewController *viewController = segue.destinationViewController;
+        switch (self.experiment) {
+            case ATLAS:
+            {
+                CGFloat largeImageDimension = 764.0;
+                CGFloat smallImageDimension = 379.0;
+                
+                CGRect frontViewRect = CGRectMake(2.0, 2.0, largeImageDimension, largeImageDimension);
+                NSDictionary *frontView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:frontViewRect], @"Rect", @"Front", @"Description", nil];
+                
+                CGRect sideViewRect = CGRectMake(2.0+4.0+largeImageDimension, 2.0, smallImageDimension, smallImageDimension);
+                NSDictionary *sideView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:sideViewRect], @"Rect", @"Side", @"Description", nil];
+                
+                NSArray *boundaryRects = [NSArray arrayWithObjects:frontView, sideView, nil];
+                [viewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://atlas-live.cern.ch/live.png"] boundaryRects:boundaryRects];
+
+                break;
+            }
+            case CMS:
+            {
+                [viewController addSourceWithDescription:@"3D Tower" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/3DTower.png"] boundaryRects:nil];
+                [viewController addSourceWithDescription:@"3D RecHit" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/3DRecHit.png"] boundaryRects:nil];
+                [viewController addSourceWithDescription:@"Lego" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/Lego.png"] boundaryRects:nil];
+                [viewController addSourceWithDescription:@"RhoPhi" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoPhi.png"] boundaryRects:nil];
+                [viewController addSourceWithDescription:@"RhoZ" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoZ.png"] boundaryRects:nil];
+
+                break;
+            }
+            case ALICE:
+            {
+                
+                break;
+            }
+            case LHCb:
+            {
+                [viewController addSourceWithDescription:@"Side" URL:[NSURL URLWithString:@"http://lbcomet.cern.ch/Online/Images/evdisp.jpg"] boundaryRects:nil];
+                break;
+            }
+            default:
+                break;
+        }    
     }
 }
 
@@ -142,6 +185,7 @@
             [self performSegueWithIdentifier:@"ShowExperimentNews" sender:self];
             break;
         case 1:
+            [self performSegueWithIdentifier:@"ShowEventDisplay" sender:self];
             break;
     }
 

@@ -61,16 +61,6 @@
         
         // now download the thumbnail for that photo
         int index = self.urls.count-1;
-        /*NSURLRequest *request = [NSURLRequest requestWithURL:[photo objectForKey:@"jpgIcon"]];
-        [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:
-         ^(NSURLResponse *response, NSData *data, NSError *error) {
-             NSLog(@"downloaded thumbnail %d", index);
-             UIImage *thumbnailImage = [UIImage imageWithData:data];
-             [self.thumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
-             if (delegate && [delegate respondsToSelector:@selector(photoDownloader:didDownloadThumbnailForIndex:)]) {
-                 [delegate photoDownloader:self didDownloadThumbnailForIndex:index];
-             }
-         }];*/
         [self performSelectorInBackground:@selector(downloadThumbnailForIndex:) withObject:[NSNumber numberWithInt:index]];
     }
  }

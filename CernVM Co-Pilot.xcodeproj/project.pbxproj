@@ -201,7 +201,7 @@
 /* Begin PBXFileReference section */
 		E103FBD515AC1A8E00274739 /* ShadowedCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedCellBackgroundView.h; sourceTree = "<group>"; };
 		E103FBD615AC1A8E00274739 /* ShadowedCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedCellBackgroundView.m; sourceTree = "<group>"; };
-		E120849A15773D3500A81B87 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = NewsTableViewController.h; path = "CernVM Co-Pilot/NewsTableViewController.h"; sourceTree = "<group>"; };
+		E120849A15773D3500A81B87 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsTableViewController.h; path = "CernVM Co-Pilot/NewsTableViewController.h"; sourceTree = "<group>"; };
 		E120849B15773D3500A81B87 /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsTableViewController.m; path = "CernVM Co-Pilot/NewsTableViewController.m"; sourceTree = "<group>"; };
 		E120849F1577588100A81B87 /* RSSAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAggregator.h; sourceTree = "<group>"; };
 		E12084A01577588100A81B87 /* RSSAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAggregator.m; sourceTree = "<group>"; };
