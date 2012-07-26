@@ -10,36 +10,29 @@
 
 @interface EventDisplayViewController : UIViewController<NSURLConnectionDelegate>
 {
-    //IBOutlet UIImageView *imageView;
     IBOutlet UISegmentedControl *segmentedControl;
-    IBOutlet UIBarButtonItem *barButtonItem;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIPageControl *pageControl;
     IBOutlet UIBarButtonItem *refreshButton;
-    // An array of NSDictionaries each containing a user-friendly description of the display (such as "Front" or "Side"), the URL to download the image, and an image. The object that initialized this view controller should supply it with the descriptions and URLS, and then the images will be downloaded.
+    
     NSMutableArray *sources;
-    NSMutableArray *results;
-        
-    UIView *loadingView;
-    NSMutableData *asyncData;
+    NSMutableArray *downloadedResults;
     int numPages;
 }
-//@property (nonatomic, retain) UIImageView *imageView;
+
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) UIBarButtonItem *barButtonItem;
 @property (nonatomic, retain) NSMutableArray *sources;
-@property (nonatomic, retain) NSMutableArray *results;
+@property (nonatomic, retain) NSMutableArray *downloadedResults;
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
 
-- (IBAction)close:(id)sender;
-- (IBAction)segmentedControlTapped:(id)sender;
-
-- (void)showLoadingView;
-- (void)hideLoadingView;
+// This method should be called immediately after init, and before viewDidLoad gets called.
+- (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects;
 - (IBAction)refresh:(id)sender;
 - (void)synchronouslyDownloadImageForSource:(NSDictionary *)source;
-- (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects;
+
+- (void)addDisplay:(NSDictionary *)eventDisplayInfo toPage:(int)page;
+- (void)addSpinnerToPage:(int)page;
 
 @end
