@@ -15,7 +15,7 @@
     IBOutlet UIBarButtonItem *barButtonItem;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIPageControl *pageControl;
-    
+    IBOutlet UIBarButtonItem *refreshButton;
     // An array of NSDictionaries each containing a user-friendly description of the display (such as "Front" or "Side"), the URL to download the image, and an image. The object that initialized this view controller should supply it with the descriptions and URLS, and then the images will be downloaded.
     NSMutableArray *sources;
     NSMutableArray *results;
@@ -31,6 +31,7 @@
 @property (nonatomic, retain) NSMutableArray *results;
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
+@property (nonatomic, retain) UIBarButtonItem *refreshButton;
 
 - (IBAction)close:(id)sender;
 - (IBAction)segmentedControlTapped:(id)sender;

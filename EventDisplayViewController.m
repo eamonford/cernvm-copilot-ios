@@ -19,7 +19,7 @@
 @end
 
 @implementation EventDisplayViewController
-@synthesize segmentedControl, barButtonItem, sources, results, scrollView, pageControl;
+@synthesize segmentedControl, barButtonItem, sources, results, scrollView, refreshButton, pageControl;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -38,6 +38,11 @@
     self.scrollView.backgroundColor = [UIColor blackColor];
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*numPages, 1.0);
     asyncData = [[NSMutableData alloc] init];
+    
+    for (int i=0; i<numPages; i++) {
+        [self addSpinnerToPage:i];
+    }
+    
     [self refresh:self];
 }
 
@@ -54,9 +59,17 @@
 
 - (IBAction)refresh:(id)sender
 {
-   // [self showLoadingView];
+    self.refreshButton.enabled = NO;
+    
     self.results = [NSMutableArray array];
-
+    
+    // If the event display images from a previous load are already in the scrollview, remove all of them before refreshing.
+    for (UIView *subview in self.scrollView.subviews) {
+        if ([subview class] == [UIImageView class]) {
+            [subview removeFromSuperview];
+        }
+    }
+    
     for (NSDictionary *source in self.sources) {
         // ASYNCHRONOUSLY download the image for each source of the event display.
         [self performSelectorInBackground:@selector(synchronouslyDownloadImageForSource:) withObject:source];
@@ -65,6 +78,7 @@
 
 - (void)synchronouslyDownloadImageForSource:(NSDictionary *)source
 {
+    // Download the image from the specified source
     NSURL *url = [source objectForKey:SOURCE_URL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] init];
@@ -78,7 +92,8 @@
     [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
     NSDate *lastUpdated = [dateFormatter dateFromString:lastModifiedString];
     
-    
+    // If the downloaded image needs to be divided into several smaller images, do that now and add each
+    // smaller image to the results array.
     NSArray *boundaryRects = [source objectForKey:SOURCE_BOUNDARY_RECTS];
     if (boundaryRects) {
         for (NSDictionary *boundaryInfo in boundaryRects) {
@@ -94,24 +109,39 @@
             [self.results addObject:imageInfo];
             [self addDisplay:imageInfo toPage:self.results.count];
         }
-    } else {
+    } else {    // Otherwise if the image does not need to be divided, just add the image to the results array.
         NSDictionary *imageInfo = [NSMutableDictionary dictionary];
         [imageInfo setValue:image forKey:RESULT_IMAGE];
         [imageInfo setValue:[source objectForKey:SOURCE_DESCRIPTION] forKey:SOURCE_DESCRIPTION];
         [imageInfo setValue:lastUpdated forKey:RESULT_LAST_UPDATED];
         [self.results addObject:imageInfo];
-        [self addDisplay:imageInfo toPage:self.results.count];
+        [self addDisplay:imageInfo toPage:self.results.count-1];
+    }
+    
+    if (self.results.count == numPages) {
+        self.refreshButton.enabled = YES;
     }
 }
 
 - (void)addDisplay:(NSDictionary *)eventDisplayInfo toPage:(int)page
 {
     UIImage *image = [eventDisplayInfo objectForKey:RESULT_IMAGE];
-    CGRect imageViewFrame = CGRectMake(self.scrollView.frame.size.width*(page-1), 0.0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    CGRect imageViewFrame = CGRectMake(self.scrollView.frame.size.width*page, 0.0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.image = image;
     [self.scrollView addSubview:imageView];
+}
+
+- (void)addSpinnerToPage:(int)page
+{
+    float scrollViewWidth = self.scrollView.frame.size.width;
+    float scrollViewHeight = self.scrollView.frame.size.height;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    spinner.center = CGPointMake(scrollViewWidth*(page+1)-(scrollViewWidth/2), scrollViewHeight/2);
+    [spinner startAnimating];
+    [self.scrollView addSubview:spinner];
 }
 
 - (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects
