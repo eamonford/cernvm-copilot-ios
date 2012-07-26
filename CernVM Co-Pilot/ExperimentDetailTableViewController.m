@@ -119,7 +119,11 @@
             }
             case LHCb:
             {
-                [viewController addSourceWithDescription:@"Side" URL:[NSURL URLWithString:@"http://lbcomet.cern.ch/Online/Images/evdisp.jpg"] boundaryRects:nil];
+                CGRect cropRect = CGRectMake(0.0, 66.0, 1685.0, 811.0);
+                NSDictionary *croppedView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:cropRect], @"Rect", @"Side", @"Description", nil];
+
+                NSArray *boundaryRects = [NSArray arrayWithObjects:croppedView, nil];
+                [viewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://lbcomet.cern.ch/Online/Images/evdisp.jpg"] boundaryRects:boundaryRects];
                 break;
             }
             default:

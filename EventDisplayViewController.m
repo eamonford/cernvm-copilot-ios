@@ -107,7 +107,7 @@
             [imageInfo setValue:[boundaryInfo objectForKey:SOURCE_DESCRIPTION] forKey:SOURCE_DESCRIPTION];
             [imageInfo setValue:lastUpdated forKey:RESULT_LAST_UPDATED];
             [self.results addObject:imageInfo];
-            [self addDisplay:imageInfo toPage:self.results.count];
+            [self addDisplay:imageInfo toPage:self.results.count-1];
         }
     } else {    // Otherwise if the image does not need to be divided, just add the image to the results array.
         NSDictionary *imageInfo = [NSMutableDictionary dictionary];
