@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UITapGestureRecognizer *singleFingerTap = 
     [[UITapGestureRecognizer alloc] initWithTarget:self 
                                             action:@selector(handleSingleTap:)];
@@ -41,11 +42,16 @@
     masklayer.frame = CGRectMake(5.0, 5.0, self.view.frame.size.width-10.0, self.view.frame.size.height-10.0);
     self.view.layer.mask = masklayer;
     
+    [self setAndPositionInformation];
+}
+
+- (void)setAndPositionInformation
+{
     // Set the image, and position it right below the title label
     NSString *imageName = [self.staticInfo objectForKey:@"Image"];
     UIImage *image = [UIImage imageNamed:imageName];
     self.imageView.image = image;
-
+    
     // Set the title label and resize it accordingly
     NSString *title = [self.staticInfo objectForKey:@"Title"];
     self.navigationItem.title = title;
@@ -61,7 +67,7 @@
     self.descriptionLabel.text = description;
     
     // Set the content size of the scrollview
-    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.descriptionLabel.frame.origin.y+self.descriptionLabel.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.descriptionLabel.frame.origin.y+self.descriptionLabel.frame.size.height);
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer 

@@ -22,4 +22,6 @@
 @property (nonatomic, retain) UILabel *descriptionLabel;
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) NSDictionary *staticInfo;
+
+- (void)setAndPositionInformation;
 @end

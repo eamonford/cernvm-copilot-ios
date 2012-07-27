@@ -61,7 +61,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="WgP-zI-tGl"/>
                     <connections>
-                        <segue destination="Kb4-4y-xfb" kind="modal" identifier="ShowPageView" id="9CG-gP-KHx"/>
+                        <segue destination="Kb4-4y-xfb" kind="modal" identifier="ShowPageView" modalTransitionStyle="flipHorizontal" id="9CG-gP-KHx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3D-YG-yZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
