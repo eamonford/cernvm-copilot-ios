@@ -8,6 +8,7 @@
 
 #import "AboutTableViewController.h"
 #import "StaticInfoViewController.h"
+#import "PageContainingViewController.h"
 
 @interface AboutTableViewController ()
 
@@ -88,6 +89,12 @@
         StaticInfoViewController *detailViewController = segue.destinationViewController;
         detailViewController.staticInfo = staticInfo;
     }
+    if ([segue.identifier isEqualToString:@"ShowPageView"]) {
+        int selectedRow = [self.tableView indexPathForSelectedRow].row;
+        NSArray *staticInfoRecords = [[self.tableDataSource objectAtIndex:selectedRow] objectForKey:@"Items"];
+        PageContainingViewController *viewController = segue.destinationViewController;
+        viewController.dataSource = staticInfoRecords;
+    }
 }
 
 #pragma mark - Table view delegate
@@ -96,7 +103,9 @@
 {
     NSDictionary *item = [self.tableDataSource objectAtIndex:indexPath.row];
     NSArray *children = [item objectForKey:@"Items"];
-    if (children) {
+    
+    // If its children have children...
+    if (children && [[children objectAtIndex:0] objectForKey:@"Items"]) {
         AboutTableViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"AboutTableViewController"];
         viewController.tableDataSource = children;
         viewController.currentTitle = [item objectForKey:@"Title"];
@@ -105,7 +114,8 @@
         [self.navigationController pushViewController:viewController animated:YES];
     } else {
         // Push the detail view
-        [self performSegueWithIdentifier:@"ShowStaticInfo" sender:self];
+        //[self performSegueWithIdentifier:@"ShowStaticInfo" sender:self];
+        [self performSegueWithIdentifier:@"ShowPageView" sender:self];
     }
 }
 
