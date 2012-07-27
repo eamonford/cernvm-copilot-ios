@@ -32,7 +32,9 @@
                                             action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleFingerTap];
     
-    self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    self.view.layer.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.95].CGColor;
+    self.imageView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.imageView.layer.borderWidth = 1.0;
     CALayer *masklayer = [CALayer layer];
     masklayer.backgroundColor = [UIColor whiteColor].CGColor;
     masklayer.cornerRadius = 10.0;
