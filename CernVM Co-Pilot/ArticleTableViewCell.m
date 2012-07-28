@@ -10,15 +10,18 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ArticleTableViewCell
-@synthesize titleLabel, feedLabel, dateLabel;
+@synthesize titleLabel, feedLabel, dateLabel, thumbnailImageView;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+    if (self = [super initWithCoder:aDecoder]) {
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    self.thumbnailImageView.layer.cornerRadius = 5.0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -247,42 +247,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleTableViewCell" rowHeight="100" id="Uhc-10-YlN" customClass="ArticleTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleTableViewCell" rowHeight="100" id="HNN-VN-0tw" customClass="ArticleTableViewCell">
                                 <rect key="frame" x="0.0" y="46" width="320" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="npA-Ec-aMc">
-                                            <rect key="frame" x="20" y="1" width="260" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="v2g-Sq-lZZ">
+                                            <rect key="frame" x="91" y="1" width="189" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="1Cs-Za-rae">
-                                            <rect key="frame" x="20" y="19" width="260" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qAj-QD-IjW">
+                                            <rect key="frame" x="91" y="19" width="189" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="5dR-0h-fb9">
-                                            <rect key="frame" x="20" y="45" width="260" height="54"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="igi-ev-rTB">
+                                            <rect key="frame" x="91" y="45" width="189" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Ug1-oU-G48">
+                                            <rect key="frame" x="8" y="12" width="75" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel" destination="1Cs-Za-rae" id="eJw-Ol-Ms9"/>
-                                    <outlet property="feedLabel" destination="npA-Ec-aMc" id="so1-DS-Z25"/>
-                                    <outlet property="titleLabel" destination="5dR-0h-fb9" id="uMt-Wq-Mnq"/>
-                                    <segue destination="Wtb-6O-pz3" kind="push" identifier="ShowArticleDetails" id="8X1-bS-YFg"/>
+                                    <outlet property="dateLabel" destination="qAj-QD-IjW" id="fpv-xH-gvV"/>
+                                    <outlet property="feedLabel" destination="v2g-Sq-lZZ" id="gdF-Oc-QTX"/>
+                                    <outlet property="thumbnailImageView" destination="Ug1-oU-G48" id="zvO-sE-13r"/>
+                                    <outlet property="titleLabel" destination="igi-ev-rTB" id="bQz-ky-6Lu"/>
+                                    <segue destination="Wtb-6O-pz3" kind="push" identifier="ShowArticleDetails" id="5LS-4L-biR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -314,32 +319,37 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="fZK-M9-zj4">
-                                            <rect key="frame" x="20" y="1" width="260" height="21"/>
+                                            <rect key="frame" x="91" y="1" width="189" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Gbf-89-nGA">
-                                            <rect key="frame" x="20" y="19" width="260" height="21"/>
+                                            <rect key="frame" x="91" y="19" width="189" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="R1E-ke-ilV">
-                                            <rect key="frame" x="20" y="45" width="260" height="54"/>
+                                            <rect key="frame" x="91" y="45" width="189" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="xaV-0L-6js">
+                                            <rect key="frame" x="8" y="9" width="75" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
                                     <outlet property="dateLabel" destination="Gbf-89-nGA" id="50E-VX-Gaf"/>
                                     <outlet property="feedLabel" destination="fZK-M9-zj4" id="sPN-Wu-1zU"/>
+                                    <outlet property="thumbnailImageView" destination="xaV-0L-6js" id="N57-nO-O4X"/>
                                     <outlet property="titleLabel" destination="R1E-ke-ilV" id="gTR-os-Yex"/>
                                     <segue destination="dTx-aX-mIA" kind="push" identifier="ShowArticleDetails" id="YqK-Wg-Guh"/>
                                 </connections>

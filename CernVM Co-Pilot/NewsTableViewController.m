@@ -10,26 +10,20 @@
 #import "NSString+HTML.h"
 #import "ArticleDetailViewController.h"
 #import "ArticleTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
+#define THUMBNAIL_SIZE 75.0
 @interface NewsTableViewController ()
 
 @end
 
 @implementation NewsTableViewController
-@synthesize aggregator, feedArticles;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-
-    }
-    return self;
-}
+@synthesize aggregator, feedArticles, thumbnailImages;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
+        self.thumbnailImages = [NSMutableDictionary dictionary];
         self.feedArticles = [NSArray array];
         self.aggregator = [[RSSAggregator alloc] init];
         self.aggregator.delegate = self;
@@ -46,10 +40,6 @@
     self.tableView.backgroundView = backgroundView;
     
     [self showLoadingView];
-    
- /*   [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
-    [self.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
-  */  
     [self.aggregator refreshAllFeeds];
 }
 
@@ -83,6 +73,73 @@
     self.feedArticles = [sender aggregate];
     [self.tableView reloadData];
     [self hideLoadingView];
+    
+    for (int i=0; i<self.feedArticles.count; i++) {
+        [self performSelectorInBackground:@selector(loadThumbnailForArticleAtIndex:) withObject:[NSNumber numberWithInt:i]];
+    }
+}
+
+- (void)loadThumbnailForArticleAtIndex:(NSNumber *)number
+{
+    int index = number.intValue;
+    MWFeedItem *article = [self.feedArticles objectAtIndex:index];
+    NSString *body = article.content;
+    if (!body) {
+        body = article.summary;
+    }
+    NSURL *imageURL = [self imageURLFromHTMLString:body];
+    if (imageURL) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+        NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        UIImage *image = [UIImage imageWithData:imageData];
+        image = [self squareImageWithDimension:THUMBNAIL_SIZE fromImage:image];
+        
+        [self.thumbnailImages setObject:image forKey:number];
+        [self performSelectorOnMainThread:@selector(reloadTableCell:) withObject:number waitUntilDone:YES];
+    }
+}
+
+- (void)reloadTableCell:(NSNumber *)indexNumber
+{
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexNumber.intValue inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+
+}
+
+- (UIImage *)squareImageWithDimension:(float)dimension fromImage:(UIImage *)originalImage
+{
+    CGImageRef imageRef = originalImage.CGImage;
+    CGFloat width = originalImage.size.width;
+    CGFloat height = originalImage.size.height;
+    CGFloat minDimension = width<height ? width : height;
+    
+    CGRect cropRect = CGRectMake(0.0, 0.0, minDimension, minDimension);
+    
+    imageRef = CGImageCreateWithImageInRect(imageRef, cropRect);
+    
+    float scaleFactor = dimension/originalImage.size.width;
+    UIImage *image = [UIImage imageWithCGImage:imageRef scale:scaleFactor orientation:UIImageOrientationUp];
+    
+    return image;
+}
+
+- (NSURL *)imageURLFromHTMLString:(NSString *)htmlString
+{
+    NSString *urlString;
+    NSScanner *theScanner = [NSScanner scannerWithString:htmlString];
+    // find start of IMG tag
+    [theScanner scanUpToString:@"<img" intoString:nil];
+    if (![theScanner isAtEnd]) {
+        [theScanner scanUpToString:@"src" intoString:nil];
+        NSCharacterSet *charset = [NSCharacterSet characterSetWithCharactersInString:@"\"'"];
+        [theScanner scanUpToCharactersFromSet:charset intoString:nil];
+        [theScanner scanCharactersFromSet:charset intoString:nil];
+        [theScanner scanUpToCharactersFromSet:charset intoString:&urlString];
+        // "url" now contains the URL of the img
+        
+        return [NSURL URLWithString:urlString];
+    }
+    // if no img url was found, return nil
+    return nil;
 }
 
 #pragma mark - UI methods
@@ -152,21 +209,17 @@
     NSString *articleDate = [dateFormatter stringFromDate:feedItem.date];
     cell.dateLabel.text = articleDate;
     
+    UIImage *thumbnailImage = [self.thumbnailImages objectForKey:[NSNumber numberWithInt:indexPath.row]];
+    if (thumbnailImage) {
+        cell.thumbnailImageView.image = thumbnailImage;
+        NSLog(@"setting thumbnail for cell %d", indexPath.row);
+    }
+    
     return cell;
 }
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -174,7 +227,7 @@
     NSString *text = feedItem.title;
     CGSize size = [text sizeWithFont:[UIFont boldSystemFontOfSize:16.0] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
     
-    return size.height+55.0;    
+    return MAX(THUMBNAIL_SIZE+20.0, size.height+55.0);
 }
 
 

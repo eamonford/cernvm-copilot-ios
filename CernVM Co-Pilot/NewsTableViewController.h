@@ -13,9 +13,11 @@
 {
     RSSAggregator *aggregator;
     NSArray *feedArticles;
+    NSMutableDictionary *thumbnailImages;
     UIView *loadingView;
 }
 @property (nonatomic, retain) RSSAggregator *aggregator;
+@property (nonatomic, retain) NSMutableDictionary *thumbnailImages;
 @property (atomic) NSArray *feedArticles;
 
 - (IBAction)close:(id)sender;

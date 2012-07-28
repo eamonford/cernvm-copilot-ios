@@ -14,10 +14,12 @@
     IBOutlet UILabel *feedLabel;
     IBOutlet UILabel *dateLabel;
     IBOutlet UILabel *titleLabel;
+    IBOutlet UIImageView *thumbnailImageView;
 }
 
 @property (nonatomic, readonly) UILabel *feedLabel;
 @property (nonatomic, readonly) UILabel *dateLabel;
 @property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, readonly) UIImageView *thumbnailImageView;
 
 @end
