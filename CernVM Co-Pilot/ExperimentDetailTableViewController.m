@@ -40,6 +40,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = NO;
+    switch (self.experiment) {
+        case ATLAS:
+            self.title = @"ATLAS";
+            break;
+        case CMS:
+            self.title = @"CMS";
+            break;
+        case ALICE:
+            self.title = @"ALICE";
+            break;
+        case LHCb:
+            self.title = @"LHCb";
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)viewDidUnload
@@ -99,7 +115,7 @@
                 
                 NSArray *boundaryRects = [NSArray arrayWithObjects:frontView, sideView, nil];
                 [viewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://atlas-live.cern.ch/live.png"] boundaryRects:boundaryRects];
-
+                viewController.title = @"ATLAS";
                 break;
             }
             case CMS:
@@ -109,12 +125,11 @@
                 [viewController addSourceWithDescription:@"Lego" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/Lego.png"] boundaryRects:nil];
                 [viewController addSourceWithDescription:@"RhoPhi" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoPhi.png"] boundaryRects:nil];
                 [viewController addSourceWithDescription:@"RhoZ" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoZ.png"] boundaryRects:nil];
-
+                viewController.title = @"CMS";
                 break;
             }
             case ALICE:
             {
-                
                 break;
             }
             case LHCb:
@@ -124,6 +139,7 @@
 
                 NSArray *boundaryRects = [NSArray arrayWithObjects:croppedView, nil];
                 [viewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://lbcomet.cern.ch/Online/Images/evdisp.jpg"] boundaryRects:boundaryRects];
+                viewController.title = @"LHCB";
                 break;
             }
             default:

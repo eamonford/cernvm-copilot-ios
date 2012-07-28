@@ -14,6 +14,8 @@
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIPageControl *pageControl;
     IBOutlet UIBarButtonItem *refreshButton;
+    UILabel *titleLabel;
+    UILabel *dateLabel;
     
     NSMutableArray *sources;
     NSMutableArray *downloadedResults;
@@ -26,6 +28,8 @@
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UILabel *dateLabel;
 
 // This method should be called immediately after init, and before viewDidLoad gets called.
 - (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects;

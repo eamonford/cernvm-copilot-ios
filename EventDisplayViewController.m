@@ -19,7 +19,7 @@
 @end
 
 @implementation EventDisplayViewController
-@synthesize segmentedControl, sources, downloadedResults, scrollView, refreshButton, pageControl;
+@synthesize segmentedControl, sources, downloadedResults, scrollView, refreshButton, pageControl, titleLabel, dateLabel;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -33,8 +33,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.pageControl.numberOfPages = numPages;
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
+    CGRect titleViewFrame = CGRectMake(0.0, 0.0, 200.0, 44.0);
+    UIView *titleView = [[UIView alloc] initWithFrame:titleViewFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, titleView.frame.size.width, 24.0)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.text = self.title;
+    [titleView addSubview:titleLabel];
+    
+    dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, titleLabel.frame.size.height, titleView.frame.size.width, titleView.frame.size.height-titleLabel.frame.size.height)];
+    dateLabel.backgroundColor = [UIColor clearColor];
+    dateLabel.textColor = [UIColor whiteColor];
+    dateLabel.font = [UIFont boldSystemFontOfSize:13.0];
+    dateLabel.textAlignment = UITextAlignmentCenter;
+    [titleView addSubview:dateLabel];
+    
+    self.navigationItem.titleView = titleView;
+    
+    self.pageControl.numberOfPages = numPages;
     self.scrollView.backgroundColor = [UIColor blackColor];
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*numPages, 1.0);
     
@@ -100,12 +122,12 @@
     NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     UIImage *image = [UIImage imageWithData:imageData];
     
-    // Get the date the image was uploaded
-    NSDictionary *allHeaderFields = response.allHeaderFields;
-    NSString *lastModifiedString = [allHeaderFields objectForKey:@"Last-Modified"];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
-    NSDate *lastUpdated = [dateFormatter dateFromString:lastModifiedString];
+    NSDate *lastUpdated = [self lastModifiedDateFromHTTPResponse:response];
+
+    // Just set the date in the nav bar to the date of the first image, because they should all be pretty much the same anyway
+    if (self.downloadedResults.count == 0) {
+        self.dateLabel.text = [self timeAgoStringFromDate:lastUpdated];
+    }
     
     // If the downloaded image needs to be divided into several smaller images, do that now and add each
     // smaller image to the results array.
@@ -138,6 +160,30 @@
     }
 }
 
+- (NSDate *)lastModifiedDateFromHTTPResponse:(NSHTTPURLResponse *)response
+{
+    NSDictionary *allHeaderFields = response.allHeaderFields;
+    NSString *lastModifiedString = [allHeaderFields objectForKey:@"Last-Modified"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
+    
+    return [dateFormatter dateFromString:lastModifiedString];
+}
+
+- (NSString *)timeAgoStringFromDate:(NSDate *)date
+{
+    int secondsAgo = abs([date timeIntervalSinceNow]);
+    NSString *dateString;
+    if (secondsAgo<60*60) {
+        dateString = [NSString stringWithFormat:@"%d minutes ago", secondsAgo/60];
+    } else if (secondsAgo<60*60*24) {
+        dateString = [NSString stringWithFormat:@"%f hours ago", (float)secondsAgo/(60*60)];
+    } else {
+        dateString = [NSString stringWithFormat:@"%f days ago", (float)secondsAgo/(60*60*24)];
+    }
+    return dateString;
+}
+        
 #pragma mark - UI methods
 
 - (void)addDisplay:(NSDictionary *)eventDisplayInfo toPage:(int)page
