@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10055F715C4728000C3BC9F /* thumbnailPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = E10055F615C4728000C3BC9F /* thumbnailPlaceholder.png */; };
+		E10055FB15C47B0300C3BC9F /* UIImage+SquareScaledImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E10055FA15C47B0300C3BC9F /* UIImage+SquareScaledImage.m */; };
 		E103FBD715AC1A8E00274739 /* ShadowedCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = E103FBD615AC1A8E00274739 /* ShadowedCellBackgroundView.m */; };
 		E120849C15773D3500A81B87 /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E120849B15773D3500A81B87 /* NewsTableViewController.m */; };
 		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
@@ -200,6 +202,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E10055F615C4728000C3BC9F /* thumbnailPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnailPlaceholder.png; sourceTree = "<group>"; };
+		E10055F915C47B0300C3BC9F /* UIImage+SquareScaledImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SquareScaledImage.h"; sourceTree = "<group>"; };
+		E10055FA15C47B0300C3BC9F /* UIImage+SquareScaledImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SquareScaledImage.m"; sourceTree = "<group>"; };
 		E103FBD515AC1A8E00274739 /* ShadowedCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedCellBackgroundView.h; sourceTree = "<group>"; };
 		E103FBD615AC1A8E00274739 /* ShadowedCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedCellBackgroundView.m; sourceTree = "<group>"; };
 		E120849A15773D3500A81B87 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsTableViewController.h; path = "CernVM Co-Pilot/NewsTableViewController.h"; sourceTree = "<group>"; };
@@ -511,6 +516,8 @@
 		E1A2F588157A03DF0010D672 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E10055F915C47B0300C3BC9F /* UIImage+SquareScaledImage.h */,
+				E10055FA15C47B0300C3BC9F /* UIImage+SquareScaledImage.m */,
 				E13101BF157B5D0600429634 /* NSString+HTML.h */,
 				E13101C0157B5D0600429634 /* NSString+HTML.m */,
 				E13101C1157B5D0600429634 /* NSDate+InternetDateTime.h */,
@@ -700,6 +707,7 @@
 		E1D87E86159EE6CB0051104C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E10055F615C4728000C3BC9F /* thumbnailPlaceholder.png */,
 				E1CF4A3715B8A52100ED2E1C /* Static Info Photos */,
 				E1B0415F15B6A01B00C8EA40 /* alice.png */,
 				E1B0415D15B69B0900C8EA40 /* lhcb.png */,
@@ -978,6 +986,7 @@
 				E1A98BE315BA182300ACB293 /* CJ.png in Resources */,
 				E1A98BE515BA1A7700ACB293 /* CQ.png in Resources */,
 				E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */,
+				E10055F715C4728000C3BC9F /* thumbnailPlaceholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1084,7 @@
 				E1B0416315B7E68000C8EA40 /* AboutTableViewController.m in Sources */,
 				E1A98BEE15BA28C000ACB293 /* ExperimentDetailTableViewController.m in Sources */,
 				E1FE435615C20165008E9634 /* PageContainingViewController.m in Sources */,
+				E10055FB15C47B0300C3BC9F /* UIImage+SquareScaledImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

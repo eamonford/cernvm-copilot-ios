@@ -10,6 +10,7 @@
 #import "NSString+HTML.h"
 #import "ArticleDetailViewController.h"
 #import "ArticleTableViewCell.h"
+#import "UIImage+SquareScaledImage.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define THUMBNAIL_SIZE 75.0
@@ -79,6 +80,8 @@
     }
 }
 
+#pragma mark - Loading thumbnails
+
 - (void)loadThumbnailForArticleAtIndex:(NSNumber *)number
 {
     int index = number.intValue;
@@ -92,34 +95,13 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
         NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         UIImage *image = [UIImage imageWithData:imageData];
-        image = [self squareImageWithDimension:THUMBNAIL_SIZE fromImage:image];
-        
-        [self.thumbnailImages setObject:image forKey:number];
-        [self performSelectorOnMainThread:@selector(reloadTableCell:) withObject:number waitUntilDone:YES];
+        // We only want the image if it's at least as big as our thumbnail size
+        if (image.size.width >= THUMBNAIL_SIZE && image.size.height >= THUMBNAIL_SIZE) {
+            image = [UIImage squareImageWithDimension:THUMBNAIL_SIZE fromImage:image];
+            [self.thumbnailImages setObject:image forKey:number];
+            [self performSelectorOnMainThread:@selector(reloadTableCell:) withObject:number waitUntilDone:YES];
+        }
     }
-}
-
-- (void)reloadTableCell:(NSNumber *)indexNumber
-{
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexNumber.intValue inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-
-}
-
-- (UIImage *)squareImageWithDimension:(float)dimension fromImage:(UIImage *)originalImage
-{
-    CGImageRef imageRef = originalImage.CGImage;
-    CGFloat width = originalImage.size.width;
-    CGFloat height = originalImage.size.height;
-    CGFloat minDimension = width<height ? width : height;
-    
-    CGRect cropRect = CGRectMake(0.0, 0.0, minDimension, minDimension);
-    
-    imageRef = CGImageCreateWithImageInRect(imageRef, cropRect);
-    
-    float scaleFactor = dimension/originalImage.size.width;
-    UIImage *image = [UIImage imageWithCGImage:imageRef scale:scaleFactor orientation:UIImageOrientationUp];
-    
-    return image;
 }
 
 - (NSURL *)imageURLFromHTMLString:(NSString *)htmlString
@@ -142,12 +124,12 @@
     return nil;
 }
 
-#pragma mark - UI methods
-
-- (IBAction)close:(id)sender
+- (void)reloadTableCell:(NSNumber *)indexNumber
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexNumber.intValue inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
+
+#pragma mark - UI methods
 
 - (void)showLoadingView
 {
@@ -212,7 +194,8 @@
     UIImage *thumbnailImage = [self.thumbnailImages objectForKey:[NSNumber numberWithInt:indexPath.row]];
     if (thumbnailImage) {
         cell.thumbnailImageView.image = thumbnailImage;
-        NSLog(@"setting thumbnail for cell %d", indexPath.row);
+    } else {
+        cell.thumbnailImageView.image = [UIImage imageNamed:@"thumbnailPlaceholder"];
     }
     
     return cell;
