@@ -172,6 +172,17 @@
     if (cell == nil) {
        cell = [[ArticleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    if (self.feedArticles.count == 1) {
+        cell.position = ShadowedCellPositionSingle;
+    } else if (indexPath.row == 0) {
+        cell.position = ShadowedCellPositionTop;
+    } else if (indexPath.row == self.feedArticles.count-1) {
+        cell.position = ShadowedCellPositionBottom;
+    } else {
+        cell.position = ShadowedCellPositionMiddle;
+    }
+    
     cell.cornerRadius = 5.0;
     cell.shadowSize = 2.0;
     cell.fillColor = [UIColor whiteColor];
@@ -208,9 +219,9 @@
 {
     MWFeedItem *feedItem = [self.feedArticles objectAtIndex:[indexPath row]];
     NSString *text = feedItem.title;
-    CGSize size = [text sizeWithFont:[UIFont boldSystemFontOfSize:16.0] constrainedToSize:CGSizeMake(260.0, CGFLOAT_MAX)];
+    CGSize size = [text sizeWithFont:[UIFont boldSystemFontOfSize:16.0] constrainedToSize:CGSizeMake(189.0, CGFLOAT_MAX)];
     
-    return MAX(THUMBNAIL_SIZE+20.0, size.height+55.0);
+    return MAX(THUMBNAIL_SIZE+20.0, size.height+70.0);
 }
 
 

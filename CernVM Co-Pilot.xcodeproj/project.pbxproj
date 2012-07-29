@@ -14,6 +14,7 @@
 		E12084A11577588200A81B87 /* RSSAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = E12084A01577588100A81B87 /* RSSAggregator.m */; };
 		E12E489615A36723001ADC77 /* VideosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489515A36723001ADC77 /* VideosTableViewController.m */; };
 		E12E489915A51AAE001ADC77 /* PhotoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E489815A51AAD001ADC77 /* PhotoDownloader.m */; };
+		E130802E15C4BC810024BE41 /* ArticleCSS.css in Resources */ = {isa = PBXBuildFile; fileRef = E130802D15C4BC810024BE41 /* ArticleCSS.css */; };
 		E13101B9157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E13101BA157B5CF800429634 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B4157B5CF800429634 /* MWFeedParser.m */; };
 		E13101BB157B5CF800429634 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E13101B6157B5CF800429634 /* MWFeedInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -215,6 +216,7 @@
 		E12E489515A36723001ADC77 /* VideosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosTableViewController.m; sourceTree = "<group>"; };
 		E12E489715A51AAD001ADC77 /* PhotoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDownloader.h; sourceTree = "<group>"; };
 		E12E489815A51AAD001ADC77 /* PhotoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDownloader.m; sourceTree = "<group>"; };
+		E130802D15C4BC810024BE41 /* ArticleCSS.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = ArticleCSS.css; path = ../ArticleCSS.css; sourceTree = "<group>"; };
 		E13101B2157B5CF800429634 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser_Private.h; sourceTree = "<group>"; };
 		E13101B3157B5CF800429634 /* MWFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser.h; sourceTree = "<group>"; };
 		E13101B4157B5CF800429634 /* MWFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedParser.m; sourceTree = "<group>"; };
@@ -804,7 +806,6 @@
 		E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */ = {
 			isa = PBXGroup;
 			children = (
-				E1B0416415B7E85400C8EA40 /* StaticInformation.plist */,
 				E1F7B699156EDC7C0092367F /* AppDelegate.h */,
 				E1F7B69A156EDC7C0092367F /* AppDelegate.m */,
 				E1F7B69C156EDC7C0092367F /* MainStoryboard_iPhone.storyboard */,
@@ -817,6 +818,8 @@
 		E1F7B691156EDC7C0092367F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1B0416415B7E85400C8EA40 /* StaticInformation.plist */,
+				E130802D15C4BC810024BE41 /* ArticleCSS.css */,
 				E1F7B692156EDC7C0092367F /* CernVM Co-Pilot-Info.plist */,
 				E1F7B693156EDC7C0092367F /* InfoPlist.strings */,
 				E1F7B696156EDC7C0092367F /* main.m */,
@@ -987,6 +990,7 @@
 				E1A98BE515BA1A7700ACB293 /* CQ.png in Resources */,
 				E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */,
 				E10055F715C4728000C3BC9F /* thumbnailPlaceholder.png in Resources */,
+				E130802E15C4BC810024BE41 /* ArticleCSS.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

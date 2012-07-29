@@ -22,6 +22,7 @@
 - (void)awakeFromNib
 {
     self.thumbnailImageView.layer.cornerRadius = 5.0;
+    self.thumbnailImageView.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

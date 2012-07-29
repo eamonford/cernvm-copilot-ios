@@ -45,14 +45,22 @@
 
 - (void)setContentForArticle:(MWFeedItem *)article
 {
-    NSMutableString *body = [NSMutableString stringWithFormat:@"<h1>%@</h1>", article.title];
+    NSString *body = @"";
     // Give "content" a higher priority, but otherwise use "summary"
     if (article.content) {
-        [body appendString:article.content];
+        body = article.content;
     } else if (article.summary) {
-        [body appendString:article.summary];
+        body = article.summary;
     }
-    self.contentString = body;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    NSString *dateString = [formatter stringFromDate:article.date];
+    
+    NSString *cssPath = [[NSBundle mainBundle] pathForResource:@"ArticleCSS" ofType:@"css"];
+    NSMutableString *htmlString = [NSMutableString stringWithFormat:@"<html><head><link rel='stylesheet' type='text/css' href='file://%@'></head><body><h1>%@</h1><h2>%@</h2>%@</body></html>", cssPath, article.title, dateString, body];
+
+    self.contentString = htmlString;
     [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
 }
 

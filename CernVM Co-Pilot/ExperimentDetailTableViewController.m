@@ -77,22 +77,26 @@
         switch (self.experiment) {
             case ATLAS:
             {
+                viewController.title = @"ATLAS News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://pdg2.lbl.gov/atlasblog/?feed=rss2"]];
                 break;
             }
             case CMS:
             {
+                viewController.title = @"CMS News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
                 break;
             }
             case ALICE:
             {
+                viewController.title = @"ALICE News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
             
                 break;
             }
             case LHCb:
             {
+                viewController.title = @"LHCb News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://twitter.com/statuses/user_timeline/92522167.rss"]];
                 break;
             }
