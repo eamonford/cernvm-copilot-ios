@@ -66,7 +66,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3D-YG-yZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="816" y="1161"/>
+            <point key="canvasLocation" x="864" y="1729"/>
         </scene>
         <!--Page Containing View Controller-->
         <scene sceneID="uqk-Tf-bUw">
@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5E-tP-0bc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="1161"/>
+            <point key="canvasLocation" x="1331" y="1729"/>
         </scene>
         <!--Experiments View Controller-->
         <scene sceneID="ey8-dY-Mak">
@@ -110,16 +110,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="lhcMap@2x.png" id="9nR-Aq-AXU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="lhcMap@2x.png" id="9nR-Aq-AXU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.89999999999999991" contentMode="scaleToFill" image="lhcMapShadow@2x.png" id="R2J-HH-BfH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleAspectFill" image="lhcMapShadow@2x.png" id="xGf-wC-L5r">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UwW-CG-4Ep">
-                                <rect key="frame" x="225" y="149" width="35" height="35"/>
+                                <rect key="frame" x="244" y="167" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -134,7 +134,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNH-K6-Enb">
-                                <rect key="frame" x="120" y="132" width="31" height="31"/>
+                                <rect key="frame" x="101" y="144" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -149,7 +149,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HSr-yW-KFC">
-                                <rect key="frame" x="177" y="135" width="31" height="31"/>
+                                <rect key="frame" x="179" y="145" width="43" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -164,7 +164,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="te5-G2-fja">
-                                <rect key="frame" x="84" y="177" width="41" height="41"/>
+                                <rect key="frame" x="60" y="203" width="54" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -186,7 +186,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="shadowImageView" destination="R2J-HH-BfH" id="9rA-az-AV5"/>
+                        <outlet property="shadowImageView" destination="xGf-wC-L5r" id="XvP-lz-yRL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82E-Gz-kXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,6 +232,7 @@
                     <connections>
                         <segue destination="P0Q-1G-VEQ" kind="push" identifier="ShowExperimentNews" id="evk-Iu-YJS"/>
                         <segue destination="k1L-i1-Wfq" kind="push" identifier="ShowEventDisplay" id="QCo-ot-ICE"/>
+                        <segue destination="BHU-l0-hoe" kind="push" identifier="ShowEventPhotos" id="zGs-Ue-tOO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3c-gH-5BJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -300,7 +301,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dre-rc-EA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-290"/>
+            <point key="canvasLocation" x="1854" y="-498"/>
         </scene>
         <!--News Table View Controller - CERN News-->
         <scene sceneID="BbJ-1A-3wA">
@@ -482,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYi-ty-f9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="1161"/>
+            <point key="canvasLocation" x="1752" y="1729"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="LL5-BF-Xnc">
@@ -497,7 +498,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n24-qN-MC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="1730"/>
+            <point key="canvasLocation" x="1331" y="2298"/>
         </scene>
         <!--Videos Table View Controller-->
         <scene sceneID="4WW-Re-liQ">
@@ -552,7 +553,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwl-oy-spC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="2319"/>
+            <point key="canvasLocation" x="1331" y="2887"/>
         </scene>
         <!--Event Display View Controller-->
         <scene sceneID="chm-0u-VjS">
@@ -591,7 +592,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCi-PM-TCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="296"/>
+            <point key="canvasLocation" x="1854" y="76"/>
+        </scene>
+        <!--Photos View Controller-->
+        <scene sceneID="wIw-NS-XQr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DnO-kC-Qlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="BHU-l0-hoe" customClass="PhotosViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QlY-vb-szq">
+                        <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YBL-4m-Dzd"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1854" y="647"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="jKl-s5-un8">
@@ -676,7 +692,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNg-qa-fpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="816" y="2030"/>
+            <point key="canvasLocation" x="864" y="2598"/>
         </scene>
         <!--Navigation Controller - More-->
         <scene sceneID="kZ9-ui-8xd">
@@ -695,7 +711,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCK-Ic-JNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="371" y="2030"/>
+            <point key="canvasLocation" x="419" y="2598"/>
         </scene>
         <!--Navigation Controller - About CERN-->
         <scene sceneID="Ivw-Ub-ZWF">
@@ -714,7 +730,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdM-6P-yzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="371" y="1161"/>
+            <point key="canvasLocation" x="419" y="1729"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="XsT-oW-3Ws">
@@ -742,12 +758,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aia-Ak-ezb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341" y="-290"/>
+            <point key="canvasLocation" x="2341" y="-498"/>
         </scene>
     </scenes>
     <resources>
-        <image name="lhcMap@2x.png" width="960" height="640"/>
-        <image name="lhcMapShadow@2x.png" width="960" height="640"/>
+        <image name="lhcMap@2x.png" width="640" height="960"/>
+        <image name="lhcMapShadow@2x.png" width="640" height="960"/>
     </resources>
     <classes>
         <class className="AQGridViewController" superclassName="UIViewController">

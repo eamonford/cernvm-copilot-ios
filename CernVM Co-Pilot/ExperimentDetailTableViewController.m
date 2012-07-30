@@ -149,6 +149,8 @@
             default:
                 break;
         }    
+    } else if ([segue.identifier isEqualToString:@"ShowEventPhotos"]) {
+        
     }
 }
 

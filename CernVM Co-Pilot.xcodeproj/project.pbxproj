@@ -31,9 +31,9 @@
 		E1436F9F159654AA004CDFCA /* atlasLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436F9E159654AA004CDFCA /* atlasLogo@2x.png */; };
 		E1436FA1159658F6004CDFCA /* lhcbLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */; };
 		E1465B7A15A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */; };
+		E149D8AE15C6519B007DA389 /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E149D8AD15C6519B007DA389 /* lhcMap@2x.png */; };
+		E149D8B015C652A7007DA389 /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */; };
 		E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */; };
-		E15CC7A9159266550016CC95 /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7A7159266550016CC95 /* lhcMap@2x.png */; };
-		E15CC7AA159266550016CC95 /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */; };
 		E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */; };
 		E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */; };
 		E15CC7B71593881A0016CC95 /* TwitterFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B61593881A0016CC95 /* TwitterFeed.m */; };
@@ -235,10 +235,10 @@
 		E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lhcbLogo@2x.png"; path = "CernVM Co-Pilot/lhcbLogo@2x.png"; sourceTree = "<group>"; };
 		E1465B7815A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+DateFromStringOfUnknownFormat.h"; sourceTree = "<group>"; };
 		E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DateFromStringOfUnknownFormat.m"; sourceTree = "<group>"; };
+		E149D8AD15C6519B007DA389 /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
+		E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
 		E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDisplayViewController.h; sourceTree = "<group>"; };
 		E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDisplayViewController.m; sourceTree = "<group>"; };
-		E15CC7A7159266550016CC95 /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lhcMap@2x.png"; path = "CernVM Co-Pilot/lhcMap@2x.png"; sourceTree = "<group>"; };
-		E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lhcMapShadow@2x.png"; path = "CernVM Co-Pilot/lhcMapShadow@2x.png"; sourceTree = "<group>"; };
 		E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentsViewController.h; sourceTree = "<group>"; };
 		E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimentsViewController.m; sourceTree = "<group>"; };
 		E15CC7B1159279C30016CC95 /* ExperimentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentTableViewController.h; sourceTree = "<group>"; };
@@ -709,6 +709,8 @@
 		E1D87E86159EE6CB0051104C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */,
+				E149D8AD15C6519B007DA389 /* lhcMap@2x.png */,
 				E10055F615C4728000C3BC9F /* thumbnailPlaceholder.png */,
 				E1CF4A3715B8A52100ED2E1C /* Static Info Photos */,
 				E1B0415F15B6A01B00C8EA40 /* alice.png */,
@@ -722,8 +724,6 @@
 				E1436F9E159654AA004CDFCA /* atlasLogo@2x.png */,
 				E1436F991595B61F004CDFCA /* aliceLogo@2x.png */,
 				E15CC7BE15959F440016CC95 /* cmsLogo@2x.png */,
-				E15CC7A7159266550016CC95 /* lhcMap@2x.png */,
-				E15CC7A8159266550016CC95 /* lhcMapShadow@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -923,8 +923,6 @@
 				E1F7B6A1156EDC7C0092367F /* MainStoryboard_iPad.storyboard in Resources */,
 				E1F7B6A8156EDC7D0092367F /* first@2x.png in Resources */,
 				E1F7B6AF156EDC7D0092367F /* second@2x.png in Resources */,
-				E15CC7A9159266550016CC95 /* lhcMap@2x.png in Resources */,
-				E15CC7AA159266550016CC95 /* lhcMapShadow@2x.png in Resources */,
 				E15CC7BF15959F440016CC95 /* cmsLogo@2x.png in Resources */,
 				E1436F9A1595B61F004CDFCA /* aliceLogo@2x.png in Resources */,
 				E1436F9F159654AA004CDFCA /* atlasLogo@2x.png in Resources */,
@@ -991,6 +989,8 @@
 				E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */,
 				E10055F715C4728000C3BC9F /* thumbnailPlaceholder.png in Resources */,
 				E130802E15C4BC810024BE41 /* ArticleCSS.css in Resources */,
+				E149D8AE15C6519B007DA389 /* lhcMap@2x.png in Resources */,
+				E149D8B015C652A7007DA389 /* lhcMapShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
