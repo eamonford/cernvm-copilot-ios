@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-410" y="773"/>
         </scene>
-        <!--About Table View Controller-->
+        <!--About Table View Controller - About CERN-->
         <scene sceneID="Wjx-Z9-Quf">
             <objects>
                 <tableViewController storyboardIdentifier="AboutTableViewController" id="j0g-2c-SzN" customClass="AboutTableViewController" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                             <outlet property="delegate" destination="j0g-2c-SzN" id="6YK-Gj-Kbx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WgP-zI-tGl"/>
+                    <navigationItem key="navigationItem" title="About CERN" id="WgP-zI-tGl"/>
                     <connections>
                         <segue destination="Kb4-4y-xfb" kind="modal" identifier="ShowPageView" modalTransitionStyle="flipHorizontal" id="9CG-gP-KHx"/>
                     </connections>
@@ -414,11 +414,11 @@
             </objects>
             <point key="canvasLocation" x="371" y="-556"/>
         </scene>
-        <!--Navigation Controller - CERN Live-->
+        <!--Navigation Controller - Live-->
         <scene sceneID="F5G-ZX-P0f">
             <objects>
                 <navigationController id="G70-oY-H4x" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="CERN Live" id="xBI-S9-pt2"/>
+                    <tabBarItem key="tabBarItem" title="Live" id="xBI-S9-pt2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ecx-Hg-nMi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -713,11 +713,11 @@
             </objects>
             <point key="canvasLocation" x="419" y="2598"/>
         </scene>
-        <!--Navigation Controller - About CERN-->
+        <!--Navigation Controller - About-->
         <scene sceneID="Ivw-Ub-ZWF">
             <objects>
                 <navigationController id="WJd-4Y-Tfr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About CERN" id="bzj-3X-8XJ"/>
+                    <tabBarItem key="tabBarItem" title="About" id="bzj-3X-8XJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="AQF-Qy-M5g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -859,6 +859,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PhJ-D7-Qjb"/>
+        <segue reference="ol6-bC-xgI"/>
     </inferredMetricsTieBreakers>
 </document>
