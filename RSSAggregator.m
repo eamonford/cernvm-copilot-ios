@@ -11,13 +11,13 @@
 @implementation RSSAggregator
 @synthesize feeds, delegate;
 
-int feedLoadCount = 0;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         self.feeds = [NSMutableArray array];
+        feedLoadCount = 0;
     }
     return self;
 }

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "RSSAggregator.h"
 #import "NewsTableViewController.h"
+#import "BulletinViewController.h"
 
 @implementation AppDelegate
 
@@ -21,11 +22,19 @@
     self.videoThumbnails = [NSMutableDictionary dictionary];
 
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    // Populate the general News view controller with news feeds
     UINavigationController *newsNavigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
     NewsTableViewController *newsViewController = (NewsTableViewController *)newsNavigationController.topViewController;
     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
-
+    [newsViewController refresh];
+    
+    // Populate the Bulletin view controller with a news feed
+    UINavigationController *bulletinNavigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:3];
+    BulletinViewController *bulletinViewController = (BulletinViewController *)bulletinNavigationController.topViewController;
+    [bulletinViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
+    [bulletinViewController refresh];
+    
     return YES;
 }
 							

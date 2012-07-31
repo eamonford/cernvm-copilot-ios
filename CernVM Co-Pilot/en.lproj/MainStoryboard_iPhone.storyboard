@@ -19,6 +19,7 @@
                         <segue destination="Pxs-nN-ASO" kind="relationship" relationship="viewControllers" id="ald-LS-Tkf"/>
                         <segue destination="WJd-4Y-Tfr" kind="relationship" relationship="viewControllers" id="xtJ-IM-zNm"/>
                         <segue destination="G70-oY-H4x" kind="relationship" relationship="viewControllers" id="3no-Q8-ULD"/>
+                        <segue destination="dde-tR-Ym8" kind="relationship" relationship="viewControllers" id="Qpa-PN-Tkh"/>
                         <segue destination="gy0-Xx-oeB" kind="relationship" relationship="viewControllers" id="Zqe-So-1n5"/>
                     </connections>
                 </tabBarController>
@@ -607,7 +608,135 @@
                     <navigationItem key="navigationItem" id="YBL-4m-Dzd"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1854" y="647"/>
+            <point key="canvasLocation" x="2380" y="647"/>
+        </scene>
+        <!--Bulletin View Controller - CERN Bulletin-->
+        <scene sceneID="frA-b1-1Mz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cys-hZ-xyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Jgr-YN-a7Y" customClass="BulletinViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3VB-Ab-u0W">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleTableViewCell" rowHeight="100" id="wMV-of-4Vb" customClass="ArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lAK-UJ-fJu">
+                                            <rect key="frame" x="91" y="1" width="189" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="5D9-gx-P74">
+                                            <rect key="frame" x="91" y="19" width="189" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="WLk-dZ-lxv">
+                                            <rect key="frame" x="91" y="48" width="189" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Ain-CA-7s8">
+                                            <rect key="frame" x="8" y="9" width="75" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="dateLabel" destination="5D9-gx-P74" id="hXp-Uh-3MW"/>
+                                    <outlet property="feedLabel" destination="lAK-UJ-fJu" id="Dj0-ub-cb4"/>
+                                    <outlet property="thumbnailImageView" destination="Ain-CA-7s8" id="9wd-4a-s4n"/>
+                                    <outlet property="titleLabel" destination="WLk-dZ-lxv" id="wuk-O7-bE9"/>
+                                    <segue destination="8W1-3R-ei5" kind="push" id="mNe-4E-kLp"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Jgr-YN-a7Y" id="Y6g-5g-CXQ"/>
+                            <outlet property="delegate" destination="Jgr-YN-a7Y" id="G8c-dQ-Yv6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="CERN Bulletin" id="KAP-Mi-Osz"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="816" y="773"/>
+        </scene>
+        <!--News Table View Controller-->
+        <scene sceneID="Oh7-3t-Ic4">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ruS-3N-6jp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="8W1-3R-ei5" customClass="NewsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9o3-dT-lJC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleTableViewCell" rowHeight="100" id="ZbD-nl-lSv" customClass="ArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="g7v-pK-oN9">
+                                            <rect key="frame" x="91" y="1" width="189" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="cid-Gw-CjW">
+                                            <rect key="frame" x="91" y="19" width="189" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="VDR-te-6vp">
+                                            <rect key="frame" x="91" y="48" width="189" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="X8U-xY-ouZ">
+                                            <rect key="frame" x="8" y="9" width="75" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="dateLabel" destination="cid-Gw-CjW" id="FxH-uX-JGF"/>
+                                    <outlet property="feedLabel" destination="g7v-pK-oN9" id="GfY-87-Hsj"/>
+                                    <outlet property="thumbnailImageView" destination="X8U-xY-ouZ" id="btc-ff-wBq"/>
+                                    <outlet property="titleLabel" destination="VDR-te-6vp" id="0wR-eH-JA6"/>
+                                    <segue destination="CPA-ye-07K" kind="push" identifier="ShowArticleDetails" id="0kP-xT-dAy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8W1-3R-ei5" id="bHN-PA-ZM7"/>
+                            <outlet property="delegate" destination="8W1-3R-ei5" id="FFX-V3-Tqp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Ndj-Wu-3bK"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1283" y="773"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="jKl-s5-un8">
@@ -760,6 +889,53 @@
             </objects>
             <point key="canvasLocation" x="2341" y="-498"/>
         </scene>
+        <!--Navigation Controller - Bulletin-->
+        <scene sceneID="A1f-Xx-4WV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GLC-f8-dsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="dde-tR-Ym8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bulletin" id="wxr-nJ-Bz3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bSz-uP-6zE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jgr-YN-a7Y" kind="relationship" relationship="rootViewController" id="ZcE-go-oZ8"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="371" y="773"/>
+        </scene>
+        <!--Article Detail View Controller-->
+        <scene sceneID="Q01-9O-V0q">
+            <objects>
+                <viewController id="CPA-ye-07K" customClass="ArticleDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vpl-Oq-igS">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="Bw1-Db-XHL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CPA-ye-07K" id="3v7-i5-i1w"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yC3-aV-Gum"/>
+                    <connections>
+                        <outlet property="contentWebView" destination="Bw1-Db-XHL" id="SKf-7D-cjP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GK8-Y3-0l8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1752" y="773"/>
+        </scene>
     </scenes>
     <resources>
         <image name="lhcMap@2x.png" width="640" height="960"/>
@@ -787,6 +963,9 @@
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="BulletinViewController" superclassName="RSSTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BulletinViewController.h"/>
+        </class>
         <class className="EventDisplayViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDisplayViewController.h"/>
             <relationships>
@@ -807,11 +986,8 @@
                 <relationship kind="outlet" name="shadowImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="NewsTableViewController" superclassName="UITableViewController">
+        <class className="NewsTableViewController" superclassName="RSSTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-            </relationships>
         </class>
         <class className="PageContainingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PageContainingViewController.h"/>
@@ -825,6 +1001,9 @@
             <relationships>
                 <relationship kind="action" name="close:"/>
             </relationships>
+        </class>
+        <class className="RSSTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSTableViewController.h"/>
         </class>
         <class className="ShadowedCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedCell.h"/>

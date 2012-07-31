@@ -21,6 +21,7 @@
 {
     NSMutableArray *feeds;
     id<RSSAggregatorDelegate> delegate;
+    int feedLoadCount;
 }
 @property (atomic) NSMutableArray *feeds;
 @property (nonatomic, strong) id<RSSAggregatorDelegate> delegate;

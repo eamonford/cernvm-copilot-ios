@@ -7,21 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RSSAggregator.h"
+#import "RSSTableViewController.h"
 
-@interface NewsTableViewController : UITableViewController <RSSAggregatorDelegate>
+@interface NewsTableViewController : RSSTableViewController
 {
-    RSSAggregator *aggregator;
     NSArray *feedArticles;
     NSMutableDictionary *thumbnailImages;
-    UIView *loadingView;
 }
-@property (nonatomic, retain) RSSAggregator *aggregator;
 @property (nonatomic, retain) NSMutableDictionary *thumbnailImages;
 @property (atomic) NSArray *feedArticles;
 
-- (IBAction)close:(id)sender;
-- (void)showLoadingView;
-- (void)hideLoadingView;
+- (void)loadAllArticleThumbnails;
+- (void)loadThumbnailForArticleAtIndex:(NSNumber *)number;
 
 @end

@@ -19,15 +19,13 @@
 @end
 
 @implementation NewsTableViewController
-@synthesize aggregator, feedArticles, thumbnailImages;
+@synthesize feedArticles, thumbnailImages;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
         self.thumbnailImages = [NSMutableDictionary dictionary];
         self.feedArticles = [NSArray array];
-        self.aggregator = [[RSSAggregator alloc] init];
-        self.aggregator.delegate = self;
     }
     return self;
 }
@@ -35,20 +33,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
     backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grayTexture.png"]];
     self.tableView.backgroundView = backgroundView;
-    
-    [self showLoadingView];
-    [self.aggregator refreshAllFeeds];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -73,14 +65,20 @@
 {
     self.feedArticles = [sender aggregate];
     [self.tableView reloadData];
-    [self hideLoadingView];
     
+    [self loadAllArticleThumbnails];
+    
+    [super allFeedsDidLoadForAggregator:sender];
+}
+
+#pragma mark - Loading thumbnails
+
+- (void)loadAllArticleThumbnails
+{
     for (int i=0; i<self.feedArticles.count; i++) {
         [self performSelectorInBackground:@selector(loadThumbnailForArticleAtIndex:) withObject:[NSNumber numberWithInt:i]];
     }
 }
-
-#pragma mark - Loading thumbnails
 
 - (void)loadThumbnailForArticleAtIndex:(NSNumber *)number
 {
@@ -127,28 +125,6 @@
 - (void)reloadTableCell:(NSNumber *)indexNumber
 {
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexNumber.intValue inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-}
-
-#pragma mark - UI methods
-
-- (void)showLoadingView
-{
-    if (!loadingView) {
-        loadingView = [[UIView alloc] init];
-        loadingView.frame = self.tableView.bounds;    
-        UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        CGRect frame = loadingView.frame;
-        ac.center = CGPointMake(frame.size.width/2, frame.size.height/2);
-        [loadingView addSubview:ac];
-        [ac startAnimating];
-        loadingView.backgroundColor = [UIColor whiteColor];
-    }
-    [self.tableView addSubview:loadingView];
-}
-
-- (void)hideLoadingView
-{    
-    [loadingView removeFromSuperview];
 }
 
 #pragma mark - Table view data source

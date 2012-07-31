@@ -33,6 +33,9 @@
 		E1465B7A15A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */; };
 		E149D8AE15C6519B007DA389 /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E149D8AD15C6519B007DA389 /* lhcMap@2x.png */; };
 		E149D8B015C652A7007DA389 /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */; };
+		E149D8B315C741D5007DA389 /* BulletinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B215C741D5007DA389 /* BulletinViewController.m */; };
+		E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */; };
+		E149D8B915C7D161007DA389 /* RSSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B815C7D161007DA389 /* RSSTableViewController.m */; };
 		E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */; };
 		E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */; };
 		E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */; };
@@ -237,6 +240,12 @@
 		E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DateFromStringOfUnknownFormat.m"; sourceTree = "<group>"; };
 		E149D8AD15C6519B007DA389 /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
 		E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
+		E149D8B115C741D5007DA389 /* BulletinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletinViewController.h; sourceTree = "<group>"; };
+		E149D8B215C741D5007DA389 /* BulletinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletinViewController.m; sourceTree = "<group>"; };
+		E149D8B415C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LastOccurrenceOfWeekday.h"; sourceTree = "<group>"; };
+		E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LastOccurrenceOfWeekday.m"; sourceTree = "<group>"; };
+		E149D8B715C7D161007DA389 /* RSSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSTableViewController.h; sourceTree = "<group>"; };
+		E149D8B815C7D161007DA389 /* RSSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSTableViewController.m; sourceTree = "<group>"; };
 		E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDisplayViewController.h; sourceTree = "<group>"; };
 		E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDisplayViewController.m; sourceTree = "<group>"; };
 		E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentsViewController.h; sourceTree = "<group>"; };
@@ -455,6 +464,8 @@
 			children = (
 				E1A98BEC15BA28C000ACB293 /* ExperimentDetailTableViewController.h */,
 				E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */,
+				E149D8B115C741D5007DA389 /* BulletinViewController.h */,
+				E149D8B215C741D5007DA389 /* BulletinViewController.m */,
 				E120849A15773D3500A81B87 /* NewsTableViewController.h */,
 				E120849B15773D3500A81B87 /* NewsTableViewController.m */,
 				E1975A4A158F99D800CEE5A2 /* ArticleDetailViewController.h */,
@@ -475,6 +486,8 @@
 				E1B0416215B7E68000C8EA40 /* AboutTableViewController.m */,
 				E1FE435415C20165008E9634 /* PageContainingViewController.h */,
 				E1FE435515C20165008E9634 /* PageContainingViewController.m */,
+				E149D8B715C7D161007DA389 /* RSSTableViewController.h */,
+				E149D8B815C7D161007DA389 /* RSSTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -518,13 +531,15 @@
 		E1A2F588157A03DF0010D672 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E1A2F58F157A04300010D672 /* Google Toolbox for Mac */,
 				E10055F915C47B0300C3BC9F /* UIImage+SquareScaledImage.h */,
 				E10055FA15C47B0300C3BC9F /* UIImage+SquareScaledImage.m */,
 				E13101BF157B5D0600429634 /* NSString+HTML.h */,
 				E13101C0157B5D0600429634 /* NSString+HTML.m */,
 				E13101C1157B5D0600429634 /* NSDate+InternetDateTime.h */,
 				E13101C2157B5D0600429634 /* NSDate+InternetDateTime.m */,
-				E1A2F58F157A04300010D672 /* Google Toolbox for Mac */,
+				E149D8B415C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.h */,
+				E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1089,6 +1104,9 @@
 				E1A98BEE15BA28C000ACB293 /* ExperimentDetailTableViewController.m in Sources */,
 				E1FE435615C20165008E9634 /* PageContainingViewController.m in Sources */,
 				E10055FB15C47B0300C3BC9F /* UIImage+SquareScaledImage.m in Sources */,
+				E149D8B315C741D5007DA389 /* BulletinViewController.m in Sources */,
+				E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */,
+				E149D8B915C7D161007DA389 /* RSSTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
