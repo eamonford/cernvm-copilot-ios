@@ -11,14 +11,14 @@
 
 @interface ArticleTableViewCell : ShadowedCell
 {
-    IBOutlet UILabel *feedLabel;
-    IBOutlet UILabel *dateLabel;
+    IBOutlet UILabel *detailLabel1;
+    IBOutlet UILabel *detailLabel2;
     IBOutlet UILabel *titleLabel;
     IBOutlet UIImageView *thumbnailImageView;
 }
 
-@property (nonatomic, readonly) UILabel *feedLabel;
-@property (nonatomic, readonly) UILabel *dateLabel;
+@property (nonatomic, readonly) UILabel *detailLabel1;
+@property (nonatomic, readonly) UILabel *detailLabel2;
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UIImageView *thumbnailImageView;
 

@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ArticleTableViewCell
-@synthesize titleLabel, feedLabel, dateLabel, thumbnailImageView;
+@synthesize titleLabel, detailLabel1, detailLabel2, thumbnailImageView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

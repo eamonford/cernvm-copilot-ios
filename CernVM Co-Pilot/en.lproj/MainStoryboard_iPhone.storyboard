@@ -285,8 +285,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel" destination="qAj-QD-IjW" id="fpv-xH-gvV"/>
-                                    <outlet property="feedLabel" destination="v2g-Sq-lZZ" id="gdF-Oc-QTX"/>
+                                    <outlet property="detailLabel1" destination="v2g-Sq-lZZ" id="ABg-2M-kRB"/>
+                                    <outlet property="detailLabel2" destination="qAj-QD-IjW" id="v7n-aE-Ccd"/>
                                     <outlet property="thumbnailImageView" destination="Ug1-oU-G48" id="zvO-sE-13r"/>
                                     <outlet property="titleLabel" destination="igi-ev-rTB" id="bQz-ky-6Lu"/>
                                     <segue destination="Wtb-6O-pz3" kind="push" identifier="ShowArticleDetails" id="5LS-4L-biR"/>
@@ -349,8 +349,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel" destination="Gbf-89-nGA" id="50E-VX-Gaf"/>
-                                    <outlet property="feedLabel" destination="fZK-M9-zj4" id="sPN-Wu-1zU"/>
+                                    <outlet property="detailLabel1" destination="fZK-M9-zj4" id="URk-mR-oTj"/>
+                                    <outlet property="detailLabel2" destination="Gbf-89-nGA" id="A3W-Mr-uy3"/>
                                     <outlet property="thumbnailImageView" destination="xaV-0L-6js" id="N57-nO-O4X"/>
                                     <outlet property="titleLabel" destination="R1E-ke-ilV" id="gTR-os-Yex"/>
                                     <segue destination="dTx-aX-mIA" kind="push" identifier="ShowArticleDetails" id="YqK-Wg-Guh"/>
@@ -627,38 +627,25 @@
                                     <rect key="frame" x="10" y="1" width="280" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feed name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lAK-UJ-fJu">
-                                            <rect key="frame" x="91" y="1" width="189" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# of articles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lAK-UJ-fJu">
+                                            <rect key="frame" x="20" y="10" width="189" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="5D9-gx-P74">
-                                            <rect key="frame" x="91" y="19" width="189" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="WLk-dZ-lxv">
-                                            <rect key="frame" x="91" y="48" width="189" height="45"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Issue #" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="WLk-dZ-lxv">
+                                            <rect key="frame" x="20" y="39" width="189" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Ain-CA-7s8">
-                                            <rect key="frame" x="8" y="9" width="75" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel" destination="5D9-gx-P74" id="hXp-Uh-3MW"/>
-                                    <outlet property="feedLabel" destination="lAK-UJ-fJu" id="Dj0-ub-cb4"/>
-                                    <outlet property="thumbnailImageView" destination="Ain-CA-7s8" id="9wd-4a-s4n"/>
+                                    <outlet property="detailLabel1" destination="lAK-UJ-fJu" id="Tfb-FI-RhZ"/>
                                     <outlet property="titleLabel" destination="WLk-dZ-lxv" id="wuk-O7-bE9"/>
                                     <segue destination="8W1-3R-ei5" kind="push" id="mNe-4E-kLp"/>
                                 </connections>
@@ -720,8 +707,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel" destination="cid-Gw-CjW" id="FxH-uX-JGF"/>
-                                    <outlet property="feedLabel" destination="g7v-pK-oN9" id="GfY-87-Hsj"/>
+                                    <outlet property="detailLabel1" destination="g7v-pK-oN9" id="cXl-gF-e6B"/>
+                                    <outlet property="detailLabel2" destination="cid-Gw-CjW" id="nJ7-7C-1eM"/>
                                     <outlet property="thumbnailImageView" destination="X8U-xY-ouZ" id="btc-ff-wBq"/>
                                     <outlet property="titleLabel" destination="VDR-te-6vp" id="0wR-eH-JA6"/>
                                     <segue destination="CPA-ye-07K" kind="push" identifier="ShowArticleDetails" id="0kP-xT-dAy"/>

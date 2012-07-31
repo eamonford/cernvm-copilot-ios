@@ -65,7 +65,6 @@
 {
     self.feedArticles = [sender aggregate];
     [self.tableView reloadData];
-    
     [self loadAllArticleThumbnails];
     
     [super allFeedsDidLoadForAggregator:sender];
@@ -170,13 +169,13 @@
 
     // Create the feed name label
     NSString *feedName = [self.aggregator feedForArticle:feedItem].info.title;
-    cell.feedLabel.text = feedName;
+    cell.detailLabel1.text = feedName;
 
     // Create the article date label
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     NSString *articleDate = [dateFormatter stringFromDate:feedItem.date];
-    cell.dateLabel.text = articleDate;
+    cell.detailLabel2.text = articleDate;
     
     UIImage *thumbnailImage = [self.thumbnailImages objectForKey:[NSNumber numberWithInt:indexPath.row]];
     if (thumbnailImage) {

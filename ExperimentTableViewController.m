@@ -127,14 +127,14 @@
         MWFeedItem *article = [self.feedArticles objectAtIndex:indexPath.row];
         ((ArticleTableViewCell *)cell).titleLabel.text = article.title;
         NSString *feedName = [self.aggregator feedForArticle:article].info.title;
-        ((ArticleTableViewCell *)cell).feedLabel.text = feedName;
+        ((ArticleTableViewCell *)cell).detailLabel1.text = feedName;
 
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"EEE MMM d HH:mm:ss ZZZ yyyy";
         NSDate *date = article.date;
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         NSString *dateString = [dateFormatter stringFromDate:date];
-        ((ArticleTableViewCell *)cell).dateLabel.text = dateString;
+        ((ArticleTableViewCell *)cell).detailLabel2.text = dateString;
    }
         
     cell.cornerRadius = 5.0;

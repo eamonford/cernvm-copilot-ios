@@ -50,6 +50,8 @@
     
     NSArray *articles = [self.aggregator aggregate];
     self.issues = [self feedArticlesSeparatedByWeek:articles];
+    [self.tableView reloadData];
+    
     [super allFeedsDidLoadForAggregator:sender];
 }
 
@@ -89,6 +91,14 @@
     NSArray *issueArticles = [[self.issues objectAtIndex:issueIndexPath.row] objectForKey:@"Articles"];
     viewController.feedArticles = issueArticles;
     [viewController loadAllArticleThumbnails];
+    
+    // Set the title of the new view controller to a string of the issue date
+    NSDictionary *issue = [self.issues objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    NSString *issueDate = [dateFormatter stringFromDate:[issue objectForKey:@"Date"]];
+    viewController.title = issueDate;
+
 }
 
 #pragma mark - Table view data source
@@ -118,14 +128,20 @@
     cell.fillColor = [UIColor whiteColor];
     cell.shadowColor = [UIColor darkGrayColor];
     
+    NSDictionary *issue = [self.issues objectAtIndex:[indexPath row]];
+    // Set the number of articles label
+    int numberOfArticles = [[issue objectForKey:@"Articles"] count];
+    NSMutableString *articlesString = [NSMutableString stringWithFormat:@"%d ", numberOfArticles];
+    [articlesString appendString: numberOfArticles>1?@"articles":@"article"];
+    cell.detailLabel1.text = articlesString;
+    
     // Set the article title label
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    NSDictionary *issue = [self.issues objectAtIndex:[indexPath row]];
-    
     NSString *issueDate = [dateFormatter stringFromDate:[issue objectForKey:@"Date"]];
     cell.titleLabel.text = [NSString stringWithFormat:@"Week of %@", issueDate];;
  
+    
     return cell;
 }
 
