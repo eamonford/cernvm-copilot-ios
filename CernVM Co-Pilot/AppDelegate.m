@@ -26,7 +26,6 @@
     UINavigationController *newsNavigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
     NewsTableViewController *newsViewController = (NewsTableViewController *)newsNavigationController.topViewController;
     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
-    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?cc=Weekly+Bulletin&ln=en&c=Breaking%20News&c=News%20Articles&c=Official%20News&c=Training%20and%20Development&c=General%20Information&c=Bulletin%20Announcements&c=Bulletin%20Events"]];
     [newsViewController refresh];
     
     // Populate the Bulletin view controller with a news feed

@@ -115,12 +115,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleAspectFill" image="lhcMapShadow@2x.png" id="xGf-wC-L5r">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="lhcMapShadow@2x.png" id="xGf-wC-L5r">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UwW-CG-4Ep">
-                                <rect key="frame" x="244" y="167" width="42" height="42"/>
+                                <rect key="frame" x="248" y="261" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -134,8 +134,23 @@
                                     <segue destination="Zjo-qD-5NG" kind="push" id="xZf-ZN-4c1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="k2V-Y5-cfG">
+                                <rect key="frame" x="235" y="314" width="42" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Zjo-qD-5NG" kind="push" id="QYW-sJ-KgW"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNH-K6-Enb">
-                                <rect key="frame" x="101" y="144" width="42" height="42"/>
+                                <rect key="frame" x="101" y="246" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -150,7 +165,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HSr-yW-KFC">
-                                <rect key="frame" x="179" y="145" width="43" height="43"/>
+                                <rect key="frame" x="179" y="246" width="43" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -165,7 +180,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="te5-G2-fja">
-                                <rect key="frame" x="60" y="203" width="54" height="54"/>
+                                <rect key="frame" x="66" y="314" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -944,8 +959,8 @@
         <class className="ArticleTableViewCell" superclassName="ShadowedCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleTableViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="feedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="detailLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="detailLabel2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="thumbnailImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1025,6 +1040,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ol6-bC-xgI"/>
+        <segue reference="3C1-Wx-cDz"/>
     </inferredMetricsTieBreakers>
 </document>

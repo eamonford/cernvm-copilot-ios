@@ -31,8 +31,6 @@
 		E1436F9F159654AA004CDFCA /* atlasLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436F9E159654AA004CDFCA /* atlasLogo@2x.png */; };
 		E1436FA1159658F6004CDFCA /* lhcbLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */; };
 		E1465B7A15A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */; };
-		E149D8AE15C6519B007DA389 /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E149D8AD15C6519B007DA389 /* lhcMap@2x.png */; };
-		E149D8B015C652A7007DA389 /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */; };
 		E149D8B315C741D5007DA389 /* BulletinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B215C741D5007DA389 /* BulletinViewController.m */; };
 		E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */; };
 		E149D8B915C7D161007DA389 /* RSSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B815C7D161007DA389 /* RSSTableViewController.m */; };
@@ -175,6 +173,8 @@
 		E1D87E8B159EEC920051104C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D87E8A159EEC920051104C /* MessageUI.framework */; };
 		E1D9609815991335006150D1 /* CernMediaMARCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D9609715991335006150D1 /* CernMediaMARCParser.m */; };
 		E1DD4C1B15AA4C37003556BC /* grayTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DD4C1A15AA4C37003556BC /* grayTexture.png */; };
+		E1E41E0315C8977000D8EB0C /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E41E0115C8977000D8EB0C /* lhcMapShadow@2x.png */; };
+		E1E41E0415C8977000D8EB0C /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E41E0215C8977000D8EB0C /* lhcMap@2x.png */; };
 		E1F7B68B156EDC7C0092367F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68A156EDC7C0092367F /* UIKit.framework */; };
 		E1F7B68D156EDC7C0092367F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68C156EDC7C0092367F /* Foundation.framework */; };
 		E1F7B68F156EDC7C0092367F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68E156EDC7C0092367F /* CoreGraphics.framework */; };
@@ -238,8 +238,6 @@
 		E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lhcbLogo@2x.png"; path = "CernVM Co-Pilot/lhcbLogo@2x.png"; sourceTree = "<group>"; };
 		E1465B7815A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+DateFromStringOfUnknownFormat.h"; sourceTree = "<group>"; };
 		E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DateFromStringOfUnknownFormat.m"; sourceTree = "<group>"; };
-		E149D8AD15C6519B007DA389 /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
-		E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
 		E149D8B115C741D5007DA389 /* BulletinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletinViewController.h; sourceTree = "<group>"; };
 		E149D8B215C741D5007DA389 /* BulletinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletinViewController.m; sourceTree = "<group>"; };
 		E149D8B415C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LastOccurrenceOfWeekday.h"; sourceTree = "<group>"; };
@@ -402,6 +400,8 @@
 		E1D9609615991335006150D1 /* CernMediaMARCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CernMediaMARCParser.h; sourceTree = "<group>"; };
 		E1D9609715991335006150D1 /* CernMediaMARCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CernMediaMARCParser.m; sourceTree = "<group>"; };
 		E1DD4C1A15AA4C37003556BC /* grayTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayTexture.png; sourceTree = "<group>"; };
+		E1E41E0115C8977000D8EB0C /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
+		E1E41E0215C8977000D8EB0C /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
 		E1F7B686156EDC7C0092367F /* CernVM Co-Pilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CernVM Co-Pilot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F7B68A156EDC7C0092367F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1F7B68C156EDC7C0092367F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -724,8 +724,8 @@
 		E1D87E86159EE6CB0051104C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E149D8AF15C652A7007DA389 /* lhcMapShadow@2x.png */,
-				E149D8AD15C6519B007DA389 /* lhcMap@2x.png */,
+				E1E41E0115C8977000D8EB0C /* lhcMapShadow@2x.png */,
+				E1E41E0215C8977000D8EB0C /* lhcMap@2x.png */,
 				E10055F615C4728000C3BC9F /* thumbnailPlaceholder.png */,
 				E1CF4A3715B8A52100ED2E1C /* Static Info Photos */,
 				E1B0415F15B6A01B00C8EA40 /* alice.png */,
@@ -1004,8 +1004,8 @@
 				E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */,
 				E10055F715C4728000C3BC9F /* thumbnailPlaceholder.png in Resources */,
 				E130802E15C4BC810024BE41 /* ArticleCSS.css in Resources */,
-				E149D8AE15C6519B007DA389 /* lhcMap@2x.png in Resources */,
-				E149D8B015C652A7007DA389 /* lhcMapShadow@2x.png in Resources */,
+				E1E41E0315C8977000D8EB0C /* lhcMapShadow@2x.png in Resources */,
+				E1E41E0415C8977000D8EB0C /* lhcMap@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
