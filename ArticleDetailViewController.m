@@ -56,6 +56,8 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterMediumStyle;
     NSString *dateString = [formatter stringFromDate:article.date];
+    if (!dateString)
+        dateString = @"";
     
     NSString *cssPath = [[NSBundle mainBundle] pathForResource:@"ArticleCSS" ofType:@"css"];
     NSMutableString *htmlString = [NSMutableString stringWithFormat:@"<html><head><link rel='stylesheet' type='text/css' href='file://%@'></head><body><h1>%@</h1><h2>%@</h2>%@</body></html>", cssPath, article.title, dateString, body];

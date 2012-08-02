@@ -43,7 +43,7 @@
 #pragma mark CernMediaMARCParserDelegate methods
 
 - (void)parser:(CernMediaMARCParser *)aParser didParseRecord:(NSDictionary *)record
-{    
+{
     // we will assume that each array in the dictionary has the same number of photo urls
     NSMutableDictionary *resources = [record objectForKey:@"resources"];
     int numPhotosInRecord = ((NSArray *)[resources objectForKey:[parser.resourceTypes objectAtIndex:0]]).count;

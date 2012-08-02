@@ -15,15 +15,16 @@
 @end
 
 @implementation PhotosViewController
-//@synthesize photoURLs;
-AppDelegate *appDelegate;
-BOOL displaySpinner = YES;
+@synthesize photoDownloader;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        appDelegate = [UIApplication sharedApplication].delegate;
-        appDelegate.photoDownloader.delegate = self;
+        //appDelegate = [UIApplication sharedApplication].delegate;
+        //appDelegate.photoDownloader.delegate = self;
+        displaySpinner = YES;
+        self.photoDownloader = [[PhotoDownloader alloc] init];
+        self.photoDownloader.delegate = self;
     }
     return self;
 }
@@ -33,16 +34,7 @@ BOOL displaySpinner = YES;
     [super viewDidLoad];
     
     self.gridView.backgroundColor = [UIColor whiteColor];
-    
-    if (appDelegate.photoDownloader.urls.count == 0) {
-        [self configureGridForSpinner:YES];
-
-        appDelegate.photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
-        [appDelegate.photoDownloader parse];
-        
-    } else {
-        [self configureGridForSpinner:NO];
-    }
+    [self configureGridForSpinner:NO];
 }
 
 - (void)configureGridForSpinner:(BOOL)spinner
@@ -67,13 +59,15 @@ BOOL displaySpinner = YES;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Interface methods
-
-- (IBAction)close:(id)sender
+- (void)refresh
 {
-    [self dismissModalViewControllerAnimated:YES];
-    
+    if (self.photoDownloader.urls.count == 0) {
+        [self configureGridForSpinner:YES];
+        [self.photoDownloader parse];
+    }
 }
+
+#pragma mark - Interface methods
 
 - (void)reloadCellAtIndex:(NSNumber *)index
 {
@@ -84,6 +78,7 @@ BOOL displaySpinner = YES;
 
 - (void)photoDownloaderDidFinish:(PhotoDownloader *)photoDownloader
 {
+    NSLog(@"photo downloader finished");
     [self configureGridForSpinner:NO];
     [self.gridView reloadData];
 }
@@ -100,7 +95,9 @@ BOOL displaySpinner = YES;
     if (displaySpinner) {
         return 1;
     } else {
-        return appDelegate.photoDownloader.urls.count;
+        //return appDelegate.photoDownloader.urls.count;
+        return self.photoDownloader.urls.count;
+
     }
 }
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
@@ -124,8 +121,8 @@ BOOL displaySpinner = YES;
             cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0) reuseIdentifier:photoCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
-        cell.image = [appDelegate.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
-
+        //cell.image = [appDelegate.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
+        cell.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
         return cell;
     }
 }
@@ -155,12 +152,17 @@ BOOL displaySpinner = YES;
 #pragma mark - MWPhotoBrowserDelegate methods
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    return appDelegate.photoDownloader.urls.count;
+    //return appDelegate.photoDownloader.urls.count;
+    return self.photoDownloader.urls.count;
+
 }
 
 - (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < appDelegate.photoDownloader.urls.count) {
-        NSURL *url = [[appDelegate.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
+    //if (index < appDelegate.photoDownloader.urls.count) {
+    if (index < self.photoDownloader.urls.count) {
+
+        //NSURL *url = [[appDelegate.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
+        NSURL *url = [[self.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
         return [MWPhoto photoWithURL:url];
     }
     

@@ -9,6 +9,7 @@
 #import "ExperimentDetailTableViewController.h"
 #import "NewsTableViewController.h"
 #import "EventDisplayViewController.h"
+#import "PhotosViewController.h"
 
 @interface ExperimentDetailTableViewController ()
 
@@ -79,18 +80,21 @@
             {
                 viewController.title = @"ATLAS News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://pdg2.lbl.gov/atlasblog/?feed=rss2"]];
+                [viewController refresh];
                 break;
             }
             case CMS:
             {
                 viewController.title = @"CMS News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
+                [viewController refresh];
                 break;
             }
             case ALICE:
             {
                 viewController.title = @"ALICE News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
+                [viewController refresh];
             
                 break;
             }
@@ -98,6 +102,7 @@
             {
                 viewController.title = @"LHCb News";
                 [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://twitter.com/statuses/user_timeline/92522167.rss"]];
+                [viewController refresh];
                 break;
             }
             default:
@@ -148,9 +153,11 @@
             }
             default:
                 break;
-        }    
+        }
     } else if ([segue.identifier isEqualToString:@"ShowEventPhotos"]) {
-        
+        PhotosViewController *photosViewController = segue.destinationViewController;
+        photosViewController.photoDownloader.url = [NSURL URLWithString:@"https://cdsweb.cern.ch/record/1305399/export/xm?ln=en"];
+        [photosViewController refresh];
     }
 }
 
@@ -211,7 +218,11 @@
             [self performSegueWithIdentifier:@"ShowExperimentNews" sender:self];
             break;
         case 1:
-            [self performSegueWithIdentifier:@"ShowEventDisplay" sender:self];
+            if (self.experiment == ALICE) {
+                [self performSegueWithIdentifier:@"ShowEventPhotos" sender:self];                
+            } else {
+                [self performSegueWithIdentifier:@"ShowEventDisplay" sender:self];
+            }
             break;
     }
 

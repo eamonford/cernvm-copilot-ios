@@ -15,9 +15,12 @@
 
 @interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, MWPhotoBrowserDelegate, PhotoDownloaderDelegate>
 {
+    PhotoDownloader *photoDownloader;
     UIView *loadingView;
+    BOOL displaySpinner;
 }
+@property (nonatomic, retain) PhotoDownloader *photoDownloader;
 
-- (IBAction)close:(id)sender;
+- (void)refresh;
 
 @end

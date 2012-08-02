@@ -10,6 +10,7 @@
 #import "RSSAggregator.h"
 #import "NewsTableViewController.h"
 #import "BulletinViewController.h"
+#import "PhotosViewController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.photoDownloader = [[PhotoDownloader alloc] init];
     self.videoMetadata = [NSMutableArray array];
     self.videoThumbnails = [NSMutableDictionary dictionary];
 
@@ -29,11 +29,23 @@
     [newsViewController refresh];
     
     // Populate the Bulletin view controller with a news feed
-    UINavigationController *bulletinNavigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:3];
+    UINavigationController *bulletinNavigationController = [tabBarController.viewControllers objectAtIndex:3];
     BulletinViewController *bulletinViewController = (BulletinViewController *)bulletinNavigationController.topViewController;
     [bulletinViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
     [bulletinViewController refresh];
     
+    // Initialize the photos view controller with a photo downloader object
+    UINavigationController *photosNavigationController = [tabBarController.viewControllers objectAtIndex:4];
+    PhotosViewController *photosViewController = (PhotosViewController *)photosNavigationController.topViewController;
+    photosViewController.photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Photo+Selection&p=&f=&action_search=Search&c=Press+Office+Photo+Selection&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
+    [photosViewController refresh];
+    
+    // Initialize the jobs view controller with the jobs RSS feed
+    UINavigationController *jobsNavigationController = [tabBarController.viewControllers objectAtIndex:6];
+    NewsTableViewController *jobsViewController = (NewsTableViewController *)jobsNavigationController.topViewController;
+    [jobsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://ert.cern.ch/browse_www/wd_portal_rss.rss?p_hostname=ert.cern.ch"]];
+    [jobsViewController refresh];
+
     return YES;
 }
 							

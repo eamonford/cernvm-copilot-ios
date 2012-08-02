@@ -70,7 +70,7 @@
         [ac startAnimating];
         loadingView.backgroundColor = [UIColor whiteColor];
     }
-    [self.tableView addSubview:loadingView];
+    [self.view addSubview:loadingView];
 }
 
 - (void)hideLoadingView
