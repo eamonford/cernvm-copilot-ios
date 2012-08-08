@@ -9,16 +9,8 @@
 #import "RSSFeed.h"
 #import "RSSArticle.h"
 
-//@interface RSSFeed (ReadOnlyProperties)
-//
-//@property (nonatomic, retain) MWFeedParser *parser;
-//@property (nonatomic, retain) MWFeedInfo *info;
-//@property (nonatomic, retain) NSMutableArray *articles;
-//
-//@end
-
 @implementation RSSFeed
-@synthesize /*title, description, url,*/ parser, info, articles, aggregator, delegate;
+@synthesize parser, info, articles, aggregator, delegate;
 
 - (id)initWithFeedURL:(NSURL *)url
 {

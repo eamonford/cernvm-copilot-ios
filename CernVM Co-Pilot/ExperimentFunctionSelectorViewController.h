@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ExperimentsViewController.h"
 
-@interface ExperimentDetailTableViewController : UITableViewController
+@interface ExperimentFunctionSelectorViewController : UITableViewController
 {
     ExperimentType experiment;
 }
 @property ExperimentType experiment;
+
+- (IBAction)buttonTapped:(UIButton *)sender;
 
 @end

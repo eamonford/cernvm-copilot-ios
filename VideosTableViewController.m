@@ -10,19 +10,21 @@
 #import "VideosTableViewController.h"
 #import "AppDelegate.h"
 #import "VideoTableViewCell.h"
+#import "Constants.h"
+
 @interface VideosTableViewController ()
 
 @end
 
 @implementation VideosTableViewController
-
-AppDelegate *appDelegate;
+@synthesize videoMetadata, videoThumbnails, detailView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        appDelegate = [UIApplication sharedApplication].delegate;
+        self.videoMetadata = [NSMutableArray array];
+        self.videoThumbnails = [NSMutableDictionary dictionary];
         queue = [[NSOperationQueue alloc] init];
     }
     return self;
@@ -34,11 +36,11 @@ AppDelegate *appDelegate;
     
     CernMediaMARCParser *marcParser = [[CernMediaMARCParser alloc] init];
     marcParser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Video+Selection&p=internalnote%3A%22ATLAS%22&f=&action_search=Search&c=Press+Office+Video+Selection&c=&sf=year&so=d&rm=&rg=100&sc=0&of=xm"];
-    marcParser.resourceTypes = [NSArray arrayWithObjects:@"mp40600", @"jpgthumbnail", nil];
+    marcParser.resourceTypes = [NSArray arrayWithObjects:kVideoMetadataPropertyVideoURL, kVideoMetadataPropertyThumbnailURL, nil];
     marcParser.delegate = self;
     
 
-    if (appDelegate.videoMetadata.count == 0) {
+    if (self.videoMetadata.count == 0) {
         [self showLoadingView];
         [marcParser parse];
     }
@@ -53,7 +55,10 @@ AppDelegate *appDelegate;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 #pragma mark - UI methods
@@ -95,10 +100,10 @@ AppDelegate *appDelegate;
 {
     // Copy over just the title, the date, and the first url of each resource type
     NSMutableDictionary *video = [NSMutableDictionary dictionary];
-    [video setObject:[record objectForKey:@"title"] forKey:@"title"];
+    [video setObject:[record objectForKey:@"title"] forKey:kVideoMetadataPropertyTitle];
     NSDate *date = [record objectForKey:@"date"];
     if (date)
-        [video setObject:date forKey:@"date"];
+        [video setObject:date forKey:kVideoMetadataPropertyDate];
 
     NSDictionary *resources = [record objectForKey:@"resources"];
     NSArray *resourceTypes = [resources allKeys];
@@ -106,18 +111,10 @@ AppDelegate *appDelegate;
         NSURL *url = [[resources objectForKey:currentResourceType] objectAtIndex:0];
         [video setObject:url forKey:currentResourceType];
     }
-    [appDelegate.videoMetadata addObject:video];
+    [self.videoMetadata addObject:video];
     // now download the thumbnail for that photo
-    int index = appDelegate.videoMetadata.count-1;
+    int index = self.videoMetadata.count-1;
     [self performSelectorInBackground:@selector(downloadThumbnailForIndex:) withObject:[NSNumber numberWithInt:index]];
-    /*NSURLRequest *request = [NSURLRequest requestWithURL:[video objectForKey:@"jpgthumbnail"]];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:
-     ^(NSURLResponse *response, NSData *data, NSError *error) {
-         UIImage *thumbnailImage = [UIImage imageWithData:data];
-         [appDelegate.videoThumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
-         [self performSelectorOnMainThread:@selector(reloadRowAtIndex:) withObject:[NSNumber numberWithInt:index] waitUntilDone:NO];
-     }];*/
-
 }
 
 // We will use a synchronous connection running in a background thread to download thumbnails
@@ -126,11 +123,11 @@ AppDelegate *appDelegate;
 {
     // now download the thumbnail for that photo
     int index = ((NSNumber *)indexNumber).intValue;
-    NSDictionary *video = [appDelegate.videoMetadata objectAtIndex:index];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[video objectForKey:@"jpgthumbnail"]];
+    NSDictionary *video = [self.videoMetadata objectAtIndex:index];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[video objectForKey:kVideoMetadataPropertyThumbnailURL]];
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];
-    [appDelegate.videoThumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
+    [self.videoThumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
     [self performSelectorOnMainThread:@selector(reloadRowAtIndex:) withObject:[NSNumber numberWithInt:index] waitUntilDone:NO];
 }
 
@@ -149,7 +146,7 @@ AppDelegate *appDelegate;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return appDelegate.videoMetadata.count;
+    return self.videoMetadata.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,72 +157,37 @@ AppDelegate *appDelegate;
     if (cell == nil) {
         cell = [[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSDictionary *video = [appDelegate.videoMetadata objectAtIndex:indexPath.row];
+    NSDictionary *video = [self.videoMetadata objectAtIndex:indexPath.row];
     // Set the title label
-    cell.titleLabel.text = [video objectForKey:@"title"];
+    cell.titleLabel.text = [video objectForKey:kVideoMetadataPropertyTitle];
     
     // Set the date label
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    NSString *dateString = [dateFormatter stringFromDate:[video objectForKey:@"date"]];
+    NSString *dateString = [dateFormatter stringFromDate:[video objectForKey:kVideoMetadataPropertyDate]];
     cell.dateLabel.text = dateString;
 
     // Set the thumbnail
-    cell.thumbnailImageView.image = [appDelegate.videoThumbnails objectForKey:[NSNumber numberWithInt:indexPath.row]];
+    cell.thumbnailImageView.image = [self.videoThumbnails objectForKey:[NSNumber numberWithInt:indexPath.row]];
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSURL *url = [[appDelegate.videoMetadata objectAtIndex:indexPath.row] objectForKey:@"mp40600"];
-    MPMoviePlayerViewController * playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
-    
-    [self presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];
-    
-//    playerController.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-//    [playerController.moviePlayer play];
+    NSDictionary *video = [self.videoMetadata objectAtIndex:indexPath.row];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        NSURL *url = [video objectForKey:kVideoMetadataPropertyVideoURL];
+        MPMoviePlayerViewController *playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+        [self presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];        
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        if (!self.detailView) {
+            self.detailView = [self.splitViewController.viewControllers objectAtIndex:1];
+        }
+        [self.detailView setContentForVideoMetadata:video];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

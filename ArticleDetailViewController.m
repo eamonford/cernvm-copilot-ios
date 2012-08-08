@@ -8,6 +8,7 @@
 
 #import "ArticleDetailViewController.h"
 #import "NSString+HTML.h"
+#import "Constants.h"
 
 @interface ArticleDetailViewController ()
 
@@ -40,7 +41,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 - (void)setContentForArticle:(MWFeedItem *)article
@@ -66,6 +70,25 @@
     [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
 }
 
+- (void)setContentForVideoMetadata:(NSDictionary *)videoMetadata
+{
+    NSString *videoTag = [NSString stringWithFormat:@"<video width='100%%' controls='controls'><source src='%@' type='video/mp4' /></video>", [videoMetadata objectForKey:kVideoMetadataPropertyVideoURL]];
+    NSString *titleTag = [NSString stringWithFormat:@"<h1>%@</h1>", [videoMetadata objectForKey:kVideoMetadataPropertyTitle]];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    NSString *dateString = [formatter stringFromDate:[videoMetadata objectForKey:kVideoMetadataPropertyDate]];
+    NSString *dateTag = [NSString stringWithFormat:@"<h2>%@</h2>", dateString];
+    
+    NSString *cssPath = [[NSBundle mainBundle] pathForResource:@"ArticleCSS" ofType:@"css"];
+    
+    NSMutableString *htmlString = [NSMutableString stringWithFormat:@"<html><head><link rel='stylesheet' type='text/css' href='file://%@'></head><body>%@%@%@</body></html>", cssPath, videoTag, titleTag, dateTag];
+    
+    self.contentString = htmlString;
+    NSLog(@"%@", self.contentString);
+    [self.contentWebView loadHTMLString:self.contentString baseURL:nil];   
+}
+
 - (void)setContentForTweet:(NSDictionary *)tweet
 {
     self.contentString = [[tweet objectForKey:@"text"] stringByLinkifyingURLs];
@@ -81,10 +104,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
         return NO;
     }
     return YES;
-}
-
--(void)webViewDidFinishLoad:(UIWebView *)webView
-{
 }
 
 @end

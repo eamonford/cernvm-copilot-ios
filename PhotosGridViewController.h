@@ -13,7 +13,7 @@
 #import "MWPhotoBrowser.h"
 #import "PhotoDownloader.h"
 
-@interface PhotosViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, MWPhotoBrowserDelegate, PhotoDownloaderDelegate>
+@interface PhotosGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, MWPhotoBrowserDelegate, PhotoDownloaderDelegate>
 {
     PhotoDownloader *photoDownloader;
     UIView *loadingView;

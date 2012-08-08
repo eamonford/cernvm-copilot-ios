@@ -7,8 +7,9 @@
 //
 
 #import "ExperimentsViewController.h"
-#import "ExperimentTableViewController.h"
-#import "ExperimentDetailTableViewController.h"
+//#import "ExperimentTableViewController.h"
+#import "ExperimentFunctionSelectorViewController.h"
+#import "Constants.h"
 
 #define CMS_BUTTON 0
 #define LHCB_BUTTON 1
@@ -20,7 +21,7 @@
 @end
 
 @implementation ExperimentsViewController
-@synthesize shadowImageView;
+@synthesize shadowImageView, popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,20 +51,30 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    ExperimentDetailTableViewController *viewController = [segue destinationViewController];
+    ExperimentFunctionSelectorViewController *viewController = [segue destinationViewController];
 
     // Since viewController.experiment is an ExperimentType enum, it will be an integer between 0 and 3. So the button tags in the storyboard are just set to match the enum types.
     viewController.experiment = ((UIButton *)sender).tag;
 }
 
-- (IBAction)close:(id)sender
+- (IBAction)buttonTapped:(UIButton *)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    ExperimentFunctionSelectorViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil] instantiateViewControllerWithIdentifier:kExperimentFunctionSelectorViewIdentifier];
+    viewController.experiment = sender.tag;
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
+    self.popoverController.popoverContentSize = CGSizeMake(320, 200);
+    
+    //show the popover next to the annotation view (pin)
+    [self.popoverController presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 @end

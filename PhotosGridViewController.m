@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 The Byte Factory. All rights reserved.
 //
 
-#import "PhotosViewController.h"
+#import "PhotosGridViewController.h"
 #import "CernMediaMARCParser.h"
 #import "PhotoGridViewCell.h"
 #import "AppDelegate.h"
-@interface PhotosViewController ()
+@interface PhotosGridViewController ()
 
 @end
 
-@implementation PhotosViewController
+@implementation PhotosGridViewController
 @synthesize photoDownloader;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -56,7 +56,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    }
 }
 
 - (void)refresh
@@ -78,7 +82,6 @@
 
 - (void)photoDownloaderDidFinish:(PhotoDownloader *)photoDownloader
 {
-    NSLog(@"photo downloader finished");
     [self configureGridForSpinner:NO];
     [self.gridView reloadData];
 }

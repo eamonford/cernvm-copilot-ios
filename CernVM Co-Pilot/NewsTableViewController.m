@@ -12,6 +12,7 @@
 #import "ArticleTableViewCell.h"
 #import "UIImage+SquareScaledImage.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Constants.h"
 
 #define THUMBNAIL_SIZE 75.0
 @interface NewsTableViewController ()
@@ -19,13 +20,12 @@
 @end
 
 @implementation NewsTableViewController
-@synthesize feedArticles, thumbnailImages;
+@synthesize detailView, rangeOfArticlesToShow;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        self.thumbnailImages = [NSMutableDictionary dictionary];
-        self.feedArticles = [NSArray array];
+        self.rangeOfArticlesToShow = NSMakeRange(0, 0);
     }
     return self;
 }
@@ -45,7 +45,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 // Pass article data into the article detail view
@@ -56,25 +59,44 @@
         ArticleDetailViewController *detailViewController = [segue destinationViewController];
         
         NSIndexPath *articleIndexPath = [self.tableView indexPathForSelectedRow];
-        MWFeedItem *article = [self.feedArticles objectAtIndex:[articleIndexPath row]];
+//        MWFeedItem *article = [self.feedArticles objectAtIndex:[articleIndexPath row]];
+        MWFeedItem *article = [self.aggregator.allArticles objectAtIndex:[articleIndexPath row]];
         [detailViewController setContentForArticle:article];
     }
 }
 
+- (void)reloadTableCellAtIndex:(NSNumber *)index
+{
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index.intValue inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - RSSAggregator delegate methods
+
 - (void)allFeedsDidLoadForAggregator:(RSSAggregator *)sender
 {
-    self.feedArticles = [sender aggregate];
+//    self.feedArticles = [sender aggregate];
     [self.tableView reloadData];
-    [self loadAllArticleThumbnails];
+    //[self loadAllArticleThumbnails];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
     
     [super allFeedsDidLoadForAggregator:sender];
 }
 
-#pragma mark - Loading thumbnails
-
-- (void)loadAllArticleThumbnails
+- (void)aggregator:(RSSAggregator *)aggregator didDownloadFirstImage:(UIImage *)image forArticle:(MWFeedItem *)article
 {
-    for (int i=0; i<self.feedArticles.count; i++) {
+//    NSNumber *articleIndex = [NSNumber numberWithInt:[self.aggregator.allArticles indexOfObject:article]];
+    int index = [self.aggregator.allArticles indexOfObject:article];
+
+    //[self performSelectorOnMainThread:@selector(reloadTableCellAtIndex:) withObject:articleIndex waitUntilDone:YES];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+/*- (void)loadAllArticleThumbnails
+{
+//    for (int i=0; i<self.feedArticles.count; i++) {
+    for (int i=0; i<self.aggregator.allArticles.count; i++) {
         [self performSelectorInBackground:@selector(loadThumbnailForArticleAtIndex:) withObject:[NSNumber numberWithInt:i]];
     }
 }
@@ -82,7 +104,8 @@
 - (void)loadThumbnailForArticleAtIndex:(NSNumber *)number
 {
     int index = number.intValue;
-    MWFeedItem *article = [self.feedArticles objectAtIndex:index];
+//    MWFeedItem *article = [self.feedArticles objectAtIndex:index];
+    MWFeedItem *article = [self.aggregator.allArticles objectAtIndex:index];
     NSString *body = article.content;
     if (!body) {
         body = article.summary;
@@ -120,11 +143,7 @@
     // if no img url was found, return nil
     return nil;
 }
-
-- (void)reloadTableCell:(NSNumber *)indexNumber
-{
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexNumber.intValue inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-}
+*/
 
 #pragma mark - Table view data source
 
@@ -136,8 +155,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.feedArticles.count;
+    if (self.rangeOfArticlesToShow.length)
+        return self.rangeOfArticlesToShow.length;
+    else
+        return self.aggregator.allArticles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,11 +169,11 @@
        cell = [[ArticleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if (self.feedArticles.count == 1) {
+    if (self.aggregator.allArticles.count == 1) {
         cell.position = ShadowedCellPositionSingle;
     } else if (indexPath.row == 0) {
         cell.position = ShadowedCellPositionTop;
-    } else if (indexPath.row == self.feedArticles.count-1) {
+    } else if (indexPath.row == self.aggregator.allArticles.count-1) {
         cell.position = ShadowedCellPositionBottom;
     } else {
         cell.position = ShadowedCellPositionMiddle;
@@ -164,7 +185,7 @@
     cell.shadowColor = [UIColor darkGrayColor];
 
     // Set the article title label
-    MWFeedItem *feedItem = [self.feedArticles objectAtIndex:[indexPath row]];
+    MWFeedItem *feedItem = [self.aggregator.allArticles objectAtIndex:[indexPath row]+self.rangeOfArticlesToShow.location];
     cell.titleLabel.text = [feedItem.title stringByConvertingHTMLToPlainText];
 
     // Create the feed name label
@@ -177,9 +198,12 @@
     NSString *articleDate = [dateFormatter stringFromDate:feedItem.date];
     cell.detailLabel2.text = articleDate;
     
-    UIImage *thumbnailImage = [self.thumbnailImages objectForKey:[NSNumber numberWithInt:indexPath.row]];
-    if (thumbnailImage) {
-        cell.thumbnailImageView.image = thumbnailImage;
+    // Set the thumbnail image
+    UIImage *image = [self.aggregator firstImageForArticle:feedItem];
+    // We only want the image if it's at least as big as our thumbnail size
+    if (image && image.size.width >= THUMBNAIL_SIZE && image.size.height >= THUMBNAIL_SIZE) {
+        image = [UIImage squareImageWithDimension:THUMBNAIL_SIZE fromImage:image];
+        cell.thumbnailImageView.image = image;
     } else {
         cell.thumbnailImageView.image = [UIImage imageNamed:@"thumbnailPlaceholder"];
     }
@@ -192,13 +216,31 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MWFeedItem *feedItem = [self.feedArticles objectAtIndex:[indexPath row]];
+//    MWFeedItem *feedItem = [self.feedArticles objectAtIndex:[indexPath row]];
+    MWFeedItem *feedItem = [self.aggregator.allArticles objectAtIndex:[indexPath row]+self.rangeOfArticlesToShow.location];
     NSString *text = feedItem.title;
     CGSize size = [text sizeWithFont:[UIFont boldSystemFontOfSize:16.0] constrainedToSize:CGSizeMake(189.0, CGFLOAT_MAX)];
     
     return MAX(THUMBNAIL_SIZE+20.0, size.height+70.0);
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    MWFeedItem *article = [self.feedArticles objectAtIndex:indexPath.row];
+    MWFeedItem *article = [self.aggregator.allArticles objectAtIndex:indexPath.row+self.rangeOfArticlesToShow.location];
+   // NSLog(@"about to show article %d with title %@", indexPath.row+self.rangeOfArticlesToShow.location, article.title);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        if (!self.detailView) {
+            self.detailView = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:kArticleDetailViewIdentifier];
+        }
+        [self.navigationController pushViewController:self.detailView animated:YES];
 
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        if (!self.detailView) {
+            self.detailView = [self.splitViewController.viewControllers objectAtIndex:1];
+        }
+    }
+    [self.detailView setContentForArticle:article];
+}
 
 @end

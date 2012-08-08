@@ -6,16 +6,17 @@
 //  Copyright (c) 2012 The Byte Factory. All rights reserved.
 //
 
-#import "ExperimentDetailTableViewController.h"
+#import "ExperimentFunctionSelectorViewController.h"
 #import "NewsTableViewController.h"
 #import "EventDisplayViewController.h"
-#import "PhotosViewController.h"
+#import "PhotosGridViewController.h"
+#import "AppDelegate.h"
 
-@interface ExperimentDetailTableViewController ()
+@interface ExperimentFunctionSelectorViewController ()
 
 @end
 
-@implementation ExperimentDetailTableViewController
+@implementation ExperimentFunctionSelectorViewController
 @synthesize experiment;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -68,12 +69,17 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowExperimentNews"]) {
+        NSLog(@"segue");
         NewsTableViewController *viewController = segue.destinationViewController;
         switch (self.experiment) {
             case ATLAS:
@@ -107,7 +113,7 @@
             }
             default:
                 break;
-        }    
+        }
     } else if ([segue.identifier isEqualToString:@"ShowEventDisplay"]) {
         EventDisplayViewController *viewController = segue.destinationViewController;
         switch (self.experiment) {
@@ -155,7 +161,7 @@
                 break;
         }
     } else if ([segue.identifier isEqualToString:@"ShowEventPhotos"]) {
-        PhotosViewController *photosViewController = segue.destinationViewController;
+        PhotosGridViewController *photosViewController = segue.destinationViewController;
         photosViewController.photoDownloader.url = [NSURL URLWithString:@"https://cdsweb.cern.ch/record/1305399/export/xm?ln=en"];
         [photosViewController refresh];
     }
@@ -213,6 +219,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UISplitViewController *experimentNews = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil] instantiateViewControllerWithIdentifier:@"ExperimentNewsIdentifier"];
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        UINavigationController *experimentsVC = [appDelegate.tabBarController.viewControllers objectAtIndex:TabIndexLive];
+        [experimentsVC pushViewController:experimentNews animated:YES];
+        NSLog(@"%@", experimentsVC);
+        NSLog(@"%@", experimentNews);
+        return;
+    }
     switch (indexPath.row) {
         case 0:
             [self performSegueWithIdentifier:@"ShowExperimentNews" sender:self];

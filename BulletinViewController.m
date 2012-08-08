@@ -15,7 +15,7 @@
 @end
 
 @implementation BulletinViewController
-@synthesize issues;
+@synthesize rangesOfArticlesSeparatedByWeek;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,17 +42,55 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    }
 }
 
 - (void)allFeedsDidLoadForAggregator:(RSSAggregator *)sender
 {
     
-    NSArray *articles = [self.aggregator aggregate];
-    self.issues = [self feedArticlesSeparatedByWeek:articles];
+    //NSLog(@"range: %@", [self rangesOfArticlesSeparatedByWeek:self.aggregator.allArticles]);
+//    NSArray *articles = [self.aggregator aggregate];
+    //NSArray *articles = self.aggregator.allArticles;
+    //self.issues = [self feedArticlesSeparatedByWeek:articles];
+    self.rangesOfArticlesSeparatedByWeek = [self calculateRangesOfArticlesSeparatedByWeek:self.aggregator.allArticles];
     [self.tableView reloadData];
     
     [super allFeedsDidLoadForAggregator:sender];
+}
+
+- (NSArray *)calculateRangesOfArticlesSeparatedByWeek:(NSArray *)articles
+{
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+//    NSArray *sortedArticles = [articles sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+
+    NSMutableArray *issues = [NSMutableArray array];
+    NSRange currentRange = NSMakeRange(0, 0);
+    MWFeedItem *firstArticle = [articles objectAtIndex:0];
+    NSDate *currentIssueDate = [[firstArticle.date midnight] nextOccurrenceOfWeekday:2];
+    
+    for (int i=0; i<articles.count; i++) {
+        
+        MWFeedItem *article = [articles objectAtIndex:i];
+        NSDate *oneWeekLater = [article.date dateByAddingTimeInterval:60*60*24*7];
+        // if the current article is within a week of the current issue date, add it to the current issue
+        if ([oneWeekLater compare:currentIssueDate] == NSOrderedDescending) {
+            currentRange.length++;
+        } else {    // otherwise, it's time to store the current issue and start a new issue
+            NSValue *rangeValue = [NSValue valueWithRange:currentRange];
+            [issues addObject:rangeValue];
+            currentIssueDate = [[article.date midnight] nextOccurrenceOfWeekday:2];
+            currentRange.location = i;
+            currentRange.length = 1;
+        }
+    }
+    NSValue *rangeValue = [NSValue valueWithRange:currentRange];
+    [issues addObject:rangeValue];
+
+    return issues;
 }
 
 - (NSArray *)feedArticlesSeparatedByWeek:(NSArray *)articles
@@ -88,17 +126,21 @@
 {
     NewsTableViewController *viewController = [segue destinationViewController];
     NSIndexPath *issueIndexPath = [self.tableView indexPathForSelectedRow];
-    NSArray *issueArticles = [[self.issues objectAtIndex:issueIndexPath.row] objectForKey:@"Articles"];
-    viewController.feedArticles = issueArticles;
-    [viewController loadAllArticleThumbnails];
+   // NSArray *issueArticles = [[self.issues objectAtIndex:issueIndexPath.row] objectForKey:@"Articles"];
+//    viewController.aggregator.allArticles = issueArticles;
+    viewController.aggregator = self.aggregator;
+    
+    //int location = [self.aggregator.allArticles indexOfObject:[[[self.issues objectAtIndex:issueIndexPath.row] objectForKey:@"Articles"] objectAtIndex:0]];
+    //int length = issueArticles.count;
+    viewController.rangeOfArticlesToShow = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:issueIndexPath.row] rangeValue];
     
     // Set the title of the new view controller to a string of the issue date
-    NSDictionary *issue = [self.issues objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+ /*   NSDictionary *issue = [self.issues objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     NSString *issueDate = [dateFormatter stringFromDate:[issue objectForKey:@"Date"]];
     viewController.title = issueDate;
-
+*/
 }
 
 #pragma mark - Table view data source
@@ -112,7 +154,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.issues.count;
+    return self.rangesOfArticlesSeparatedByWeek.count;
+    //return self.issues.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,19 +170,21 @@
     cell.shadowSize = 2.0;
     cell.fillColor = [UIColor whiteColor];
     cell.shadowColor = [UIColor darkGrayColor];
-    
-    NSDictionary *issue = [self.issues objectAtIndex:[indexPath row]];
+    //NSDictionary *issue = [self.issues objectAtIndex:[indexPath row]];
     // Set the number of articles label
-    int numberOfArticles = [[issue objectForKey:@"Articles"] count];
-    NSMutableString *articlesString = [NSMutableString stringWithFormat:@"%d ", numberOfArticles];
-    [articlesString appendString: numberOfArticles>1?@"articles":@"article"];
+//    int numberOfArticles = [[issue objectForKey:@"Articles"] count];
+    NSRange issueRange = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:indexPath.row] rangeValue];
+    NSMutableString *articlesString = [NSMutableString stringWithFormat:@"%d ", issueRange.length];
+    [articlesString appendString: issueRange.length>1?@"articles":@"article"];
     cell.detailLabel1.text = articlesString;
     
     // Set the article title label
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    NSString *issueDate = [dateFormatter stringFromDate:[issue objectForKey:@"Date"]];
-    cell.titleLabel.text = [NSString stringWithFormat:@"Week of %@", issueDate];;
+    MWFeedItem *latestArticle = [self.aggregator.allArticles objectAtIndex:issueRange.location+issueRange.length-1];
+    NSDate *issueDate = [[latestArticle.date midnight] nextOccurrenceOfWeekday:2];
+    NSString *issueDateString = [dateFormatter stringFromDate:issueDate];
+    cell.titleLabel.text = [NSString stringWithFormat:@"Week of %@", issueDateString];
  
     
     return cell;

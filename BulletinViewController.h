@@ -11,9 +11,11 @@
 
 @interface BulletinViewController : RSSTableViewController
 {
-    NSArray *issues;
+    //NSArray *issues;
+    NSArray *rangesOfArticlesSeparatedByWeek;
 }
-@property (nonatomic, retain) NSArray *issues;
+//@property (nonatomic, retain) NSArray *issues;
+@property (nonatomic, retain) NSArray *rangesOfArticlesSeparatedByWeek;
 
 - (NSArray *)feedArticlesSeparatedByWeek:(NSArray *)feedArticles;
 

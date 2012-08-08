@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSString *contentString;
 
 - (void)setContentForArticle:(MWFeedItem *)article;
+- (void)setContentForVideoMetadata:(NSDictionary *)videoMetadata;
 - (void)setContentForTweet:(NSDictionary *)tweet;
 
 @end

@@ -18,9 +18,10 @@ typedef enum {
 @interface ExperimentsViewController : UIViewController
 {
     IBOutlet UIImageView *shadowImageView;
+    UIPopoverController *popoverController;
+    
 }
 @property (nonatomic, retain) UIImageView *shadowImageView;
-
-- (IBAction)close:(id)sender;
+@property (nonatomic, strong) UIPopoverController *popoverController;
 
 @end

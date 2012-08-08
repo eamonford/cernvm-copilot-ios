@@ -1,21 +1,28 @@
 body {
-    font-family: Trebuchet MS;
-    font-size:14px;
+    font-family: Georgia;
+    font-size:17px;
+    padding:20px;
 }
 
 h1 {
+    font-family:Helvetica;
     font-size:19px;
     margin-bottom:10px;
     line-height:95%;
 }
 
 h2 {
-    font-size:15px;
+    font-family:Helvetica;
+    font-size:12px;
     color:#999;
     margin:0px;
+    padding-bottom:5px;
+    border-bottom:3px solid #ccc;
 }
 
 img {
     max-width:100%;
     height:auto;
-    }
+    padding:10px;
+    border:1px solid #ccc;
+}

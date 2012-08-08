@@ -36,7 +36,6 @@
 		E149D8B915C7D161007DA389 /* RSSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B815C7D161007DA389 /* RSSTableViewController.m */; };
 		E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */; };
 		E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */; };
-		E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */; };
 		E15CC7B71593881A0016CC95 /* TwitterFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7B61593881A0016CC95 /* TwitterFeed.m */; };
 		E15CC7B91593E9E40016CC95 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15CC7B81593E9E40016CC95 /* Twitter.framework */; };
 		E15CC7BF15959F440016CC95 /* cmsLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E15CC7BE15959F440016CC95 /* cmsLogo@2x.png */; };
@@ -48,7 +47,7 @@
 		E1A98BE315BA182300ACB293 /* CJ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE215BA182300ACB293 /* CJ.png */; };
 		E1A98BE515BA1A7700ACB293 /* CQ.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE415BA1A7700ACB293 /* CQ.png */; };
 		E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A98BE615BA1B2F00ACB293 /* C10.png */; };
-		E1A98BEE15BA28C000ACB293 /* ExperimentDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */; };
+		E1A98BEE15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A98BED15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.m */; };
 		E1AB91EA159BE07D006FBB40 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D6159BE07D006FBB40 /* AQGridView.m */; };
 		E1AB91EB159BE07D006FBB40 /* AQGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D9159BE07D006FBB40 /* AQGridViewCell.m */; };
 		E1AB91EC159BE07D006FBB40 /* AQGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91DB159BE07D006FBB40 /* AQGridViewController.m */; };
@@ -64,8 +63,8 @@
 		E1AB91FB159BE087006FBB40 /* AQGridSelectionGrayBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AB91F6159BE087006FBB40 /* AQGridSelectionGrayBlue.png */; };
 		E1AB91FC159BE087006FBB40 /* AQGridSelectionGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AB91F7159BE087006FBB40 /* AQGridSelectionGreen.png */; };
 		E1AB91FD159BE087006FBB40 /* AQGridSelectionRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AB91F8159BE087006FBB40 /* AQGridSelectionRed.png */; };
-		E1AB9200159BE12C006FBB40 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91FF159BE12C006FBB40 /* PhotosViewController.m */; };
-		E1AB9201159BE12C006FBB40 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91FF159BE12C006FBB40 /* PhotosViewController.m */; };
+		E1AB9200159BE12C006FBB40 /* PhotosGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91FF159BE12C006FBB40 /* PhotosGridViewController.m */; };
+		E1AB9201159BE12C006FBB40 /* PhotosGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91FF159BE12C006FBB40 /* PhotosGridViewController.m */; };
 		E1AB9202159BE388006FBB40 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D6159BE07D006FBB40 /* AQGridView.m */; };
 		E1AB9203159BE388006FBB40 /* AQGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91D9159BE07D006FBB40 /* AQGridViewCell.m */; };
 		E1AB9204159BE388006FBB40 /* AQGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91DB159BE07D006FBB40 /* AQGridViewController.m */; };
@@ -173,8 +172,12 @@
 		E1D87E8B159EEC920051104C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D87E8A159EEC920051104C /* MessageUI.framework */; };
 		E1D9609815991335006150D1 /* CernMediaMARCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D9609715991335006150D1 /* CernMediaMARCParser.m */; };
 		E1DD4C1B15AA4C37003556BC /* grayTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DD4C1A15AA4C37003556BC /* grayTexture.png */; };
-		E1E41E0315C8977000D8EB0C /* lhcMapShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E41E0115C8977000D8EB0C /* lhcMapShadow@2x.png */; };
-		E1E41E0415C8977000D8EB0C /* lhcMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E41E0215C8977000D8EB0C /* lhcMap@2x.png */; };
+		E1E41E0315C8977000D8EB0C /* lhcMapShadowPortrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E41E0115C8977000D8EB0C /* lhcMapShadowPortrait@2x.png */; };
+		E1E41E0415C8977000D8EB0C /* lhcMapPortrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E41E0215C8977000D8EB0C /* lhcMapPortrait@2x.png */; };
+		E1F1ED0F15D08475005A99BC /* lhcMapShadowLandscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F1ED0D15D08475005A99BC /* lhcMapShadowLandscape@2x.png */; };
+		E1F1ED1015D08475005A99BC /* lhcMapLandscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F1ED0E15D08475005A99BC /* lhcMapLandscape@2x.png */; };
+		E1F1ED1715D21F07005A99BC /* NewsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F1ED1615D21F06005A99BC /* NewsGridViewController.m */; };
+		E1F1ED1A15D22143005A99BC /* NewsGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F1ED1915D22143005A99BC /* NewsGridViewCell.m */; };
 		E1F7B68B156EDC7C0092367F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68A156EDC7C0092367F /* UIKit.framework */; };
 		E1F7B68D156EDC7C0092367F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68C156EDC7C0092367F /* Foundation.framework */; };
 		E1F7B68F156EDC7C0092367F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68E156EDC7C0092367F /* CoreGraphics.framework */; };
@@ -248,8 +251,6 @@
 		E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDisplayViewController.m; sourceTree = "<group>"; };
 		E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentsViewController.h; sourceTree = "<group>"; };
 		E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimentsViewController.m; sourceTree = "<group>"; };
-		E15CC7B1159279C30016CC95 /* ExperimentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentTableViewController.h; sourceTree = "<group>"; };
-		E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimentTableViewController.m; sourceTree = "<group>"; };
 		E15CC7B51593881A0016CC95 /* TwitterFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterFeed.h; sourceTree = "<group>"; };
 		E15CC7B61593881A0016CC95 /* TwitterFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterFeed.m; sourceTree = "<group>"; };
 		E15CC7B81593E9E40016CC95 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -259,6 +260,7 @@
 		E1648F3E15AF789000EE44DA /* ShadowedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedCell.m; sourceTree = "<group>"; };
 		E171638315911B0100AB43F4 /* ArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleTableViewCell.h; path = "CernVM Co-Pilot/ArticleTableViewCell.h"; sourceTree = "<group>"; };
 		E171638415911B0100AB43F4 /* ArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleTableViewCell.m; path = "CernVM Co-Pilot/ArticleTableViewCell.m"; sourceTree = "<group>"; };
+		E1815C4F15CB269200878E16 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
 		E182E1FA15740766000E4197 /* RSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSFeed.m; path = "CernVM Co-Pilot/RSSFeed.m"; sourceTree = "<group>"; };
 		E1830BC915744B9F003F16E2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -267,8 +269,8 @@
 		E1A98BE215BA182300ACB293 /* CJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CJ.png; sourceTree = "<group>"; };
 		E1A98BE415BA1A7700ACB293 /* CQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CQ.png; sourceTree = "<group>"; };
 		E1A98BE615BA1B2F00ACB293 /* C10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C10.png; sourceTree = "<group>"; };
-		E1A98BEC15BA28C000ACB293 /* ExperimentDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExperimentDetailTableViewController.h; path = "CernVM Co-Pilot/ExperimentDetailTableViewController.h"; sourceTree = "<group>"; };
-		E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperimentDetailTableViewController.m; path = "CernVM Co-Pilot/ExperimentDetailTableViewController.m"; sourceTree = "<group>"; };
+		E1A98BEC15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExperimentFunctionSelectorViewController.h; path = "CernVM Co-Pilot/ExperimentFunctionSelectorViewController.h"; sourceTree = "<group>"; };
+		E1A98BED15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperimentFunctionSelectorViewController.m; path = "CernVM Co-Pilot/ExperimentFunctionSelectorViewController.m"; sourceTree = "<group>"; };
 		E1AB91D3159BE07D006FBB40 /* AQGridView+CellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLayout.h"; sourceTree = "<group>"; };
 		E1AB91D4159BE07D006FBB40 /* AQGridView+CellLocationDelegation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLocationDelegation.h"; sourceTree = "<group>"; };
 		E1AB91D5159BE07D006FBB40 /* AQGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQGridView.h; sourceTree = "<group>"; };
@@ -297,8 +299,8 @@
 		E1AB91F6159BE087006FBB40 /* AQGridSelectionGrayBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQGridSelectionGrayBlue.png; sourceTree = "<group>"; };
 		E1AB91F7159BE087006FBB40 /* AQGridSelectionGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQGridSelectionGreen.png; sourceTree = "<group>"; };
 		E1AB91F8159BE087006FBB40 /* AQGridSelectionRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQGridSelectionRed.png; sourceTree = "<group>"; };
-		E1AB91FE159BE12C006FBB40 /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
-		E1AB91FF159BE12C006FBB40 /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
+		E1AB91FE159BE12C006FBB40 /* PhotosGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosGridViewController.h; sourceTree = "<group>"; };
+		E1AB91FF159BE12C006FBB40 /* PhotosGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosGridViewController.m; sourceTree = "<group>"; };
 		E1AB920C159BE44B006FBB40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E1B0415515B6449F00C8EA40 /* StaticInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoViewController.h; sourceTree = "<group>"; };
 		E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoViewController.m; sourceTree = "<group>"; };
@@ -400,8 +402,14 @@
 		E1D9609615991335006150D1 /* CernMediaMARCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CernMediaMARCParser.h; sourceTree = "<group>"; };
 		E1D9609715991335006150D1 /* CernMediaMARCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CernMediaMARCParser.m; sourceTree = "<group>"; };
 		E1DD4C1A15AA4C37003556BC /* grayTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayTexture.png; sourceTree = "<group>"; };
-		E1E41E0115C8977000D8EB0C /* lhcMapShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadow@2x.png"; sourceTree = "<group>"; };
-		E1E41E0215C8977000D8EB0C /* lhcMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMap@2x.png"; sourceTree = "<group>"; };
+		E1E41E0115C8977000D8EB0C /* lhcMapShadowPortrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadowPortrait@2x.png"; sourceTree = "<group>"; };
+		E1E41E0215C8977000D8EB0C /* lhcMapPortrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapPortrait@2x.png"; sourceTree = "<group>"; };
+		E1F1ED0D15D08475005A99BC /* lhcMapShadowLandscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapShadowLandscape@2x.png"; sourceTree = "<group>"; };
+		E1F1ED0E15D08475005A99BC /* lhcMapLandscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lhcMapLandscape@2x.png"; sourceTree = "<group>"; };
+		E1F1ED1515D21F06005A99BC /* NewsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsGridViewController.h; sourceTree = "<group>"; };
+		E1F1ED1615D21F06005A99BC /* NewsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsGridViewController.m; sourceTree = "<group>"; };
+		E1F1ED1815D22143005A99BC /* NewsGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsGridViewCell.h; sourceTree = "<group>"; };
+		E1F1ED1915D22143005A99BC /* NewsGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsGridViewCell.m; sourceTree = "<group>"; };
 		E1F7B686156EDC7C0092367F /* CernVM Co-Pilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CernVM Co-Pilot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F7B68A156EDC7C0092367F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1F7B68C156EDC7C0092367F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -462,20 +470,20 @@
 		E120849E15773D5100A81B87 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E1A98BEC15BA28C000ACB293 /* ExperimentDetailTableViewController.h */,
-				E1A98BED15BA28C000ACB293 /* ExperimentDetailTableViewController.m */,
+				E1A98BEC15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.h */,
+				E1A98BED15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.m */,
 				E149D8B115C741D5007DA389 /* BulletinViewController.h */,
 				E149D8B215C741D5007DA389 /* BulletinViewController.m */,
+				E1F1ED1515D21F06005A99BC /* NewsGridViewController.h */,
+				E1F1ED1615D21F06005A99BC /* NewsGridViewController.m */,
 				E120849A15773D3500A81B87 /* NewsTableViewController.h */,
 				E120849B15773D3500A81B87 /* NewsTableViewController.m */,
 				E1975A4A158F99D800CEE5A2 /* ArticleDetailViewController.h */,
 				E1975A4B158F99D800CEE5A2 /* ArticleDetailViewController.m */,
 				E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */,
 				E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */,
-				E15CC7B1159279C30016CC95 /* ExperimentTableViewController.h */,
-				E15CC7B2159279C30016CC95 /* ExperimentTableViewController.m */,
-				E1AB91FE159BE12C006FBB40 /* PhotosViewController.h */,
-				E1AB91FF159BE12C006FBB40 /* PhotosViewController.m */,
+				E1AB91FE159BE12C006FBB40 /* PhotosGridViewController.h */,
+				E1AB91FF159BE12C006FBB40 /* PhotosGridViewController.m */,
 				E12E489415A36723001ADC77 /* VideosTableViewController.h */,
 				E12E489515A36723001ADC77 /* VideosTableViewController.m */,
 				E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */,
@@ -724,8 +732,10 @@
 		E1D87E86159EE6CB0051104C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E1E41E0115C8977000D8EB0C /* lhcMapShadow@2x.png */,
-				E1E41E0215C8977000D8EB0C /* lhcMap@2x.png */,
+				E1F1ED0D15D08475005A99BC /* lhcMapShadowLandscape@2x.png */,
+				E1F1ED0E15D08475005A99BC /* lhcMapLandscape@2x.png */,
+				E1E41E0115C8977000D8EB0C /* lhcMapShadowPortrait@2x.png */,
+				E1E41E0215C8977000D8EB0C /* lhcMapPortrait@2x.png */,
 				E10055F615C4728000C3BC9F /* thumbnailPlaceholder.png */,
 				E1CF4A3715B8A52100ED2E1C /* Static Info Photos */,
 				E1B0415F15B6A01B00C8EA40 /* alice.png */,
@@ -756,6 +766,8 @@
 				E1648F3E15AF789000EE44DA /* ShadowedCell.m */,
 				E103FBD515AC1A8E00274739 /* ShadowedCellBackgroundView.h */,
 				E103FBD615AC1A8E00274739 /* ShadowedCellBackgroundView.m */,
+				E1F1ED1815D22143005A99BC /* NewsGridViewCell.h */,
+				E1F1ED1915D22143005A99BC /* NewsGridViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -839,6 +851,7 @@
 				E1F7B693156EDC7C0092367F /* InfoPlist.strings */,
 				E1F7B696156EDC7C0092367F /* main.m */,
 				E1F7B698156EDC7C0092367F /* CernVM Co-Pilot-Prefix.pch */,
+				E1815C4F15CB269200878E16 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1004,8 +1017,10 @@
 				E1A98BE715BA1B2F00ACB293 /* C10.png in Resources */,
 				E10055F715C4728000C3BC9F /* thumbnailPlaceholder.png in Resources */,
 				E130802E15C4BC810024BE41 /* ArticleCSS.css in Resources */,
-				E1E41E0315C8977000D8EB0C /* lhcMapShadow@2x.png in Resources */,
-				E1E41E0415C8977000D8EB0C /* lhcMap@2x.png in Resources */,
+				E1E41E0315C8977000D8EB0C /* lhcMapShadowPortrait@2x.png in Resources */,
+				E1E41E0415C8977000D8EB0C /* lhcMapPortrait@2x.png in Resources */,
+				E1F1ED0F15D08475005A99BC /* lhcMapShadowLandscape@2x.png in Resources */,
+				E1F1ED1015D08475005A99BC /* lhcMapLandscape@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,7 +1078,6 @@
 				E1975A4C158F99D800CEE5A2 /* ArticleDetailViewController.m in Sources */,
 				E171638515911B0100AB43F4 /* ArticleTableViewCell.m in Sources */,
 				E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */,
-				E15CC7B3159279C30016CC95 /* ExperimentTableViewController.m in Sources */,
 				E15CC7B71593881A0016CC95 /* TwitterFeed.m in Sources */,
 				E1D9609815991335006150D1 /* CernMediaMARCParser.m in Sources */,
 				E1AB9202159BE388006FBB40 /* AQGridView.m in Sources */,
@@ -1076,7 +1090,7 @@
 				E1AB9209159BE388006FBB40 /* UIColor+AQGridView.m in Sources */,
 				E1AB920A159BE388006FBB40 /* NSIndexSet+AQIsSetContiguous.m in Sources */,
 				E1AB920B159BE388006FBB40 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */,
-				E1AB9200159BE12C006FBB40 /* PhotosViewController.m in Sources */,
+				E1AB9200159BE12C006FBB40 /* PhotosGridViewController.m in Sources */,
 				E1D87E14159E925B0051104C /* PhotoGridViewCell.m in Sources */,
 				E1D87E46159EE6680051104C /* MWCaptionView.m in Sources */,
 				E1D87E48159EE6680051104C /* MWPhoto.m in Sources */,
@@ -1101,12 +1115,14 @@
 				E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */,
 				E1B0415715B6449F00C8EA40 /* StaticInfoViewController.m in Sources */,
 				E1B0416315B7E68000C8EA40 /* AboutTableViewController.m in Sources */,
-				E1A98BEE15BA28C000ACB293 /* ExperimentDetailTableViewController.m in Sources */,
+				E1A98BEE15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.m in Sources */,
 				E1FE435615C20165008E9634 /* PageContainingViewController.m in Sources */,
 				E10055FB15C47B0300C3BC9F /* UIImage+SquareScaledImage.m in Sources */,
 				E149D8B315C741D5007DA389 /* BulletinViewController.m in Sources */,
 				E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */,
 				E149D8B915C7D161007DA389 /* RSSTableViewController.m in Sources */,
+				E1F1ED1715D21F07005A99BC /* NewsGridViewController.m in Sources */,
+				E1F1ED1A15D22143005A99BC /* NewsGridViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1131,7 +1147,7 @@
 				E1AB91F1159BE07D006FBB40 /* UIColor+AQGridView.m in Sources */,
 				E1AB91F2159BE07D006FBB40 /* NSIndexSet+AQIsSetContiguous.m in Sources */,
 				E1AB91F3159BE07D006FBB40 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */,
-				E1AB9201159BE12C006FBB40 /* PhotosViewController.m in Sources */,
+				E1AB9201159BE12C006FBB40 /* PhotosGridViewController.m in Sources */,
 				E1D87E15159E925B0051104C /* PhotoGridViewCell.m in Sources */,
 				E1D87E47159EE6680051104C /* MWCaptionView.m in Sources */,
 				E1D87E49159EE6680051104C /* MWPhoto.m in Sources */,

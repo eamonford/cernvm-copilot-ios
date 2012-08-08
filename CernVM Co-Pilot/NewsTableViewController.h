@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "RSSTableViewController.h"
+#import "ArticleDetailViewController.h"
 
 @interface NewsTableViewController : RSSTableViewController
 {
-    NSArray *feedArticles;
-    NSMutableDictionary *thumbnailImages;
+    IBOutlet ArticleDetailViewController *detailView;
+    NSRange rangeOfArticlesToShow;
 }
-@property (nonatomic, retain) NSMutableDictionary *thumbnailImages;
-@property (atomic) NSArray *feedArticles;
 
-- (void)loadAllArticleThumbnails;
-- (void)loadThumbnailForArticleAtIndex:(NSNumber *)number;
+@property (nonatomic, retain) ArticleDetailViewController *detailView;
+@property NSRange rangeOfArticlesToShow;
 
 @end
