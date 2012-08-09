@@ -20,7 +20,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        displaySpinner = YES;
+        displaySpinner = NO;
         self.aggregator = [[RSSAggregator alloc] init];
         self.aggregator.delegate = self;
         self.gridView.resizesCellWidthToFit = NO;
@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -120,6 +119,7 @@
 {
     if (self.aggregator.feeds.count) {
         [self configureGridForSpinner:YES];
+        [self.gridView reloadData];
         [self.aggregator refreshAllFeeds];
     }
 }

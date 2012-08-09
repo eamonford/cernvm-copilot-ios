@@ -14,7 +14,6 @@ h2 {
     font-family:Helvetica;
     font-size:12px;
     color:#999;
-    margin:0px;
     padding-bottom:5px;
     border-bottom:3px solid #ccc;
 }
@@ -22,6 +21,6 @@ h2 {
 img {
     max-width:100%;
     height:auto;
-    padding:10px;
-    border:1px solid #ccc;
+    /*padding:10px;
+    border:1px solid #ccc;*/
 }

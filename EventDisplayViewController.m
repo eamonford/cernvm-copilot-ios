@@ -68,7 +68,6 @@
     }
     
     [self refresh:self];
-
 }
 
 - (void)viewDidUnload
@@ -196,9 +195,9 @@
     if (secondsAgo<60*60) {
         dateString = [NSString stringWithFormat:@"%d minutes ago", secondsAgo/60];
     } else if (secondsAgo<60*60*24) {
-        dateString = [NSString stringWithFormat:@"%f hours ago", (float)secondsAgo/(60*60)];
+        dateString = [NSString stringWithFormat:@"%0.1f hours ago", (float)secondsAgo/(60*60)];
     } else {
-        dateString = [NSString stringWithFormat:@"%f days ago", (float)secondsAgo/(60*60*24)];
+        dateString = [NSString stringWithFormat:@"%0.1f days ago", (float)secondsAgo/(60*60*24)];
     }
     return dateString;
 }

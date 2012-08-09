@@ -9,6 +9,7 @@
 #import "BulletinViewController.h"
 #import "NSDate+LastOccurrenceOfWeekday.h"
 #import "ArticleTableViewCell.h"
+#import "NewsGridViewController.h"
 
 @interface BulletinViewController ()
 
@@ -123,16 +124,13 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NewsTableViewController *viewController = [segue destinationViewController];
+    NewsGridViewController *viewController = [segue destinationViewController];
     NSIndexPath *issueIndexPath = [self.tableView indexPathForSelectedRow];
-   // NSArray *issueArticles = [[self.issues objectAtIndex:issueIndexPath.row] objectForKey:@"Articles"];
-//    viewController.aggregator.allArticles = issueArticles;
     viewController.aggregator = self.aggregator;
+    viewController.aggregator.delegate = viewController;
     
-    //int location = [self.aggregator.allArticles indexOfObject:[[[self.issues objectAtIndex:issueIndexPath.row] objectForKey:@"Articles"] objectAtIndex:0]];
-    //int length = issueArticles.count;
     viewController.rangeOfArticlesToShow = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:issueIndexPath.row] rangeValue];
-    
+    [viewController.gridView reloadData];
     // Set the title of the new view controller to a string of the issue date
  /*   NSDictionary *issue = [self.issues objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
