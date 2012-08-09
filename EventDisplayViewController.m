@@ -58,13 +58,17 @@
     
     self.pageControl.numberOfPages = numPages;
     self.scrollView.backgroundColor = [UIColor blackColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*numPages, 1.0);
-    
     for (int i=0; i<numPages; i++) {
         [self addSpinnerToPage:i];
     }
     
     [self refresh:self];
+
 }
 
 - (void)viewDidUnload
@@ -75,9 +79,24 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return YES;
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    CGFloat oldScreenWidth = UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)?[UIScreen mainScreen].bounds.size.width:[UIScreen mainScreen].bounds.size.height;
+    
+    float scrollViewWidth = self.scrollView.frame.size.width;
+    float scrollViewHeight = self.scrollView.frame.size.height;
+    self.scrollView.contentSize = CGSizeMake(scrollViewWidth*numPages, 1.0);
+    for (UIView *subview in self.scrollView.subviews) {
+        int page = floor((subview.frame.origin.x - oldScreenWidth / 2) / oldScreenWidth) + 1;
+        subview.frame = CGRectMake(scrollViewWidth*page, 0.0, scrollViewWidth, scrollViewHeight);
+    }
+}
 - (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects
 {
     NSMutableDictionary *source = [NSMutableDictionary dictionary];
@@ -198,11 +217,10 @@
 
 - (void)addSpinnerToPage:(int)page
 {
-    float scrollViewWidth = self.scrollView.frame.size.width;
-    float scrollViewHeight = self.scrollView.frame.size.height;
-    
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    spinner.center = CGPointMake(scrollViewWidth*(page+1)-(scrollViewWidth/2), scrollViewHeight/2);
+    spinner.frame = CGRectMake(self.scrollView.frame.size.width*page, 0.0, self.scrollView.frame.size.width, self
+                               .scrollView.frame.size.height);
+    //spinner.center = CGPointMake(scrollViewWidth*(page+1)-(scrollViewWidth/2), scrollViewHeight/2);
     [spinner startAnimating];
     [self.scrollView addSubview:spinner];
 }

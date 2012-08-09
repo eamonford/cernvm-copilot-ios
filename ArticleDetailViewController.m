@@ -44,7 +44,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
     else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+        return YES;
 }
 
 - (void)setContentForArticle:(MWFeedItem *)article

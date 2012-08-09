@@ -44,7 +44,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return YES;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -86,7 +89,7 @@
         static NSString *newsCellIdentifier = @"newsCell";
         NewsGridViewCell *cell = (NewsGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:newsCellIdentifier];
         if (cell == nil) {
-            cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 250.0) reuseIdentifier:newsCellIdentifier];
+            cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 250.0) reuseIdentifier:newsCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
         cell.titleLabel.text = article.title;
@@ -109,7 +112,7 @@
     if (displaySpinner) {
         return [UIScreen mainScreen].bounds.size;
     } else {
-        return CGSizeMake(340.0, 270.0);
+        return CGSizeMake(320.0, 270.0);
     }
 }
 

@@ -11,6 +11,8 @@
 #import "EventDisplayViewController.h"
 #import "PhotosGridViewController.h"
 #import "AppDelegate.h"
+#import "NewsGridViewController.h"
+#import "Constants.h"
 
 @interface ExperimentFunctionSelectorViewController ()
 
@@ -69,17 +71,15 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
-    }
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowExperimentNews"]) {
-        NSLog(@"segue");
         NewsTableViewController *viewController = segue.destinationViewController;
         switch (self.experiment) {
             case ATLAS:
@@ -214,31 +214,121 @@
     return cell;
 }
 
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIStoryboard *mainStoryboard;
+    UINavigationController *navigationController;
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        UISplitViewController *experimentNews = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil] instantiateViewControllerWithIdentifier:@"ExperimentNewsIdentifier"];
-        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-        UINavigationController *experimentsVC = [appDelegate.tabBarController.viewControllers objectAtIndex:TabIndexLive];
-        [experimentsVC pushViewController:experimentNews animated:YES];
-        NSLog(@"%@", experimentsVC);
-        NSLog(@"%@", experimentNews);
-        return;
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        navigationController = [appDelegate.tabBarController.viewControllers objectAtIndex:TabIndexLive];
+        ExperimentsViewController *experimentsVC = (ExperimentsViewController *)navigationController.topViewController;
+        [experimentsVC.popoverController dismissPopoverAnimated:YES];
+
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        navigationController = self.navigationController;
     }
+        
     switch (indexPath.row) {
         case 0:
-            [self performSegueWithIdentifier:@"ShowExperimentNews" sender:self];
-            break;
-        case 1:
-            if (self.experiment == ALICE) {
-                [self performSegueWithIdentifier:@"ShowEventPhotos" sender:self];                
-            } else {
-                [self performSegueWithIdentifier:@"ShowEventDisplay" sender:self];
+        {
+            NewsGridViewController *newsViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kExperimentNewsViewController];
+            switch (self.experiment) {
+                case ATLAS:
+                {
+                    newsViewController.title = @"ATLAS News";
+                    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://pdg2.lbl.gov/atlasblog/?feed=rss2"]];
+                    break;
+                }
+                case CMS:
+                {
+                    newsViewController.title = @"CMS News";
+                    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
+                    break;
+                }
+                case ALICE:
+                {
+                    newsViewController.title = @"ALICE News";
+                    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
+                    break;
+                }
+                case LHCb:
+                {
+                    newsViewController.title = @"LHCb News";
+                    [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://twitter.com/statuses/user_timeline/92522167.rss"]];
+                    break;
+                }
+                default:
+                    break;
             }
+            [newsViewController refresh];
+            [navigationController pushViewController:newsViewController animated:YES];
             break;
+        }
+        case 1:
+        {
+            EventDisplayViewController *eventViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kEventDisplayViewController];
+            
+            switch (self.experiment) {
+                case ATLAS:
+                {
+                    CGFloat largeImageDimension = 764.0;
+                    CGFloat smallImageDimension = 379.0;
+                    
+                    CGRect frontViewRect = CGRectMake(2.0, 2.0, largeImageDimension, largeImageDimension);
+                    NSDictionary *frontView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:frontViewRect], @"Rect", @"Front", @"Description", nil];
+                    
+                    CGRect sideViewRect = CGRectMake(2.0+4.0+largeImageDimension, 2.0, smallImageDimension, smallImageDimension);
+                    NSDictionary *sideView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:sideViewRect], @"Rect", @"Side", @"Description", nil];
+                    
+                    NSArray *boundaryRects = [NSArray arrayWithObjects:frontView, sideView, nil];
+                    [eventViewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://atlas-live.cern.ch/live.png"] boundaryRects:boundaryRects];
+                    eventViewController.title = @"ATLAS";
+                    break;
+                }
+                case CMS:
+                {
+                    [eventViewController addSourceWithDescription:@"3D Tower" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/3DTower.png"] boundaryRects:nil];
+                    [eventViewController addSourceWithDescription:@"3D RecHit" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/3DRecHit.png"] boundaryRects:nil];
+                    [eventViewController addSourceWithDescription:@"Lego" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/Lego.png"] boundaryRects:nil];
+                    [eventViewController addSourceWithDescription:@"RhoPhi" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoPhi.png"] boundaryRects:nil];
+                    [eventViewController addSourceWithDescription:@"RhoZ" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoZ.png"] boundaryRects:nil];
+                    eventViewController.title = @"CMS";
+                    break;
+                }
+                case ALICE:
+                {
+                    PhotosGridViewController *photosViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kALICEPhotoGridViewController];
+                    
+                    photosViewController.photoDownloader.url = [NSURL URLWithString:@"https://cdsweb.cern.ch/record/1305399/export/xm?ln=en"];
+                    [photosViewController refresh];
+                    [navigationController pushViewController:photosViewController animated:YES];
+                    return;
+                }
+                case LHCb:
+                {
+                    CGRect cropRect = CGRectMake(0.0, 66.0, 1685.0, 811.0);
+                    NSDictionary *croppedView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:cropRect], @"Rect", @"Side", @"Description", nil];
+                    
+                    NSArray *boundaryRects = [NSArray arrayWithObjects:croppedView, nil];
+                    [eventViewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://lbcomet.cern.ch/Online/Images/evdisp.jpg"] boundaryRects:boundaryRects];
+                    eventViewController.title = @"LHCB";
+                    break;
+                }
+                default:
+                    break;
+            }
+            [navigationController pushViewController:eventViewController animated:YES];
+            break;
+        }
+        default:
+            break;
+    }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
     }
 
 }

@@ -10,7 +10,11 @@
 #define CernVM_Co_Pilot_Constants_h
 
 #define kArticleDetailViewIdentifier @"ArticleDetailViewIdentifier"
-#define kExperimentFunctionSelectorViewIdentifier @"ExperimentFunctionSelectorViewIdentifier"
+#define kExperimentFunctionSelectorViewIdentifier @"ExperimentFunctionSelectorViewControllerIdentifier"
+#define kExperimentNewsViewController @"ExperimentNewsViewControllerIdentifier"
+#define kEventDisplayViewController @"EventDisplayViewControllerIdentifier"
+#define kALICEPhotoGridViewController @"ALICEPhotoGridViewControllerIdentifier"
+
 #define kVideoMetadataPropertyTitle @"VideoMetadataPropertyTitle"
 #define kVideoMetadataPropertyDate @"VideoMetadataPropertyDate"
 #define kVideoMetadataPropertyVideoURL @"mp40600"
