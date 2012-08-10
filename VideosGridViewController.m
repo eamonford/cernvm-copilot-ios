@@ -1,28 +1,26 @@
 //
-//  NewsGridViewController.m
+//  VideosGridViewController.m
 //  CernVM Co-Pilot
 //
-//  Created by Eamon Ford on 8/7/12.
+//  Created by Eamon Ford on 8/9/12.
 //  Copyright (c) 2012 The Byte Factory. All rights reserved.
 //
 
-#import "NewsGridViewController.h"
-#import "NewsGridViewCell.h"
-#import "ArticleDetailViewController.h"
+#import "VideosGridViewController.h"
+#import "Constants.h"
 
-@interface NewsGridViewController ()
+@interface VideosGridViewController ()
 
 @end
 
-@implementation NewsGridViewController
-@synthesize rangeOfArticlesToShow;
+@implementation VideosGridViewController
+@synthesize videoMetadata, videoThumbnails;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if (self = [super initWithCoder:aDecoder]) {
-        self.gridView.resizesCellWidthToFit = NO;
-        self.gridView.backgroundColor = [UIColor whiteColor];
-        self.gridView.allowsSelection = YES;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
     }
     return self;
 }
@@ -30,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -40,17 +39,61 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
+    else
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+#pragma mark - CernMediaMARCParserDeleate methods
+
+- (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
-    ArticleDetailViewController *viewController = (ArticleDetailViewController *)segue.destinationViewController;
-    [viewController setContentForArticle:[self.aggregator.allArticles objectAtIndex:[self.gridView indexOfSelectedItem]]];
+    [self hideLoadingView];
+    [self.gridView reloadData];
 }
+
+- (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record
+{
+    // Copy over just the title, the date, and the first url of each resource type
+    NSMutableDictionary *video = [NSMutableDictionary dictionary];
+    [video setObject:[record objectForKey:@"title"] forKey:kVideoMetadataPropertyTitle];
+    NSDate *date = [record objectForKey:@"date"];
+    if (date)
+        [video setObject:date forKey:kVideoMetadataPropertyDate];
+    
+    NSDictionary *resources = [record objectForKey:@"resources"];
+    NSArray *resourceTypes = [resources allKeys];
+    for (NSString *currentResourceType in resourceTypes) {
+        NSURL *url = [[resources objectForKey:currentResourceType] objectAtIndex:0];
+        [video setObject:url forKey:currentResourceType];
+    }
+    [self.videoMetadata addObject:video];
+    // now download the thumbnail for that photo
+    int index = self.videoMetadata.count-1;
+    [self performSelectorInBackground:@selector(downloadThumbnailForIndex:) withObject:[NSNumber numberWithInt:index]];
+}
+
+// We will use a synchronous connection running in a background thread to download thumbnails
+// because it is much simpler than handling an arbitrary number of asynchronous connections concurrently.
+- (void)downloadThumbnailForIndex:(id)indexNumber
+{
+    // now download the thumbnail for that photo
+    int index = ((NSNumber *)indexNumber).intValue;
+    NSDictionary *video = [self.videoMetadata objectAtIndex:index];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[video objectForKey:kVideoMetadataPropertyThumbnailURL]];
+    NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];
+    [self.videoThumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
+    [self performSelectorOnMainThread:@selector(reloadRowAtIndex:) withObject:[NSNumber numberWithInt:index] waitUntilDone:NO];
+}
+
+- (void)reloadRowAtIndex:(NSNumber *)index
+{
+    [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:index.intValue] withAnimation:AQGridViewItemAnimationFade];
+}
+
 
 #pragma mark - AQGridView methods
 
@@ -118,19 +161,6 @@
     if (displaySpinner)
         return;
     [self performSegueWithIdentifier:@"ShowArticleDetails" sender:self];
-}
-#pragma mark - RSSAggregatorDelegate methods
-
-- (void)allFeedsDidLoadForAggregator:(RSSAggregator *)theAggregator
-{
-    [super allFeedsDidLoadForAggregator:theAggregator];
-    [self.gridView reloadData];
-}
-
-- (void)aggregator:(RSSAggregator *)aggregator didDownloadFirstImage:(UIImage *)image forArticle:(MWFeedItem *)article
-{
-    int index = [self.aggregator.allArticles indexOfObject:article]+self.rangeOfArticlesToShow.location;
-    [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:index] withAnimation:AQGridViewItemAnimationFade];
 }
 
 @end

@@ -506,61 +506,9 @@
             </objects>
             <point key="canvasLocation" x="1854" y="680"/>
         </scene>
-        <!--Bulletin View Controller - CERN Bulletin-->
-        <scene sceneID="frA-b1-1Mz">
-            <objects>
-                <tableViewController storyboardIdentifier="BulletinTabIdentifier" id="Jgr-YN-a7Y" customClass="BulletinViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3VB-Ab-u0W">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleTableViewCell" rowHeight="100" id="wMV-of-4Vb" customClass="ArticleTableViewCell">
-                                <rect key="frame" x="0.0" y="46" width="320" height="102"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="99"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# of articles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lAK-UJ-fJu">
-                                            <rect key="frame" x="20" y="10" width="189" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Issue #" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="WLk-dZ-lxv">
-                                            <rect key="frame" x="20" y="39" width="189" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="detailLabel1" destination="lAK-UJ-fJu" id="Tfb-FI-RhZ"/>
-                                    <outlet property="titleLabel" destination="WLk-dZ-lxv" id="wuk-O7-bE9"/>
-                                    <segue destination="KnV-eM-dHS" kind="push" id="Sll-Jj-OeX"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Jgr-YN-a7Y" id="Y6g-5g-CXQ"/>
-                            <outlet property="delegate" destination="Jgr-YN-a7Y" id="G8c-dQ-Yv6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="CERN Bulletin" id="KAP-Mi-Osz"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cys-hZ-xyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="792" y="1653"/>
-        </scene>
         <!--News Grid View Controller-->
         <scene sceneID="nLo-8p-OS1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8C-xg-5OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="KnV-eM-dHS" customClass="NewsGridViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Rc-F6-rcT">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -572,6 +520,7 @@
                         <segue destination="7B3-IS-6fI" kind="push" identifier="ShowArticleDetails" id="jua-ur-8Jc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8C-xg-5OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1217" y="1653"/>
         </scene>
@@ -606,12 +555,30 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Jgr-YN-a7Y" kind="relationship" relationship="rootViewController" id="ZcE-go-oZ8"/>
+                        <segue destination="i3j-Gh-NeK" kind="relationship" relationship="rootViewController" id="91t-lW-yAT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLC-f8-dsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347" y="1653"/>
+            <point key="canvasLocation" x="333" y="1653"/>
+        </scene>
+        <!--Bulletin Grid View Controller-->
+        <scene sceneID="0yB-vn-53L">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="31l-2c-VaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="i3j-Gh-NeK" customClass="BulletinGridViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gbS-yh-G2J">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BXt-sh-POR"/>
+                    <connections>
+                        <segue destination="KnV-eM-dHS" kind="push" identifier="ShowBulletinArticles" id="fF6-jC-Q7r"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="792" y="1653"/>
         </scene>
         <!--Navigation Controller - Latest Photos-->
         <scene sceneID="80P-ED-nUh">
@@ -673,7 +640,6 @@
         <!--News Grid View Controller-->
         <scene sceneID="jMo-Q8-ute">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R7i-ah-Y14" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="RbI-M8-VjO" customClass="NewsGridViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oqO-2m-P7H">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -685,6 +651,7 @@
                         <segue destination="x4h-5c-mby" kind="push" identifier="ShowArticleDetails" id="0fx-oU-fxj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R7i-ah-Y14" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="792" y="4247"/>
         </scene>
@@ -739,7 +706,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="1ST-VT-ACe">
             <objects>
-                <viewController storyboardIdentifier="ArticleDetailViewIdentifier" id="x4h-5c-mby" customClass="ArticleDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="x4h-5c-mby" customClass="ArticleDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xfu-dJ-2JE">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -769,7 +736,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="enT-MA-OHP">
             <objects>
-                <viewController storyboardIdentifier="ArticleDetailViewIdentifier" id="7B3-IS-6fI" customClass="ArticleDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="7B3-IS-6fI" customClass="ArticleDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nHl-ev-MtY">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -814,17 +781,8 @@
                 <relationship kind="outlet" name="contentWebView" candidateClass="UIWebView"/>
             </relationships>
         </class>
-        <class className="ArticleTableViewCell" superclassName="ShadowedCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="detailLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnailImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BulletinViewController" superclassName="RSSTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BulletinViewController.h"/>
+        <class className="BulletinGridViewController" superclassName="RSSGridViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BulletinGridViewController.h"/>
         </class>
         <class className="EventDisplayViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDisplayViewController.h"/>
@@ -848,7 +806,7 @@
                 <relationship kind="outlet" name="shadowImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="NewsGridViewController" superclassName="AQGridViewController">
+        <class className="NewsGridViewController" superclassName="RSSGridViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsGridViewController.h"/>
         </class>
         <class className="PageContainingViewController" superclassName="UIViewController">
@@ -861,11 +819,8 @@
         <class className="PhotosGridViewController" superclassName="AQGridViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosGridViewController.h"/>
         </class>
-        <class className="RSSTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSTableViewController.h"/>
-        </class>
-        <class className="ShadowedCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedCell.h"/>
+        <class className="RSSGridViewController" superclassName="AQGridViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSGridViewController.h"/>
         </class>
         <class className="StaticInfoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StaticInfoViewController.h"/>

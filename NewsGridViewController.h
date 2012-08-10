@@ -8,16 +8,12 @@
 
 #import "AQGridViewController.h"
 #import "RSSAggregator.h"
+#import "RSSGridViewController.h"
 
-@interface NewsGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, RSSAggregatorDelegate>
+@interface NewsGridViewController : RSSGridViewController
 {
-    RSSAggregator *aggregator;
-    BOOL displaySpinner;
     NSRange rangeOfArticlesToShow;
 }
-@property (nonatomic, retain) RSSAggregator *aggregator;
 @property NSRange rangeOfArticlesToShow;
-
-- (void)refresh;
 
 @end

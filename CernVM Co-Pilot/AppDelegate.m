@@ -11,7 +11,8 @@
 #import "NewsTableViewController.h"
 #import "BulletinViewController.h"
 #import "PhotosGridViewController.h"
-
+#import "NewsGridViewController.h"
+#import "BulletinGridViewController.h"
 @implementation AppDelegate
 
 @synthesize tabBarController, /*photoDownloader, videoMetadata, videoThumbnails,*/ window = _window;
@@ -105,10 +106,11 @@
     switch (index) {
         case TabIndexNews: {
             // Populate the general News view controller with news feeds
-            //[((NewsTableViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
-            [((NewsTableViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
-
-            [(NewsTableViewController *)viewController refresh];
+            [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
+            if (((NewsGridViewController *)viewController).aggregator == nil) {
+                NSLog(@"nil aggregator!");
+            }
+            [(NewsGridViewController *)viewController refresh];
             break;
         }
         case TabIndexAbout: {
@@ -118,13 +120,13 @@
             break;
         }
         case TabIndexBulletin: {
-            BulletinViewController *bulletinViewController;
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                bulletinViewController = (BulletinViewController *)viewController;
-            } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                UINavigationController *navigationController = (UINavigationController *)viewController;
-                bulletinViewController = (BulletinViewController *)navigationController.topViewController;
-            }
+            BulletinGridViewController *bulletinViewController;
+//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                bulletinViewController = (BulletinGridViewController *)viewController;
+//            } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//                UINavigationController *navigationController = (UINavigationController *)viewController;
+//                bulletinViewController = (BulletinViewController *)navigationController.topViewController;
+//            }
 
             [bulletinViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
             [bulletinViewController refresh];

@@ -167,9 +167,6 @@
     cell.shadowSize = 2.0;
     cell.fillColor = [UIColor whiteColor];
     cell.shadowColor = [UIColor darkGrayColor];
-    //NSDictionary *issue = [self.issues objectAtIndex:[indexPath row]];
-    // Set the number of articles label
-//    int numberOfArticles = [[issue objectForKey:@"Articles"] count];
     NSRange issueRange = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:indexPath.row] rangeValue];
     NSMutableString *articlesString = [NSMutableString stringWithFormat:@"%d ", issueRange.length];
     [articlesString appendString: issueRange.length>1?@"articles":@"article"];

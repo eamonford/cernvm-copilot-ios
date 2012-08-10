@@ -20,8 +20,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        //appDelegate = [UIApplication sharedApplication].delegate;
-        //appDelegate.photoDownloader.delegate = self;
         displaySpinner = YES;
         self.photoDownloader = [[PhotoDownloader alloc] init];
         self.photoDownloader.delegate = self;
@@ -120,10 +118,9 @@
         static NSString *photoCellIdentifier = @"photoCell";
         PhotoGridViewCell *cell = (PhotoGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:photoCellIdentifier];
         if (cell == nil) {
-            cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0) reuseIdentifier:photoCellIdentifier];
+            cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0) reuseIdentifier:photoCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
-        //cell.image = [appDelegate.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
         cell.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
         return cell;
     }
@@ -147,7 +144,7 @@
     if (displaySpinner) {
         return [UIScreen mainScreen].bounds.size;
     } else {
-        return CGSizeMake(50.0, 50.0);
+        return CGSizeMake(100.0, 100.0);
     }
 }
 

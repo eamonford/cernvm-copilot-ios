@@ -19,8 +19,8 @@
         self.layer.borderWidth = 5.0;
         
         self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-        self.layer.shadowRadius = 3.0;
+        self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+        self.layer.shadowRadius = 2.0;
         self.layer.shadowOpacity = 0.5;
         CGPathRef shadowPathRef = CGPathCreateWithRect(self.layer.frame, NULL);
         self.layer.shadowPath = shadowPathRef;
