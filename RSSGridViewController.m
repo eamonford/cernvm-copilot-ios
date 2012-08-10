@@ -45,7 +45,6 @@
 
 - (void)refresh
 {
-    NSLog(@"refreshing %d feeds", self.aggregator.feeds.count);
     if (self.aggregator.feeds.count) {
         self.displaySpinner = YES;
         [self.gridView reloadData];

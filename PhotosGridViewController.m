@@ -15,14 +15,17 @@
 @end
 
 @implementation PhotosGridViewController
-@synthesize photoDownloader;
+@synthesize photoDownloader, displaySpinner;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        displaySpinner = YES;
+        [self configureGridForSpinner:YES];
         self.photoDownloader = [[PhotoDownloader alloc] init];
         self.photoDownloader.delegate = self;
+        self.gridView.resizesCellWidthToFit = NO;
+        self.gridView.backgroundColor = [UIColor whiteColor];
+
     }
     return self;
 }
@@ -31,15 +34,13 @@
 {
     [super viewDidLoad];
     
-    self.gridView.backgroundColor = [UIColor whiteColor];
-    [self configureGridForSpinner:NO];
 }
 
 - (void)configureGridForSpinner:(BOOL)spinner
 {
-    displaySpinner = spinner;
+    self.displaySpinner = spinner;
     if (spinner) {
-        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleNone;
+       self.gridView.separatorStyle = AQGridViewCellSeparatorStyleNone;
         self.gridView.resizesCellWidthToFit = NO;
     } else {
         self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
@@ -54,16 +55,17 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
+    else
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)refresh
 {
     if (self.photoDownloader.urls.count == 0) {
         [self configureGridForSpinner:YES];
+        [self.gridView reloadData];
         [self.photoDownloader parse];
     }
 }
@@ -95,13 +97,12 @@
     if (displaySpinner) {
         return 1;
     } else {
-        //return appDelegate.photoDownloader.urls.count;
         return self.photoDownloader.urls.count;
-
     }
 }
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
+
     if (displaySpinner) {
         static NSString *loadingCellIdentifier = @"loadingCell";
         AQGridViewCell *cell = [self.gridView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
@@ -113,7 +114,7 @@
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
         return cell;
-
+        
     } else {
         static NSString *photoCellIdentifier = @"photoCell";
         PhotoGridViewCell *cell = (PhotoGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:photoCellIdentifier];
@@ -121,14 +122,14 @@
             cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0) reuseIdentifier:photoCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
-        cell.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
+        cell.imageView.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
         return cell;
     }
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    if (displaySpinner)
+    if (self.displaySpinner)
         return;
     
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
@@ -141,9 +142,11 @@
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    if (displaySpinner) {
+    if (self.displaySpinner) {
+        NSLog(@"display!!");
         return [UIScreen mainScreen].bounds.size;
     } else {
+        NSLog(@"don't display!!");
         return CGSizeMake(100.0, 100.0);
     }
 }
@@ -151,7 +154,6 @@
 #pragma mark - MWPhotoBrowserDelegate methods
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    //return appDelegate.photoDownloader.urls.count;
     return self.photoDownloader.urls.count;
 
 }
@@ -159,8 +161,6 @@
 - (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
     //if (index < appDelegate.photoDownloader.urls.count) {
     if (index < self.photoDownloader.urls.count) {
-
-        //NSURL *url = [[appDelegate.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
         NSURL *url = [[self.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
         return [MWPhoto photoWithURL:url];
     }

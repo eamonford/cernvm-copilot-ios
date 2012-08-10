@@ -69,7 +69,6 @@
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
     if (displaySpinner) {
-        NSLog(@"display spinner");
         static NSString *loadingCellIdentifier = @"loadingCell";
         AQGridViewCell *cell = [self.gridView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
         if (cell == nil) {

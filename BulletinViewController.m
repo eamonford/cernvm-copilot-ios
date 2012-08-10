@@ -27,6 +27,13 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        NSLog(@"BULLETIN");
+    }
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

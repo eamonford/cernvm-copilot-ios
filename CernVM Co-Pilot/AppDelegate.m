@@ -120,20 +120,14 @@
             break;
         }
         case TabIndexBulletin: {
-            BulletinGridViewController *bulletinViewController;
-//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                bulletinViewController = (BulletinGridViewController *)viewController;
-//            } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//                UINavigationController *navigationController = (UINavigationController *)viewController;
-//                bulletinViewController = (BulletinViewController *)navigationController.topViewController;
-//            }
-
+            BulletinGridViewController *bulletinViewController = (BulletinGridViewController *)viewController;
             [bulletinViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
             [bulletinViewController refresh];
 
             break;
         }
         case TabIndexPhotos: {
+            NSLog(@"tab selected");
             // Initialize the photos view controller with a photo downloader object
             ((PhotosGridViewController *)viewController).photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Photos&p=&f=&action_search=Search&c=Photos&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
             [(PhotosGridViewController *)viewController refresh];

@@ -7,6 +7,7 @@
 //
 
 #import "PhotoDownloader.h"
+#import "UIImage+SquareScaledImage.h"
 
 @implementation PhotoDownloader
 @synthesize urls, thumbnails, delegate;
@@ -76,6 +77,7 @@
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];
     if (thumbnailImage) {
+        //thumbnailImage = [UIImage squareImageWithDimension:200.0 fromImage:thumbnailImage];
         [self.thumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
     } else {
         NSLog(@"Error downloading thumbnail #%d, will try again.", index);

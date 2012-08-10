@@ -25,6 +25,7 @@
         self.gridView.resizesCellWidthToFit = NO;
         self.gridView.backgroundColor = [UIColor whiteColor];
         self.gridView.allowsSelection = YES;
+
     }
     return self;
 }

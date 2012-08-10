@@ -20,6 +20,7 @@
     BOOL displaySpinner;
 }
 @property (nonatomic, retain) PhotoDownloader *photoDownloader;
+@property BOOL displaySpinner;
 
 - (void)refresh;
 
