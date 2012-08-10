@@ -8,27 +8,43 @@
 
 #import "VideosGridViewController.h"
 #import "Constants.h"
+#import "NewsGridViewCell.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface VideosGridViewController ()
 
 @end
 
 @implementation VideosGridViewController
-@synthesize videoMetadata, videoThumbnails;
+@synthesize parser, videoMetadata, videoThumbnails, displaySpinner;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self = [super initWithCoder:aDecoder]) {
+        self.displaySpinner = NO;
+        self.videoMetadata = [NSMutableArray array];
+        self.videoThumbnails = [NSMutableDictionary dictionary];
+        self.gridView.backgroundColor = [UIColor whiteColor];
+        queue = [[NSOperationQueue alloc] init];
+        
+        self.parser = [[CernMediaMARCParser alloc] init];
+        self.parser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Video+Selection&p=internalnote%3A%22ATLAS%22&f=&action_search=Search&c=Press+Office+Video+Selection&c=&sf=year&so=d&rm=&rg=100&sc=0&of=xm"];
+        NSLog(@"just set url to %@", self.parser.url);
+        self.parser.resourceTypes = [NSArray arrayWithObjects:kVideoMetadataPropertyVideoURL, kVideoMetadataPropertyThumbnailURL, nil];
+        self.parser.delegate = self;
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    if (self.videoMetadata.count == 0) {
+        self.displaySpinner = YES;
+        [self.gridView reloadData];
+        
+        [self.parser parse];
+        NSLog(@"starting to load videos at URL %@", self.parser.url);
+    }
 }
 
 - (void)viewDidUnload
@@ -50,12 +66,14 @@
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
-    [self hideLoadingView];
+    NSLog(@"finished loading");
+    self.displaySpinner = NO;
     [self.gridView reloadData];
 }
 
 - (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record
 {
+    NSLog(@"got a record");
     // Copy over just the title, the date, and the first url of each resource type
     NSMutableDictionary *video = [NSMutableDictionary dictionary];
     [video setObject:[record objectForKey:@"title"] forKey:kVideoMetadataPropertyTitle];
@@ -99,20 +117,16 @@
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
 {
-    if (displaySpinner) {
+    if (self.displaySpinner) {
         return 1;
     } else {
-        if (self.rangeOfArticlesToShow.length)
-            return self.rangeOfArticlesToShow.length;
-        else
-            return self.aggregator.allArticles.count;
+        return self.videoMetadata.count;
     }
 }
 
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
-    if (displaySpinner) {
-        NSLog(@"display spinner");
+    if (self.displaySpinner) {
         static NSString *loadingCellIdentifier = @"loadingCell";
         AQGridViewCell *cell = [self.gridView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
         if (cell == nil) {
@@ -125,26 +139,33 @@
         return cell;
         
     } else {
-        MWFeedItem *article = [self.aggregator.allArticles objectAtIndex:index+self.rangeOfArticlesToShow.location];
         static NSString *newsCellIdentifier = @"newsCell";
         NewsGridViewCell *cell = (NewsGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:newsCellIdentifier];
         if (cell == nil) {
             cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 250.0) reuseIdentifier:newsCellIdentifier];
             cell.selectionStyle = AQGridViewCellSelectionStyleNone;
         }
-        cell.titleLabel.text = article.title;
         
+        NSDictionary *video = [self.videoMetadata objectAtIndex:index];
+
+        // Set the title label
+        cell.titleLabel.text = [video objectForKey:kVideoMetadataPropertyTitle];
+        
+        // Set the date label
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-        NSString *dateString = [dateFormatter stringFromDate:article.date];
+        NSString *dateString = [dateFormatter stringFromDate:[video objectForKey:kVideoMetadataPropertyDate]];
         cell.dateLabel.text = dateString;
+
+        // Set the thumbnail
         
-        UIImage *image = [self.aggregator firstImageForArticle:article];
+        
+        UIImage *image = [self.videoThumbnails objectForKey:[NSNumber numberWithInt:index]];
         if (image) {
             cell.thumbnailImageView.image = image;
         }
         return cell;
-    }
+     }
 }
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
@@ -160,7 +181,12 @@
 {
     if (displaySpinner)
         return;
-    [self performSegueWithIdentifier:@"ShowArticleDetails" sender:self];
+
+    NSDictionary *video = [self.videoMetadata objectAtIndex:index];
+    NSURL *url = [video objectForKey:kVideoMetadataPropertyVideoURL];
+    MPMoviePlayerViewController *playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    [self presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];
+
 }
 
 @end

@@ -15,7 +15,7 @@
 #import "BulletinGridViewController.h"
 @implementation AppDelegate
 
-@synthesize tabBarController, /*photoDownloader, videoMetadata, videoThumbnails,*/ window = _window;
+@synthesize tabBarController, window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

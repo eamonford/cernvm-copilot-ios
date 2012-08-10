@@ -18,6 +18,6 @@
 #define kVideoMetadataPropertyTitle @"VideoMetadataPropertyTitle"
 #define kVideoMetadataPropertyDate @"VideoMetadataPropertyDate"
 #define kVideoMetadataPropertyVideoURL @"mp40600"
-#define kVideoMetadataPropertyThumbnailURL @"jpgthumbnail"
+#define kVideoMetadataPropertyThumbnailURL @"jpgposterframe"
 
 #endif

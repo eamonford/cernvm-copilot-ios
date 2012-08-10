@@ -23,7 +23,7 @@
 
 
 - (void)parse
-{    
+{
     self.isFinishedParsing = NO;
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
     [NSURLConnection connectionWithRequest:request delegate:self];

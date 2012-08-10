@@ -22,7 +22,7 @@
                         <segue destination="2ih-MI-722" kind="relationship" relationship="viewControllers" id="igJ-xQ-uU2"/>
                         <segue destination="nuI-NV-Trf" kind="relationship" relationship="viewControllers" id="Slf-jE-wfB"/>
                         <segue destination="zHy-YY-a4m" kind="relationship" relationship="viewControllers" id="gz6-gr-l1c"/>
-                        <segue destination="heM-K3-Kor" kind="relationship" relationship="viewControllers" id="o0A-FV-tnt"/>
+                        <segue destination="iO5-IN-D2s" kind="relationship" relationship="viewControllers" id="DS4-Re-GHb"/>
                         <segue destination="ePz-sC-wOs" kind="relationship" relationship="viewControllers" id="SBn-gd-fdl"/>
                     </connections>
                 </tabBarController>
@@ -236,102 +236,21 @@
             </objects>
             <point key="canvasLocation" x="3678" y="2853"/>
         </scene>
-        <!--Article Detail View Controller-->
-        <scene sceneID="PbY-OZ-b8l">
+        <!--Videos Grid View Controller-->
+        <scene sceneID="9Ie-mP-BbK">
             <objects>
-                <viewController id="T4s-jp-gIt" customClass="ArticleDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c0X-x6-7Rb">
-                        <rect key="frame" x="0.0" y="20" width="703" height="699"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEe-0M-vd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Nuq-Cg-Asx" customClass="VideosGridViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lax-w4-Bmd">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" id="huR-Sa-0ov">
-                                <rect key="frame" x="0.0" y="0.0" width="703" height="699"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="contentWebView" destination="huR-Sa-0ov" id="3jh-Fy-zwS"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="UMj-HR-S8Y"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eP9-3r-CXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5345" y="4443"/>
-        </scene>
-        <!--Videos Table View Controller - Root View Controller-->
-        <scene sceneID="3KT-fV-0ne">
-            <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="3UI-4D-elT" customClass="VideosTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T9U-OI-tTK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="699"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="videoCell" rowHeight="100" id="dQZ-lj-MiX" customClass="VideoTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="99"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="cLj-3m-Wsj">
-                                            <rect key="frame" x="6" y="5" width="90" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="E5r-rZ-HS2">
-                                            <rect key="frame" x="104" y="5" width="176" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="tLe-05-ZGT">
-                                            <rect key="frame" x="104" y="33" width="176" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="dateLabel" destination="E5r-rZ-HS2" id="F4e-HW-8hm"/>
-                                    <outlet property="thumbnailImageView" destination="cLj-3m-Wsj" id="wNa-a9-Rs7"/>
-                                    <outlet property="titleLabel" destination="tLe-05-ZGT" id="xHE-fn-wTw"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3UI-4D-elT" id="ivW-ge-mXi"/>
-                            <outlet property="delegate" destination="3UI-4D-elT" id="1kr-ho-5LH"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="A0Q-7O-boS"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n9K-HD-2Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5154" y="3451"/>
-        </scene>
-        <!--Split View Controller - Latest Videos-->
-        <scene sceneID="Fzf-1r-fv9">
-            <objects>
-                <splitViewController id="heM-K3-Kor" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Latest Videos" id="KEj-Nw-nbU"/>
-                    <toolbarItems/>
-                    <connections>
-                        <segue destination="T4s-jp-gIt" kind="relationship" relationship="detailViewController" id="suS-Vo-eQY"/>
-                        <segue destination="3UI-4D-elT" kind="relationship" relationship="masterViewController" id="E5v-2I-QBR"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mVv-15-NXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3678" y="3943"/>
+            <point key="canvasLocation" x="5244" y="3929"/>
         </scene>
         <!--Experiments View Controller - About-->
         <scene sceneID="x0Y-hY-Qig">
@@ -633,6 +552,25 @@
             </objects>
             <point key="canvasLocation" x="7492" y="892"/>
         </scene>
+        <!--Navigation Controller - Latest Videos-->
+        <scene sceneID="x08-h6-P4a">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMa-he-gMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="iO5-IN-D2s" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Latest Videos" id="mqh-qA-182"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aAX-bC-W8O">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nuq-Cg-Asx" kind="relationship" relationship="rootViewController" id="gvV-I3-y2m"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="3646" y="3937"/>
+        </scene>
     </scenes>
     <resources>
         <image name="lhcMapLandscape@2x.png" width="1024" height="699"/>
@@ -670,6 +608,7 @@
         <class className="ExperimentsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonTapped:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="shadowImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
@@ -682,19 +621,8 @@
         <class className="RSSGridViewController" superclassName="AQGridViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSGridViewController.h"/>
         </class>
-        <class className="VideoTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideoTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnailImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="VideosTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideosTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-            </relationships>
+        <class className="VideosGridViewController" superclassName="AQGridViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideosGridViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
