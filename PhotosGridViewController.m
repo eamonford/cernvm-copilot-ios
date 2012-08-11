@@ -25,7 +25,6 @@
         self.photoDownloader.delegate = self;
         self.gridView.resizesCellWidthToFit = NO;
         self.gridView.backgroundColor = [UIColor whiteColor];
-
     }
     return self;
 }

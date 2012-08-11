@@ -80,12 +80,12 @@
 		E1AB920A159BE388006FBB40 /* NSIndexSet+AQIsSetContiguous.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91E7159BE07D006FBB40 /* NSIndexSet+AQIsSetContiguous.m */; };
 		E1AB920B159BE388006FBB40 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AB91E9159BE07D006FBB40 /* NSIndexSet+AQIndexesOutsideSet.m */; };
 		E1AB920D159BE44B006FBB40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AB920C159BE44B006FBB40 /* QuartzCore.framework */; };
-		E1B0415715B6449F00C8EA40 /* StaticInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */; };
+		E1B0415715B6449F00C8EA40 /* StaticInfoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0415615B6449F00C8EA40 /* StaticInfoItemViewController.m */; };
 		E1B0415A15B65A3D00C8EA40 /* atlas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415915B65A3D00C8EA40 /* atlas@2x.png */; };
 		E1B0415C15B68AFF00C8EA40 /* cms.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415B15B68AFF00C8EA40 /* cms.png */; };
 		E1B0415E15B69B0900C8EA40 /* lhcb.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415D15B69B0900C8EA40 /* lhcb.png */; };
 		E1B0416015B6A01B00C8EA40 /* alice.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B0415F15B6A01B00C8EA40 /* alice.png */; };
-		E1B0416315B7E68000C8EA40 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0416215B7E68000C8EA40 /* AboutTableViewController.m */; };
+		E1B0416315B7E68000C8EA40 /* StaticInfoSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0416215B7E68000C8EA40 /* StaticInfoSelectorViewController.m */; };
 		E1B0416515B7E85400C8EA40 /* StaticInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1B0416415B7E85400C8EA40 /* StaticInformation.plist */; };
 		E1C2CE7A15B8AAD100EC9B24 /* C2.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE4A15B8AAD100EC9B24 /* C2.png */; };
 		E1C2CE7B15B8AAD100EC9B24 /* C3.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE4B15B8AAD100EC9B24 /* C3.png */; };
@@ -197,7 +197,7 @@
 		E1F7B6B9156EDC7D0092367F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F7B68C156EDC7C0092367F /* Foundation.framework */; };
 		E1F7B6C1156EDC7D0092367F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1F7B6BF156EDC7D0092367F /* InfoPlist.strings */; };
 		E1F7B6C4156EDC7D0092367F /* CernVM_Co_PilotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F7B6C3156EDC7D0092367F /* CernVM_Co_PilotTests.m */; };
-		E1FE435615C20165008E9634 /* PageContainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE435515C20165008E9634 /* PageContainingViewController.m */; };
+		E1FE435615C20165008E9634 /* StaticInfoScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE435515C20165008E9634 /* StaticInfoScrollViewController.m */; };
 		E1FFFC2815A642310093462B /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FFFC2715A642310093462B /* VideoTableViewCell.m */; };
 		E1FFFC2B15A651B40093462B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FFFC2A15A651B40093462B /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
@@ -314,14 +314,14 @@
 		E1AB91FE159BE12C006FBB40 /* PhotosGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosGridViewController.h; sourceTree = "<group>"; };
 		E1AB91FF159BE12C006FBB40 /* PhotosGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosGridViewController.m; sourceTree = "<group>"; };
 		E1AB920C159BE44B006FBB40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E1B0415515B6449F00C8EA40 /* StaticInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoViewController.h; sourceTree = "<group>"; };
-		E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoViewController.m; sourceTree = "<group>"; };
+		E1B0415515B6449F00C8EA40 /* StaticInfoItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoItemViewController.h; sourceTree = "<group>"; };
+		E1B0415615B6449F00C8EA40 /* StaticInfoItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoItemViewController.m; sourceTree = "<group>"; };
 		E1B0415915B65A3D00C8EA40 /* atlas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "atlas@2x.png"; sourceTree = "<group>"; };
 		E1B0415B15B68AFF00C8EA40 /* cms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cms.png; sourceTree = "<group>"; };
 		E1B0415D15B69B0900C8EA40 /* lhcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lhcb.png; sourceTree = "<group>"; };
 		E1B0415F15B6A01B00C8EA40 /* alice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alice.png; sourceTree = "<group>"; };
-		E1B0416115B7E68000C8EA40 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
-		E1B0416215B7E68000C8EA40 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		E1B0416115B7E68000C8EA40 /* StaticInfoSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoSelectorViewController.h; sourceTree = "<group>"; };
+		E1B0416215B7E68000C8EA40 /* StaticInfoSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoSelectorViewController.m; sourceTree = "<group>"; };
 		E1B0416415B7E85400C8EA40 /* StaticInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StaticInformation.plist; sourceTree = "<group>"; };
 		E1C2CE4A15B8AAD100EC9B24 /* C2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C2.png; sourceTree = "<group>"; };
 		E1C2CE4B15B8AAD100EC9B24 /* C3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C3.png; sourceTree = "<group>"; };
@@ -442,8 +442,8 @@
 		E1F7B6C0156EDC7D0092367F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1F7B6C2156EDC7D0092367F /* CernVM_Co_PilotTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CernVM_Co_PilotTests.h; sourceTree = "<group>"; };
 		E1F7B6C3156EDC7D0092367F /* CernVM_Co_PilotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CernVM_Co_PilotTests.m; sourceTree = "<group>"; };
-		E1FE435415C20165008E9634 /* PageContainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContainingViewController.h; sourceTree = "<group>"; };
-		E1FE435515C20165008E9634 /* PageContainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContainingViewController.m; sourceTree = "<group>"; };
+		E1FE435415C20165008E9634 /* StaticInfoScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoScrollViewController.h; sourceTree = "<group>"; };
+		E1FE435515C20165008E9634 /* StaticInfoScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoScrollViewController.m; sourceTree = "<group>"; };
 		E1FFFC2615A642310093462B /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
 		E1FFFC2715A642310093462B /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
 		E1FFFC2A15A651B40093462B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -500,12 +500,12 @@
 				E1AB91FF159BE12C006FBB40 /* PhotosGridViewController.m */,
 				E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */,
 				E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */,
-				E1B0415515B6449F00C8EA40 /* StaticInfoViewController.h */,
-				E1B0415615B6449F00C8EA40 /* StaticInfoViewController.m */,
-				E1B0416115B7E68000C8EA40 /* AboutTableViewController.h */,
-				E1B0416215B7E68000C8EA40 /* AboutTableViewController.m */,
-				E1FE435415C20165008E9634 /* PageContainingViewController.h */,
-				E1FE435515C20165008E9634 /* PageContainingViewController.m */,
+				E1B0415515B6449F00C8EA40 /* StaticInfoItemViewController.h */,
+				E1B0415615B6449F00C8EA40 /* StaticInfoItemViewController.m */,
+				E1B0416115B7E68000C8EA40 /* StaticInfoSelectorViewController.h */,
+				E1B0416215B7E68000C8EA40 /* StaticInfoSelectorViewController.m */,
+				E1FE435415C20165008E9634 /* StaticInfoScrollViewController.h */,
+				E1FE435515C20165008E9634 /* StaticInfoScrollViewController.m */,
 				E149D8B715C7D161007DA389 /* RSSTableViewController.h */,
 				E149D8B815C7D161007DA389 /* RSSTableViewController.m */,
 				E13D377D15D44CBD002465BA /* RSSGridViewController.h */,
@@ -1133,10 +1133,10 @@
 				E103FBD715AC1A8E00274739 /* ShadowedCellBackgroundView.m in Sources */,
 				E1648F3F15AF789000EE44DA /* ShadowedCell.m in Sources */,
 				E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */,
-				E1B0415715B6449F00C8EA40 /* StaticInfoViewController.m in Sources */,
-				E1B0416315B7E68000C8EA40 /* AboutTableViewController.m in Sources */,
+				E1B0415715B6449F00C8EA40 /* StaticInfoItemViewController.m in Sources */,
+				E1B0416315B7E68000C8EA40 /* StaticInfoSelectorViewController.m in Sources */,
 				E1A98BEE15BA28C000ACB293 /* ExperimentFunctionSelectorViewController.m in Sources */,
-				E1FE435615C20165008E9634 /* PageContainingViewController.m in Sources */,
+				E1FE435615C20165008E9634 /* StaticInfoScrollViewController.m in Sources */,
 				E10055FB15C47B0300C3BC9F /* UIImage+SquareScaledImage.m in Sources */,
 				E149D8B315C741D5007DA389 /* BulletinViewController.m in Sources */,
 				E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */,

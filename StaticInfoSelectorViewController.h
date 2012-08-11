@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutTableViewController : UITableViewController
+@interface StaticInfoSelectorViewController : UITableViewController
 {
     NSArray *tableDataSource;
     NSString *currentTitle;
     NSInteger currentLevel;
+    NSIndexPath *currentlyShowingIndexPath;
 }
+
 @property (nonatomic, retain) NSArray *tableDataSource;
 @property (nonatomic, retain) NSString *currentTitle;
 @property (nonatomic, readwrite) NSInteger currentLevel;
-
+@property (nonatomic, retain) NSIndexPath *currentlyShowingIndexPath;
 @end

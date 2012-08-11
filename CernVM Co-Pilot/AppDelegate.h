@@ -24,17 +24,13 @@ typedef enum {
 {
     UITabBarController *tabBarController;
     NSMutableDictionary *tabsAlreadySetup;
-    //PhotoDownloader *photoDownloader;
-//    NSMutableArray *videoMetadata;
-//    NSMutableDictionary *videoThumbnails;
+    NSArray *staticInfoDataSource;
 }
 
 - (void)setupViewController:(UIViewController *)viewController atIndex:(int)index;
 
 @property (nonatomic, retain) UITabBarController *tabBarController;
-//@property (nonatomic, retain) PhotoDownloader *photoDownloader;
-//@property (nonatomic, retain) NSMutableArray *videoMetadata;
-//@property (nonatomic, retain) NSMutableDictionary *videoThumbnails;
+@property (nonatomic, retain) NSArray *staticInfoDataSource;
 
 @property (strong, nonatomic) UIWindow *window;
 

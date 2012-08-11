@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 The Byte Factory. All rights reserved.
 //
 
-#import "StaticInfoViewController.h"
+#import "StaticInfoItemViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface StaticInfoViewController ()
+@interface StaticInfoItemViewController ()
 
 @end
 
-@implementation StaticInfoViewController
+@implementation StaticInfoItemViewController
 @synthesize scrollView, imageView, descriptionLabel, titleLabel, staticInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,15 +33,32 @@
                                             action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleFingerTap];
     
-    self.view.layer.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.95].CGColor;
+    // Move all of our subviews into a container view which will have the rounded corners
+    UIView *roundedView = [[UIView alloc] initWithFrame:self.view.frame];
+    roundedView.layer.cornerRadius = 10.0;
+    roundedView.clipsToBounds = YES;
+    for (UIView *subview in self.view.subviews) {
+        [subview removeFromSuperview];
+        [roundedView addSubview:subview];
+    }
+    [self.view addSubview:roundedView];
+
     self.imageView.layer.borderColor = [UIColor blackColor].CGColor;
     self.imageView.layer.borderWidth = 1.0;
-    CALayer *masklayer = [CALayer layer];
-    masklayer.backgroundColor = [UIColor whiteColor].CGColor;
-    masklayer.cornerRadius = 10.0;
-    masklayer.frame = CGRectMake(5.0, 5.0, self.view.frame.size.width-10.0, self.view.frame.size.height-10.0);
-    self.view.layer.mask = masklayer;
-    
+
+    self.view.layer.cornerRadius = 10.0;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.scrollView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        
+        self.view.layer.shadowOpacity = 0.5;
+        self.view.layer.shadowRadius = 2.0;
+        self.view.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+        CGPathRef shadowPathRef = [UIBezierPath bezierPathWithRoundedRect:self.view.frame cornerRadius:10.0].CGPath;
+        self.view.layer.shadowPath = shadowPathRef;
+
+      }
     [self setAndPositionInformation];
 }
 

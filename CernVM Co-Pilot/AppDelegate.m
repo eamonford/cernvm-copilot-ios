@@ -13,9 +13,13 @@
 #import "PhotosGridViewController.h"
 #import "NewsGridViewController.h"
 #import "BulletinGridViewController.h"
+#import "StaticInfoSelectorViewController.h"
+#import "StaticInfoScrollViewController.h"
+#import "Constants.h"
+
 @implementation AppDelegate
 
-@synthesize tabBarController, window = _window;
+@synthesize tabBarController, staticInfoDataSource, window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -107,13 +111,25 @@
         case TabIndexNews: {
             // Populate the general News view controller with news feeds
             [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
-            if (((NewsGridViewController *)viewController).aggregator == nil) {
-                NSLog(@"nil aggregator!");
-            }
             [(NewsGridViewController *)viewController refresh];
             break;
         }
         case TabIndexAbout: {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"StaticInformation" ofType:@"plist"];
+            NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:path];
+            self.staticInfoDataSource = [plistDict objectForKey:@"Root"];
+            
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                StaticInfoSelectorViewController *selectorViewController = (StaticInfoSelectorViewController *)[[self.tabBarController.viewControllers objectAtIndex:TabIndexAbout] topViewController];
+                selectorViewController.tableDataSource = self.staticInfoDataSource;
+                
+            } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                NSArray *defaultRecords = [[self.staticInfoDataSource objectAtIndex:0] objectForKey:@"Items"];
+                StaticInfoScrollViewController *scrollViewController = [self.tabBarController.viewControllers objectAtIndex:TabIndexAbout];
+                scrollViewController.dataSource = defaultRecords;
+                [scrollViewController refresh];
+            }
+            
             break;
         }
         case TabIndexLive: {
@@ -127,7 +143,6 @@
             break;
         }
         case TabIndexPhotos: {
-            NSLog(@"tab selected");
             // Initialize the photos view controller with a photo downloader object
             ((PhotosGridViewController *)viewController).photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Photos&p=&f=&action_search=Search&c=Photos&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
             [(PhotosGridViewController *)viewController refresh];

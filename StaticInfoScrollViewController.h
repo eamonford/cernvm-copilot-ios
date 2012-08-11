@@ -7,19 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StaticInfoViewController.h"
+#import "StaticInfoItemViewController.h"
 
-@interface PageContainingViewController : UIViewController
+@interface StaticInfoScrollViewController : UIViewController
 {
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIPageControl *pageControl;
+    UIPopoverController *popoverController;
     
     NSArray *dataSource;
 }
 @property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) NSArray *dataSource;
 @property (nonatomic, retain) UIPageControl *pageControl;
+@property (nonatomic, retain) UIPopoverController *popoverController;
+@property (nonatomic, retain) NSArray *dataSource;
 
-- (StaticInfoViewController *)viewControllerForPage:(int)page;
-
+- (void)refresh;
+- (StaticInfoItemViewController *)viewControllerForPage:(int)page;
+- (IBAction)categoryButtonTapped:(id)sender;
 @end

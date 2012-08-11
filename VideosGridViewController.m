@@ -42,7 +42,6 @@
         [self.gridView reloadData];
         
         [self.parser parse];
-        NSLog(@"starting to load videos at URL %@", self.parser.url);
     }
 }
 

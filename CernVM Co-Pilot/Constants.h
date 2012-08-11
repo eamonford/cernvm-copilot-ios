@@ -14,6 +14,9 @@
 #define kExperimentNewsViewController @"ExperimentNewsViewControllerIdentifier"
 #define kEventDisplayViewController @"EventDisplayViewControllerIdentifier"
 #define kALICEPhotoGridViewController @"ALICEPhotoGridViewControllerIdentifier"
+#define kStaticInfoScrollViewController @"StaticInfoScrollViewControllerIdentifier"
+#define kStaticInfoSelectorViewController @"StaticInfoSelectorViewControllerIdentifier"
+#define kStaticInfoItemViewController @"StaticInfoItemViewControllerIdentifier"
 
 #define kVideoMetadataPropertyTitle @"VideoMetadataPropertyTitle"
 #define kVideoMetadataPropertyDate @"VideoMetadataPropertyDate"
