@@ -110,16 +110,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="lhcMapPortrait@2x.png" id="9nR-Aq-AXU">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="mapPortrait@2x~iphone.png" id="9nR-Aq-AXU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="lhcMapShadowPortrait@2x.png" id="xGf-wC-L5r">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleAspectFill" image="mapShadowPortrait@2x~iphone.png" id="xGf-wC-L5r">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UwW-CG-4Ep">
-                                <rect key="frame" x="248" y="261" width="42" height="42"/>
+                                <rect key="frame" x="235" y="260" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -134,7 +134,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="k2V-Y5-cfG">
-                                <rect key="frame" x="235" y="314" width="42" height="42"/>
+                                <rect key="frame" x="220" y="310" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -149,7 +149,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNH-K6-Enb">
-                                <rect key="frame" x="101" y="246" width="42" height="42"/>
+                                <rect key="frame" x="87" y="241" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -164,7 +164,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HSr-yW-KFC">
-                                <rect key="frame" x="179" y="246" width="43" height="43"/>
+                                <rect key="frame" x="168" y="244" width="43" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -179,7 +179,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="te5-G2-fja">
-                                <rect key="frame" x="66" y="314" width="44" height="44"/>
+                                <rect key="frame" x="61" y="308" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -201,6 +201,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="aliceButton" destination="UwW-CG-4Ep" id="UpU-fl-0lM"/>
+                        <outlet property="atlasButton" destination="HSr-yW-KFC" id="1Xb-du-dn4"/>
+                        <outlet property="cmsButton" destination="te5-G2-fja" id="uJw-NV-y2H"/>
+                        <outlet property="lhcButton" destination="k2V-Y5-cfG" id="ifC-en-rTL"/>
+                        <outlet property="lhcbButton" destination="DNH-K6-Enb" id="vJg-90-eF6"/>
+                        <outlet property="mapImageView" destination="9nR-Aq-AXU" id="b47-4y-uKO"/>
                         <outlet property="shadowImageView" destination="xGf-wC-L5r" id="XvP-lz-yRL"/>
                     </connections>
                 </viewController>
@@ -723,8 +729,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="lhcMapPortrait@2x.png" width="640" height="960"/>
-        <image name="lhcMapShadowPortrait@2x.png" width="640" height="960"/>
+        <image name="mapPortrait@2x~iphone.png" width="640" height="960"/>
+        <image name="mapShadowPortrait@2x~iphone.png" width="640" height="960"/>
     </resources>
     <classes>
         <class className="AQGridViewController" superclassName="UIViewController">
@@ -759,6 +765,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="buttonTapped:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="aliceButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="atlasButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cmsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lhcButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lhcbButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="shadowImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
