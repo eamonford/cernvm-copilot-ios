@@ -474,7 +474,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qfD-QM-l95"/>
                     <connections>
-                        <segue destination="ANz-Pp-yRz" kind="push" identifier="ShowArticlesDetails" id="fcu-Dg-TK8"/>
+                        <segue destination="ANz-Pp-yRz" kind="push" identifier="ShowArticleDetails" id="fcu-Dg-TK8"/>
                     </connections>
                 </viewController>
             </objects>
@@ -582,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrr-cq-U7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7492" y="892"/>
+            <point key="canvasLocation" x="7456" y="841"/>
         </scene>
         <!--Navigation Controller - Latest Videos-->
         <scene sceneID="x08-h6-P4a">
@@ -693,7 +693,6 @@
         <class className="ExperimentsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonTapped:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="aliceButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="atlasButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cmsButton" candidateClass="UIButton"/>
