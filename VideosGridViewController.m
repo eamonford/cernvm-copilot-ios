@@ -36,21 +36,14 @@
     return self;
 }
 
-/*- (void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     if (self.videoMetadata.count == 0) {        
         [self.parser parse];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
-}*/
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.parser parse];
-
 }
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
