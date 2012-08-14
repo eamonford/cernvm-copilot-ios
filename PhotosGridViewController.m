@@ -10,21 +10,24 @@
 #import "CernMediaMARCParser.h"
 #import "PhotoGridViewCell.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
+
 @interface PhotosGridViewController ()
 
 @end
 
 @implementation PhotosGridViewController
-@synthesize photoDownloader, displaySpinner;
+@synthesize photoDownloader/*, displaySpinner*/;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        [self configureGridForSpinner:YES];
         self.photoDownloader = [[PhotoDownloader alloc] init];
         self.photoDownloader.delegate = self;
-        self.gridView.resizesCellWidthToFit = NO;
         self.gridView.backgroundColor = [UIColor whiteColor];
+        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
+        self.gridView.resizesCellWidthToFit = YES;
+
     }
     return self;
 }
@@ -33,18 +36,6 @@
 {
     [super viewDidLoad];
     
-}
-
-- (void)configureGridForSpinner:(BOOL)spinner
-{
-    self.displaySpinner = spinner;
-    if (spinner) {
-       self.gridView.separatorStyle = AQGridViewCellSeparatorStyleNone;
-        self.gridView.resizesCellWidthToFit = NO;
-    } else {
-        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
-        self.gridView.resizesCellWidthToFit = YES;
-    }
 }
 
 - (void)viewDidUnload
@@ -63,8 +54,7 @@
 - (void)refresh
 {
     if (self.photoDownloader.urls.count == 0) {
-        [self configureGridForSpinner:YES];
-        [self.gridView reloadData];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.photoDownloader parse];
     }
 }
@@ -80,7 +70,7 @@
 
 - (void)photoDownloaderDidFinish:(PhotoDownloader *)photoDownloader
 {
-    [self configureGridForSpinner:NO];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.gridView reloadData];
 }
 
@@ -93,44 +83,22 @@
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
 {
-    if (displaySpinner) {
-        return 1;
-    } else {
         return self.photoDownloader.urls.count;
-    }
 }
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
-
-    if (displaySpinner) {
-        static NSString *loadingCellIdentifier = @"loadingCell";
-        AQGridViewCell *cell = [self.gridView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
-        if (cell == nil) {
-            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            cell = [[AQGridViewCell alloc] initWithFrame:spinner.frame reuseIdentifier:loadingCellIdentifier];
-            [spinner startAnimating];
-            [cell.contentView addSubview:spinner];
-            cell.selectionStyle = AQGridViewCellSelectionStyleNone;
-        }
-        return cell;
-        
-    } else {
-        static NSString *photoCellIdentifier = @"photoCell";
-        PhotoGridViewCell *cell = (PhotoGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:photoCellIdentifier];
-        if (cell == nil) {
-            cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0) reuseIdentifier:photoCellIdentifier];
-            cell.selectionStyle = AQGridViewCellSelectionStyleNone;
-        }
-        cell.imageView.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
-        return cell;
+    static NSString *photoCellIdentifier = @"photoCell";
+    PhotoGridViewCell *cell = (PhotoGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:photoCellIdentifier];
+    if (cell == nil) {
+        cell = [[PhotoGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0) reuseIdentifier:photoCellIdentifier];
+        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
+    cell.imageView.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
+    return cell;
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    if (self.displaySpinner)
-        return;
-    
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     browser.displayActionButton = YES;
     [browser setInitialPageIndex:index];
@@ -141,13 +109,8 @@
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    if (self.displaySpinner) {
-        NSLog(@"display!!");
-        return [UIScreen mainScreen].bounds.size;
-    } else {
-        NSLog(@"don't display!!");
-        return CGSizeMake(100.0, 100.0);
-    }
+
+    return CGSizeMake(100.0, 100.0);
 }
 
 #pragma mark - MWPhotoBrowserDelegate methods
@@ -158,7 +121,6 @@
 }
 
 - (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    //if (index < appDelegate.photoDownloader.urls.count) {
     if (index < self.photoDownloader.urls.count) {
         NSURL *url = [[self.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
         return [MWPhoto photoWithURL:url];

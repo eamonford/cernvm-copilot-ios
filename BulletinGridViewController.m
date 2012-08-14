@@ -21,7 +21,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        self.displaySpinner = NO;
         self.gridView.resizesCellWidthToFit = NO;
         self.gridView.backgroundColor = [UIColor whiteColor];
         self.gridView.allowsSelection = YES;
@@ -93,64 +92,41 @@
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
 {
-    if (displaySpinner)
-        return 1;
-    else
-        return self.rangesOfArticlesSeparatedByWeek.count;
+    return self.rangesOfArticlesSeparatedByWeek.count;
 }
 
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
 {
-    if (displaySpinner) {
-        static NSString *loadingCellIdentifier = @"loadingCell";
-        AQGridViewCell *cell = [self.gridView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
-        if (cell == nil) {
-            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            cell = [[AQGridViewCell alloc] initWithFrame:spinner.frame reuseIdentifier:loadingCellIdentifier];
-            [spinner startAnimating];
-            [cell.contentView addSubview:spinner];
-            cell.selectionStyle = AQGridViewCellSelectionStyleNone;
-        }
-        return cell;
-        
-    } else {
-        static NSString *bulletinCellIdentifier = @"bulletinCell";
+    static NSString *bulletinCellIdentifier = @"bulletinCell";
 
-        BulletinGridViewCell *cell = (BulletinGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:bulletinCellIdentifier];
-        if (cell == nil) {
-            cell = [[BulletinGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 120.0) reuseIdentifier:bulletinCellIdentifier];
-            cell.selectionStyle = AQGridViewCellSelectionStyleNone;
-        }
-        
-        NSRange issueRange = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:index] rangeValue];
-        NSMutableString *articlesString = [NSMutableString stringWithFormat:@"%d ", issueRange.length];
-        [articlesString appendString: issueRange.length>1?@"articles":@"article"];
-        cell.descriptionLabel.text = articlesString;
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-        MWFeedItem *latestArticle = [self.aggregator.allArticles objectAtIndex:issueRange.location+issueRange.length-1];
-        NSDate *issueDate = [[latestArticle.date midnight] nextOccurrenceOfWeekday:2];
-        NSString *issueDateString = [dateFormatter stringFromDate:issueDate];
-        cell.titleLabel.text = [NSString stringWithFormat:@"Week of %@", issueDateString];
-        
-        return cell;
+    BulletinGridViewCell *cell = (BulletinGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:bulletinCellIdentifier];
+    if (cell == nil) {
+        cell = [[BulletinGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 120.0) reuseIdentifier:bulletinCellIdentifier];
+        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
+    
+    NSRange issueRange = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:index] rangeValue];
+    NSMutableString *articlesString = [NSMutableString stringWithFormat:@"%d ", issueRange.length];
+    [articlesString appendString: issueRange.length>1?@"articles":@"article"];
+    cell.descriptionLabel.text = articlesString;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    MWFeedItem *latestArticle = [self.aggregator.allArticles objectAtIndex:issueRange.location+issueRange.length-1];
+    NSDate *issueDate = [[latestArticle.date midnight] nextOccurrenceOfWeekday:2];
+    NSString *issueDateString = [dateFormatter stringFromDate:issueDate];
+    cell.titleLabel.text = [NSString stringWithFormat:@"Week of %@", issueDateString];
+    
+    return cell;
 }
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    if (displaySpinner) {
-        return [UIScreen mainScreen].bounds.size;
-    } else {
         return CGSizeMake(320.0, 140.0);
-    }
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    if (displaySpinner)
-        return;
     [self performSegueWithIdentifier:@"ShowBulletinArticles" sender:self];
 }
 

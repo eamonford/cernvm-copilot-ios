@@ -7,17 +7,17 @@
 //
 
 #import "RSSGridViewController.h"
+#import "MBProgressHUD.h"
 
 @interface RSSGridViewController ()
 
 @end
 
 @implementation RSSGridViewController
-@synthesize aggregator, displaySpinner;
+@synthesize aggregator;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.displaySpinner = NO;
         self.aggregator = [[RSSAggregator alloc] init];
         self.aggregator.delegate = self;
         self.gridView.separatorStyle = AQGridViewCellSeparatorStyleNone;
@@ -46,15 +46,14 @@
 - (void)refresh
 {
     if (self.aggregator.feeds.count) {
-        self.displaySpinner = YES;
-        [self.gridView reloadData];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.aggregator refreshAllFeeds];
     }
 }
 
 - (void)allFeedsDidLoadForAggregator:(RSSAggregator *)aggregator
 {
-    self.displaySpinner = NO;
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 @end

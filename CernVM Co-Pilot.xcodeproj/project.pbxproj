@@ -62,6 +62,7 @@
 		E1B0416315B7E68000C8EA40 /* StaticInfoSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0416215B7E68000C8EA40 /* StaticInfoSelectorViewController.m */; };
 		E1B0416515B7E85400C8EA40 /* StaticInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1B0416415B7E85400C8EA40 /* StaticInformation.plist */; };
 		E1B6925315D9919800EC9AFA /* libAQGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B6924F15D9913C00EC9AFA /* libAQGridView.a */; };
+		E1B6925915D9C8B300EC9AFA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6925815D9C8B300EC9AFA /* MBProgressHUD.m */; };
 		E1C2CE7A15B8AAD100EC9B24 /* C2.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE4A15B8AAD100EC9B24 /* C2.png */; };
 		E1C2CE7B15B8AAD100EC9B24 /* C3.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE4B15B8AAD100EC9B24 /* C3.png */; };
 		E1C2CE7C15B8AAD100EC9B24 /* C4.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C2CE4C15B8AAD100EC9B24 /* C4.png */; };
@@ -291,6 +292,8 @@
 		E1B0416215B7E68000C8EA40 /* StaticInfoSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoSelectorViewController.m; sourceTree = "<group>"; };
 		E1B0416415B7E85400C8EA40 /* StaticInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StaticInformation.plist; sourceTree = "<group>"; };
 		E1B6924715D9913B00EC9AFA /* AQGridView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AQGridView.xcodeproj; path = AQGridView/AQGridView.xcodeproj; sourceTree = "<group>"; };
+		E1B6925715D9C8B300EC9AFA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		E1B6925815D9C8B300EC9AFA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E1C2CE4A15B8AAD100EC9B24 /* C2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C2.png; sourceTree = "<group>"; };
 		E1C2CE4B15B8AAD100EC9B24 /* C3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C3.png; sourceTree = "<group>"; };
 		E1C2CE4C15B8AAD100EC9B24 /* C4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C4.png; sourceTree = "<group>"; };
@@ -724,6 +727,8 @@
 		E1D87E87159EE6FA0051104C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E1B6925715D9C8B300EC9AFA /* MBProgressHUD.h */,
+				E1B6925815D9C8B300EC9AFA /* MBProgressHUD.m */,
 				E13D378015D4560B002465BA /* BulletinGridViewCell.h */,
 				E13D378115D4560B002465BA /* BulletinGridViewCell.m */,
 				E1F1ED1815D22143005A99BC /* NewsGridViewCell.h */,
@@ -1135,6 +1140,7 @@
 				E1D87E7D159EE6720051104C /* SDWebImagePrefetcher.m in Sources */,
 				E1D87E7F159EE6720051104C /* UIButton+WebCache.m in Sources */,
 				E1D87E81159EE6720051104C /* UIImageView+WebCache.m in Sources */,
+				E1B6925915D9C8B300EC9AFA /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,12 +16,10 @@
     UIView *loadingView;
     NSMutableArray *videoMetadata;
     NSMutableDictionary *videoThumbnails;
-    BOOL displaySpinner;
 }
 
 @property (nonatomic, retain) CernMediaMARCParser *parser;
 @property (nonatomic, retain) NSMutableArray *videoMetadata;
 @property (nonatomic, retain) NSMutableDictionary *videoThumbnails;
-@property BOOL displaySpinner;
 
 @end

@@ -12,12 +12,9 @@
 @interface RSSGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, RSSAggregatorDelegate>
 {
     RSSAggregator *aggregator;
-    BOOL displaySpinner;
 }
 
 @property (nonatomic, retain) RSSAggregator *aggregator;
-@property BOOL displaySpinner;
-
 - (void)refresh;
 
 @end
