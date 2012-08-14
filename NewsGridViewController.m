@@ -77,6 +77,8 @@
     UIImage *image = [self.aggregator firstImageForArticle:article];
     if (image) {
         cell.thumbnailImageView.image = image;
+    } else {
+        cell.thumbnailImageView.image = [UIImage imageNamed:@"placeholder"];
     }
     return cell;
 }

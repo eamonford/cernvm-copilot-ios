@@ -32,8 +32,8 @@
 
         UIView *innerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height/2)];
         innerContainerView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-        innerContainerView.layer.shadowOpacity = 0.5;
-        innerContainerView.layer.shadowRadius = 3.0;
+        innerContainerView.layer.shadowOpacity = 1.0;
+        innerContainerView.layer.shadowRadius = 2.0;
         innerContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
         shadowPathRef = CGPathCreateWithRect(innerContainerView.layer.frame, NULL);
         innerContainerView.layer.shadowPath = shadowPathRef;
