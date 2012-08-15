@@ -9,6 +9,10 @@
 #import "NewsGridViewController.h"
 #import "NewsGridViewCell.h"
 #import "ArticleDetailViewController.h"
+#import "NSString+HTML.h"
+
+#define MIN_IMAGE_WIDTH 300.0
+#define MIN_IMAGE_HEIGHT 125.0
 
 @interface NewsGridViewController ()
 
@@ -67,7 +71,7 @@
         cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 250.0) reuseIdentifier:newsCellIdentifier];
         cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
-    cell.titleLabel.text = article.title;
+    cell.titleLabel.text = [article.title stringByConvertingHTMLToPlainText];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
@@ -75,7 +79,7 @@
     cell.dateLabel.text = dateString;
     
     UIImage *image = [self.aggregator firstImageForArticle:article];
-    if (image) {
+    if (image && image.size.width >= MIN_IMAGE_WIDTH && image.size.height >= MIN_IMAGE_HEIGHT) {
         cell.thumbnailImageView.image = image;
     } else {
         cell.thumbnailImageView.image = [UIImage imageNamed:@"placeholder"];

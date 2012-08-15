@@ -108,7 +108,12 @@
     switch (index) {
         case TabIndexNews: {
             // Populate the general News view controller with news feeds
-            [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
+            //[((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://cdsweb.cern.ch/rss?p=980__a%3ABULLETINNEWS%20or%20980__a%3ABULLETINNEWSDRAFT&ln=en"]];
+            [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://twitter.com/statuses/user_timeline/15234407.rss"]];
+            [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
+            
+           
+            
             [(NewsGridViewController *)viewController refresh];
             break;
         }
