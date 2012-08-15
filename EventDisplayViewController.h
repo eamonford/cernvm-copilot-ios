@@ -20,6 +20,7 @@
     NSMutableArray *sources;
     NSMutableArray *downloadedResults;
     int numPages;
+    int currentPage;
 }
 
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;

@@ -78,24 +78,50 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
+    else
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    CGFloat oldScreenWidth = UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)?[UIScreen mainScreen].bounds.size.width:[UIScreen mainScreen].bounds.size.height;
+    currentPage = self.pageControl.currentPage;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    CGFloat oldScreenWidth = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?[UIScreen mainScreen].bounds.size.height:[UIScreen mainScreen].bounds.size.width;
+    NSLog(@"old screen width: %f", oldScreenWidth);
     
     float scrollViewWidth = self.scrollView.frame.size.width;
     float scrollViewHeight = self.scrollView.frame.size.height;
     self.scrollView.contentSize = CGSizeMake(scrollViewWidth*numPages, 1.0);
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*currentPage, 0.0)];
+    
+    [UIView animateWithDuration:duration animations:^{
+        for (UIView *subview in self.scrollView.subviews) {
+            int page = floor((subview.frame.origin.x - oldScreenWidth / 2) / oldScreenWidth) + 1;
+            subview.frame = CGRectMake(scrollViewWidth*page, 0.0, scrollViewWidth, scrollViewHeight);
+        }
+    }];
+}
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+/*    CGFloat oldScreenWidth = UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)?[UIScreen mainScreen].bounds.size.width:[UIScreen mainScreen].bounds.size.height;
+    
+    float scrollViewWidth = self.scrollView.frame.size.width;
+    float scrollViewHeight = self.scrollView.frame.size.height;
+    self.scrollView.contentSize = CGSizeMake(scrollViewWidth*numPages, 1.0);
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*currentPage, 0.0)];
+
     for (UIView *subview in self.scrollView.subviews) {
         int page = floor((subview.frame.origin.x - oldScreenWidth / 2) / oldScreenWidth) + 1;
         subview.frame = CGRectMake(scrollViewWidth*page, 0.0, scrollViewWidth, scrollViewHeight);
     }
-}
+    */
+ }
 - (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects
 {
     NSMutableDictionary *source = [NSMutableDictionary dictionary];
@@ -217,15 +243,12 @@
 - (void)addSpinnerToPage:(int)page
 {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    spinner.frame = CGRectMake(self.scrollView.frame.size.width*page, 0.0, self.scrollView.frame.size.width, self
-                               .scrollView.frame.size.height);
-    //spinner.center = CGPointMake(scrollViewWidth*(page+1)-(scrollViewWidth/2), scrollViewHeight/2);
+    spinner.frame = CGRectMake(self.scrollView.frame.size.width*page, 0.0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     [spinner startAnimating];
     [self.scrollView addSubview:spinner];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    
     CGFloat pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.pageControl.currentPage = page;
