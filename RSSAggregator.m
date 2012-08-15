@@ -106,7 +106,7 @@
     if (imageURL) {
         NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
         NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        UIImage *image = [UIImage imageWithData:imageData];
+        UIImage *image = [[UIImage alloc] initWithData:imageData];
         if (image) {
             NSNumber *articleIndex = [NSNumber numberWithInt:[self.allArticles indexOfObject:article]];
             [self.firstImages setObject:image forKey:articleIndex];

@@ -24,7 +24,7 @@
     
     float scaleFactor = dimension/originalImage.size.width;
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:scaleFactor orientation:UIImageOrientationUp];
-    
+    CGImageRelease(imageRef);
     return image;
 }
 

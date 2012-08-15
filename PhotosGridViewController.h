@@ -18,7 +18,7 @@
     PhotoDownloader *photoDownloader;
     UIView *loadingView;
 }
-@property (nonatomic, retain) PhotoDownloader *photoDownloader;
+@property (nonatomic, strong) PhotoDownloader *photoDownloader;
 
 - (void)refresh;
 

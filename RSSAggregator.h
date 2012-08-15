@@ -30,10 +30,10 @@
     //NSMutableDictionary *firstImages;
 }
 
-@property (nonatomic, retain) NSMutableArray *feeds;
+@property (nonatomic, strong) NSMutableArray *feeds;
 @property (nonatomic, strong) id<RSSAggregatorDelegate> delegate;
-@property (nonatomic, retain) NSArray *allArticles;
-@property (nonatomic, retain) NSMutableDictionary *firstImages;
+@property (nonatomic, strong) NSArray *allArticles;
+@property (nonatomic, strong) NSMutableDictionary *firstImages;
 
 - (void)addFeed:(RSSFeed *)feed;
 - (void)addFeedForURL:(NSURL *)url;

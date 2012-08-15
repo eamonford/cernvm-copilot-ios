@@ -46,11 +46,11 @@
     UIImageView *_imageView;
     NSMutableData *_asyncThumbnailData;
     NSMutableDictionary *_downloadedThumbnailCache;
-    NSURL *_thumbnailURL;
+    //NSURL *_thumbnailURL;
 }
 
-@property (nonatomic, retain) UIImage *image;
-@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImageView *imageView;
 @property int index;
 //- (void)setImageFromURL:(NSURL *)url;
 

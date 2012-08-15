@@ -14,7 +14,7 @@
     RSSAggregator *_aggregator;
 }
 
-@property (nonatomic, retain) RSSAggregator *aggregator;
+@property (nonatomic, strong) RSSAggregator *aggregator;
 - (void)refresh;
 
 @end

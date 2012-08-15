@@ -23,14 +23,14 @@
     int currentPage;
 }
 
-@property (nonatomic, retain) UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) NSMutableArray *sources;
-@property (nonatomic, retain) NSMutableArray *downloadedResults;
-@property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) UIPageControl *pageControl;
-@property (nonatomic, retain) UIBarButtonItem *refreshButton;
-@property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) UILabel *dateLabel;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) NSMutableArray *sources;
+@property (nonatomic, strong) NSMutableArray *downloadedResults;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIBarButtonItem *refreshButton;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *dateLabel;
 
 // This method should be called immediately after init, and before viewDidLoad gets called.
 - (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects;

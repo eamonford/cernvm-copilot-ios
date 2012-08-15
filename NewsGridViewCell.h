@@ -9,13 +9,13 @@
 #import "AQGridViewCell.h"
 
 @interface NewsGridViewCell : AQGridViewCell
-{
+/*{
     UILabel *titleLabel;
     UILabel *dateLabel;
     UIImageView *thumbnailImageView;
-}
-@property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) UILabel *dateLabel;
-@property (nonatomic, retain) UIImageView *thumbnailImageView;
+}*/
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *dateLabel;
+@property (nonatomic, strong) UIImageView *thumbnailImageView;
 
 @end

@@ -74,7 +74,6 @@
         [dateFormatterRFC3339 setLocale:en_US_POSIX];
         [dateFormatterRFC822 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         [dateFormatterRFC3339 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		[en_US_POSIX release];
 		
 	}
 	return self;
@@ -97,20 +96,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[urlConnection release];
-	[url release];
-	[feedParser release];
-	[dateFormatterRFC822 release];
-	[dateFormatterRFC3339 release];
-	[currentPath release];
-	[currentText release];
-	[currentElementAttributes release];
-	[item release];
-	[info release];
-	[pathOfElementWithXHTMLType release];
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark Parsing
@@ -123,7 +108,7 @@
 	self.urlConnection = nil;
 	feedType = FeedTypeUnknown;
 	self.currentPath = @"/";
-	self.currentText = [[[NSMutableString alloc] init] autorelease];
+	self.currentText = [[NSMutableString alloc] init];
 	self.item = nil;
 	self.info = nil;
 	self.currentElementAttributes = nil;
@@ -193,7 +178,6 @@
 	}
 	
 	// Cleanup & return
-	[request release];
 	return success;
 	
 }
@@ -205,7 +189,6 @@
 		// Create feed info
 		MWFeedInfo *i = [[MWFeedInfo alloc] init];
 		self.info = i;
-		[i release];
 		
 		// Check whether it's UTF-8
 		if (![[textEncodingName lowercaseString] isEqualToString:@"utf-8"]) {
@@ -217,7 +200,7 @@
 			// Attempt to detect encoding from response header
 			NSStringEncoding nsEncoding = 0;
 			if (textEncodingName) {
-				CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)textEncodingName);
+				CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((__bridge CFStringRef)textEncodingName);
 				if (cfEncoding != kCFStringEncodingInvalidId) {
 					nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
 					if (nsEncoding != 0) string = [[NSString alloc] initWithData:data encoding:nsEncoding];
@@ -250,9 +233,8 @@
 								NSUInteger s = b.location+b.length;
 								NSRange c = [xmlDec rangeOfString:@"\"" options:0 range:NSMakeRange(s, [xmlDec length] - s)];
 								if (c.location != NSNotFound) {
-									NSString *temp = [[string stringByReplacingCharactersInRange:NSMakeRange(b.location,c.location+c.length-b.location)
-																					  withString:@"encoding=\"UTF-8\""] retain];
-									[string release];
+									NSString *temp = [string stringByReplacingCharactersInRange:NSMakeRange(b.location,c.location+c.length-b.location)
+																					  withString:@"encoding=\"UTF-8\""];
 									string = temp;
 								}
 							}
@@ -263,7 +245,6 @@
 				// Convert string to UTF-8 data
 				if (string) {
 					data = [string dataUsingEncoding:NSUTF8StringEncoding];
-					[string release];
 				}
 				
 			}
@@ -274,7 +255,6 @@
 		if (data) {
 			NSXMLParser *newFeedParser = [[NSXMLParser alloc] initWithData:data];
 			self.feedParser = newFeedParser;
-			[newFeedParser release];
 			if (feedParser) { 
 				
 				// Parse!
@@ -436,7 +416,7 @@
 	MWXMLLog(@"NSXMLParser: didStartElement: %@", qualifiedName);
 	
 	// Pool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	// Adjust path
 	self.currentPath = [currentPath stringByAppendingPathComponent:qualifiedName];
@@ -463,7 +443,7 @@
 		}
 		
 		// Dont continue
-		[pool drain];
+		//[pool drain];
 		return;
 		
 	}
@@ -483,7 +463,7 @@
 							  andDescription:@"XML document is not a valid web feed document."];
 			
 		}
-		[pool drain];
+		//[pool drain];
 		return;
 	}
 	
@@ -492,7 +472,7 @@
 		if ((feedType == FeedTypeRSS  && [currentPath isEqualToString:@"/rss/channel"]) ||
 			(feedType == FeedTypeRSS1 && [currentPath isEqualToString:@"/rdf:RDF/channel"]) ||
 			(feedType == FeedTypeAtom && [currentPath isEqualToString:@"/feed"])) {
-			[pool drain];
+			//[pool drain];
 			return;
 		}
 	}
@@ -518,7 +498,7 @@
 					
 					// Finish
 					[self abortParsingEarly];
-					[pool drain];
+					//[pool drain];
 					return;
 					
 				}
@@ -534,10 +514,9 @@
 		// New item
 		MWFeedItem *newItem = [[MWFeedItem alloc] init];
 		self.item = newItem;
-		[newItem release];
 		
 		// Return
-		[pool drain];
+		//[pool drain];
 		return;
 		
 	}
@@ -563,7 +542,7 @@
 	}
 	
 	// Drain
-	[pool drain];
+	//[pool drain];
 	
 }
 
@@ -572,7 +551,7 @@
 	MWXMLLog(@"NSXMLParser: didEndElement: %@", qName);
 	
 	// Pool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	// Parse content as structure (Atom feeds with element type="xhtml")
 	// - Use elementName not qualifiedName to ignore XML namespaces for XHTML entities
@@ -588,7 +567,7 @@
 			self.currentPath = [currentPath stringByDeletingLastPathComponent];
 			
 			// Return
-			[pool drain];
+			//[pool drain];
 			return;
 			
 		}
@@ -708,7 +687,7 @@
 	}
 	
 	// Drain pool
-	[pool drain];
+	//[pool drain];
 	
 }
 
@@ -733,7 +712,7 @@
 		
 	} @catch (NSException * e) { 
 	} @finally {
-		[string release];
+		string = nil;
 	}
 	
 }
@@ -807,7 +786,7 @@
 	
 		// Inform delegate
 		if ([delegate respondsToSelector:@selector(feedParser:didParseFeedInfo:)])
-			[delegate feedParser:self didParseFeedInfo:[[info retain] autorelease]];
+			[delegate feedParser:self didParseFeedInfo:info];
 		
 		// Debug log
 		MWLog(@"MWFeedParser: Feed info for \"%@\" successfully parsed", info.title);
@@ -830,7 +809,7 @@
 		
 		// Inform delegate
 		if ([delegate respondsToSelector:@selector(feedParser:didParseFeedItem:)])
-			[delegate feedParser:self didParseFeedItem:[[item retain] autorelease]];
+			[delegate feedParser:self didParseFeedItem:item];
 		
 		// Finish
 		self.item = nil;
@@ -863,14 +842,13 @@
 		} else {
 			
 			// Copy
-			newURL = [[value copy] autorelease];
+			newURL = [value copy];
 			
 		}
 	}
 	
 	// Set new url
-	if (url) [url release];
-	url = [newURL retain];
+	url = newURL;
 	
 }
 
@@ -918,7 +896,6 @@
 		if (encType) [e setObject:encType forKey:@"type"];
 		if (encLength) [e setObject:encLength forKey:@"length"];
 		enclosure = [NSDictionary dictionaryWithDictionary:e];
-		[e release];
 	}
 					 
 	// Add to item		 

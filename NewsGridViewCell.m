@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation NewsGridViewCell
-@synthesize titleLabel, dateLabel, thumbnailImageView;
+//@synthesize titleLabel, dateLabel, thumbnailImageView;
 
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)aReuseIdentifier
 {
@@ -22,8 +22,9 @@
         self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
         self.layer.shadowRadius = 2.0;
         self.layer.shadowOpacity = 0.5;
-        CGPathRef shadowPathRef = CGPathCreateWithRect(self.layer.frame, NULL);
-        self.layer.shadowPath = shadowPathRef;
+        CGPathRef cellShadowPathRef = CGPathCreateWithRect(self.layer.frame, NULL);
+        self.layer.shadowPath = cellShadowPathRef;
+        CGPathRelease(cellShadowPathRef);
         self.contentView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         
         self.thumbnailImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height/2)];
@@ -35,9 +36,9 @@
         innerContainerView.layer.shadowOpacity = 1.0;
         innerContainerView.layer.shadowRadius = 2.0;
         innerContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
-        shadowPathRef = CGPathCreateWithRect(innerContainerView.layer.frame, NULL);
-        innerContainerView.layer.shadowPath = shadowPathRef;
-
+        CGPathRef imageShadowPathRef = CGPathCreateWithRect(innerContainerView.layer.frame, NULL);
+        innerContainerView.layer.shadowPath = imageShadowPathRef;
+        CGPathRelease(imageShadowPathRef);
         [innerContainerView addSubview:self.thumbnailImageView];
         
         UIView *outerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, (frame.size.height/2)+10.0f)];

@@ -28,9 +28,9 @@
     NSOperationQueue *queue;
 }
 
-@property (nonatomic, retain) NSMutableArray *urls;
-@property (nonatomic, retain) NSMutableDictionary *thumbnails;
-@property (nonatomic, retain) NSURL *url;
+@property (nonatomic, strong) NSMutableArray *urls;
+@property (nonatomic, strong) NSMutableDictionary *thumbnails;
+@property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) id<PhotoDownloaderDelegate> delegate;
 
 - (void)parse;

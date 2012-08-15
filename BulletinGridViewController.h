@@ -12,9 +12,9 @@
 
 @interface BulletinGridViewController : RSSGridViewController
 {
-    NSArray *rangesOfArticlesSeparatedByWeek;
+   // NSArray *rangesOfArticlesSeparatedByWeek;
 }
-@property (nonatomic, retain) NSArray *rangesOfArticlesSeparatedByWeek;
+@property (nonatomic, strong) NSArray *rangesOfArticlesSeparatedByWeek;
 
 - (NSArray *)calculateRangesOfArticlesSeparatedByWeek:(NSArray *)feedArticles;
 

@@ -27,9 +27,9 @@ typedef enum {
     NSArray *staticInfoDataSource;
 }*/
 
-@property (nonatomic, retain) UITabBarController *tabBarController;
-@property (nonatomic, retain) NSArray *staticInfoDataSource;
-@property (nonatomic, retain) NSMutableDictionary *tabsAlreadySetup;
+@property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) NSArray *staticInfoDataSource;
+@property (nonatomic, strong) NSMutableDictionary *tabsAlreadySetup;
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)setupViewController:(UIViewController *)viewController atIndex:(int)index;

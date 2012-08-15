@@ -18,8 +18,8 @@
     NSMutableDictionary *videoThumbnails;
 }
 
-@property (nonatomic, retain) CernMediaMARCParser *parser;
-@property (nonatomic, retain) NSMutableArray *videoMetadata;
-@property (nonatomic, retain) NSMutableDictionary *videoThumbnails;
+@property (nonatomic, strong) CernMediaMARCParser *parser;
+@property (nonatomic, strong) NSMutableArray *videoMetadata;
+@property (nonatomic, strong) NSMutableDictionary *videoThumbnails;
 
 @end

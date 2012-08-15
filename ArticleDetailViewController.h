@@ -16,8 +16,8 @@
     @private
     NSString *contentString;
 }
-@property (nonatomic, retain) UIWebView *contentWebView;
-@property (nonatomic, retain) NSString *contentString;
+@property (nonatomic, strong) UIWebView *contentWebView;
+@property (nonatomic, strong) NSString *contentString;
 
 - (void)setContentForArticle:(MWFeedItem *)article;
 - (void)setContentForVideoMetadata:(NSDictionary *)videoMetadata;

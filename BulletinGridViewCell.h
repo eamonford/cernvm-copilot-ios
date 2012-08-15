@@ -13,7 +13,7 @@
     UILabel *titleLabel;
     UILabel *descriptionLabel;
 }
-@property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) UILabel *descriptionLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *descriptionLabel;
 
 @end

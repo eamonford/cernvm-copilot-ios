@@ -17,10 +17,10 @@
     
     NSArray *dataSource;
 }
-@property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) UIPageControl *pageControl;
-@property (nonatomic, retain) UIPopoverController *popoverController;
-@property (nonatomic, retain) NSArray *dataSource;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) NSArray *dataSource;
 
 - (void)refresh;
 - (StaticInfoItemViewController *)viewControllerForPage:(int)page;

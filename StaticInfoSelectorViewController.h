@@ -16,8 +16,8 @@
     NSIndexPath *currentlyShowingIndexPath;
 }
 
-@property (nonatomic, retain) NSArray *tableDataSource;
-@property (nonatomic, retain) NSString *currentTitle;
+@property (nonatomic, strong) NSArray *tableDataSource;
+@property (nonatomic, strong) NSString *currentTitle;
 @property (nonatomic, readwrite) NSInteger currentLevel;
-@property (nonatomic, retain) NSIndexPath *currentlyShowingIndexPath;
+@property (nonatomic, strong) NSIndexPath *currentlyShowingIndexPath;
 @end

@@ -24,8 +24,9 @@
         self.layer.shadowOpacity = 0.5;
         CGPathRef shadowPathRef = CGPathCreateWithRect(self.layer.frame, NULL);
         self.layer.shadowPath = shadowPathRef;
+        CGPathRelease(shadowPathRef);
         self.contentView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-
+        
         UIView *borderMaskView = [[UIView alloc] initWithFrame:CGRectMake(20.0, 8.0+5.0, frame.size.width-40.0, 40.0)];
         borderMaskView.clipsToBounds = YES;
 

@@ -17,11 +17,11 @@
     IBOutlet UILabel *titleLabel;
     NSDictionary *staticInfo;
 }
-@property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) UILabel *descriptionLabel;
-@property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) NSDictionary *staticInfo;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *descriptionLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) NSDictionary *staticInfo;
 
 - (void)setAndPositionInformation;
 @end

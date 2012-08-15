@@ -23,9 +23,9 @@ typedef enum {
     
     IBOutlet UIButton *atlasButton, *cmsButton, *aliceButton, *lhcbButton, *lhcButton;
 }
-@property (nonatomic, retain) UIImageView *mapImageView;
-@property (nonatomic, retain) UIImageView *shadowImageView;
-@property (nonatomic, retain) UIButton *atlasButton, *cmsButton, *aliceButton, *lhcbButton, *lhcButton;
+@property (nonatomic, strong) UIImageView *mapImageView;
+@property (nonatomic, strong) UIImageView *shadowImageView;
+@property (nonatomic, strong) UIButton *atlasButton, *cmsButton, *aliceButton, *lhcbButton, *lhcButton;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 
 - (void)setupVisualsForOrientation:(UIDeviceOrientation)orientation;

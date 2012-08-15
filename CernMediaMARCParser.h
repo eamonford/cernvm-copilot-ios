@@ -35,7 +35,7 @@ typedef  enum SubfieldCodeEnum {
     
     NSMutableData *asyncData;
     NSString *currentResourceType;
-    NSMutableDictionary *currentMediaItem;
+    //NSMutableDictionary *currentMediaItem;
     NSMutableDictionary *currentRecord;
     NSMutableString *currentUValue;
     NSString *currentDatafieldTag;
@@ -45,8 +45,8 @@ typedef  enum SubfieldCodeEnum {
     BOOL foundU;
 }
 
-@property (nonatomic, retain) NSURL *url;
-@property (nonatomic, retain) NSArray *resourceTypes;
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSArray *resourceTypes;
 @property (nonatomic, strong) id<CernMediaMarcParserDelegate> delegate;
 @property BOOL isFinishedParsing;
 - (void)parse;

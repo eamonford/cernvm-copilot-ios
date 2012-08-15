@@ -97,11 +97,11 @@
     
     self.pageControl.numberOfPages = self.dataSource.count;
 
-    CGFloat detailViewWidth;
+    CGFloat detailViewWidth = 0.0;
     CGFloat detailViewHeight = 480.0;
-    CGFloat detailViewX;
+    CGFloat detailViewX = 0.0;
     CGFloat detailViewY = self.scrollView.frame.size.height/2-detailViewHeight/2;
-    CGFloat detailViewMargin;
+    CGFloat detailViewMargin = 0.0;
 
     for (int i=0; i<self.dataSource.count; i++) {
         StaticInfoItemViewController *detailViewController = [self viewControllerForPage:i];

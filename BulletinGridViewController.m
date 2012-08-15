@@ -16,7 +16,7 @@
 @end
 
 @implementation BulletinGridViewController
-@synthesize rangesOfArticlesSeparatedByWeek;
+//@synthesize rangesOfArticlesSeparatedByWeek;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -51,7 +51,7 @@
 }
 
 - (NSArray *)calculateRangesOfArticlesSeparatedByWeek:(NSArray *)articles
-{    
+{
     NSMutableArray *issues = [NSMutableArray array];
     NSRange currentRange = NSMakeRange(0, 0);
     MWFeedItem *firstArticle = [articles objectAtIndex:0];
@@ -60,6 +60,7 @@
     for (int i=0; i<articles.count; i++) {
         
         MWFeedItem *article = [articles objectAtIndex:i];
+        NSLog(@"article from %@", article.date);
         NSDate *oneWeekLater = [article.date dateByAddingTimeInterval:60*60*24*7];
         // if the current article is within a week of the current issue date, add it to the current issue
         if ([oneWeekLater compare:currentIssueDate] == NSOrderedDescending) {

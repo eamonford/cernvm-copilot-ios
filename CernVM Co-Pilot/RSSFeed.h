@@ -20,9 +20,9 @@
     id<FeedDelegate> aggregator;
     id<FeedDelegate> delegate;
 }
-@property (nonatomic, retain) MWFeedParser *parser;
-@property (nonatomic, retain) MWFeedInfo *info;
-@property (nonatomic, retain) NSMutableArray *articles;
+@property (nonatomic, strong) MWFeedParser *parser;
+@property (nonatomic, strong) MWFeedInfo *info;
+@property (nonatomic, strong) NSMutableArray *articles;
 @property (nonatomic, strong) id aggregator;
 @property (nonatomic, strong) id delegate;
 
