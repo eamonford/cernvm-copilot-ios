@@ -111,10 +111,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
+    else
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - MWPhotoBrowserDelegate methods

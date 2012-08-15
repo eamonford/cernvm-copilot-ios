@@ -21,17 +21,17 @@ typedef enum {
 } TabIndices;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate>
-{
+/*{
     UITabBarController *tabBarController;
     NSMutableDictionary *tabsAlreadySetup;
     NSArray *staticInfoDataSource;
-}
-
-- (void)setupViewController:(UIViewController *)viewController atIndex:(int)index;
+}*/
 
 @property (nonatomic, retain) UITabBarController *tabBarController;
 @property (nonatomic, retain) NSArray *staticInfoDataSource;
-
+@property (nonatomic, retain) NSMutableDictionary *tabsAlreadySetup;
 @property (strong, nonatomic) UIWindow *window;
+
+- (void)setupViewController:(UIViewController *)viewController atIndex:(int)index;
 
 @end

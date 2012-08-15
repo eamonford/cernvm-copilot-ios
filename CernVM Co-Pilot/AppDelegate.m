@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "RSSAggregator.h"
-#import "NewsTableViewController.h"
-#import "BulletinViewController.h"
 #import "PhotosGridViewController.h"
 #import "NewsGridViewController.h"
 #import "BulletinGridViewController.h"
@@ -19,14 +17,14 @@
 
 @implementation AppDelegate
 
-@synthesize tabBarController, staticInfoDataSource, window = _window;
+//@synthesize tabBarController, staticInfoDataSource, window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.tabBarController = (UITabBarController *)self.window.rootViewController;
     self.tabBarController.delegate = self;
     self.tabBarController.moreNavigationController.delegate = self;
-    tabsAlreadySetup = [NSMutableDictionary dictionary];
+    self.tabsAlreadySetup = [NSMutableDictionary dictionary];
     
     [self setupViewController:[self.tabBarController.viewControllers objectAtIndex:TabIndexNews] atIndex:TabIndexNews];
 
@@ -97,10 +95,10 @@
 - (void)setupViewController:(UIViewController *)viewController atIndex:(int)index
 {
     // Only set up each view controller once, and then never do it again.
-    if ([[tabsAlreadySetup objectForKey:[NSNumber numberWithInt:index]] boolValue])
+    if ([[self.tabsAlreadySetup objectForKey:[NSNumber numberWithInt:index]] boolValue])
         return;
     else
-        [tabsAlreadySetup setObject:[NSNumber numberWithBool:YES] forKey:[NSNumber numberWithInt:index]];
+        [self.tabsAlreadySetup setObject:[NSNumber numberWithBool:YES] forKey:[NSNumber numberWithInt:index]];
 
     
     if ([viewController respondsToSelector:@selector(viewControllers)]) {
@@ -152,8 +150,8 @@
             break;
         }
         case TabIndexJobs: {
-            [((NewsTableViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"https://ert.cern.ch/browse_www/wd_portal_rss.rss?p_hostname=ert.cern.ch"]];
-            [(NewsTableViewController *)viewController refresh];
+            [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"https://ert.cern.ch/browse_www/wd_portal_rss.rss?p_hostname=ert.cern.ch"]];
+            [(NewsGridViewController *)viewController refresh];
             break;
         }
         default:

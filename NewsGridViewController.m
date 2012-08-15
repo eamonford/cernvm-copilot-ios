@@ -15,7 +15,7 @@
 @end
 
 @implementation NewsGridViewController
-@synthesize rangeOfArticlesToShow;
+//@synthesize rangeOfArticlesToShow;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

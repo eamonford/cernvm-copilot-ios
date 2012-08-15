@@ -11,7 +11,7 @@
 
 @interface RSSGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, RSSAggregatorDelegate>
 {
-    RSSAggregator *aggregator;
+    RSSAggregator *_aggregator;
 }
 
 @property (nonatomic, retain) RSSAggregator *aggregator;

@@ -7,7 +7,6 @@
 //
 
 #import "ExperimentFunctionSelectorViewController.h"
-#import "NewsTableViewController.h"
 #import "EventDisplayViewController.h"
 #import "PhotosGridViewController.h"
 #import "AppDelegate.h"
@@ -19,7 +18,7 @@
 @end
 
 @implementation ExperimentFunctionSelectorViewController
-@synthesize experiment;
+//@synthesize experiment;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -71,12 +70,14 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
+    else
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+
 }
 
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowExperimentNews"]) {
@@ -166,6 +167,7 @@
         [photosViewController refresh];
     }
 }
+*/
 
 #pragma mark - Table view data source
 

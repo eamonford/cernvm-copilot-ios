@@ -12,7 +12,7 @@
 
 @interface NewsGridViewController : RSSGridViewController
 {
-    NSRange rangeOfArticlesToShow;
+    NSRange _rangeOfArticlesToShow;
 }
 @property NSRange rangeOfArticlesToShow;
 

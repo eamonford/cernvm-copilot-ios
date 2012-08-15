@@ -21,18 +21,19 @@
 
 @interface RSSAggregator : NSObject<FeedDelegate>
 {
-    NSMutableArray *feeds;
-    NSArray *allArticles;
-    id<RSSAggregatorDelegate> delegate;
+    //NSMutableArray *feeds;
+    //NSArray *allArticles;
+    //id<RSSAggregatorDelegate> delegate;
     
     @private
     int feedLoadCount;
-    NSMutableDictionary *firstImages;
+    //NSMutableDictionary *firstImages;
 }
 
-@property (atomic) NSMutableArray *feeds;
+@property (nonatomic, retain) NSMutableArray *feeds;
 @property (nonatomic, strong) id<RSSAggregatorDelegate> delegate;
 @property (nonatomic, retain) NSArray *allArticles;
+@property (nonatomic, retain) NSMutableDictionary *firstImages;
 
 - (void)addFeed:(RSSFeed *)feed;
 - (void)addFeedForURL:(NSURL *)url;

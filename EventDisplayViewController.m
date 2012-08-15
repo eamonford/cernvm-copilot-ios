@@ -93,7 +93,6 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     CGFloat oldScreenWidth = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?[UIScreen mainScreen].bounds.size.height:[UIScreen mainScreen].bounds.size.width;
-    NSLog(@"old screen width: %f", oldScreenWidth);
     
     float scrollViewWidth = self.scrollView.frame.size.width;
     float scrollViewHeight = self.scrollView.frame.size.height;
@@ -107,21 +106,7 @@
         }
     }];
 }
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-/*    CGFloat oldScreenWidth = UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)?[UIScreen mainScreen].bounds.size.width:[UIScreen mainScreen].bounds.size.height;
-    
-    float scrollViewWidth = self.scrollView.frame.size.width;
-    float scrollViewHeight = self.scrollView.frame.size.height;
-    self.scrollView.contentSize = CGSizeMake(scrollViewWidth*numPages, 1.0);
-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*currentPage, 0.0)];
 
-    for (UIView *subview in self.scrollView.subviews) {
-        int page = floor((subview.frame.origin.x - oldScreenWidth / 2) / oldScreenWidth) + 1;
-        subview.frame = CGRectMake(scrollViewWidth*page, 0.0, scrollViewWidth, scrollViewHeight);
-    }
-    */
- }
 - (void)addSourceWithDescription:(NSString *)description URL:(NSURL *)url boundaryRects:(NSArray *)boundaryRects
 {
     NSMutableDictionary *source = [NSMutableDictionary dictionary];

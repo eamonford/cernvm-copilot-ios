@@ -98,6 +98,7 @@
     _imageView.frame = frame;
 }
 
+/*
 - (void)setImageFromURL:(NSURL *)url
 {
     UIImage *cachedImage = [_downloadedThumbnailCache objectForKey:url];
@@ -110,7 +111,7 @@
         //[NSURLConnection connectionWithRequest:request delegate:self];
     }
 }
-
+*/
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [_asyncThumbnailData appendData:data];
 }

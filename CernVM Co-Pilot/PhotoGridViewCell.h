@@ -52,6 +52,6 @@
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) UIImageView *imageView;
 @property int index;
-- (void)setImageFromURL:(NSURL *)url;
+//- (void)setImageFromURL:(NSURL *)url;
 
 @end

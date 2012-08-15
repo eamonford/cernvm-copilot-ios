@@ -9,14 +9,14 @@
 #import "RSSAggregator.h"
 
 @implementation RSSAggregator
-@synthesize feeds, allArticles, delegate;
+//@synthesize feeds, allArticles, delegate;
 
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        firstImages = [NSMutableDictionary dictionary];
+        self.firstImages = [NSMutableDictionary dictionary];
         self.allArticles = [NSArray array];
         self.feeds = [NSMutableArray array];
         feedLoadCount = 0;
@@ -73,7 +73,7 @@
 - (UIImage *)firstImageForArticle:(MWFeedItem *)article
 {
     NSNumber *articleIndex = [NSNumber numberWithInt:[self.allArticles indexOfObject:article]];
-    return [firstImages objectForKey:articleIndex];
+    return [self.firstImages objectForKey:articleIndex];
 }
 
 #pragma mark - Private helper methods
@@ -109,7 +109,7 @@
         UIImage *image = [UIImage imageWithData:imageData];
         if (image) {
             NSNumber *articleIndex = [NSNumber numberWithInt:[self.allArticles indexOfObject:article]];
-            [firstImages setObject:image forKey:articleIndex];
+            [self.firstImages setObject:image forKey:articleIndex];
         } else {
             [self downloadFirstImageForArticle:article];
         }

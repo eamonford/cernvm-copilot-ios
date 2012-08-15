@@ -10,11 +10,10 @@
 #import "ExperimentsViewController.h"
 
 @interface ExperimentFunctionSelectorViewController : UITableViewController
-{
+/*{
     ExperimentType experiment;
-}
+}*/
 @property ExperimentType experiment;
 
-- (IBAction)buttonTapped:(UIButton *)sender;
 
 @end
