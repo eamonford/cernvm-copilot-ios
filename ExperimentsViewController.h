@@ -12,7 +12,8 @@ typedef enum {
     ATLAS,
     CMS,
     ALICE,
-    LHCb
+    LHCb,
+    LHC
 } ExperimentType;
 
 @interface ExperimentsViewController : UIViewController

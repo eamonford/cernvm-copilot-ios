@@ -77,98 +77,6 @@
 
 }
 
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"ShowExperimentNews"]) {
-        NewsTableViewController *viewController = segue.destinationViewController;
-        switch (self.experiment) {
-            case ATLAS:
-            {
-                viewController.title = @"ATLAS News";
-                [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://pdg2.lbl.gov/atlasblog/?feed=rss2"]];
-                [viewController refresh];
-                break;
-            }
-            case CMS:
-            {
-                viewController.title = @"CMS News";
-                [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
-                [viewController refresh];
-                break;
-            }
-            case ALICE:
-            {
-                viewController.title = @"ALICE News";
-                [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
-                [viewController refresh];
-            
-                break;
-            }
-            case LHCb:
-            {
-                viewController.title = @"LHCb News";
-                [viewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://twitter.com/statuses/user_timeline/92522167.rss"]];
-                [viewController refresh];
-                break;
-            }
-            default:
-                break;
-        }
-    } else if ([segue.identifier isEqualToString:@"ShowEventDisplay"]) {
-        EventDisplayViewController *viewController = segue.destinationViewController;
-        switch (self.experiment) {
-            case ATLAS:
-            {
-                CGFloat largeImageDimension = 764.0;
-                CGFloat smallImageDimension = 379.0;
-                
-                CGRect frontViewRect = CGRectMake(2.0, 2.0, largeImageDimension, largeImageDimension);
-                NSDictionary *frontView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:frontViewRect], @"Rect", @"Front", @"Description", nil];
-                
-                CGRect sideViewRect = CGRectMake(2.0+4.0+largeImageDimension, 2.0, smallImageDimension, smallImageDimension);
-                NSDictionary *sideView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:sideViewRect], @"Rect", @"Side", @"Description", nil];
-                
-                NSArray *boundaryRects = [NSArray arrayWithObjects:frontView, sideView, nil];
-                [viewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://atlas-live.cern.ch/live.png"] boundaryRects:boundaryRects];
-                viewController.title = @"ATLAS";
-                break;
-            }
-            case CMS:
-            {
-                [viewController addSourceWithDescription:@"3D Tower" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/3DTower.png"] boundaryRects:nil];
-                [viewController addSourceWithDescription:@"3D RecHit" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/3DRecHit.png"] boundaryRects:nil];
-                [viewController addSourceWithDescription:@"Lego" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/Lego.png"] boundaryRects:nil];
-                [viewController addSourceWithDescription:@"RhoPhi" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoPhi.png"] boundaryRects:nil];
-                [viewController addSourceWithDescription:@"RhoZ" URL:[NSURL URLWithString:@"http://cmsonline.cern.ch/evtdisp/RhoZ.png"] boundaryRects:nil];
-                viewController.title = @"CMS";
-                break;
-            }
-            case ALICE:
-            {
-                break;
-            }
-            case LHCb:
-            {
-                CGRect cropRect = CGRectMake(0.0, 66.0, 1685.0, 811.0);
-                NSDictionary *croppedView = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGRect:cropRect], @"Rect", @"Side", @"Description", nil];
-
-                NSArray *boundaryRects = [NSArray arrayWithObjects:croppedView, nil];
-                [viewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://lbcomet.cern.ch/Online/Images/evdisp.jpg"] boundaryRects:boundaryRects];
-                viewController.title = @"LHCB";
-                break;
-            }
-            default:
-                break;
-        }
-    } else if ([segue.identifier isEqualToString:@"ShowEventPhotos"]) {
-        PhotosGridViewController *photosViewController = segue.destinationViewController;
-        photosViewController.photoDownloader.url = [NSURL URLWithString:@"https://cdsweb.cern.ch/record/1305399/export/xm?ln=en"];
-        [photosViewController refresh];
-    }
-}
-*/
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -178,6 +86,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.experiment == LHC)
+        return 1;
+    
     return 2;
 }
 
@@ -204,6 +115,8 @@
                 case LHCb:
                     cell.textLabel.text = @"LHCb News";
                     break;
+                case LHC:
+                    cell.textLabel.text = @"LHC Data";
                 default:
                     break;
             }
@@ -238,43 +151,66 @@
     switch (indexPath.row) {
         case 0:
         {
-            NewsGridViewController *newsViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kExperimentNewsViewController];
             switch (self.experiment) {
                 case ATLAS:
                 {
+                    NewsGridViewController *newsViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kExperimentNewsViewController];
                     newsViewController.title = @"ATLAS News";
                     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://pdg2.lbl.gov/atlasblog/?feed=rss2"]];
+                    [newsViewController refresh];
+                    [navigationController pushViewController:newsViewController animated:YES];
+
                     break;
                 }
                 case CMS:
                 {
+                    NewsGridViewController *newsViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kExperimentNewsViewController];
                     newsViewController.title = @"CMS News";
                     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://cms.web.cern.ch/news/category/265/rss.xml"]];
+                    [newsViewController refresh];
+                    [navigationController pushViewController:newsViewController animated:YES];
+
                     break;
                 }
                 case ALICE:
                 {
+                    NewsGridViewController *newsViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kExperimentNewsViewController];
                     newsViewController.title = @"ALICE News";
                     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"http://alicematters.web.cern.ch/rss.xml"]];
+                    [newsViewController refresh];
+                    [navigationController pushViewController:newsViewController animated:YES];
+
                     break;
                 }
                 case LHCb:
                 {
+                    NewsGridViewController *newsViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kExperimentNewsViewController];
                     newsViewController.title = @"LHCb News";
                     [newsViewController.aggregator addFeedForURL:[NSURL URLWithString:@"https://twitter.com/statuses/user_timeline/92522167.rss"]];
+                    [newsViewController refresh];
+                    [navigationController pushViewController:newsViewController animated:YES];
+
+                    break;
+                }
+                case LHC:
+                {
+                    EventDisplayViewController *eventViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kEventDisplayViewController];
+                    [eventViewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://vistar-capture.web.cern.ch/vistar-capture/lhc1.png"] boundaryRects:nil];
+                    [eventViewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://vistar-capture.web.cern.ch/vistar-capture/lhc3.png"] boundaryRects:nil];
+                    [eventViewController addSourceWithDescription:nil URL:[NSURL URLWithString:@"http://vistar-capture.web.cern.ch/vistar-capture/lhccoord.png"] boundaryRects:nil];
+                    eventViewController.title = @"LHC Data";
+                    [navigationController pushViewController:eventViewController animated:YES];
                     break;
                 }
                 default:
                     break;
             }
-            [newsViewController refresh];
-            [navigationController pushViewController:newsViewController animated:YES];
             break;
         }
         case 1:
         {
             EventDisplayViewController *eventViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kEventDisplayViewController];
-            
+  
             switch (self.experiment) {
                 case ATLAS:
                 {
