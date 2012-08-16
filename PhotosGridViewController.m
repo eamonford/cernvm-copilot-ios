@@ -94,6 +94,7 @@
         cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
     cell.imageView.image = [self.photoDownloader.thumbnails objectForKey:[NSNumber numberWithInt:index]];
+    //cell.imageView.image = [UIImage imageNamed:@"cernLogo"];
     return cell;
 }
 

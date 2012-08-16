@@ -42,14 +42,14 @@
 @interface PhotoGridViewCell : AQGridViewCell <NSURLConnectionDelegate>
 {
     int index;
-    @private
-    UIImageView *_imageView;
-    NSMutableData *_asyncThumbnailData;
-    NSMutableDictionary *_downloadedThumbnailCache;
+//    @private
+//    UIImageView *_imageView;
+//    NSMutableData *_asyncThumbnailData;
+//    NSMutableDictionary *_downloadedThumbnailCache;
     //NSURL *_thumbnailURL;
 }
 
-@property (nonatomic, strong) UIImage *image;
+//@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImageView *imageView;
 @property int index;
 //- (void)setImageFromURL:(NSURL *)url;

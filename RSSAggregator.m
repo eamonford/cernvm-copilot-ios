@@ -66,7 +66,7 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(allFeedsDidLoadForAggregator:)]) {
             [self.delegate allFeedsDidLoadForAggregator:self];
         }
-        [self downloadAllFirstImages];
+       [self performSelectorInBackground:@selector(downloadAllFirstImages) withObject:nil];
     }
 }
 
@@ -92,7 +92,7 @@
 - (void)downloadAllFirstImages
 {
     for (MWFeedItem *article in self.allArticles) {
-        [self performSelectorInBackground:@selector(downloadFirstImageForArticle:) withObject:article];
+        [self downloadFirstImageForArticle:article];
     }
 }
 
@@ -107,16 +107,26 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
         NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         UIImage *image = [[UIImage alloc] initWithData:imageData];
+        NSNumber *articleIndex = [NSNumber numberWithInt:[self.allArticles indexOfObject:article]];
         if (image) {
-            NSNumber *articleIndex = [NSNumber numberWithInt:[self.allArticles indexOfObject:article]];
             [self.firstImages setObject:image forKey:articleIndex];
         } else {
+            NSLog(@"Article thumbnail download failed, will try again.");
             [self downloadFirstImageForArticle:article];
         }
+        // Inform the delegate on the main thread that the image downloaded
         if (self.delegate && [self.delegate respondsToSelector:@selector(aggregator:didDownloadFirstImage:forArticle:)]) {
-            [self.delegate aggregator:self didDownloadFirstImage:image forArticle:article];
+            //[self.delegate aggregator:self didDownloadFirstImage:image forArticle:article];
+            [self performSelectorOnMainThread:@selector(informDelegateOfFirstImageDownloadForArticleIndex:) withObject:articleIndex waitUntilDone:NO];
         }
     }
+}
+
+- (void)informDelegateOfFirstImageDownloadForArticleIndex:(NSNumber *)index
+{
+    MWFeedItem *article = [self.allArticles objectAtIndex:index.intValue];
+    UIImage *image = [self.firstImages objectForKey:index];
+    [self.delegate aggregator:self didDownloadFirstImage:image forArticle:article];
 }
 
 - (NSURL *)firstImageURLFromHTMLString:(NSString *)htmlString

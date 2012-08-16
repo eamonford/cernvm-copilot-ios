@@ -39,7 +39,7 @@
 #import "PhotoGridViewCell.h"
 
 @implementation PhotoGridViewCell
-@synthesize index, imageView = _imageView;
+@synthesize index;//, imageView = _imageView;
 
 - (id) initWithFrame: (CGRect) frame reuseIdentifier: (NSString *) aReuseIdentifier
 {
@@ -47,20 +47,20 @@
     if ( self == nil )
         return ( nil );
     self.contentView.clipsToBounds = YES;
-    _imageView = [[UIImageView alloc] initWithFrame: CGRectZero];
+    self.imageView = [[UIImageView alloc] initWithFrame:frame];
     self.imageView.contentMode = UIViewContentModeCenter;
-    _downloadedThumbnailCache = [NSMutableDictionary dictionary];
-    [self.contentView addSubview: _imageView];
+ //   _downloadedThumbnailCache = [NSMutableDictionary dictionary];
+    [self.contentView addSubview:self.imageView];
     
-    return ( self );
+    return self;
 }
 
-
-- (CALayer *) glowSelectionLayer
+/*- (CALayer *) glowSelectionLayer
 {
-    return ( _imageView.layer );
-}
+    return ( self.imageView.layer );
+}*/
 
+/*
 - (UIImage *) image
 {
     return ( _imageView.image );
@@ -97,7 +97,7 @@
     frame.origin.y = floorf((bounds.size.height - frame.size.height) * 0.5);
     _imageView.frame = frame;
 }
-
+*/
 /*
 - (void)setImageFromURL:(NSURL *)url
 {
@@ -112,6 +112,7 @@
     }
 }
 */
+/*
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [_asyncThumbnailData appendData:data];
 }
@@ -122,5 +123,5 @@
     //[_downloadedThumbnailCache setObject:thumbnail forKey:_thumbnailURL];
     self.image = thumbnail;
 }
-
+*/
 @end
