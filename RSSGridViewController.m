@@ -14,7 +14,6 @@
 @end
 
 @implementation RSSGridViewController
-@synthesize aggregator;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {

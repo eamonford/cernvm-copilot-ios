@@ -186,6 +186,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self releaseAllUnderlyingPhotos];
     [[SDImageCache sharedImageCache] clearMemory]; // clear memory
+    [super dealloc];
 }
 
 - (void)releaseAllUnderlyingPhotos {

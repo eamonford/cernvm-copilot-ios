@@ -9,8 +9,6 @@
 #import "RSSAggregator.h"
 
 @implementation RSSAggregator
-//@synthesize feeds, allArticles, delegate;
-
 
 - (id)init
 {
@@ -116,7 +114,6 @@
         }
         // Inform the delegate on the main thread that the image downloaded
         if (self.delegate && [self.delegate respondsToSelector:@selector(aggregator:didDownloadFirstImage:forArticle:)]) {
-            //[self.delegate aggregator:self didDownloadFirstImage:image forArticle:article];
             [self performSelectorOnMainThread:@selector(informDelegateOfFirstImageDownloadForArticleIndex:) withObject:articleIndex waitUntilDone:NO];
         }
     }

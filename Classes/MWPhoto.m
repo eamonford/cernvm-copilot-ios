@@ -80,6 +80,7 @@ caption = _caption;
 
 - (void)dealloc {
     [[SDWebImageManager sharedManager] cancelForDelegate:self];
+    [super dealloc];
 }
 
 #pragma mark MWPhoto Protocol Methods

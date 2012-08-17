@@ -10,7 +10,7 @@
 #import "NSDateFormatter+DateFromStringOfUnknownFormat.h"
 
 @implementation CernMediaMARCParser
-@synthesize url, resourceTypes, delegate, isFinishedParsing;
+//@synthesize url, resourceTypes, delegate, isFinishedParsing;
 
 - (id)init {
     if (self = [super init]) {
@@ -130,10 +130,7 @@
 {
     if ([elementName isEqualToString:@"datafield"]) {
         if (foundX && foundU) {
-            /*if (!currentMediaItem) {
-                currentMediaItem = [NSMutableDictionary dictionary];
-            }*/
-            // if there isn't already an array of URLs for the current x value in the current record, create one
+             // if there isn't already an array of URLs for the current x value in the current record, create one
             NSMutableDictionary *resources = [currentRecord objectForKey:@"resources"];
             if (![resources objectForKey:currentResourceType]) {
                 [resources setObject:[NSMutableArray array] forKey:currentResourceType];
@@ -146,8 +143,8 @@
         }
     } else if ([elementName isEqualToString:@"record"]) {
         if (((NSMutableDictionary *)[currentRecord objectForKey:@"resources"]).count) {
-            if (delegate && [delegate respondsToSelector:@selector(parser:didParseRecord:)]) {
-                [delegate parser:self didParseRecord:currentRecord];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(parser:didParseRecord:)]) {
+                [self.delegate parser:self didParseRecord:currentRecord];
             }
         }
         currentRecord = nil;
@@ -157,8 +154,8 @@
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
     self.isFinishedParsing = YES;
-    if (delegate && [delegate respondsToSelector:@selector(parserDidFinish:)])
-        [delegate parserDidFinish:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(parserDidFinish:)])
+        [self.delegate parserDidFinish:self];
 }
 
 @end

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2829" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1914"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar Controller For Split Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController wantsFullScreenLayout="YES" id="4" sceneMemberID="viewController">
+                <tabBarController wantsFullScreenLayout="YES" id="4" customClass="APTabBarControllerForSplitController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
@@ -24,6 +23,7 @@
                         <segue destination="zHy-YY-a4m" kind="relationship" relationship="viewControllers" id="gz6-gr-l1c"/>
                         <segue destination="iO5-IN-D2s" kind="relationship" relationship="viewControllers" id="DS4-Re-GHb"/>
                         <segue destination="ePz-sC-wOs" kind="relationship" relationship="viewControllers" id="SBn-gd-fdl"/>
+                        <segue destination="77i-oX-Pq9" kind="relationship" relationship="viewControllers" id="GpR-TW-2I3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -217,12 +217,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0si-Tr-RCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3774" y="2837"/>
+            <point key="canvasLocation" x="3646" y="1837"/>
         </scene>
         <!--Videos Grid View Controller-->
         <scene sceneID="9Ie-mP-BbK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PEe-0M-vd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Nuq-Cg-Asx" customClass="VideosGridViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lax-w4-Bmd">
                         <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
@@ -232,8 +231,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="UMj-HR-S8Y"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEe-0M-vd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5244" y="3929"/>
+            <point key="canvasLocation" x="4948" y="2769"/>
         </scene>
         <!--News Grid View Controller - News-->
         <scene sceneID="LFu-h6-3Rj">
@@ -276,7 +276,6 @@
         <!--Bulletin Grid View Controller-->
         <scene sceneID="4pa-e2-qsQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ld1-5S-R6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="cqq-Nu-zpc" customClass="BulletinGridViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nm6-AF-LJu">
                         <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
@@ -289,6 +288,7 @@
                         <segue destination="SD0-Ro-Co8" kind="push" identifier="ShowBulletinArticles" id="TzX-Ib-K8U"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ld1-5S-R6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4876" y="841"/>
         </scene>
@@ -336,7 +336,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kI-eX-rlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6466" y="5756"/>
+            <point key="canvasLocation" x="6458" y="3804"/>
+        </scene>
+        <!--Webcast Type Selector Table View Controller-->
+        <scene sceneID="pIN-ri-u21">
+            <objects>
+                <tableViewController storyboardIdentifier="WebcastTypeSelectorTableViewControllerIdentifier" id="CnF-nX-5sR" customClass="WebcastTypeSelectorTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VSj-QF-Lyv">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VpO-QS-U3E">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CnF-nX-5sR" id="bfp-M0-Ya4"/>
+                            <outlet property="delegate" destination="CnF-nX-5sR" id="IDQ-FQ-Zg4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Jde-nS-P3E"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sMh-wx-9Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5124" y="4753"/>
+        </scene>
+        <!--Webcasts Grid View Controller-->
+        <scene sceneID="kdE-5S-X4e">
+            <objects>
+                <viewController storyboardIdentifier="WebcastsGridViewControllerIdentifier" id="tej-o1-LeO" customClass="WebcastsGridViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x0G-lR-x9y">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kiH-bE-j7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6070" y="4753"/>
         </scene>
         <!--News Grid View Controller-->
         <scene sceneID="4t3-4X-an4">
@@ -355,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSU-o8-nmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5132" y="5763"/>
+            <point key="canvasLocation" x="5124" y="3811"/>
         </scene>
         <!--Navigation Controller - Jobs-->
         <scene sceneID="v3I-W4-TcC">
@@ -374,7 +418,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpB-Uk-2HI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3646" y="5739"/>
+            <point key="canvasLocation" x="3638" y="3787"/>
+        </scene>
+        <!--Split View Controller - Webcasts-->
+        <scene sceneID="RFq-Hw-Jsg">
+            <objects>
+                <viewController id="77i-oX-Pq9" customClass="APSplitViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PhT-8J-4lf">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="699"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Webcasts" id="Gco-sV-2D0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FnM-3c-Rtt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3622" y="4853"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="xLx-RB-PXu">
@@ -406,7 +466,6 @@
         <!--Photos Grid View Controller-->
         <scene sceneID="kR0-HV-FCM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fYd-NO-MKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ALICEPhotoGridViewControllerIdentifier" id="8S8-Ia-Y92" customClass="PhotosGridViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A4z-bV-vmD">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
@@ -414,6 +473,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fYd-NO-MKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7502" y="-1363"/>
         </scene>
@@ -424,8 +484,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="H5A-av-Gl1">
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="oJ8-o7-yeU">
                                 <rect key="frame" x="0.0" y="22" width="1024" height="44"/>
@@ -451,7 +511,6 @@
         <!--News Grid View Controller-->
         <scene sceneID="ewU-RP-BUX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IqH-Ly-UhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="SD0-Ro-Co8" customClass="NewsGridViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d3a-G4-JzD">
                         <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
@@ -464,6 +523,7 @@
                         <segue destination="ANz-Pp-yRz" kind="push" identifier="ShowArticleDetails" id="fcu-Dg-TK8"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IqH-Ly-UhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6186" y="841"/>
         </scene>
@@ -490,7 +550,6 @@
         <!--Navigation Controller - Bulletin-->
         <scene sceneID="QMg-WF-gW3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w9D-2B-5Y1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="nuI-NV-Trf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bulletin" id="Jhm-eP-Kqh"/>
                     <toolbarItems/>
@@ -503,13 +562,13 @@
                         <segue destination="cqq-Nu-zpc" kind="relationship" relationship="rootViewController" id="7fj-GG-j5O"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w9D-2B-5Y1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3646" y="841"/>
         </scene>
         <!--Static Info Scroll View Controller - About-->
         <scene sceneID="VqP-UX-DDm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ubu-6z-xwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xcp-hO-aV8" customClass="StaticInfoScrollViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xBv-cH-lVd">
                         <rect key="frame" x="0.0" y="20" width="1024" height="699"/>
@@ -541,6 +600,7 @@
                         <outlet property="scrollView" destination="B59-wn-aMF" id="gkj-dH-2mR"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubu-6z-xwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3622" y="-1217"/>
         </scene>
@@ -574,7 +634,6 @@
         <!--Navigation Controller - Latest Videos-->
         <scene sceneID="x08-h6-P4a">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WMa-he-gMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="iO5-IN-D2s" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Latest Videos" id="mqh-qA-182"/>
                     <toolbarItems/>
@@ -587,8 +646,9 @@
                         <segue destination="Nuq-Cg-Asx" kind="relationship" relationship="rootViewController" id="gvV-I3-y2m"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMa-he-gMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3646" y="3937"/>
+            <point key="canvasLocation" x="3686" y="2793"/>
         </scene>
         <!--Static Info Item View Controller-->
         <scene sceneID="V8j-6N-3Df">
@@ -606,23 +666,23 @@
                                         <rect key="frame" x="-1" y="-1" width="322" height="201"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="N6f-3c-3Ho">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Label" autoshrinkMode="minimumFontSize" preferredMaxLayoutWidth="280" id="N6f-3c-3Ho">
                                         <rect key="frame" x="14" y="241" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="tKp-ZI-Kbc">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Label" autoshrinkMode="minimumFontSize" preferredMaxLayoutWidth="280" id="tKp-ZI-Kbc">
                                         <rect key="frame" x="14" y="208" width="280" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" white="0.10122034670000001" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
+                                        <color key="textColor" white="0.10122034670000001" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     </label>
                                 </subviews>
                             </scrollView>
@@ -648,74 +708,6 @@
         <image name="mapPortrait@2x~ipad.png" width="1536" height="1912"/>
         <image name="mapShadowPortrait@2x~ipad.png" width="1536" height="1912"/>
     </resources>
-    <classes>
-        <class className="AQGridViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AQGridViewController.h"/>
-        </class>
-        <class className="ArticleDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="BulletinGridViewController" superclassName="RSSGridViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BulletinGridViewController.h"/>
-        </class>
-        <class className="EventDisplayViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDisplayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refresh:"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ExperimentFunctionSelectorViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentFunctionSelectorViewController.h"/>
-        </class>
-        <class className="ExperimentsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="aliceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="atlasButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="cmsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="lhcButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="lhcbButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="shadowImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NewsGridViewController" superclassName="RSSGridViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsGridViewController.h"/>
-        </class>
-        <class className="PhotosGridViewController" superclassName="AQGridViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosGridViewController.h"/>
-        </class>
-        <class className="RSSGridViewController" superclassName="AQGridViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSGridViewController.h"/>
-        </class>
-        <class className="StaticInfoItemViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StaticInfoItemViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="StaticInfoScrollViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StaticInfoScrollViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="categoryButtonTapped:"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="VideosGridViewController" superclassName="AQGridViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideosGridViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

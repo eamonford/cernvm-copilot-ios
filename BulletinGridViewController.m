@@ -60,7 +60,6 @@
     for (int i=0; i<articles.count; i++) {
         
         MWFeedItem *article = [articles objectAtIndex:i];
-        NSLog(@"article from %@", article.date);
         NSDate *oneWeekLater = [article.date dateByAddingTimeInterval:60*60*24*7];
         // if the current article is within a week of the current issue date, add it to the current issue
         if ([oneWeekLater compare:currentIssueDate] == NSOrderedDescending) {

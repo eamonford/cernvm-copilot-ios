@@ -17,7 +17,6 @@
 @end
 
 @implementation VideosGridViewController
-@synthesize parser, videoMetadata, videoThumbnails;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

@@ -17,15 +17,11 @@ typedef enum {
     TabIndexBulletin,
     TabIndexPhotos,
     TabIndexVideos,
-    TabIndexJobs
+    TabIndexJobs,
+    TabIndexWebcasts
 } TabIndices;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate>
-/*{
-    UITabBarController *tabBarController;
-    NSMutableDictionary *tabsAlreadySetup;
-    NSArray *staticInfoDataSource;
-}*/
 
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) NSArray *staticInfoDataSource;

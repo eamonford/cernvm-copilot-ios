@@ -17,7 +17,8 @@
 #define kStaticInfoScrollViewController @"StaticInfoScrollViewControllerIdentifier"
 #define kStaticInfoSelectorViewController @"StaticInfoSelectorViewControllerIdentifier"
 #define kStaticInfoItemViewController @"StaticInfoItemViewControllerIdentifier"
-
+#define kWebcastTypeSelectorTableViewController @"WebcastTypeSelectorTableViewControllerIdentifier"
+#define kWebcastsGridViewController @"WebcastsGridViewControllerIdentifier"
 #define kVideoMetadataPropertyTitle @"VideoMetadataPropertyTitle"
 #define kVideoMetadataPropertyDate @"VideoMetadataPropertyDate"
 #define kVideoMetadataPropertyVideoURL @"mp40600"

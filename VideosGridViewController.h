@@ -11,11 +11,7 @@
 
 @interface VideosGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate>
 {
-    CernMediaMARCParser *parser;
     NSOperationQueue *queue;
-    UIView *loadingView;
-    NSMutableArray *videoMetadata;
-    NSMutableDictionary *videoThumbnails;
 }
 
 @property (nonatomic, strong) CernMediaMARCParser *parser;

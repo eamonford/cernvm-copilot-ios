@@ -10,9 +10,6 @@
 #import "RSSAggregator.h"
 
 @interface RSSGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, RSSAggregatorDelegate>
-{
-    RSSAggregator *_aggregator;
-}
 
 @property (nonatomic, strong) RSSAggregator *aggregator;
 - (void)refresh;
