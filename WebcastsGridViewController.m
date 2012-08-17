@@ -26,7 +26,8 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.parser = [[WebcastsParser alloc] init];
         self.parser.delegate = self;
-        [self.parser parseRecent];
+        [self.parser parseRecentWebcasts];
+        [self.parser parseUpcomingWebcasts];
     }
     return self;
 }
@@ -51,24 +52,54 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)webcastsParser:(WebcastsParser *)parser didParseRecentItem:(NSDictionary *)item
+- (IBAction)segmentedControlTapped:(UISegmentedControl *)sender
 {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [self.gridView reloadData];
-
-}
-
-- (void)webcastsParserDidFinishParsingParsingRecentWebcasts:(WebcastsParser *)parser
-{
+    self.mode = sender.selectedSegmentIndex;
     [self.gridView reloadData];
 }
 
+#pragma mark WebcastsParserDelegate methods
+
+- (void)webcastsParserDidFinishParsingRecentWebcasts:(WebcastsParser *)parser
+{
+    if (self.mode == WebcastModeRecent) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.gridView reloadData];
+    }
+}
+
+- (void)webcastsParserDidFinishParsingUpcomingWebcasts:(WebcastsParser *)parser
+{
+    if (self.mode == WebcastModeUpcoming) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.gridView reloadData];
+    }
+}
+
+- (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForRecentWebcastIndex:(int)index
+{
+    if (self.mode == WebcastModeRecent)
+        [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:index] withAnimation:AQGridViewItemAnimationFade];
+}
+
+- (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForUpcomingWebcastIndex:(int)index
+{
+    if (self.mode == WebcastModeUpcoming)
+        [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:index] withAnimation:AQGridViewItemAnimationFade];
+}
 
 #pragma mark - AQGridView methods
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView
 {
-    return self.parser.recentWebcasts.count;
+    switch (self.mode) {
+        case WebcastModeRecent:
+            return self.parser.recentWebcasts.count;
+        case WebcastModeUpcoming:
+            return self.parser.upcomingWebcasts.count;
+        default:
+            return 0;
+    }
 }
 
 - (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index
@@ -80,24 +111,50 @@
         cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
     
-    NSDictionary *webcast = [self.parser.recentWebcasts objectAtIndex:index];
     
-    // Set the title label
-    cell.titleLabel.text = [webcast objectForKey:@"title"];
     
+    NSDictionary *webcast;
+    switch (self.mode) {
+        case WebcastModeRecent: {
+            webcast = [self.parser.recentWebcasts objectAtIndex:index];
+
+            // Set the title label
+            cell.titleLabel.text = [webcast objectForKey:@"title"];
+            
+ 
+            // Set the thumbnail
+            UIImage *image = [self.parser.recentWebcastThumbnails objectForKey:[NSNumber numberWithInt:index]];
+            if (image) {
+                cell.thumbnailImageView.image = image;
+            } else {
+                cell.thumbnailImageView.image = [UIImage imageNamed:@"placeholder"];
+            }
+            break;
+        }
+        case WebcastModeUpcoming: {
+            webcast = [self.parser.upcomingWebcasts objectAtIndex:index];
+
+            // Set the title label
+            cell.titleLabel.text = [webcast objectForKey:@"title"];
+
+            // Set the thumbnail
+            UIImage *image = [self.parser.upcomingWebcastThumbnails objectForKey:[NSNumber numberWithInt:index]];
+            if (image) {
+                cell.thumbnailImageView.image = image;
+            } else {
+                cell.thumbnailImageView.image = [UIImage imageNamed:@"placeholder"];
+            }
+            
+            break;
+        }
+        default:
+            break;
+    }
     // Set the date label
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     NSString *dateString = [dateFormatter stringFromDate:[webcast objectForKey:@"date"]];
     cell.dateLabel.text = dateString;
-    
-    // Set the thumbnail
-    UIImage *image = [self.parser.recentWebcastThumbnails objectForKey:[NSNumber numberWithInt:index]];
-    if (image) {
-        cell.thumbnailImageView.image = image;
-    } else {
-        cell.thumbnailImageView.image = [UIImage imageNamed:@"placeholder"];
-   }
 
   return cell;
 }
@@ -109,19 +166,21 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    NSDictionary *webcast = [self.parser.recentWebcasts objectAtIndex:index];
-    NSDictionary *resources = [webcast objectForKey:@"resources"];
-    NSURL *url = [[NSURL alloc] init];
-    if ([resources objectForKey:kVideoMetadataPropertyVideoURL])
-        url = [[resources objectForKey:kVideoMetadataPropertyVideoURL] objectAtIndex:0];
-    else
-        url = [[resources objectForKey:@"mp4mobile"] objectAtIndex:0];
-    NSLog(@"url: %@", url);
-    MPMoviePlayerViewController *playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
-    if (self.parentViewController)
-        [self.parentViewController presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];
-    else
-        [self presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];
+    if (self.mode == WebcastModeRecent) {
+        NSDictionary *webcast = [self.parser.recentWebcasts objectAtIndex:index];
+        NSDictionary *resources = [webcast objectForKey:@"resources"];
+        NSURL *url = [[NSURL alloc] init];
+        if ([resources objectForKey:kVideoMetadataPropertyVideoURL])
+            url = [[resources objectForKey:kVideoMetadataPropertyVideoURL] objectAtIndex:0];
+        else
+            url = [[resources objectForKey:@"mp4mobile"] objectAtIndex:0];
+        MPMoviePlayerViewController *playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+        
+        if (self.parentViewController)
+            [self.parentViewController presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];
+        else
+            [self presentMoviePlayerViewControllerAnimated:(MPMoviePlayerViewController *)playerController];
+    }
 }
 
 @end

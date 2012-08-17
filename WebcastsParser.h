@@ -13,20 +13,35 @@
 
 @protocol WebcastsParserDelegate <NSObject>
 @optional
-- (void)webcastsParser:(WebcastsParser *)parser didParseRecentItem:(NSDictionary *)item;
-- (void)webcastsParserDidFinishParsingParsingRecentWebcasts:(WebcastsParser *)parser;
-- (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForIndex:(int)index;
+- (void)webcastsParser:(WebcastsParser *)parser didParseRecentWebcast:(NSDictionary *)webcast;
+- (void)webcastsParser:(WebcastsParser *)parser didParseUpcomingWebcast:(NSDictionary *)webcast;
+- (void)webcastsParserDidFinishParsingRecentWebcasts:(WebcastsParser *)parser;
+- (void)webcastsParserDidFinishParsingUpcomingWebcasts:(WebcastsParser *)parser;
+- (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForRecentWebcastIndex:(int)index;
+- (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForUpcomingWebcastIndex:(int)index;
 @end
 
 @interface WebcastsParser : NSObject<NSURLConnectionDataDelegate, CernMediaMarcParserDelegate>
 {
-    NSURLConnection *_recentsConnection;
-    NSMutableData *_recentsData;
+    NSString *_htmlString;
+    NSMutableData *_asyncData;
     NSUInteger numParsersLoading;
 }
+
 @property (nonatomic, strong) id<WebcastsParserDelegate> delegate;
+
 @property (nonatomic, strong) NSMutableArray *recentWebcasts;
+@property (nonatomic, strong) NSMutableArray *upcomingWebcasts;
 @property (nonatomic, strong) NSMutableDictionary *recentWebcastThumbnails;
-- (void)parseRecent;
+@property (nonatomic, strong) NSMutableDictionary *upcomingWebcastThumbnails;
+
+@property (nonatomic, readonly) BOOL pendingRecentWebcastsParse;
+@property (nonatomic, readonly) BOOL pendingUpcomingWebcastsParse;
+@property (nonatomic, readonly) BOOL pendingHTMLStringLoad;
+
+- (void)parseRecentWebcasts;
+- (void)parseUpcomingWebcasts;
+
+- (void)loadHTMLString;
 
 @end

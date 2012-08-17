@@ -115,7 +115,7 @@
             break;
         }
         case TabIndexWebcasts: {
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+       /*     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
                 APSplitViewController *splitViewController = (APSplitViewController *)viewController;
                 WebcastTypeSelectorTableViewController *tableView = [mainStoryboard instantiateViewControllerWithIdentifier:kWebcastTypeSelectorTableViewController];
@@ -124,7 +124,7 @@
                 WebcastsGridViewController *webcastsVC = [mainStoryboard instantiateViewControllerWithIdentifier:kWebcastsGridViewController];
                 splitViewController.detailViewController = webcastsVC;
             }
-            break;
+            break;*/
         }
         default:
             break;
