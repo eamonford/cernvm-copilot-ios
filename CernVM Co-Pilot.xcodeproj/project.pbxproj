@@ -26,6 +26,7 @@
 		E1436FA1159658F6004CDFCA /* lhcbLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1436FA0159658F6004CDFCA /* lhcbLogo@2x.png */; };
 		E1465B7A15A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		E150625315E03A0D00869E3C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E150625215E03A0D00869E3C /* MBProgressHUD.m */; };
 		E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		E1544FF615DDF1480054700A /* APSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1544FF115DDF1480054700A /* APSplitViewController.m */; };
 		E1544FF715DDF1480054700A /* APTabBarControllerForSplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1544FF315DDF1480054700A /* APTabBarControllerForSplitController.m */; };
@@ -108,7 +109,6 @@
 		E1D87E4C159EE6680051104C /* MWTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E41159EE6680051104C /* MWTapDetectingImageView.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		E1D87E4E159EE6680051104C /* MWTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E43159EE6680051104C /* MWTapDetectingView.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		E1D87E50159EE6680051104C /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E45159EE6680051104C /* MWZoomingScrollView.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
-		E1D87E6C159EE6720051104C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D87E55159EE6720051104C /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		E1D87E6E159EE6720051104C /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = E1D87E56159EE6720051104C /* README.mdown */; };
 		E1D87E70159EE6720051104C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E1D87E58159EE6720051104C /* LICENSE */; };
 		E1D87E72159EE6720051104C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E1D87E59159EE6720051104C /* README.md */; };
@@ -203,6 +203,8 @@
 		E1465B7915A7A53100ACEC72 /* NSDateFormatter+DateFromStringOfUnknownFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DateFromStringOfUnknownFormat.m"; sourceTree = "<group>"; };
 		E149D8B415C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LastOccurrenceOfWeekday.h"; sourceTree = "<group>"; };
 		E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LastOccurrenceOfWeekday.m"; sourceTree = "<group>"; };
+		E150625115E03A0D00869E3C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		E150625215E03A0D00869E3C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDisplayViewController.h; sourceTree = "<group>"; };
 		E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDisplayViewController.m; sourceTree = "<group>"; };
 		E1544FF015DDF1480054700A /* APSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSplitViewController.h; sourceTree = "<group>"; };
@@ -216,7 +218,6 @@
 		E15CC7AE159267AF0016CC95 /* ExperimentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimentsViewController.h; sourceTree = "<group>"; };
 		E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimentsViewController.m; sourceTree = "<group>"; };
 		E15CC7B81593E9E40016CC95 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		E15CC7BA1593FC220016CC95 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
 		E15CC7BE15959F440016CC95 /* cmsLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cmsLogo@2x.png"; path = "CernVM Co-Pilot/cmsLogo@2x.png"; sourceTree = "<group>"; };
 		E1815C4F15CB269200878E16 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E182E1F915740766000E4197 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = "CernVM Co-Pilot/RSSFeed.h"; sourceTree = "<group>"; };
@@ -242,8 +243,6 @@
 		E1B0416215B7E68000C8EA40 /* StaticInfoSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoSelectorViewController.m; sourceTree = "<group>"; };
 		E1B0416415B7E85400C8EA40 /* StaticInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StaticInformation.plist; sourceTree = "<group>"; };
 		E1B6924715D9913B00EC9AFA /* AQGridView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AQGridView.xcodeproj; path = AQGridView/AQGridView.xcodeproj; sourceTree = "<group>"; };
-		E1B6925715D9C8B300EC9AFA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		E1B6925815D9C8B300EC9AFA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E1B6926B15DADB5300EC9AFA /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		E1B6926C15DADB5300EC9AFA /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		E1C11DA615DD93ED00217884 /* cernLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cernLogo.png; sourceTree = "<group>"; };
@@ -309,8 +308,6 @@
 		E1D87E43159EE6680051104C /* MWTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTapDetectingView.m; sourceTree = "<group>"; };
 		E1D87E44159EE6680051104C /* MWZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWZoomingScrollView.h; sourceTree = "<group>"; };
 		E1D87E45159EE6680051104C /* MWZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWZoomingScrollView.m; sourceTree = "<group>"; };
-		E1D87E54159EE6720051104C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		E1D87E55159EE6720051104C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E1D87E56159EE6720051104C /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		E1D87E58159EE6720051104C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E1D87E59159EE6720051104C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -449,7 +446,6 @@
 				E12084A01577588100A81B87 /* RSSAggregator.m */,
 				E182E1F915740766000E4197 /* RSSFeed.h */,
 				E182E1FA15740766000E4197 /* RSSFeed.m */,
-				E15CC7BA1593FC220016CC95 /* FeedDelegate.h */,
 			);
 			name = RSS;
 			sourceTree = "<group>";
@@ -592,8 +588,8 @@
 		E1D87E53159EE6720051104C /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				E1D87E54159EE6720051104C /* MBProgressHUD.h */,
-				E1D87E55159EE6720051104C /* MBProgressHUD.m */,
+				E150625115E03A0D00869E3C /* MBProgressHUD.h */,
+				E150625215E03A0D00869E3C /* MBProgressHUD.m */,
 				E1D87E56159EE6720051104C /* README.mdown */,
 			);
 			path = MBProgressHUD;
@@ -672,8 +668,6 @@
 		E1D87E87159EE6FA0051104C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E1B6925715D9C8B300EC9AFA /* MBProgressHUD.h */,
-				E1B6925815D9C8B300EC9AFA /* MBProgressHUD.m */,
 				E13D378015D4560B002465BA /* BulletinGridViewCell.h */,
 				E13D378115D4560B002465BA /* BulletinGridViewCell.m */,
 				E1F1ED1815D22143005A99BC /* NewsGridViewCell.h */,
@@ -968,7 +962,6 @@
 				E1D87E4C159EE6680051104C /* MWTapDetectingImageView.m in Sources */,
 				E1D87E4E159EE6680051104C /* MWTapDetectingView.m in Sources */,
 				E1D87E50159EE6680051104C /* MWZoomingScrollView.m in Sources */,
-				E1D87E6C159EE6720051104C /* MBProgressHUD.m in Sources */,
 				E1D87E74159EE6720051104C /* SDImageCache.m in Sources */,
 				E1D87E76159EE6720051104C /* SDWebImageDecoder.m in Sources */,
 				E1D87E78159EE6720051104C /* SDWebImageDownloader.m in Sources */,
@@ -995,6 +988,7 @@
 				E1544FF715DDF1480054700A /* APTabBarControllerForSplitController.m in Sources */,
 				E154500315DE07000054700A /* WebcastsParser.m in Sources */,
 				E154500F15DE0E170054700A /* WebcastsGridViewController.m in Sources */,
+				E150625315E03A0D00869E3C /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

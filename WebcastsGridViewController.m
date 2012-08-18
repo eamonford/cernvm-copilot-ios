@@ -23,13 +23,32 @@
     if (self = [super initWithCoder:aDecoder]) {
         self.gridView.backgroundColor = [UIColor whiteColor];
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _noConnectionHUD.delegate = self;
+        _noConnectionHUD.mode = MBProgressHUDModeText;
+        _noConnectionHUD.labelText = @"No internet connection";
+        _noConnectionHUD.removeFromSuperViewOnHide = YES;
+        
         self.parser = [[WebcastsParser alloc] init];
         self.parser.delegate = self;
-        [self.parser parseRecentWebcasts];
-        [self.parser parseUpcomingWebcasts];
+        [self refresh];
     }
     return self;
+}
+
+- (void)refresh
+{
+    if (!self.parser.recentWebcasts.count && !self.parser.upcomingWebcasts.count) {
+        [_noConnectionHUD hide:YES];
+        NSLog(@"refresh");
+        [self.parser parseRecentWebcasts];
+        [self.parser parseUpcomingWebcasts];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
+}
+
+- (void)hudWasTapped:(MBProgressHUD *)hud
+{
+    [self refresh];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -91,6 +110,17 @@
 {
     if (self.mode == WebcastModeUpcoming)
         [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:index] withAnimation:AQGridViewItemAnimationFade];
+}
+
+- (void)webcastsParser:(WebcastsParser *)parser didFailWithError:(NSError *)error
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    _noConnectionHUD.delegate = self;
+    _noConnectionHUD.mode = MBProgressHUDModeText;
+    _noConnectionHUD.labelText = @"No internet connection";
+    _noConnectionHUD.removeFromSuperViewOnHide = YES;
 }
 
 #pragma mark - AQGridView methods

@@ -19,6 +19,7 @@
 - (void)webcastsParserDidFinishParsingUpcomingWebcasts:(WebcastsParser *)parser;
 - (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForRecentWebcastIndex:(int)index;
 - (void)webcastsParser:(WebcastsParser *)parser didDownloadThumbnailForUpcomingWebcastIndex:(int)index;
+- (void)webcastsParser:(WebcastsParser *)parser didFailWithError:(NSError *)error;
 @end
 
 @interface WebcastsParser : NSObject<NSURLConnectionDataDelegate, CernMediaMarcParserDelegate>

@@ -25,22 +25,28 @@
         self.videoThumbnails = [NSMutableDictionary dictionary];
         self.gridView.backgroundColor = [UIColor whiteColor];
         queue = [[NSOperationQueue alloc] init];
-        
+         
         self.parser = [[CernMediaMARCParser alloc] init];
         self.parser.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Press+Office+Video+Selection&p=internalnote%3A%22ATLAS%22&f=&action_search=Search&c=Press+Office+Video+Selection&c=&sf=year&so=d&rm=&rg=100&sc=0&of=xm"];
         self.parser.resourceTypes = [NSArray arrayWithObjects:kVideoMetadataPropertyVideoURL, kVideoMetadataPropertyThumbnailURL, nil];
         self.parser.delegate = self;
-        
-    }
+     }
     return self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (self.videoMetadata.count == 0) {        
+    [self refresh];
+}
+
+- (void)refresh
+{
+    if (self.videoMetadata.count == 0) {
+        [_noConnectionHUD hide:YES];
         [self.parser parse];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
+
 }
 
 - (void)viewDidUnload
@@ -58,16 +64,23 @@
 }
 
 
+- (void)hudWasTapped:(MBProgressHUD *)hud
+{
+    [self refresh];
+}
+
 #pragma mark - CernMediaMARCParserDeleate methods
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
+    NSLog(@"finished");
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.gridView reloadData];
 }
 
 - (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record
 {
+    NSLog(@"got record");
     // Copy over just the title, the date, and the first url of each resource type
     NSMutableDictionary *video = [NSMutableDictionary dictionary];
     [video setObject:[record objectForKey:@"title"] forKey:kVideoMetadataPropertyTitle];
@@ -85,6 +98,16 @@
     // now download the thumbnail for that photo
     int index = self.videoMetadata.count-1;
     [self performSelectorInBackground:@selector(downloadThumbnailForIndex:) withObject:[NSNumber numberWithInt:index]];
+}
+
+- (void)parser:(CernMediaMARCParser *)parser didFailWithError:(NSError *)error
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    _noConnectionHUD.delegate = self;
+    _noConnectionHUD.mode = MBProgressHUDModeText;
+    _noConnectionHUD.labelText = @"No internet connection";
+    _noConnectionHUD.removeFromSuperViewOnHide = YES;
 }
 
 // We will use a synchronous connection running in a background thread to download thumbnails

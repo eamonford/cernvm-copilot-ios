@@ -8,14 +8,16 @@
 
 #import "AQGridViewController.h"
 #import "CernMediaMARCParser.h"
-
-@interface VideosGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate>
+#import "MBProgressHUD.h"
+@interface VideosGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, CernMediaMarcParserDelegate, MBProgressHUDDelegate>
 {
     NSOperationQueue *queue;
+    MBProgressHUD *_noConnectionHUD;
 }
 
 @property (nonatomic, strong) CernMediaMARCParser *parser;
 @property (nonatomic, strong) NSMutableArray *videoMetadata;
 @property (nonatomic, strong) NSMutableDictionary *videoThumbnails;
 
+- (void)refresh;
 @end

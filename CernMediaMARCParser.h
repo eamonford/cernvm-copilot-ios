@@ -20,7 +20,7 @@ typedef  enum SubfieldCodeEnum {
 @optional
 - (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record;
 - (void)parserDidFinish:(CernMediaMARCParser *)parser;
-
+- (void)parser:(CernMediaMARCParser *)parser didFailWithError:(NSError *)error;
 @end
 
 @interface CernMediaMARCParser : NSObject<NSURLConnectionDelegate, NSXMLParserDelegate>

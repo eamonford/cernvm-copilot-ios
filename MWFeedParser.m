@@ -356,7 +356,6 @@
 		
 		// Reset
 		[self reset];
-		
 		// Inform delegate
 		if ([delegate respondsToSelector:@selector(feedParser:didFailWithError:)])
 			[delegate feedParser:self didFailWithError:error];

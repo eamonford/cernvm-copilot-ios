@@ -15,6 +15,7 @@
 @optional
 - (void)photoDownloaderDidFinish:(PhotoDownloader *)photoDownloader;
 - (void)photoDownloader:(PhotoDownloader *)photoDownloader didDownloadThumbnailForIndex:(int)index;
+- (void)photoDownloader:(PhotoDownloader *)photoDownloader didFailWithError:(NSError *)error;
 @end
 
 @interface PhotoDownloader : NSObject<CernMediaMarcParserDelegate>

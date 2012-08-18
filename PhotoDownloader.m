@@ -96,4 +96,10 @@
     }
 }
 
+- (void)parser:(CernMediaMARCParser *)parser didFailWithError:(NSError *)error
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(photoDownloader:didFailWithError:)])
+        [self.delegate photoDownloader:self didFailWithError:error];
+}
+
 @end

@@ -8,21 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "RSSFeed.h"
-#import "FeedDelegate.h"
 
 @class RSSAggregator;
 @protocol RSSAggregatorDelegate <NSObject>
 
 @optional
 - (void)allFeedsDidLoadForAggregator:(RSSAggregator *)aggregator;
+- (void)aggregator:(RSSAggregator *)aggregator didFailWithError:(NSError *)error;
 - (void)aggregator:(RSSAggregator *)aggregator didDownloadFirstImage:(UIImage *)image forArticle:(MWFeedItem *)article;
 
 @end
 
-@interface RSSAggregator : NSObject<FeedDelegate>
+@interface RSSAggregator : NSObject<RSSFeedDelegate>
 {
     @private
-    int feedLoadCount;
+    int _feedLoadCount;
+    int _feedFailCount;
 }
 
 @property (nonatomic, strong) NSMutableArray *feeds;

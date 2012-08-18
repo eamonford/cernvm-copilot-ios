@@ -42,6 +42,12 @@
     [xmlParser parse];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(parser:didFailWithError:)])
+        [self.delegate parser:self didFailWithError:error];
+}
+
 #pragma mark NSXMLParserDelegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser

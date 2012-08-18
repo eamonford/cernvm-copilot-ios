@@ -17,7 +17,7 @@
 @end
 
 @implementation PhotosGridViewController
-@synthesize photoDownloader/*, displaySpinner*/;
+@synthesize photoDownloader;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -27,7 +27,6 @@
         self.gridView.backgroundColor = [UIColor whiteColor];
         self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
         self.gridView.resizesCellWidthToFit = YES;
-
     }
     return self;
 }
@@ -35,7 +34,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
 
 - (void)viewDidUnload
@@ -54,6 +52,7 @@
 - (void)refresh
 {
     if (self.photoDownloader.urls.count == 0) {
+        [_noConnectionHUD hide:YES];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.photoDownloader parse];
     }
@@ -128,6 +127,21 @@
     }
     
     return nil;
+}
+
+- (void)photoDownloader:(PhotoDownloader *)photoDownloader didFailWithError:(NSError *)error
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    _noConnectionHUD.delegate = self;
+    _noConnectionHUD.mode = MBProgressHUDModeText;
+    _noConnectionHUD.labelText = @"No internet connection";
+    _noConnectionHUD.removeFromSuperViewOnHide = YES;
+}
+
+- (void)hudWasTapped:(MBProgressHUD *)hud
+{
+    [self refresh];
 }
 
 @end

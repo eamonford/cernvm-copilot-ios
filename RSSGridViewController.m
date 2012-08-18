@@ -45,19 +45,36 @@
 - (void)refresh
 {
     if (self.aggregator.feeds.count) {
+        [_noConnectionHUD hide:YES];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.aggregator refreshAllFeeds];
     }
 }
+
+#pragma mark - MBProgressHUDDelegate methods
+
+- (void)hudWasTapped:(MBProgressHUD *)hud
+{
+    [self refresh];
+}
+
+#pragma mark - RSSAggregatorDelegate methods
 
 - (void)allFeedsDidLoadForAggregator:(RSSAggregator *)aggregator
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)aggregator:(RSSAggregator *)aggregator didFailWithError:(NSError *)error
 {
-    [super didReceiveMemoryWarning];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    _noConnectionHUD.delegate = self;
+    _noConnectionHUD.mode = MBProgressHUDModeText;
+    _noConnectionHUD.labelText = @"No internet connection";
+    _noConnectionHUD.removeFromSuperViewOnHide = YES;
+
 }
 
 @end

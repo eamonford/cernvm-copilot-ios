@@ -8,9 +8,12 @@
 
 #import "AQGridViewController.h"
 #import "RSSAggregator.h"
+#import "MBProgressHUD.h"
 
-@interface RSSGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, RSSAggregatorDelegate>
-
+@interface RSSGridViewController : AQGridViewController<AQGridViewDataSource, AQGridViewDelegate, RSSAggregatorDelegate, MBProgressHUDDelegate>
+{
+    MBProgressHUD *_noConnectionHUD;
+}
 @property (nonatomic, strong) RSSAggregator *aggregator;
 - (void)refresh;
 

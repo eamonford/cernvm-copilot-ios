@@ -17,14 +17,14 @@
         self.firstImages = [NSMutableDictionary dictionary];
         self.allArticles = [NSArray array];
         self.feeds = [NSMutableArray array];
-        feedLoadCount = 0;
+        _feedLoadCount = 0;
     }
     return self;
 }
 
 - (void)addFeed:(RSSFeed *)feed
 {
-    feed.aggregator = self;
+    feed.delegate = self;
     [self.feeds addObject:feed];
 }
 
@@ -36,10 +36,11 @@
 
 - (void)refreshAllFeeds
 {
+    _feedFailCount = 0;
     // Only refresh all feeds if we are not already in the middle of a refresh
-    if (feedLoadCount == 0) {
+    if (_feedLoadCount == 0) {
         self.allArticles = [NSArray array];
-        feedLoadCount = self.feeds.count;
+        _feedLoadCount = self.feeds.count;
         for (RSSFeed *feed in self.feeds) {
             [feed refresh];
         }
@@ -59,12 +60,22 @@
 - (void)feedDidLoad:(id)feed
 {
     // Keep track of how many feeds have loaded after refreshAllFeeds was called, and after all feeds have loaded, inform the delegate.
-    if (--feedLoadCount == 0) {
+    if (--_feedLoadCount == 0) {
         self.allArticles = [self aggregate];
         if (self.delegate && [self.delegate respondsToSelector:@selector(allFeedsDidLoadForAggregator:)]) {
             [self.delegate allFeedsDidLoadForAggregator:self];
         }
        [self performSelectorInBackground:@selector(downloadAllFirstImages) withObject:nil];
+    }
+}
+
+- (void)feed:(RSSFeed *)feed didFailWithError:(NSError *)error
+{
+    _feedFailCount++;
+    if (_feedFailCount == self.feeds.count) {
+        _feedLoadCount = 0;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(aggregator:didFailWithError:)])
+            [self.delegate aggregator:self didFailWithError:error];
     }
 }
 

@@ -42,7 +42,6 @@
         [self loadHTMLString];
         return;
     }
-    
     NSScanner *scanner = [NSScanner scannerWithString:_htmlString];
     numParsersLoading = 0;
     while ([scanner scanUpToString:@"<div class=\"recentEvents\"" intoString:NULL]) {
@@ -159,6 +158,15 @@
         [self parseUpcomingWebcasts];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    _pendingHTMLStringLoad = NO;
+    _pendingRecentWebcastsParse = NO;
+    _pendingUpcomingWebcastsParse = NO;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(webcastsParser:didFailWithError:)])
+        [self.delegate webcastsParser:self didFailWithError:error];
+}
+
 - (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record
 {
     [self.recentWebcasts addObject:record];
@@ -208,7 +216,6 @@
         url = [[resources objectForKey:@"jpgthumbnail"] objectAtIndex:0];
     else
         url = [[resources objectForKey:@"pngthumbnail"] objectAtIndex:0];
-    //NSLog(@"trying recent thumbnail url: %@", url);
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];

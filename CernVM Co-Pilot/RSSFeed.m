@@ -10,7 +10,6 @@
 #import "RSSArticle.h"
 
 @implementation RSSFeed
-@synthesize parser, info, articles, aggregator, delegate;
 
 - (id)initWithFeedURL:(NSURL *)url
 {
@@ -41,12 +40,18 @@
     [self.articles addObject:item];
 }
 
+- (void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(feed:didFailWithError:)])
+        [self.delegate feed:self didFailWithError:error];
+}
+
 - (void)feedParserDidFinish:(MWFeedParser *)parser
 {
-    if (aggregator)
-        [aggregator feedDidLoad:self];
-    if (delegate)
-        [delegate feedDidLoad:self];
+//    if (self.aggregator && [self.aggregator respondsToSelector:@selector(feedDidLoad:)])
+//        [self.aggregator feedDidLoad:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(feedDidLoad:)])
+        [self.delegate feedDidLoad:self];
 }
 
 @end
