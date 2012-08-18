@@ -55,4 +55,9 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 @end

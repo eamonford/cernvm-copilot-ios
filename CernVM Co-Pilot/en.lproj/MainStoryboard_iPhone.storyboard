@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2829" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FgC-jI-7LZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FgC-jI-7LZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1914"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller For Split Controller-->
@@ -45,12 +46,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="XEp-Lb-dNQ">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XEp-Lb-dNQ">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -349,23 +350,23 @@
                                         <rect key="frame" x="-1" y="-1" width="312" height="201"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Label" autoshrinkMode="minimumFontSize" preferredMaxLayoutWidth="280" id="KmI-Q3-fdM">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KmI-Q3-fdM">
                                         <rect key="frame" x="14" y="241" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Label" autoshrinkMode="minimumFontSize" preferredMaxLayoutWidth="280" id="saL-Zw-0zN">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="saL-Zw-0zN">
                                         <rect key="frame" x="14" y="208" width="280" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.10122034671532847" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
-                                        <color key="textColor" white="0.10122034671532847" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     </label>
                                 </subviews>
                             </scrollView>
@@ -511,7 +512,7 @@
             </objects>
             <point key="canvasLocation" x="637" y="157"/>
         </scene>
-        <!--Bulletin Grid View Controller-->
+        <!--Bulletin Grid View Controller - CERN Bulletin-->
         <scene sceneID="0yB-vn-53L">
             <objects>
                 <viewController id="i3j-Gh-NeK" customClass="BulletinGridViewController" sceneMemberID="viewController">
@@ -520,7 +521,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BXt-sh-POR"/>
+                    <navigationItem key="navigationItem" title="CERN Bulletin" id="BXt-sh-POR"/>
                     <connections>
                         <segue destination="KnV-eM-dHS" kind="push" identifier="ShowBulletinArticles" id="fF6-jC-Q7r"/>
                     </connections>
@@ -567,7 +568,7 @@
             </objects>
             <point key="canvasLocation" x="651" y="2126"/>
         </scene>
-        <!--Videos Grid View Controller-->
+        <!--Videos Grid View Controller - Latest Videos-->
         <scene sceneID="vCk-D0-hPp">
             <objects>
                 <viewController id="Sap-ok-3zg" customClass="VideosGridViewController" sceneMemberID="viewController">
@@ -576,7 +577,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9eC-Io-elO"/>
+                    <navigationItem key="navigationItem" title="Latest Videos" id="9eC-Io-elO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vy-Kp-HvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -601,7 +602,7 @@
             </objects>
             <point key="canvasLocation" x="651" y="2751"/>
         </scene>
-        <!--News Grid View Controller-->
+        <!--News Grid View Controller - CERN Jobs-->
         <scene sceneID="jMo-Q8-ute">
             <objects>
                 <viewController id="RbI-M8-VjO" customClass="NewsGridViewController" sceneMemberID="viewController">
@@ -610,7 +611,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="J9V-Ar-Oxh"/>
+                    <navigationItem key="navigationItem" title="CERN Jobs" id="J9V-Ar-Oxh"/>
                     <connections>
                         <segue destination="x4h-5c-mby" kind="push" identifier="ShowArticleDetails" id="0fx-oU-fxj"/>
                     </connections>
@@ -811,6 +812,7 @@
         <class className="ExperimentsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonTapped:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="aliceButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="atlasButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cmsButton" candidateClass="UIButton"/>

@@ -103,6 +103,7 @@
 {
     [super allFeedsDidLoadForAggregator:theAggregator];
     [self.gridView reloadData];
+
 }
 
 - (void)aggregator:(RSSAggregator *)aggregator didDownloadFirstImage:(UIImage *)image forArticle:(MWFeedItem *)article
