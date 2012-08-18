@@ -55,6 +55,11 @@
 - (IBAction)segmentedControlTapped:(UISegmentedControl *)sender
 {
     self.mode = sender.selectedSegmentIndex;
+    if (self.mode == WebcastModeRecent)
+        self.gridView.allowsSelection = YES;
+    else
+        self.gridView.allowsSelection = NO;
+    
     [self.gridView reloadData];
 }
 
@@ -108,7 +113,8 @@
     NewsGridViewCell *cell = (NewsGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:newsCellIdentifier];
     if (cell == nil) {
         cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 180.0, 180.0) reuseIdentifier:newsCellIdentifier];
-        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
+        cell.selectionStyle = AQGridViewCellSelectionStyleGlow;
+        cell.titleLabel.font = [UIFont systemFontOfSize:13.0];
     }
     
     
@@ -166,6 +172,8 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
+    [gridView deselectItemAtIndex:index animated:YES];
+    
     if (self.mode == WebcastModeRecent) {
         NSDictionary *webcast = [self.parser.recentWebcasts objectAtIndex:index];
         NSDictionary *resources = [webcast objectForKey:@"resources"];

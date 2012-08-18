@@ -49,7 +49,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     ArticleDetailViewController *viewController = (ArticleDetailViewController *)segue.destinationViewController;
-    [viewController setContentForArticle:[self.aggregator.allArticles objectAtIndex:[self.gridView indexOfSelectedItem]]];
+    [viewController setContentForArticle:[self.aggregator.allArticles objectAtIndex:self.gridView.indexOfSelectedItem]];
+    [self.gridView deselectItemAtIndex:self.gridView.indexOfSelectedItem animated:YES];
 }
 
 #pragma mark - AQGridView methods
@@ -69,7 +70,7 @@
     NewsGridViewCell *cell = (NewsGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:newsCellIdentifier];
     if (cell == nil) {
         cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 250.0) reuseIdentifier:newsCellIdentifier];
-        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
+        cell.selectionStyle = AQGridViewCellSelectionStyleGlow;
     }
     cell.titleLabel.text = [article.title stringByConvertingHTMLToPlainText];
     
@@ -92,9 +93,9 @@
     return CGSizeMake(320.0, 270.0);
 }
 
-- (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
+- (void) gridView: (AQGridView *) gridView didSelectItemAtIndex:(NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
-    [self performSegueWithIdentifier:@"ShowArticleDetails" sender:self];
+   [self performSegueWithIdentifier:@"ShowArticleDetails" sender:self];
 }
 #pragma mark - RSSAggregatorDelegate methods
 

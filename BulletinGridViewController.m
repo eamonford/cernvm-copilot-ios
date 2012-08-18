@@ -87,6 +87,8 @@
     
     viewController.rangeOfArticlesToShow = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:issueIndex] rangeValue];
     [viewController.gridView reloadData];
+    
+    [self.gridView deselectItemAtIndex:self.gridView.indexOfSelectedItem animated:YES];
 }
 
 #pragma mark - AQGridView methods
@@ -103,7 +105,7 @@
     BulletinGridViewCell *cell = (BulletinGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:bulletinCellIdentifier];
     if (cell == nil) {
         cell = [[BulletinGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 120.0) reuseIdentifier:bulletinCellIdentifier];
-        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
+        cell.selectionStyle = AQGridViewCellSelectionStyleGlow;
     }
     
     NSRange issueRange = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:index] rangeValue];

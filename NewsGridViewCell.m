@@ -25,7 +25,7 @@
         CGPathRef cellShadowPathRef = CGPathCreateWithRect(self.layer.frame, NULL);
         self.layer.shadowPath = cellShadowPathRef;
         CGPathRelease(cellShadowPathRef);
-        self.contentView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+        self.contentView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
         
         self.thumbnailImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height/2)];
         self.thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;

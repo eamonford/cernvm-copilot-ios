@@ -120,7 +120,7 @@
     NewsGridViewCell *cell = (NewsGridViewCell *)[self.gridView dequeueReusableCellWithIdentifier:newsCellIdentifier];
     if (cell == nil) {
         cell = [[NewsGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 250.0) reuseIdentifier:newsCellIdentifier];
-        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
+        cell.selectionStyle = AQGridViewCellSelectionStyleGlow;
     }
     
     NSDictionary *video = [self.videoMetadata objectAtIndex:index];
@@ -151,6 +151,7 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index numFingersTouch:(NSUInteger)numFingers
 {
+    [gridView deselectItemAtIndex:index animated:YES];
     NSDictionary *video = [self.videoMetadata objectAtIndex:index];
     NSURL *url = [video objectForKey:kVideoMetadataPropertyVideoURL];
     MPMoviePlayerViewController *playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
