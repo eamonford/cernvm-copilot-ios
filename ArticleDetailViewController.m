@@ -26,11 +26,15 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
     if (self.contentString)
         [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.contentWebView stopLoading];
 }
 
 - (void)viewDidUnload
@@ -95,6 +99,7 @@
     self.contentString = [[tweet objectForKey:@"text"] stringByLinkifyingURLs];
     [self.contentWebView loadHTMLString:self.contentString baseURL:nil];
 }
+
 
 - (BOOL)webView:(UIWebView *)webView
 shouldStartLoadWithRequest:(NSURLRequest *)request

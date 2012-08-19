@@ -99,11 +99,11 @@
 }
 #pragma mark - RSSAggregatorDelegate methods
 
+
 - (void)allFeedsDidLoadForAggregator:(RSSAggregator *)theAggregator
 {
     [super allFeedsDidLoadForAggregator:theAggregator];
     [self.gridView reloadData];
-
 }
 
 - (void)aggregator:(RSSAggregator *)aggregator didDownloadFirstImage:(UIImage *)image forArticle:(MWFeedItem *)article
@@ -111,6 +111,5 @@
     int index = [self.aggregator.allArticles indexOfObject:article]+self.rangeOfArticlesToShow.location;
     [self.gridView reloadItemsAtIndices:[NSIndexSet indexSetWithIndex:index] withAnimation:AQGridViewItemAnimationFade];
 }
-
 
 @end

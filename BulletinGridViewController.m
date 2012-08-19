@@ -24,7 +24,8 @@
         self.gridView.resizesCellWidthToFit = NO;
         self.gridView.backgroundColor = [UIColor whiteColor];
         self.gridView.allowsSelection = YES;
-
+        self.tabBarItem.image = [UIImage imageNamed:@"bulletin"];
+        self.tabBarItem.title = NSLocalizedString(@"Bulletin", @"Bulletin");
     }
     return self;
 }

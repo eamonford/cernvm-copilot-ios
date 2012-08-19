@@ -711,7 +711,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="delegate" destination="7B3-IS-6fI" id="JB2-HU-uot"/>
+                                    <outlet property="delegate" destination="7B3-IS-6fI" id="Lsj-ff-Hea"/>
                                 </connections>
                             </webView>
                         </subviews>
@@ -812,7 +812,6 @@
         <class className="ExperimentsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExperimentsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonTapped:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="aliceButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="atlasButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cmsButton" candidateClass="UIButton"/>
