@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSMutableDictionary *thumbnails;
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) id<PhotoDownloaderDelegate> delegate;
+@property BOOL isDownloading;
 
 - (void)parse;
 

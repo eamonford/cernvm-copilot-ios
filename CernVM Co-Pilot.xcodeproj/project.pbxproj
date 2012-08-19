@@ -34,8 +34,6 @@
 		E149D8B615C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m in Sources */ = {isa = PBXBuildFile; fileRef = E149D8B515C74AA9007DA389 /* NSDate+LastOccurrenceOfWeekday.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		E150625315E03A0D00869E3C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E150625215E03A0D00869E3C /* MBProgressHUD.m */; };
 		E150CB6515B34C5D009A3831 /* EventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
-		E1544FF615DDF1480054700A /* APSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1544FF115DDF1480054700A /* APSplitViewController.m */; };
-		E1544FF715DDF1480054700A /* APTabBarControllerForSplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1544FF315DDF1480054700A /* APTabBarControllerForSplitController.m */; };
 		E154500315DE07000054700A /* WebcastsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E154500215DE07000054700A /* WebcastsParser.m */; };
 		E154500F15DE0E170054700A /* WebcastsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E154500E15DE0E170054700A /* WebcastsGridViewController.m */; };
 		E15CC7B0159267AF0016CC95 /* ExperimentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CC7AF159267AF0016CC95 /* ExperimentsViewController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -230,10 +228,6 @@
 		E150625215E03A0D00869E3C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E150CB6315B34C5D009A3831 /* EventDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDisplayViewController.h; sourceTree = "<group>"; };
 		E150CB6415B34C5D009A3831 /* EventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDisplayViewController.m; sourceTree = "<group>"; };
-		E1544FF015DDF1480054700A /* APSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSplitViewController.h; sourceTree = "<group>"; };
-		E1544FF115DDF1480054700A /* APSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSplitViewController.m; sourceTree = "<group>"; };
-		E1544FF215DDF1480054700A /* APTabBarControllerForSplitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTabBarControllerForSplitController.h; sourceTree = "<group>"; };
-		E1544FF315DDF1480054700A /* APTabBarControllerForSplitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTabBarControllerForSplitController.m; sourceTree = "<group>"; };
 		E154500115DE07000054700A /* WebcastsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastsParser.h; sourceTree = "<group>"; };
 		E154500215DE07000054700A /* WebcastsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastsParser.m; sourceTree = "<group>"; };
 		E154500D15DE0E170054700A /* WebcastsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastsGridViewController.h; sourceTree = "<group>"; };
@@ -455,17 +449,6 @@
 				E154500E15DE0E170054700A /* WebcastsGridViewController.m */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		E1544FE915DDEF720054700A /* APSplitViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E1544FF015DDF1480054700A /* APSplitViewController.h */,
-				E1544FF115DDF1480054700A /* APSplitViewController.m */,
-				E1544FF215DDF1480054700A /* APTabBarControllerForSplitController.h */,
-				E1544FF315DDF1480054700A /* APTabBarControllerForSplitController.m */,
-			);
-			name = APSplitViewController;
 			sourceTree = "<group>";
 		};
 		E1830BD115746204003F16E2 /* RSS */ = {
@@ -754,7 +737,6 @@
 				E1D87E85159EE67B0051104C /* MWPhotoBrowser */,
 				E1D9609515985A24006150D1 /* Parsers */,
 				E1830BD115746204003F16E2 /* RSS */,
-				E1544FE915DDEF720054700A /* APSplitViewController */,
 				E120849E15773D5100A81B87 /* View Controllers */,
 				E1D87E87159EE6FA0051104C /* Views */,
 				E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */,
@@ -1036,8 +1018,6 @@
 				E13D377F15D44CBD002465BA /* RSSGridViewController.m in Sources */,
 				E13D378215D4560B002465BA /* BulletinGridViewCell.m in Sources */,
 				E13D378915D491ED002465BA /* VideosGridViewController.m in Sources */,
-				E1544FF615DDF1480054700A /* APSplitViewController.m in Sources */,
-				E1544FF715DDF1480054700A /* APTabBarControllerForSplitController.m in Sources */,
 				E154500315DE07000054700A /* WebcastsParser.m in Sources */,
 				E154500F15DE0E170054700A /* WebcastsGridViewController.m in Sources */,
 				E150625315E03A0D00869E3C /* MBProgressHUD.m in Sources */,

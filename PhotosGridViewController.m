@@ -50,8 +50,10 @@
 {
     [super didReceiveMemoryWarning];
     
-    self.photoDownloader.urls = nil;
-    self.photoDownloader.thumbnails = nil;
+    if (!self.photoDownloader.isDownloading) {
+        self.photoDownloader.urls = nil;
+        self.photoDownloader.thumbnails = nil;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -65,7 +67,6 @@
 - (void)refresh
 {
     if (self.photoDownloader.urls.count == 0) {
-        NSLog(@"refreshing");
         [_noConnectionHUD hide:YES];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.photoDownloader parse];
@@ -136,7 +137,14 @@
 
 - (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
     if (index < self.photoDownloader.urls.count) {
-        NSURL *url = [[self.photoDownloader.urls objectAtIndex:index] objectForKey:@"jpgA5"];
+        NSString *photoSize;
+        // Download a larger full-size image on iPad, or a smaller full-size image on iPhone
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            photoSize = @"jpgA4";
+        } else {
+            photoSize = @"jpgA5";
+        }
+        NSURL *url = [[self.photoDownloader.urls objectAtIndex:index] objectForKey:photoSize];
         return [MWPhoto photoWithURL:url];
     }
     
@@ -145,7 +153,6 @@
 
 - (void)photoDownloader:(PhotoDownloader *)photoDownloader didFailWithError:(NSError *)error
 {
-    NSLog(@"%@", error);
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _noConnectionHUD.delegate = self;

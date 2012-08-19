@@ -13,7 +13,6 @@
 #import "BulletinGridViewController.h"
 #import "StaticInfoSelectorViewController.h"
 #import "StaticInfoScrollViewController.h"
-#import "APSplitViewController.h"
 #import "WebcastsGridViewController.h"
 #import "Constants.h"
 

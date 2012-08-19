@@ -17,7 +17,7 @@
     if (self = [super init]) {        
         parser = [[CernMediaMARCParser alloc] init];
         parser.delegate = self;
-        parser.resourceTypes = [NSArray arrayWithObjects:@"jpgA5", @"jpgIcon", nil];
+        parser.resourceTypes = [NSArray arrayWithObjects:@"jpgA4", @"jpgA5", @"jpgIcon", nil];
         
         queue = [NSOperationQueue new];
     }
@@ -35,6 +35,7 @@
 }
 
 - (void)parse {
+    self.isDownloading = YES;
     self.urls = [[NSMutableArray alloc] init];
     self.thumbnails = [NSMutableDictionary dictionary];
     [parser parse];
@@ -76,16 +77,18 @@
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     UIImage *thumbnailImage = [UIImage imageWithData:thumbnailData];
     if (thumbnailImage) {
-        //thumbnailImage = [UIImage squareImageWithDimension:200.0 fromImage:thumbnailImage];
         [self.thumbnails setObject:thumbnailImage forKey:[NSNumber numberWithInt:index]];
     } else {
         NSLog(@"Error downloading thumbnail #%d, will try again.", index);
         [self downloadThumbnailForIndex:[NSNumber numberWithInt:index]];
     }
     
-     if (delegate && [delegate respondsToSelector:@selector(photoDownloader:didDownloadThumbnailForIndex:)]) {
+    if (self.thumbnails.count == self.urls.count)
+        self.isDownloading = NO;
+    
+    if (delegate && [delegate respondsToSelector:@selector(photoDownloader:didDownloadThumbnailForIndex:)]) {
          [delegate photoDownloader:self didDownloadThumbnailForIndex:index];
-     }
+    }
 }
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
