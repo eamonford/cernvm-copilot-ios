@@ -26,7 +26,6 @@
     self.tabBarController.moreNavigationController.delegate = self;
     self.tabBarController.customizableViewControllers = [NSArray array];
     self.tabsAlreadySetup = [NSMutableDictionary dictionary];
-        
     [self setupViewController:[self.tabBarController.viewControllers objectAtIndex:TabIndexNews] atIndex:TabIndexNews];
 
     return YES;

@@ -68,8 +68,10 @@
     if (!dateString)
         dateString = @"";
     
+    NSString *link = article.link;
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"readOriginalArticle" ofType:@"png"];
     NSString *cssPath = [[NSBundle mainBundle] pathForResource:@"ArticleCSS" ofType:@"css"];
-    NSMutableString *htmlString = [NSMutableString stringWithFormat:@"<html><head><link rel='stylesheet' type='text/css' href='file://%@'></head><body><h1>%@</h1><h2>%@</h2>%@</body></html>", cssPath, article.title, dateString, body];
+    NSMutableString *htmlString = [NSMutableString stringWithFormat:@"<html><head><link rel='stylesheet' type='text/css' href='file://%@'></head><body><h1>%@</h1><h2>%@</h2>%@<p class='read'><a href='%@'><img src='file://%@' /></a></p></body></html>", cssPath, article.title, dateString, body, link, imgPath];
 
     self.contentString = htmlString;
     [self.contentWebView loadHTMLString:self.contentString baseURL:nil];

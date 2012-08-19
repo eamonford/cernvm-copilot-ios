@@ -24,3 +24,13 @@ img {
     /*padding:10px;
     border:1px solid #ccc;*/
 }
+
+p.read {
+    text-align:center;
+}
+
+p.read img {
+    border:0px;
+    width:125px;
+    height:30px;
+}

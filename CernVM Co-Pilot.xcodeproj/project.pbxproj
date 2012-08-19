@@ -149,6 +149,7 @@
 		E1F7B69E156EDC7C0092367F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F7B69C156EDC7C0092367F /* MainStoryboard_iPhone.storyboard */; };
 		E1F7B6A1156EDC7C0092367F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F7B69F156EDC7C0092367F /* MainStoryboard_iPad.storyboard */; };
 		E1FE435615C20165008E9634 /* StaticInfoScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE435515C20165008E9634 /* StaticInfoScrollViewController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		E1FE9B4715E0D10F00884CC4 /* readOriginalArticle.png in Resources */ = {isa = PBXBuildFile; fileRef = E1FE9B4615E0D10F00884CC4 /* readOriginalArticle.png */; };
 		E1FFFC2B15A651B40093462B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FFFC2A15A651B40093462B /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -368,12 +369,9 @@
 		E1F7B69D156EDC7C0092367F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		E1F7B6A0156EDC7C0092367F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		E1F7B6B6156EDC7D0092367F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		E1F7B6BE156EDC7D0092367F /* CernVM Co-PilotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CernVM Co-PilotTests-Info.plist"; sourceTree = "<group>"; };
-		E1F7B6C0156EDC7D0092367F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E1F7B6C2156EDC7D0092367F /* CernVM_Co_PilotTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CernVM_Co_PilotTests.h; sourceTree = "<group>"; };
-		E1F7B6C3156EDC7D0092367F /* CernVM_Co_PilotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CernVM_Co_PilotTests.m; sourceTree = "<group>"; };
 		E1FE435415C20165008E9634 /* StaticInfoScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticInfoScrollViewController.h; sourceTree = "<group>"; };
 		E1FE435515C20165008E9634 /* StaticInfoScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticInfoScrollViewController.m; sourceTree = "<group>"; };
+		E1FE9B4615E0D10F00884CC4 /* readOriginalArticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readOriginalArticle.png; sourceTree = "<group>"; };
 		E1FFFC2A15A651B40093462B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -648,6 +646,7 @@
 		E1D87E86159EE6CB0051104C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E1FE9B4615E0D10F00884CC4 /* readOriginalArticle.png */,
 				E1ABE66715E09582004F3EF3 /* Tab bar icons */,
 				E1C11DA615DD93ED00217884 /* cernLogo.png */,
 				E1B6926B15DADB5300EC9AFA /* placeholder@2x.png */,
@@ -717,7 +716,6 @@
 				E120849E15773D5100A81B87 /* View Controllers */,
 				E1D87E87159EE6FA0051104C /* Views */,
 				E1F7B690156EDC7C0092367F /* CernVM Co-Pilot */,
-				E1F7B6BC156EDC7D0092367F /* CernVM Co-PilotTests */,
 				E1F7B689156EDC7C0092367F /* Frameworks */,
 				E1F7B687156EDC7C0092367F /* Products */,
 			);
@@ -771,25 +769,6 @@
 				E1F7B696156EDC7C0092367F /* main.m */,
 				E1F7B698156EDC7C0092367F /* CernVM Co-Pilot-Prefix.pch */,
 				E1815C4F15CB269200878E16 /* Constants.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E1F7B6BC156EDC7D0092367F /* CernVM Co-PilotTests */ = {
-			isa = PBXGroup;
-			children = (
-				E1F7B6C2156EDC7D0092367F /* CernVM_Co_PilotTests.h */,
-				E1F7B6C3156EDC7D0092367F /* CernVM_Co_PilotTests.m */,
-				E1F7B6BD156EDC7D0092367F /* Supporting Files */,
-			);
-			path = "CernVM Co-PilotTests";
-			sourceTree = "<group>";
-		};
-		E1F7B6BD156EDC7D0092367F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E1F7B6BE156EDC7D0092367F /* CernVM Co-PilotTests-Info.plist */,
-				E1F7B6BF156EDC7D0092367F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -947,6 +926,7 @@
 				E1C11DA715DD93ED00217884 /* cernLogo.png in Resources */,
 				E1ABE66A15E0958E004F3EF3 /* bulletin@2x.png in Resources */,
 				E1ABE66B15E0958E004F3EF3 /* bulletin.png in Resources */,
+				E1FE9B4715E0D10F00884CC4 /* readOriginalArticle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,14 +1021,6 @@
 				E1F7B6A0156EDC7C0092367F /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		E1F7B6BF156EDC7D0092367F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1F7B6C0156EDC7D0092367F /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
