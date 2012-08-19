@@ -147,7 +147,7 @@
 {
     NSLog(@"%@", error);
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _noConnectionHUD.delegate = self;
     _noConnectionHUD.mode = MBProgressHUDModeText;
     _noConnectionHUD.labelText = @"No internet connection";

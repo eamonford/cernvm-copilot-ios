@@ -24,6 +24,7 @@
     self.tabBarController = (UITabBarController *)self.window.rootViewController;
     self.tabBarController.delegate = self;
     self.tabBarController.moreNavigationController.delegate = self;
+    self.tabBarController.customizableViewControllers = [NSArray array];
     self.tabsAlreadySetup = [NSMutableDictionary dictionary];
     
     [self setupViewController:[self.tabBarController.viewControllers objectAtIndex:TabIndexNews] atIndex:TabIndexNews];
@@ -39,6 +40,12 @@
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)showingViewController animated:(BOOL)animated
 {
+    
+    UINavigationBar *morenavbar = navigationController.navigationBar;
+    UINavigationItem *morenavitem = morenavbar.topItem;
+    /* We don't need Edit button in More screen. */
+    morenavitem.rightBarButtonItem = nil;
+    
     // In order to figure out the index of the selected view controller, we have to search through tabBarController.viewControllers for a UINavigationController that has no topViewController, because the selected view controller got popped off its navigation stack.
     id checkIfNil = ^BOOL(id element, NSUInteger idx, BOOL *stop) {
         return [(UINavigationController *)element topViewController] == nil;
@@ -129,5 +136,6 @@
             break;
     }
 }
+
 
 @end

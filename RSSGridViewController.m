@@ -68,7 +68,7 @@
 - (void)aggregator:(RSSAggregator *)aggregator didFailWithError:(NSError *)error
 {
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     _noConnectionHUD.delegate = self;
     _noConnectionHUD.mode = MBProgressHUDModeText;

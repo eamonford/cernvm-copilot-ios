@@ -20,6 +20,8 @@ typedef enum {
     MBProgressHUD *_noConnectionHUD;
 }
 @property (nonatomic, strong) WebcastsParser *parser;
+@property BOOL finishedParsingRecent;
+@property BOOL finishedParsingUpcoming;
 @property WebcastMode mode;
 
 - (void)refresh;

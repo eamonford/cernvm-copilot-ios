@@ -39,7 +39,10 @@
 {
     if (!self.parser.recentWebcasts.count && !self.parser.upcomingWebcasts.count) {
         [_noConnectionHUD hide:YES];
-        NSLog(@"refresh");
+
+        self.finishedParsingRecent = NO;
+        self.finishedParsingUpcoming = NO;
+        
         [self.parser parseRecentWebcasts];
         [self.parser parseUpcomingWebcasts];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -86,16 +89,20 @@
 
 - (void)webcastsParserDidFinishParsingRecentWebcasts:(WebcastsParser *)parser
 {
-    if (self.mode == WebcastModeRecent) {
+    self.finishedParsingRecent = YES;
+    if (self.finishedParsingUpcoming)
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (self.mode == WebcastModeRecent) {
         [self.gridView reloadData];
     }
 }
 
 - (void)webcastsParserDidFinishParsingUpcomingWebcasts:(WebcastsParser *)parser
 {
-    if (self.mode == WebcastModeUpcoming) {
+    self.finishedParsingUpcoming = YES;
+    if (self.finishedParsingRecent)
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (self.mode == WebcastModeUpcoming) {
         [self.gridView reloadData];
     }
 }
@@ -115,7 +122,7 @@
 - (void)webcastsParser:(WebcastsParser *)parser didFailWithError:(NSError *)error
 {
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     _noConnectionHUD.delegate = self;
     _noConnectionHUD.mode = MBProgressHUDModeText;
