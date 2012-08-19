@@ -102,7 +102,7 @@
         case TabIndexPhotos: {
             // Initialize the photos view controller with a photo downloader object
             ((PhotosGridViewController *)viewController).photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Photos&p=&f=&action_search=Search&c=Photos&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
-            [(PhotosGridViewController *)viewController refresh];
+            //[(PhotosGridViewController *)viewController refresh];
             break;
         }
         case TabIndexVideos: {

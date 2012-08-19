@@ -243,7 +243,6 @@
                     PhotosGridViewController *photosViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kALICEPhotoGridViewController];
                     
                     photosViewController.photoDownloader.url = [NSURL URLWithString:@"https://cdsweb.cern.ch/record/1305399/export/xm?ln=en"];
-                    [photosViewController refresh];
                     [navigationController pushViewController:photosViewController animated:YES];
                     return;
                 }

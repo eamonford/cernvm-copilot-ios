@@ -41,6 +41,19 @@
     [super viewDidUnload];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self refresh];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    self.photoDownloader.urls = nil;
+    self.photoDownloader.thumbnails = nil;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -52,6 +65,7 @@
 - (void)refresh
 {
     if (self.photoDownloader.urls.count == 0) {
+        NSLog(@"refreshing");
         [_noConnectionHUD hide:YES];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.photoDownloader parse];
@@ -131,6 +145,7 @@
 
 - (void)photoDownloader:(PhotoDownloader *)photoDownloader didFailWithError:(NSError *)error
 {
+    NSLog(@"%@", error);
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 	_noConnectionHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     _noConnectionHUD.delegate = self;

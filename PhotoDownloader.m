@@ -14,10 +14,7 @@
 
 - (id)init
 {
-    if (self = [super init]) {
-        self.urls = [[NSMutableArray alloc] init];
-        self.thumbnails = [NSMutableDictionary dictionary];
-        
+    if (self = [super init]) {        
         parser = [[CernMediaMARCParser alloc] init];
         parser.delegate = self;
         parser.resourceTypes = [NSArray arrayWithObjects:@"jpgA5", @"jpgIcon", nil];
@@ -38,6 +35,8 @@
 }
 
 - (void)parse {
+    self.urls = [[NSMutableArray alloc] init];
+    self.thumbnails = [NSMutableDictionary dictionary];
     [parser parse];
 }
 
