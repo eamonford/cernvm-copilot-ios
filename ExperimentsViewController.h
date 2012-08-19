@@ -29,5 +29,5 @@ typedef enum {
 @property (nonatomic, strong) UIButton *atlasButton, *cmsButton, *aliceButton, *lhcbButton, *lhcButton;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 
-- (void)setupVisualsForOrientation:(UIDeviceOrientation)orientation;
+- (void)setupVisualsForOrientation:(UIDeviceOrientation)orientation withDuration:(NSTimeInterval)duration;
 @end

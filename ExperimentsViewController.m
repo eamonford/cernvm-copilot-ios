@@ -10,6 +10,7 @@
 //#import "ExperimentTableViewController.h"
 #import "ExperimentFunctionSelectorViewController.h"
 #import "Constants.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define CMS_BUTTON 0
 #define LHCB_BUTTON 1
@@ -41,7 +42,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self setupVisualsForOrientation:[UIApplication sharedApplication].statusBarOrientation];
 
     // Fade in the shadow graphic
     [UIView animateWithDuration:1.0 animations:^{self.shadowImageView.alpha = 1.0;}];
@@ -50,6 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = YES;
+    [self setupVisualsForOrientation:[UIApplication sharedApplication].statusBarOrientation withDuration:0.0];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -67,14 +68,21 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self setupVisualsForOrientation:toInterfaceOrientation];
+    [self setupVisualsForOrientation:toInterfaceOrientation withDuration:duration];
 }
 
-- (void)setupVisualsForOrientation:(UIDeviceOrientation)orientation
+- (void)setupVisualsForOrientation:(UIDeviceOrientation)orientation withDuration:(NSTimeInterval)duration
 {
+    CATransition *transition = [CATransition animation];
+    transition.duration = duration;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    transition.type = kCATransitionFade;
+    [self.mapImageView.layer addAnimation:transition forKey:nil];
+    
     // We have to hardcode the coordinates of each button on the screen for each device orientation. Yes, this is horrible
     // but it's really the only way to do it.
     if (UIDeviceOrientationIsPortrait(orientation)) {
+        
         self.mapImageView.image = [UIImage imageNamed:@"mapPortrait"];
         self.shadowImageView.image = [UIImage imageNamed:@"mapShadowPortrait"];
         
