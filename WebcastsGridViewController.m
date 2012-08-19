@@ -13,7 +13,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface WebcastsGridViewController ()
-
+ 
 @end
 
 @implementation WebcastsGridViewController
@@ -22,7 +22,6 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         self.gridView.backgroundColor = [UIColor whiteColor];
-        
         _noConnectionHUD.delegate = self;
         _noConnectionHUD.mode = MBProgressHUDModeText;
         _noConnectionHUD.labelText = @"No internet connection";

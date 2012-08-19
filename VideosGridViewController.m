@@ -24,6 +24,7 @@
         self.videoMetadata = [NSMutableArray array];
         self.videoThumbnails = [NSMutableDictionary dictionary];
         self.gridView.backgroundColor = [UIColor whiteColor];
+        
         queue = [[NSOperationQueue alloc] init];
          
         self.parser = [[CernMediaMARCParser alloc] init];

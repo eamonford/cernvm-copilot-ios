@@ -28,6 +28,16 @@
     self.tabsAlreadySetup = [NSMutableDictionary dictionary];
     [self setupViewController:[self.tabBarController.viewControllers objectAtIndex:TabIndexNews] atIndex:TabIndexNews];
 
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexNews]).tabBarItem.image = [UIImage imageNamed:@"news"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexLive]).tabBarItem.image = [UIImage imageNamed:@"live"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexAbout]).tabBarItem.image = [UIImage imageNamed:@"about"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexBulletin]).tabBarItem.image = [UIImage imageNamed:@"bulletin"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexPhotos]).tabBarItem.image = [UIImage imageNamed:@"latestPhotos"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexVideos]).tabBarItem.image = [UIImage imageNamed:@"latestVideos"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexWebcasts]).tabBarItem.image = [UIImage imageNamed:@"webcasts"];
+    ((UIViewController *)[self.tabBarController.viewControllers objectAtIndex:TabIndexJobs]).tabBarItem.image = [UIImage imageNamed:@"jobs"];
+
+    
     return YES;
 }
 
