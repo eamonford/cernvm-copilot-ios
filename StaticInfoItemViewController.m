@@ -107,6 +107,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    NSLog(@"item unloading");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

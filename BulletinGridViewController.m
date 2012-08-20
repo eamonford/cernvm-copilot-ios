@@ -28,14 +28,6 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    if (self.view) {
-        NSLog(@"we have a view");
-    } else {
-        NSLog(@"we don't have a view");
-    }
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

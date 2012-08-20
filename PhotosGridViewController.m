@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // When we call self.view this will reload the view after a didReceiveMemoryWarning.
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewDidUnload

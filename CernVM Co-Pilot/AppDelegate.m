@@ -80,9 +80,6 @@
             // Populate the general News view controller with news feeds
             [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://twitter.com/statuses/user_timeline/15234407.rss"]];
             [((NewsGridViewController *)viewController).aggregator addFeedForURL:[NSURL URLWithString:@"http://feeds.feedburner.com/CernCourier"]];
-            
-           
-            
             [(NewsGridViewController *)viewController refresh];
             break;
         }
@@ -117,7 +114,6 @@
         case TabIndexPhotos: {
             // Initialize the photos view controller with a photo downloader object
             ((PhotosGridViewController *)viewController).photoDownloader.url = [NSURL URLWithString:@"http://cdsweb.cern.ch/search?ln=en&cc=Photos&p=&f=&action_search=Search&c=Photos&c=&sf=&so=d&rm=&rg=10&sc=1&of=xm"];
-            //[(PhotosGridViewController *)viewController refresh];
             break;
         }
         case TabIndexVideos: {
@@ -129,16 +125,7 @@
             break;
         }
         case TabIndexWebcasts: {
-       /*     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-                APSplitViewController *splitViewController = (APSplitViewController *)viewController;
-                WebcastTypeSelectorTableViewController *tableView = [mainStoryboard instantiateViewControllerWithIdentifier:kWebcastTypeSelectorTableViewController];
-                splitViewController.masterViewController = tableView;
-                
-                WebcastsGridViewController *webcastsVC = [mainStoryboard instantiateViewControllerWithIdentifier:kWebcastsGridViewController];
-                splitViewController.detailViewController = webcastsVC;
-            }
-            break;*/
+            break;
         }
         default:
             break;

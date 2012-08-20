@@ -50,6 +50,13 @@
 
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // When we call self.view this will reload the view after a didReceiveMemoryWarning.
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -74,14 +81,12 @@
 
 - (void)parserDidFinish:(CernMediaMARCParser *)parser
 {
-    NSLog(@"finished");
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.gridView reloadData];
 }
 
 - (void)parser:(CernMediaMARCParser *)parser didParseRecord:(NSDictionary *)record
 {
-    NSLog(@"got record");
     // Copy over just the title, the date, and the first url of each resource type
     NSMutableDictionary *video = [NSMutableDictionary dictionary];
     [video setObject:[record objectForKey:@"title"] forKey:kVideoMetadataPropertyTitle];

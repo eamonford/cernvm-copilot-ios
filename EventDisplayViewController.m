@@ -73,7 +73,12 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    for (UIView *subview in self.scrollView.subviews) {
+        if ([subview class] == [UIImageView class]) {
+            ((UIImageView *)subview).image = nil;
+        }
+        [subview removeFromSuperview];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

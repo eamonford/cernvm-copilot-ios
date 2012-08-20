@@ -235,7 +235,6 @@
 - (void)downloadThumbnailForUpcomingWebcast:(NSDictionary *)webcast
 {
     NSURL *url = [webcast objectForKey:@"thumbnailURL"];
-   // NSLog(@"trying upcoming thumbnail url: %@", url);
 
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSData *thumbnailData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];

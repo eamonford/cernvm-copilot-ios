@@ -92,7 +92,6 @@
     NSMutableString *htmlString = [NSMutableString stringWithFormat:@"<html><head><link rel='stylesheet' type='text/css' href='file://%@'></head><body>%@%@%@</body></html>", cssPath, videoTag, titleTag, dateTag];
     
     self.contentString = htmlString;
-    NSLog(@"%@", self.contentString);
     [self.contentWebView loadHTMLString:self.contentString baseURL:nil];   
 }
 

@@ -59,11 +59,11 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    for (UIViewController *childViewController in self.childViewControllers) {
+        [childViewController.view removeFromSuperview];
+        [childViewController removeFromParentViewController];
+    }
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -89,9 +89,11 @@
 
 - (void)refresh
 {
+    NSLog(@"refreshing");
     for (UIViewController *childViewController in self.childViewControllers) {
         [childViewController.view removeFromSuperview];
         [childViewController removeFromParentViewController];
+        NSLog(@"refreshing and deleting a view controller");
     }
     
     self.pageControl.numberOfPages = self.dataSource.count;
