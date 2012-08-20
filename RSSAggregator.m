@@ -101,14 +101,12 @@
 - (void)downloadAllFirstImages
 {
     for (MWFeedItem *article in self.allArticles) {
-        NSLog(@"about to try to download thumbnail for article %@", article);
         [self downloadFirstImageForArticle:article];
     }
 }
 
 - (void)downloadFirstImageForArticle:(MWFeedItem *)article
 {
-    NSLog(@"article: %@", article);
     NSString *body = article.content;
     if (!body) {
         body = article.summary;
