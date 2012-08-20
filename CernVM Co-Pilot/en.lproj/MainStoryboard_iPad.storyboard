@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="2023" y="718"/>
         </scene>
-        <!--Article Detail View Controller-->
+        <!--Article Detail View Controller - News-->
         <scene sceneID="PIX-lg-5jw">
             <objects>
                 <viewController storyboardIdentifier="" id="SE4-Zh-h0Q" customClass="ArticleDetailViewController" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="7pi-5I-mDu"/>
+                    <navigationItem key="navigationItem" title="News" id="7pi-5I-mDu"/>
                     <connections>
                         <outlet property="contentWebView" destination="0us-DU-Vef" id="MvU-8I-Yql"/>
                     </connections>
@@ -196,10 +196,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <navigationItem key="navigationItem" id="R5L-j3-thi">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="JgE-hv-buH">
+                            <connections>
+                                <action selector="refresh:" destination="svh-Nh-H2K" id="TSX-Hf-6Ds"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="pageControl" destination="Iqe-34-gwz" id="QHh-2z-QDV"/>
+                        <outlet property="refreshButton" destination="JgE-hv-buH" id="Epi-Le-7V7"/>
                         <outlet property="scrollView" destination="EX9-cr-1bc" id="Y8t-26-I2r"/>
                     </connections>
                 </viewController>
@@ -561,7 +569,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem id="7Zc-hw-lWi">
+                                    <navigationItem title="About" id="7Zc-hw-lWi">
                                         <barButtonItem key="rightBarButtonItem" title="Category" id="yOi-UJ-fcv">
                                             <connections>
                                                 <action selector="categoryButtonTapped:" destination="xcp-hO-aV8" id="5Mb-a9-pX8"/>
@@ -583,7 +591,7 @@
             </objects>
             <point key="canvasLocation" x="3622" y="-1217"/>
         </scene>
-        <!--Article Detail View Controller-->
+        <!--Article Detail View Controller - Bulletin-->
         <scene sceneID="gSf-BC-eHF">
             <objects>
                 <viewController storyboardIdentifier="" id="ANz-Pp-yRz" customClass="ArticleDetailViewController" sceneMemberID="viewController">
@@ -595,13 +603,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="655"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ANz-Pp-yRz" id="uDm-co-rYo"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="VeS-13-bht"/>
+                    <navigationItem key="navigationItem" title="Bulletin" id="VeS-13-bht"/>
                     <connections>
                         <outlet property="contentWebView" destination="VYf-LE-gUl" id="1AL-hn-qAY"/>
                     </connections>

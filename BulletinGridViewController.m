@@ -84,8 +84,17 @@
     viewController.aggregator = self.aggregator;
     viewController.aggregator.delegate = viewController;
     
-    viewController.rangeOfArticlesToShow = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:issueIndex] rangeValue];
+    NSRange issueRange = [[self.rangesOfArticlesSeparatedByWeek objectAtIndex:issueIndex] rangeValue];
+    viewController.rangeOfArticlesToShow = issueRange;
     [viewController.gridView reloadData];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    MWFeedItem *latestArticle = [viewController.aggregator.allArticles objectAtIndex:issueRange.location+issueRange.length-1];
+    NSDate *issueDate = [[latestArticle.date midnight] nextOccurrenceOfWeekday:2];
+    NSString *issueDateString = [dateFormatter stringFromDate:issueDate];
+    viewController.title = [NSString stringWithFormat:@"%@", issueDateString];
+
     
     [self.gridView deselectItemAtIndex:self.gridView.indexOfSelectedItem animated:YES];
 }

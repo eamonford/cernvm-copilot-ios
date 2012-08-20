@@ -27,13 +27,15 @@
 
 - (StaticInfoItemViewController *)viewControllerForPage:(int)page
 {
-    UIStoryboard *mainStoryboard;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        UIStoryboard *mainStoryboard;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+            mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+            mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
 
     StaticInfoItemViewController *detailViewController = [mainStoryboard instantiateViewControllerWithIdentifier:kStaticInfoItemViewController];
+
+    
     detailViewController.staticInfo = [self.dataSource objectAtIndex:page];
     
     return detailViewController;
@@ -47,14 +49,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [UIApplication sharedApplication].statusBarHidden = YES;
-
-    [self.view layoutSubviews];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [UIApplication sharedApplication].statusBarHidden = YES;
+    }
+    [self positionChildrenWithDuration:0.0];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [UIApplication sharedApplication].statusBarHidden = NO;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
 }
 
 - (void)viewDidUnload {
@@ -74,11 +79,10 @@
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self refresh];
+    [self positionChildrenWithDuration:duration];
 }
-
 - (void)scrollViewDidScroll:(UIScrollView *)sender 
 {
     CGFloat pageWidth = self.scrollView.frame.size.width;
@@ -89,40 +93,48 @@
 
 - (void)refresh
 {
-    NSLog(@"refreshing");
     for (UIViewController *childViewController in self.childViewControllers) {
         [childViewController.view removeFromSuperview];
         [childViewController removeFromParentViewController];
-        NSLog(@"refreshing and deleting a view controller");
     }
     
     self.pageControl.numberOfPages = self.dataSource.count;
 
-    CGFloat detailViewWidth = 0.0;
-    CGFloat detailViewHeight = 480.0;
-    CGFloat detailViewX = 0.0;
-    CGFloat detailViewY = self.scrollView.frame.size.height/2-detailViewHeight/2;
-    CGFloat detailViewMargin = 0.0;
-
     for (int i=0; i<self.dataSource.count; i++) {
         StaticInfoItemViewController *detailViewController = [self viewControllerForPage:i];
-        detailViewWidth = detailViewController.view.frame.size.width;
-        detailViewHeight = detailViewController.view.frame.size.height;
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            detailViewMargin = 5.0;
-        } else {
-            detailViewMargin = 50.0;
-        }
-        detailViewX = (detailViewWidth+(2*detailViewMargin))*i;
-            
-        detailViewController.view.frame = CGRectMake(detailViewX+detailViewMargin, detailViewY, detailViewWidth, detailViewHeight);
-        [self addChildViewController:detailViewController];
+         [self addChildViewController:detailViewController];
         [self.scrollView addSubview:detailViewController.view];
         [detailViewController didMoveToParentViewController:self];
-        [detailViewController.view setNeedsDisplay];
     }
-    self.scrollView.contentSize = CGSizeMake(detailViewX+detailViewWidth+2*detailViewMargin, 1.0);
+    [self positionChildrenWithDuration:0.0];
+}
+
+- (void)positionChildrenWithDuration:(NSTimeInterval)duration
+{
+    [UIView animateWithDuration:duration animations:^{
+            CGFloat detailViewWidth = 0.0;
+            CGFloat detailViewHeight = 480.0;
+            CGFloat detailViewX = 0.0;
+            CGFloat detailViewY = self.scrollView.frame.size.height/2-detailViewHeight/2;
+            CGFloat detailViewMargin = 0.0;
+        
+            for (int i=0; i<self.childViewControllers.count; i++) {
+            StaticInfoItemViewController *detailViewController = [self.childViewControllers objectAtIndex:i];
+            detailViewWidth = detailViewController.view.frame.size.width;
+            detailViewHeight = detailViewController.view.frame.size.height;
+            
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                detailViewMargin = 5.0;
+            } else {
+                detailViewMargin = 50.0;
+            }
+            detailViewX = (detailViewWidth+(2*detailViewMargin))*i;
+            
+            detailViewController.view.frame = CGRectMake(detailViewX+detailViewMargin, detailViewY, detailViewWidth, detailViewHeight);
+            [detailViewController.view setNeedsDisplay];
+        }
+        self.scrollView.contentSize = CGSizeMake(detailViewX+detailViewWidth+2*detailViewMargin, 1.0);
+    }];
 }
 
 - (IBAction)categoryButtonTapped:(id)sender

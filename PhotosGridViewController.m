@@ -24,9 +24,8 @@
     if (self = [super initWithCoder:aDecoder]) {
         self.photoDownloader = [[PhotoDownloader alloc] init];
         self.photoDownloader.delegate = self;
-        self.gridView.backgroundColor = [UIColor whiteColor];
-        self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
-        self.gridView.resizesCellWidthToFit = YES;
+        //self.gridView.backgroundColor = [UIColor whiteColor];
+
     }
     return self;
 }
@@ -36,6 +35,8 @@
     [super viewDidLoad];
     // When we call self.view this will reload the view after a didReceiveMemoryWarning.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
+    self.gridView.resizesCellWidthToFit = YES;
 }
 
 - (void)viewDidUnload

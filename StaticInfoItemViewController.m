@@ -107,14 +107,13 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    NSLog(@"item unloading");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        return YES;
-    else
+ //   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  //      return YES;
+  //  else
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
